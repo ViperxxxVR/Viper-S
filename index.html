@@ -12,11 +12,14 @@
 
 <h1>vipers studios zzz</h1>
 
+
 <input type="text"placeholder="Enter Username..." id="username"> 
+
+<input type="text"placeholder="Enter Roblox User ID..." id="roblox">
 
 <input type="password"placeholder="Enter Password..."  id="password">
 
-<input type="text"placeholder="Enter Roblox User..." id="roblox">
+
 
  <button onclick="lookupRoblox(); register()">Register diddyblud</button>
 </div> 
@@ -24,11 +27,11 @@
 
 
 <script> function register() { let username = document.getElementById("username").value; localStorage.setItem("username", username)} function lookupRoblox() {
-let robloxUsername = document.getElementById("roblox").value;
+let robloxUsername = document.getElementById("roblox").value; localStorage.setItem("roblox", robloxUsername)
  const data = {
      usernames: [robloxUsername],
       excludeBannedUsers: true};
-fetch(`https://api.roblox.com/users/get-by-username?username=${robloxUsername}`)
+fetch(`https://thumbnails.roproxy.com/v1/users/avatar-headshot?userIds=${robloxUsername}&size=420x420&format=Png`)
 .then(response => response.json())
 .then(data => console.log(data))
 }
