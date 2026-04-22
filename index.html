@@ -1,0 +1,122 @@
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+</head>
+
+<div class="glow"></div>
+<div class="glow2"></div>
+<div class="glow3"></div>
+
+<div class="container">
+
+<h1>vipers studios zzz</h1>
+
+<input type="text"placeholder="Enter Username..." id="username"> 
+
+<input type="password"placeholder="Enter Password..."  id="password">
+
+<input type="text"placeholder="Enter Roblox User..." id="roblox">
+
+ <button onclick="lookupRoblox(); register()">Register diddyblud</button>
+</div> 
+
+
+
+<script> function register() { let username = document.getElementById("username").value; localStorage.setItem("username", username)} function lookupRoblox() {
+let robloxUsername = document.getElementById("roblox").value;
+ const data = {
+     usernames: [robloxUsername],
+      excludeBannedUsers: true};
+fetch("https://users.roproxy.com/v1/usernames/users", {
+method: 'POST',
+headers: {'Content-Type': 'application/json'},
+body: JSON.stringify(data)
+})
+.then(response => response.json())
+.then(data => console.log(data))
+}
+</script>
+
+<style>body { 
+             background: linear-gradient(to right, black, #1a0a2e);
+}
+
+h1 {
+        font-size: 70px;
+background:linear-gradient(to right, white, #6B6E6B);
+
+-webkit-background-clip: text; background-clip: text; 
+color: transparent;
+
+} .glow {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    opacity: 0.9;
+    filter: blur(80px);
+     background-color: white;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+
+}
+
+.glow2 {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    opacity: 0.5;
+    filter: blur(120px);
+    background-color: purple;
+    position: fixed;
+    top: 70%;
+    left: 50%;
+}
+
+.glow3 {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    opacity: 0.5;
+    filter: blur(120px);
+    background-color: purple;
+    position: fixed;
+    top: 50%;
+    left: 10%;
+}
+
+input {
+        border-radius: 20px;
+
+background-color: rgba(200, 200, 200, 1);
+
+font-size: 40px;
+
+} 
+
+.container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height:100vh;
+   flex-direction: column;
+}
+
+input::placeholder {
+  font-family: "Fredoka", sans-serif;
+}
+
+button { border-radius: 20px; 
+
+background:linear-gradient(to right, white, #6B6E6B);
+
+font-family: "Fredoka", sans-serif;
+
+font-size: 40px;
+}
+</style>
+
+
+
+
