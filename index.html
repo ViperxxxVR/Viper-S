@@ -28,11 +28,7 @@ let robloxUsername = document.getElementById("roblox").value;
  const data = {
      usernames: [robloxUsername],
       excludeBannedUsers: true};
-fetch("https://api.roblox.com/users/get-by-username?username= + robloxUsername", {
-method: 'POST',
-headers: {'Content-Type': 'application/json'},
-body: JSON.stringify(data)
-})
+fetch(`https://api.roblox.com/users/get-by-username?username=${robloxUsername}`)
 .then(response => response.json())
 .then(data => console.log(data))
 }
