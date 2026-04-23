@@ -8,46 +8,61 @@
 <div class="glow2"></div>
 <div class="glow3"></div>
 
-<div class="container">
-
-<h1>vipers studios zzz</h1>
-
-
-<input type="text"placeholder="Enter Username..." id="username"> 
-
-<input type="text"placeholder="Enter Roblox User ID..." id="roblox">
-
-<input type="password"placeholder="Enter Password..."  id="password">
-
-
-
- <button onclick="lookupRoblox(); register()">Register diddyblud</button>
-</div> 
-
-
-
-<script> function register() { let username = document.getElementById("username").value; localStorage.setItem("username", username); window.location.href = "register.html"} function lookupRoblox() {
-let robloxUsername = document.getElementById("roblox").value; localStorage.setItem("roblox", robloxUsername)
- const data = {
-     usernames: [robloxUsername],
-      excludeBannedUsers: true};
-fetch(`https://thumbnails.roproxy.com/v1/users/avatar-headshot?userIds=${robloxUsername}&size=420x420&format=Png`)
+<div class="layout">
+  <div class="sidebar">
+   <button onclick="showProfile()">Profile</button>
+<button onclick="showSettings()">Profile Settings</button>
+<button>Users (SOON!)</button>
+  </div>
+  <div class="main" id="main">
+  <div id="profile-tab">
+    <img id="avatar" src="">
+    <p id="bio-display"></p>
+    <h1 id="welcome">Welcome!</h1>
+  </div>
+  <div id="settings-tab">
+    <textarea id="bio-input" placeholder="Write your bio here..."></textarea>
+<button onclick="saveBio()">Save Bio</button>
+  </div>
+</div>
+<script>let username = localStorage.getItem("username"); document.getElementById("welcome") .innerHTML = "Welcome, " + username
+let roblox = localStorage.getItem("roblox"); fetch(`https://thumbnails.roproxy.com/v1/users/avatar-headshot?userIds=${roblox}&size=420x420&format=Png`)
 .then(response => response.json())
-.then(data => console.log(data))
+.then(data => document.getElementById("avatar").src = data.data[0].imageUrl) 
+
+function showProfile() {
+  document.getElementById("profile-tab").style.display = "block";
+  document.getElementById("settings-tab").style.display = "none";
+  document.getElementById("bio-display").innerHTML = localStorage.getItem("bio");
+} 
+
+function showSettings() {
+  document.getElementById("profile-tab").style.display = "none";
+  document.getElementById("settings-tab").style.display = "block";
 }
-</script>
+
+function saveBio() { let bio = document.getElementById("bio-input").value;
+localStorage.setItem("bio", bio); document.getElementById("bio-display").innerHTML = localStorage.getItem("bio"); }
+
+document.getElementById("bio-display").innerHTML = localStorage.getItem("bio");
+
+document.getElementById("bio-input").value = localStorage.getItem("bio");
+  </script>
+  </div>
+</div>
+
+
 
 <style>body { 
              background: linear-gradient(to right, black, #1a0a2e);
 }
 
 h1 {
-        font-size: 70px;
+           font-size: 70px;
 background:linear-gradient(to right, white, #6B6E6B);
 
 -webkit-background-clip: text; background-clip: text; 
 color: transparent;
-
 } .glow {
     width: 100px;
     height: 100px;
@@ -85,45 +100,25 @@ color: transparent;
     left: 10%;
 }
 
-input {
-        border-radius: 20px;
-
-background-color: rgba(200, 200, 200, 1);
-
-font-size: 40px;
-
-} 
-
-.container {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   height:100vh;
-   flex-direction: column;
+.layout {
+       display: flex;
+       flex-direction: row;
 }
 
-input::placeholder {
-  font-family: "Fredoka", sans-serif;
+.sidebar{
+    width: 300px;
+    background:linear-gradient(rgb(255, 4, 192),rgb(255, 0, 64));
+    height:100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 7px
 }
-
-button { border-radius: 20px; 
-
-background:linear-gradient(to right, white, #6B6E6B);
-
-font-family: "Fredoka", sans-serif;
-
-font-size: 40px;
-}
-
-p {
-    color:gray;
-    font-size: 25px;
-    position:fixed;
-    bottom: 10px;
-    
+.sidebar button{
+    border-radius: 10%;
+    height: 5%;
+    font-size: 100%;
+    font-family: "Fredoka", sans-serif;
+    background-color:skyblue
 }
 </style>
-
-
-<p> * Your roblox id is NOT required, and is just a tempoary feature, We monitor everyones user ids, If you fake a roblox id there will be consequences.</p>
 
