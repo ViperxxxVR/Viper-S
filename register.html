@@ -17,6 +17,7 @@
   <div class="main" id="main">
   <div id="profile-tab">
     <img id="avatar" src="">
+    <p id="bio-display"></p>
     <h1 id="welcome">Welcome!</h1>
   </div>
   <div id="settings-tab">
@@ -41,6 +42,8 @@ function showSettings() {
 
 function saveBio() { let bio = document.getElementById("bio-input").value;
 localStorage.setItem("bio", bio);}
+
+document.getElementById("bio-display").innerHTML = localStorage.getItem("bio");
   </script>
   </div>
 </div>
