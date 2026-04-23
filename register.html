@@ -33,6 +33,7 @@ let roblox = localStorage.getItem("roblox"); fetch(`https://thumbnails.roproxy.c
 function showProfile() {
   document.getElementById("profile-tab").style.display = "block";
   document.getElementById("settings-tab").style.display = "none";
+  document.getElementById("bio-display").innerHTML = localStorage.getItem("bio");
 } 
 
 function showSettings() {
