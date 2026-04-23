@@ -1,20 +1,42 @@
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+</head>
+
 <div class="glow"></div>
 <div class="glow2"></div>
 <div class="glow3"></div>
 
 <div class="layout">
   <div class="sidebar">
-    <button>Profile</button>
-<button>Profile Settings</button>
+   <button onclick="showProfile()">Profile</button>
+<button onclick="showSettings()">Profile Settings</button>
 <button>Users</button>
   </div>
-  <div class="main">
-    <img id="avatar"src="">
-<h1 id="welcome">Welcome!</h1>
+  <div class="main" id="main">
+  <div id="profile-tab">
+    <img id="avatar" src="">
+    <h1 id="welcome">Welcome!</h1>
+  </div>
+  <div id="settings-tab">
+  </div>
+</div>
 <script>let username = localStorage.getItem("username"); document.getElementById("welcome") .innerHTML = "Welcome, " + username
 let roblox = localStorage.getItem("roblox"); fetch(`https://thumbnails.roproxy.com/v1/users/avatar-headshot?userIds=${roblox}&size=420x420&format=Png`)
 .then(response => response.json())
-.then(data => document.getElementById("avatar").src = data.data[0].imageUrl) </script>
+.then(data => document.getElementById("avatar").src = data.data[0].imageUrl) 
+
+function showProfile() {
+  document.getElementById("profile-tab").style.display = "block";
+  document.getElementById("settings-tab").style.display = "none";
+} 
+
+function showSettings() {
+  document.getElementById("profile-tab").style.display = "none";
+  document.getElementById("settings-tab").style.display = "block";
+}
+  </script>
   </div>
 </div>
 
@@ -76,6 +98,16 @@ color: transparent;
     width: 300px;
     background:linear-gradient(gray,black);
     height:100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 7px
+}
+.sidebar button{
+    border-radius: 10%;
+    height: 5%;
+    font-size: 100%;
+    font-family: "Fredoka", sans-serif;
+    background-color:skyblue
 }
 </style>
 
