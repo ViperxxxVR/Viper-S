@@ -12,7 +12,7 @@
   <div class="sidebar">
    <button onclick="showProfile()">Profile</button>
 <button onclick="showSettings()">Profile Settings</button>
-<button>Users</button>
+<button>Users (SOON!)</button>
   </div>
   <div class="main" id="main">
   <div id="profile-tab">
@@ -20,6 +20,8 @@
     <h1 id="welcome">Welcome!</h1>
   </div>
   <div id="settings-tab">
+    <textarea id="bio-input" placeholder="Write your bio here..."></textarea>
+<button onclick="saveBio()">Save Bio</button>
   </div>
 </div>
 <script>let username = localStorage.getItem("username"); document.getElementById("welcome") .innerHTML = "Welcome, " + username
@@ -36,6 +38,9 @@ function showSettings() {
   document.getElementById("profile-tab").style.display = "none";
   document.getElementById("settings-tab").style.display = "block";
 }
+
+function saveBio() { let bio = document.getElementById("bio-input").value;
+localStorage.setItem("bio", bio);}
   </script>
   </div>
 </div>
