@@ -44,6 +44,8 @@ function saveBio() { let bio = document.getElementById("bio-input").value;
 localStorage.setItem("bio", bio); document.getElementById("bio-display").innerHTML = localStorage.getItem("bio"); }
 
 document.getElementById("bio-display").innerHTML = localStorage.getItem("bio");
+
+document.getElementById("bio-input").value = localStorage.getItem("bio");
   </script>
   </div>
 </div>
