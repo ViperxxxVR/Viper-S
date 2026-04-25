@@ -81,7 +81,7 @@ textarea{
 <body>
 
 <script>
-// redirect if not logged in
+// redirect if not logged in :)
 if(!localStorage.getItem("username")){
   window.location.href = "index.html";
 }
@@ -132,7 +132,7 @@ document.getElementById("welcome").innerText = `Welcome back, ${username}`;
 
 if(roblox){
   document.getElementById("avatar").src =
-  `https://www.roblox.com/headshot-thumbnail/image?userId=${roblox}&width=420&height=420&format=png`;
+  `https://thumbnails.roproxy.com/v1/users/avatar-headshot?userIds=${roblox}&size=420x420&format=Png`;
 }
 
 function show(tab){
