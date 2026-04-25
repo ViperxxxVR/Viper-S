@@ -52,6 +52,13 @@ html,body{
   overflow:auto;
 }
 
+/* 🌈 Animated glow profile card */
+@keyframes glow {
+  0% { box-shadow: 0 0 10px rgba(59,130,246,0.2); }
+  50% { box-shadow: 0 0 25px rgba(59,130,246,0.6); }
+  100% { box-shadow: 0 0 10px rgba(59,130,246,0.2); }
+}
+
 .profile-card{
   background:#0d1117;
   border:1px solid rgba(255,255,255,0.08);
@@ -60,8 +67,8 @@ html,body{
   display:flex;
   align-items:center;
   gap:20px;
-  max-width:500px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.4);
+  max-width:520px;
+  animation:glow 3s infinite ease-in-out;
 }
 
 .avatar{
@@ -93,6 +100,23 @@ html,body{
   color:#60a5fa;
 }
 
+.status{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:12px;
+  margin-top:6px;
+  opacity:0.8;
+}
+
+.dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#22c55e;
+  box-shadow:0 0 8px #22c55e;
+}
+
 textarea{
   width:100%;
   height:120px;
@@ -119,6 +143,7 @@ button{
   opacity:0.7;
   margin-top:10px;
 }
+
 </style>
 </head>
 <body>
@@ -145,25 +170,35 @@ if(!localStorage.getItem("username")){
 
     <p class="info">Adding your roblox ID is an optional feature but grants you more features!</p>
 
+    <!-- HOME -->
     <div id="home">
 
       <div class="profile-card">
         <img id="avatar" class="avatar" />
+
         <div class="profile-info">
           <h2 id="nameDisplay"></h2>
           <p>ID: <span id="robloxDisplay">None</span></p>
-          <span class="badge">User</span>
+
+          <div class="status">
+            <div class="dot"></div>
+            <span>Online</span>
+          </div>
+
+          <span class="badge" id="rankBadge">User</span>
         </div>
       </div>
 
       <p id="bioDisplay" style="margin-top:15px;"></p>
     </div>
 
+    <!-- SETTINGS -->
     <div id="settings" class="hidden">
       <textarea id="bioInput"></textarea>
       <button onclick="saveBio()">Save</button>
     </div>
 
+    <!-- USERS -->
     <div id="users" class="hidden">
       <h3>Users</h3>
       <p class="info">Coming soon.</p>
@@ -176,11 +211,16 @@ if(!localStorage.getItem("username")){
 <script>
 let username = localStorage.getItem("username");
 let roblox = localStorage.getItem("roblox");
+let rank = localStorage.getItem("rank") || "User";
+localStorage.setItem("rank", rank);
 
+// UI fill
 document.getElementById("welcome").innerText = `Welcome back, ${username}`;
 document.getElementById("nameDisplay").innerText = username;
 document.getElementById("robloxDisplay").innerText = roblox || "Not set";
+document.getElementById("rankBadge").innerText = rank;
 
+// avatar
 if(roblox){
   fetch(`https://thumbnails.roproxy.com/v1/users/avatar-headshot?userIds=${roblox}&size=420x420&format=Png`)
     .then(res => res.json())
@@ -196,7 +236,6 @@ function show(tab){
   document.getElementById("home").classList.add("hidden");
   document.getElementById("settings").classList.add("hidden");
   document.getElementById("users").classList.add("hidden");
-
   document.getElementById(tab).classList.remove("hidden");
 }
 
