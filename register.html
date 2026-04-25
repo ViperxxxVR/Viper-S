@@ -49,12 +49,48 @@ html,body{
 .main{
   flex:1;
   padding:30px;
+  overflow:auto;
+}
+
+.profile-card{
+  background:#0d1117;
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:18px;
+  padding:20px;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  max-width:500px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
 }
 
 .avatar{
-  width:120px;
+  width:110px;
+  height:110px;
   border-radius:50%;
-  margin-top:20px;
+  object-fit:cover;
+  border:2px solid rgba(59,130,246,0.6);
+}
+
+.profile-info h2{
+  margin:0;
+  font-size:22px;
+}
+
+.profile-info p{
+  margin:5px 0;
+  opacity:0.7;
+  font-size:13px;
+}
+
+.badge{
+  display:inline-block;
+  margin-top:6px;
+  padding:4px 10px;
+  font-size:12px;
+  border-radius:999px;
+  background:rgba(59,130,246,0.2);
+  color:#60a5fa;
 }
 
 textarea{
@@ -67,23 +103,29 @@ textarea{
   padding:10px;
 }
 
-.hidden{
-  display:none;
+.hidden{display:none;}
+
+button{
+  padding:10px;
+  border:none;
+  border-radius:10px;
+  background:#3b82f6;
+  color:white;
+  cursor:pointer;
 }
 
 .info{
   font-size:13px;
   opacity:0.7;
+  margin-top:10px;
 }
 </style>
 </head>
-
 <body>
 
 <script>
-// redirect if not logged in :)
 if(!localStorage.getItem("username")){
-  window.location.href = "index.html";
+  window.location.href="index.html";
 }
 </script>
 
@@ -101,13 +143,20 @@ if(!localStorage.getItem("username")){
 
     <h1 id="welcome"></h1>
 
-    <p class="info">
-      Adding your roblox ID is an optional feature but grants you more features!
-    </p>
+    <p class="info">Adding your roblox ID is an optional feature but grants you more features!</p>
 
     <div id="home">
-      <img id="avatar" class="avatar" />
-      <p id="bioDisplay"></p>
+
+      <div class="profile-card">
+        <img id="avatar" class="avatar" />
+        <div class="profile-info">
+          <h2 id="nameDisplay"></h2>
+          <p>ID: <span id="robloxDisplay">None</span></p>
+          <span class="badge">User</span>
+        </div>
+      </div>
+
+      <p id="bioDisplay" style="margin-top:15px;"></p>
     </div>
 
     <div id="settings" class="hidden">
@@ -129,10 +178,18 @@ let username = localStorage.getItem("username");
 let roblox = localStorage.getItem("roblox");
 
 document.getElementById("welcome").innerText = `Welcome back, ${username}`;
+document.getElementById("nameDisplay").innerText = username;
+document.getElementById("robloxDisplay").innerText = roblox || "Not set";
 
 if(roblox){
-  document.getElementById("avatar").src =
-  `https://thumbnails.roproxy.com/v1/users/avatar-headshot?userIds=${roblox}&size=420x420&format=Png`;
+  fetch(`https://thumbnails.roproxy.com/v1/users/avatar-headshot?userIds=${roblox}&size=420x420&format=Png`)
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("avatar").src = data.data[0].imageUrl;
+    })
+    .catch(()=>{
+      document.getElementById("avatar").src = "https://tr.rbxcdn.com/default_avatar.png";
+    });
 }
 
 function show(tab){
@@ -145,16 +202,15 @@ function show(tab){
 
 function saveBio(){
   let bio = document.getElementById("bioInput").value;
-  localStorage.setItem("bio", bio);
+  localStorage.setItem("bio",bio);
   document.getElementById("bioDisplay").innerText = bio;
 }
 
 function logout(){
   localStorage.clear();
-  window.location.href = "index.html";
+  window.location.href="index.html";
 }
 
-// load saved bio
 let bio = localStorage.getItem("bio") || "";
 document.getElementById("bioInput").value = bio;
 document.getElementById("bioDisplay").innerText = bio;
