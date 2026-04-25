@@ -1,217 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Viper Studios - Dashboard</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: radial-gradient(circle at top, #0b0f1a, #05070d);
-  color: white;
+html,body{
+  margin:0;
+  height:100%;
+  font-family:Inter,sans-serif;
+  background:radial-gradient(circle at top,#0b0f1a,#05070d);
+  color:white;
+  overflow:hidden;
 }
 
-.container {
-  display: flex;
+.container{
+  display:flex;
+  height:100vh;
 }
 
-
-.sidebar {
-  width: 240px;
-  height: 100vh;
-  background: #0d1117;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  border-right: 1px solid rgba(255,255,255,0.05);
+.sidebar{
+  width:240px;
+  background:#0d1117;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  border-right:1px solid rgba(255,255,255,0.05);
 }
 
-.sidebar h2 {
-  font-size: 18px;
-  opacity: 0.8;
+.sidebar button{
+  background:transparent;
+  border:none;
+  color:white;
+  text-align:left;
+  padding:10px;
+  border-radius:8px;
+  cursor:pointer;
 }
 
-.sidebar button {
-  background: transparent;
-  border: none;
-  color: white;
-  text-align: left;
-  padding: 10px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.2s;
+.sidebar button:hover{
+  background:rgba(255,255,255,0.08);
 }
 
-.sidebar button:hover {
-  background: rgba(255,255,255,0.08);
+.main{
+  flex:1;
+  padding:30px;
 }
 
-.active {
-  background: rgba(255,255,255,0.1);
+.avatar{
+  width:120px;
+  border-radius:50%;
+  margin-top:20px;
 }
 
-
-.main {
-  flex: 1;
-  padding: 30px;
+textarea{
+  width:100%;
+  height:120px;
+  background:#0d1117;
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:10px;
+  color:white;
+  padding:10px;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.hidden{
+  display:none;
 }
 
-.header h1 {
-  font-size: 28px;
-  margin: 0;
+.info{
+  font-size:13px;
+  opacity:0.7;
 }
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.card {
-  background: #0d1117;
-  padding: 20px;
-  border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.05);
-}
-
-.card small {
-  opacity: 0.6;
-}
-
-
-#profile-tab {
-  display: block;
-}
-
-#settings-tab {
-  display: none;
-}
-
-.avatar {
-  width: 120px;
-  border-radius: 50%;
-  margin-top: 20px;
-}
-
-textarea {
-  width: 100%;
-  height: 120px;
-  background: #0d1117;
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 10px;
-  color: white;
-  padding: 10px;
-}
-
-button.save {
-  margin-top: 10px;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 8px;
-  background: #3b82f6;
-  color: white;
-  cursor: pointer;
-}
-
 </style>
 </head>
 
 <body>
+
+<script>
+// redirect if not logged in
+if(!localStorage.getItem("username")){
+  window.location.href = "index.html";
+}
+</script>
+
 <div class="container">
 
   <div class="sidebar">
-    <h2>Viper Studios</h2>
-    <button onclick="showProfile()" class="active">Home</button>
-    <button onclick="showSettings()">Settings</button>
-    <button disabled>Users (Soon)</button>
+    <h3>Viper Studios</h3>
+    <button onclick="show('home')">Home</button>
+    <button onclick="show('settings')">Settings</button>
+    <button onclick="show('users')">Users</button>
+    <button onclick="logout()">Logout</button>
   </div>
 
   <div class="main">
-    <div class="header">
-      <h1 id="welcome">Welcome</h1>
+
+    <h1 id="welcome"></h1>
+
+    <p class="info">
+      Adding your roblox ID is an optional feature but grants you more features!
+    </p>
+
+    <div id="home">
+      <img id="avatar" class="avatar" />
+      <p id="bioDisplay"></p>
     </div>
 
-    <div class="cards" id="cards"></div>
-
-   
-    <div id="profile-tab">
-      <img id="avatar" class="avatar" src="">
-      <p id="bio-display"></p>
+    <div id="settings" class="hidden">
+      <textarea id="bioInput"></textarea>
+      <button onclick="saveBio()">Save</button>
     </div>
 
-    
-    <div id="settings-tab">
-      <textarea id="bio-input" placeholder="Write your bio..."></textarea>
-      <button class="save" onclick="saveBio()">Save</button>
+    <div id="users" class="hidden">
+      <h3>Users</h3>
+      <p class="info">Coming soon.</p>
     </div>
 
   </div>
+
 </div>
 
 <script>
-let username = localStorage.getItem("username") || "User";
+let username = localStorage.getItem("username");
+let roblox = localStorage.getItem("roblox");
+
 document.getElementById("welcome").innerText = `Welcome back, ${username}`;
 
-let roblox = localStorage.getItem("roblox");
-if (roblox) {
-  fetch(`https://thumbnails.roproxy.com/v1/users/avatar-headshot?userIds=${roblox}&size=420x420&format=Png`)
-  .then(res => res.json())
-  .then(data => {
-    document.getElementById("avatar").src = data.data[0].imageUrl;
-  });
+if(roblox){
+  document.getElementById("avatar").src =
+  `https://www.roblox.com/headshot-thumbnail/image?userId=${roblox}&width=420&height=420&format=png`;
 }
 
-function showProfile() {
-  document.getElementById("profile-tab").style.display = "block";
-  document.getElementById("settings-tab").style.display = "none";
+function show(tab){
+  document.getElementById("home").classList.add("hidden");
+  document.getElementById("settings").classList.add("hidden");
+  document.getElementById("users").classList.add("hidden");
+
+  document.getElementById(tab).classList.remove("hidden");
 }
 
-function showSettings() {
-  document.getElementById("profile-tab").style.display = "none";
-  document.getElementById("settings-tab").style.display = "block";
-}
-
-function saveBio() {
-  let bio = document.getElementById("bio-input").value;
+function saveBio(){
+  let bio = document.getElementById("bioInput").value;
   localStorage.setItem("bio", bio);
-  document.getElementById("bio-display").innerText = bio;
+  document.getElementById("bioDisplay").innerText = bio;
 }
 
-function addCard(title, value) {
-  let cards = JSON.parse(localStorage.getItem("cards") || "[]");
-  cards.push({title, value});
-  localStorage.setItem("cards", JSON.stringify(cards));
-  renderCards();
+function logout(){
+  localStorage.clear();
+  window.location.href = "index.html";
 }
 
-function renderCards() {
-  let container = document.getElementById("cards");
-  container.innerHTML = "";
-  let cards = JSON.parse(localStorage.getItem("cards") || "[]");
-  cards.forEach(c => {
-    let div = document.createElement("div");
-    div.className = "card";
-    div.innerHTML = `<small>${c.title}</small><h2>${c.value}</h2>`;
-    container.appendChild(div);
-  });
-}
-
-renderCards();
-
-// Load saved bio
-document.getElementById("bio-display").innerText = localStorage.getItem("bio") || "";
-document.getElementById("bio-input").value = localStorage.getItem("bio") || "";
+// load saved bio
+let bio = localStorage.getItem("bio") || "";
+document.getElementById("bioInput").value = bio;
+document.getElementById("bioDisplay").innerText = bio;
 </script>
 
 </body>
