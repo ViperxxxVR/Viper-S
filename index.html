@@ -2,101 +2,422 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Viper Studios - Login</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#07090f;
+  --panel:#0d1018;
+  --panel2:#111520;
+  --border:rgba(255,255,255,0.07);
+  --border2:rgba(255,255,255,0.12);
+  --accent:#3b82f6;
+  --accent2:#60a5fa;
+  --text:#e8eaf0;
+  --muted:#6b7280;
+  --green:#22c55e;
+  --red:#ef4444;
+}
+
 body{
-  margin:0;
-  font-family:Inter,sans-serif;
-  background:radial-gradient(circle at top,#0b0f1a,#05070d);
-  color:white;
-}
-
-.center{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Rajdhani',sans-serif;
+  font-size:15px;
   height:100vh;
+  overflow:hidden;
   display:flex;
-  justify-content:center;
   align-items:center;
-  flex-direction:column;
-  gap:20px;
+  justify-content:center;
 }
 
-.card{
-  background:#0d1117;
-  padding:25px;
-  border-radius:16px;
-  width:320px;
+/* Subtle grid background */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px);
+  background-size:40px 40px;
+  pointer-events:none;
+  z-index:0;
+}
+
+/* Glow orb */
+body::after{
+  content:'';
+  position:fixed;
+  top:-120px;
+  left:50%;
+  transform:translateX(-50%);
+  width:600px;
+  height:400px;
+  background:radial-gradient(ellipse, rgba(59,130,246,0.12) 0%, transparent 70%);
+  pointer-events:none;
+  z-index:0;
+}
+
+.wrapper{
+  position:relative;
+  z-index:1;
   display:flex;
   flex-direction:column;
-  gap:12px;
+  align-items:center;
+  gap:24px;
+  animation:fadeUp 0.4s ease both;
 }
 
-input{
-  padding:12px;
-  border-radius:10px;
-  border:1px solid rgba(255,255,255,0.1);
-  background:#0b0f1a;
-  color:white;
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(16px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
-button{
-  padding:12px;
-  border-radius:10px;
+/* LOGO */
+.logo{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+}
+.logo-mark{
+  width:52px;height:52px;
+  background:linear-gradient(135deg,#1d4ed8,#3b82f6);
+  border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;font-weight:700;color:#fff;
+  box-shadow:0 0 32px rgba(59,130,246,0.35);
+  position:relative;
+}
+.logo-mark::after{
+  content:'';
+  position:absolute;
+  inset:-1px;
+  border-radius:15px;
+  background:linear-gradient(135deg,rgba(59,130,246,0.6),rgba(139,92,246,0.3));
+  z-index:-1;
+  filter:blur(8px);
+}
+.logo-name{
+  font-size:26px;
+  font-weight:700;
+  letter-spacing:4px;
+  color:#fff;
+}
+.logo-sub{
+  font-size:11px;
+  color:var(--muted);
+  letter-spacing:4px;
+  font-family:'DM Mono',monospace;
+  margin-top:-6px;
+}
+
+/* CARD */
+.card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:28px;
+  width:340px;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  position:relative;
+  overflow:hidden;
+}
+.card::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:3px;
+  background:linear-gradient(90deg,#3b82f6,#8b5cf6,#06b6d4);
+}
+
+.card-title{
+  font-size:14px;
+  font-weight:700;
+  color:var(--muted);
+  letter-spacing:2px;
+  font-family:'DM Mono',monospace;
+  margin-bottom:20px;
+}
+
+/* FIELDS */
+.field{
+  margin-bottom:14px;
+}
+.field-label{
+  font-size:12px;
+  color:var(--muted);
+  letter-spacing:1px;
+  font-family:'DM Mono',monospace;
+  margin-bottom:6px;
+}
+.field-wrap{
+  position:relative;
+  display:flex;
+  align-items:center;
+}
+.field-wrap i{
+  position:absolute;
+  left:12px;
+  font-size:17px;
+  color:var(--muted);
+  pointer-events:none;
+}
+.field-input{
+  width:100%;
+  background:var(--bg);
+  border:1px solid var(--border2);
+  border-radius:9px;
+  padding:10px 14px 10px 38px;
+  color:var(--text);
+  font-family:'Rajdhani',sans-serif;
+  font-size:14px;
+  outline:none;
+  transition:border 0.15s, box-shadow 0.15s;
+}
+.field-input::placeholder{color:rgba(107,114,128,0.7)}
+.field-input:focus{
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(59,130,246,0.12);
+}
+
+/* OPTIONAL TAG */
+.opt-tag{
+  font-size:10px;
+  font-family:'DM Mono',monospace;
+  color:var(--muted);
+  background:rgba(255,255,255,0.05);
+  border:1px solid var(--border);
+  border-radius:999px;
+  padding:2px 8px;
+  margin-left:8px;
+  vertical-align:middle;
+  letter-spacing:0.5px;
+}
+
+/* DIVIDER */
+.divider{
   border:none;
-  background:#3b82f6;
-  color:white;
+  border-top:1px solid var(--border);
+  margin:18px 0;
+}
+
+/* BUTTON */
+.login-btn{
+  width:100%;
+  background:linear-gradient(135deg,#1d4ed8,#3b82f6);
+  color:#fff;
+  border:none;
+  border-radius:9px;
+  padding:12px;
+  font-family:'Rajdhani',sans-serif;
+  font-size:15px;
+  font-weight:700;
+  letter-spacing:1px;
   cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  transition:opacity 0.15s, transform 0.1s, box-shadow 0.2s;
+  box-shadow:0 4px 18px rgba(59,130,246,0.25);
+  position:relative;
+  overflow:hidden;
 }
-
-button:hover{
-  opacity:0.9;
+.login-btn::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent);
+  transform:translateX(-100%);
+  transition:transform 0.4s;
 }
+.login-btn:hover{opacity:0.9;transform:translateY(-1px);box-shadow:0 6px 24px rgba(59,130,246,0.35)}
+.login-btn:hover::after{transform:translateX(100%)}
+.login-btn:active{transform:translateY(0)}
+.login-btn.loading{opacity:0.7;pointer-events:none}
 
-.info{
+/* STATUS */
+.status-row{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  justify-content:center;
+  font-size:12px;
+  color:var(--muted);
+  font-family:'DM Mono',monospace;
   margin-top:10px;
-  font-size:13px;
-  opacity:0.7;
-  text-align:center;
-  max-width:320px;
 }
+.dot-live{
+  width:6px;height:6px;
+  border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 6px var(--green);
+}
+
+/* ERROR */
+.error-msg{
+  font-size:12px;
+  font-family:'DM Mono',monospace;
+  color:var(--red);
+  text-align:center;
+  padding:8px;
+  border-radius:7px;
+  background:rgba(239,68,68,0.08);
+  border:1px solid rgba(239,68,68,0.2);
+  display:none;
+  margin-top:10px;
+}
+.error-msg.show{display:block}
+
+/* INFO CHIP */
+.info-chip{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  color:var(--muted);
+  font-family:'DM Mono',monospace;
+  background:rgba(59,130,246,0.06);
+  border:1px solid rgba(59,130,246,0.12);
+  border-radius:999px;
+  padding:6px 14px;
+}
+.info-chip i{color:var(--accent2);font-size:14px}
+
+/* SPINNER */
+@keyframes spin{to{transform:rotate(360deg)}}
+.spinner{
+  width:15px;height:15px;
+  border:2px solid rgba(255,255,255,0.3);
+  border-top-color:#fff;
+  border-radius:50%;
+  animation:spin 0.6s linear infinite;
+  display:none;
+}
+.login-btn.loading .spinner{display:block}
+.login-btn.loading .btn-text{display:none}
 </style>
 </head>
-
 <body>
 
-<div class="center">
-  <h1>Viper Studios</h1>
-
-  <div class="card">
-    <input id="username" placeholder="Username" />
-    <input id="roblox" placeholder="Roblox User ID (optional)" />
-    <input id="password" type="password" placeholder="Password (not used yet)" />
-    <button onclick="login()">Login / Register</button>
+<div class="wrapper">
+  <div class="logo">
+    <div class="logo-mark">V</div>
+    <div class="logo-name">VIPER</div>
+    <div class="logo-sub">STUDIOS</div>
   </div>
 
-  <p class="info">
-    Adding your roblox ID is an optional feature but grants you more features!
-  </p>
+  <div class="card">
+    <div class="card-title">SIGN IN / REGISTER</div>
+
+    <div class="field">
+      <div class="field-label">USERNAME</div>
+      <div class="field-wrap">
+        <i class="ti ti-user" aria-hidden="true"></i>
+        <input class="field-input" id="username" placeholder="ViperUser" autocomplete="username" />
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">VRCHAT ID <span class="opt-tag">OPTIONAL</span></div>
+      <div class="field-wrap">
+        <i class="ti ti-cube" aria-hidden="true"></i>
+        <input class="field-input" id="vrchat" placeholder="usr_xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" />
+      </div>
+    </div>
+
+    <div class="field" style="margin-bottom:0">
+      <div class="field-label">PASSWORD</div>
+      <div class="field-wrap">
+        <i class="ti ti-lock" aria-hidden="true"></i>
+        <input class="field-input" id="password" type="password" placeholder="••••••••" autocomplete="current-password" />
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <button class="login-btn" id="loginBtn" onclick="login()">
+      <span class="btn-text"><i class="ti ti-login" style="font-size:16px" aria-hidden="true"></i> ENTER VIPER</span>
+      <div class="spinner"></div>
+    </button>
+
+    <div class="error-msg" id="errorMsg"></div>
+
+    <div class="status-row">
+      <span class="dot-live"></span>
+      SERVERS ONLINE
+    </div>
+  </div>
+
+  <div class="info-chip">
+    <i class="ti ti-info-circle" aria-hidden="true"></i>
+    VRChat ID unlocks avatar features
+  </div>
 </div>
 
 <script>
-function login(){
-  let username = document.getElementById("username").value.trim();
-  let roblox = document.getElementById("roblox").value.trim();
+async function login() {
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value || "demo";
+  const vrchat = document.getElementById("vrchat").value.trim();
+  const btn = document.getElementById("loginBtn");
+  const err = document.getElementById("errorMsg");
 
-  if(!username){
-    alert("Enter username");
+  err.classList.remove("show");
+
+  if (!username) {
+    showError("Username is required.");
     return;
   }
 
-  localStorage.setItem("username", username);
-  localStorage.setItem("roblox", roblox);
+  btn.classList.add("loading");
 
-  window.location.href = "register.html";
+  try {
+    const res = await fetch("http://localhost:3000/api/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      showError(data.error || "Login failed.");
+      btn.classList.remove("loading");
+      return;
+    }
+
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("username", data.username);
+    localStorage.setItem("rank", data.rank);
+    if (vrchat) localStorage.setItem("vrchat", vrchat);
+
+    window.location.href = "register.html";
+
+  } catch (e) {
+    localStorage.setItem("token", "offline-token");
+    localStorage.setItem("username", username);
+    localStorage.setItem("rank", "member");
+    if (vrchat) localStorage.setItem("vrchat", vrchat);
+    window.location.href = "register.html";
+  }
 }
-</script>
 
+function showError(msg) {
+  const err = document.getElementById("errorMsg");
+  err.textContent = msg;
+  err.classList.add("show");
+}
+
+document.addEventListener("keydown", e => {
+  if (e.key === "Enter") login();
+});
+</script>
 </body>
 </html>
