@@ -5,256 +5,79 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Viper Studios - Sign Up</title>
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+<script src="https://unpkg.com/lucide@0.395.0/dist/umd/lucide.min.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#07090f;
-  --panel:#0d1018;
-  --panel2:#111520;
-  --border:rgba(255,255,255,0.07);
-  --border2:rgba(255,255,255,0.12);
-  --accent:#3b82f6;
-  --accent2:#60a5fa;
-  --text:#e8eaf0;
-  --muted:#6b7280;
-  --green:#22c55e;
-  --red:#ef4444;
-}
-
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:'Rajdhani',sans-serif;
-  font-size:15px;
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:24px;
-}
-
-body::before{
-  content:'';
-  position:fixed;
-  inset:0;
-  background-image:
-    linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px);
-  background-size:40px 40px;
-  pointer-events:none;
-  z-index:0;
-}
-
-body::after{
-  content:'';
-  position:fixed;
-  top:-120px;
-  left:50%;
-  transform:translateX(-50%);
-  width:600px;
-  height:400px;
-  background:radial-gradient(ellipse, rgba(59,130,246,0.10) 0%, transparent 70%);
-  pointer-events:none;
-  z-index:0;
-}
-
-.wrapper{
-  position:relative;
-  z-index:1;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:20px;
-  width:100%;
-  max-width:400px;
-  animation:fadeUp 0.4s ease both;
-}
-
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(16px)}
-  to{opacity:1;transform:translateY(0)}
-}
-
-.logo{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:10px;
-}
-.logo-mark{
-  width:52px;height:52px;
-  background:linear-gradient(135deg,#1d4ed8,#3b82f6);
-  border-radius:14px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:26px;font-weight:700;color:#fff;
-  box-shadow:0 0 32px rgba(59,130,246,0.35);
-  position:relative;
-}
-.logo-mark::after{
-  content:'';
-  position:absolute;
-  inset:-1px;
-  border-radius:15px;
-  background:linear-gradient(135deg,rgba(59,130,246,0.6),rgba(139,92,246,0.3));
-  z-index:-1;
-  filter:blur(8px);
-}
+:root{--bg:#07090f;--panel:#0d1018;--panel2:#111520;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);--accent:#3b82f6;--accent2:#60a5fa;--text:#e8eaf0;--muted:#6b7280;--green:#22c55e;--red:#ef4444}
+body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;font-size:15px;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(59,130,246,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0}
+body::after{content:'';position:fixed;top:-120px;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(59,130,246,0.10) 0%,transparent 70%);pointer-events:none;z-index:0}
+.wrapper{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:20px;width:100%;max-width:400px;animation:fadeUp 0.4s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.logo{display:flex;flex-direction:column;align-items:center;gap:10px}
+.logo-mark{width:52px;height:52px;background:linear-gradient(135deg,#1d4ed8,#3b82f6);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:700;color:#fff;box-shadow:0 0 32px rgba(59,130,246,0.35);position:relative}
+.logo-mark::after{content:'';position:absolute;inset:-1px;border-radius:15px;background:linear-gradient(135deg,rgba(59,130,246,0.6),rgba(139,92,246,0.3));z-index:-1;filter:blur(8px)}
 .logo-name{font-size:26px;font-weight:700;letter-spacing:4px;color:#fff}
 .logo-sub{font-size:11px;color:var(--muted);letter-spacing:4px;font-family:'DM Mono',monospace;margin-top:-6px}
-
-/* CARD */
-.card{
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:28px;
-  width:100%;
-  position:relative;
-  overflow:hidden;
-}
-.card::before{
-  content:'';
-  position:absolute;
-  top:0;left:0;right:0;
-  height:3px;
-  background:linear-gradient(90deg,#3b82f6,#8b5cf6,#06b6d4);
-}
-
-.card-title{
-  font-size:14px;font-weight:700;
-  color:var(--muted);
-  letter-spacing:2px;
-  font-family:'DM Mono',monospace;
-  margin-bottom:6px;
-}
-.card-sub{
-  font-size:13px;color:var(--muted);
-  font-family:'DM Mono',monospace;
-  margin-bottom:22px;
-  line-height:1.5;
-}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:28px;width:100%;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#3b82f6,#8b5cf6,#06b6d4)}
+.card-title{font-size:14px;font-weight:700;color:var(--muted);letter-spacing:2px;font-family:'DM Mono',monospace;margin-bottom:6px}
+.card-sub{font-size:13px;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:22px;line-height:1.5}
 
 /* STEPS */
-.steps{
-  display:flex;
-  align-items:center;
-  gap:0;
-  margin-bottom:24px;
-}
-.step{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:4px;
-  flex:1;
-  position:relative;
-}
-.step:not(:last-child)::after{
-  content:'';
-  position:absolute;
-  top:14px;
-  left:50%;
-  width:100%;
-  height:1px;
-  background:var(--border2);
-  z-index:0;
-}
+.steps{display:flex;align-items:center;margin-bottom:24px}
+.step{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;position:relative}
+.step:not(:last-child)::after{content:'';position:absolute;top:14px;left:50%;width:100%;height:1px;background:var(--border2);z-index:0}
 .step.done:not(:last-child)::after{background:var(--accent)}
-.step-num{
-  width:28px;height:28px;
-  border-radius:50%;
-  background:var(--panel2);
-  border:1px solid var(--border2);
-  display:flex;align-items:center;justify-content:center;
-  font-size:12px;font-weight:700;
-  font-family:'DM Mono',monospace;
-  color:var(--muted);
-  position:relative;z-index:1;
-  transition:all 0.2s;
-}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--panel2);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;font-family:'DM Mono',monospace;color:var(--muted);position:relative;z-index:1;transition:all 0.2s}
 .step.active .step-num{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 0 10px rgba(59,130,246,0.4)}
 .step.done .step-num{background:var(--green);border-color:var(--green);color:#fff}
 .step-label{font-size:10px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:0.5px}
-.step.active .step-label{color:var(--accent2)}
-.step.done .step-label{color:var(--green)}
-
-/* PANELS */
-.step-panel{display:none}
-.step-panel.active{display:block}
+.step.active .step-label{color:var(--accent2)}.step.done .step-label{color:var(--green)}
+.step-panel{display:none}.step-panel.active{display:block}
 
 /* FIELDS */
 .field{margin-bottom:14px}
 .field-label{font-size:12px;color:var(--muted);letter-spacing:1px;font-family:'DM Mono',monospace;margin-bottom:6px;display:flex;align-items:center;gap:6px}
 .opt{font-size:10px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:999px;padding:1px 7px;color:var(--muted);letter-spacing:0.5px}
 .field-wrap{position:relative;display:flex;align-items:center}
-.field-wrap i{position:absolute;left:12px;font-size:17px;color:var(--muted);pointer-events:none}
-.field-input{
-  width:100%;
-  background:var(--bg);
-  border:1px solid var(--border2);
-  border-radius:9px;
-  padding:10px 14px 10px 38px;
-  color:var(--text);
-  font-family:'Rajdhani',sans-serif;
-  font-size:14px;
-  outline:none;
-  transition:border 0.15s, box-shadow 0.15s;
-}
+.field-wrap svg{position:absolute;left:12px;width:17px;height:17px;color:var(--muted);stroke:currentColor;pointer-events:none}
+.field-input{width:100%;background:var(--bg);border:1px solid var(--border2);border-radius:9px;padding:10px 14px 10px 38px;color:var(--text);font-family:'Rajdhani',sans-serif;font-size:14px;outline:none;transition:border 0.15s,box-shadow 0.15s}
 .field-input::placeholder{color:rgba(107,114,128,0.7)}
 .field-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(59,130,246,0.12)}
-.field-input.error{border-color:var(--red);box-shadow:0 0 0 3px rgba(239,68,68,0.10)}
 
-/* KEY FIELD special */
+/* KEY FIELD */
 .key-field-wrap{position:relative}
-.key-field-wrap input{
-  text-transform:uppercase;
-  letter-spacing:2px;
-  font-family:'DM Mono',monospace;
-  font-size:15px;
-  padding-left:38px;
-}
-.key-valid-icon{
-  position:absolute;right:12px;top:50%;transform:translateY(-50%);
-  font-size:16px;display:none;
-}
+.key-field-wrap input{text-transform:uppercase;letter-spacing:2px;font-family:'DM Mono',monospace;font-size:15px;padding-left:38px}
+.key-valid-icon{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:16px;display:none;font-style:normal}
 .key-valid-icon.show-ok{display:block;color:var(--green)}
 .key-valid-icon.show-err{display:block;color:var(--red)}
+
+/* CODE INPUT */
+.code-wrap{display:flex;gap:8px;justify-content:center;margin:20px 0}
+.code-digit{width:48px;height:60px;background:var(--bg);border:1px solid var(--border2);border-radius:10px;text-align:center;font-size:26px;font-weight:700;font-family:'DM Mono',monospace;color:var(--text);outline:none;transition:border 0.15s,box-shadow 0.15s;caret-color:transparent}
+.code-digit:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(59,130,246,0.12)}
+.code-digit.filled{border-color:rgba(59,130,246,0.4);color:var(--accent2)}
+.verify-email-note{text-align:center;font-size:13px;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:8px;line-height:1.6}
+.verify-email-addr{color:var(--accent2);font-weight:600}
+.resend-btn{background:none;border:none;color:var(--muted);font-family:'DM Mono',monospace;font-size:12px;cursor:pointer;padding:0;transition:color 0.15s;display:block;margin:10px auto 0}
+.resend-btn:hover{color:var(--accent2)}
+.resend-btn:disabled{opacity:0.4;pointer-events:none}
 
 /* STRENGTH BAR */
 .strength-wrap{margin-top:6px}
 .strength-bar{height:3px;border-radius:999px;background:var(--border2);overflow:hidden}
-.strength-fill{height:100%;border-radius:999px;width:0;transition:width 0.3s, background 0.3s}
+.strength-fill{height:100%;border-radius:999px;width:0;transition:width 0.3s,background 0.3s}
 .strength-label{font-size:11px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:4px}
 
-/* NEXT BTN */
-.next-btn{
-  width:100%;
-  background:linear-gradient(135deg,#1d4ed8,#3b82f6);
-  color:#fff;border:none;border-radius:9px;
-  padding:12px;
-  font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;
-  letter-spacing:1px;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  transition:opacity 0.15s, transform 0.1s, box-shadow 0.2s;
-  box-shadow:0 4px 18px rgba(59,130,246,0.25);
-  margin-top:4px;
-}
-.next-btn:hover{opacity:0.9;transform:translateY(-1px);box-shadow:0 6px 24px rgba(59,130,246,0.35)}
-.next-btn:active{transform:translateY(0)}
-.next-btn:disabled{opacity:0.5;pointer-events:none}
+/* BUTTONS */
+.next-btn{width:100%;background:linear-gradient(135deg,#1d4ed8,#3b82f6);color:#fff;border:none;border-radius:9px;padding:12px;font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;letter-spacing:1px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity 0.15s,transform 0.1s,box-shadow 0.2s;box-shadow:0 4px 18px rgba(59,130,246,0.25);margin-top:4px}
+.next-btn svg{width:16px;height:16px;stroke:currentColor}
+.next-btn:hover{opacity:0.9;transform:translateY(-1px)}.next-btn:active{transform:translateY(0)}
 .next-btn.loading{opacity:0.7;pointer-events:none}
-
-.back-btn{
-  width:100%;
-  background:none;border:1px solid var(--border2);border-radius:9px;
-  padding:10px;color:var(--muted);
-  font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;
-  cursor:pointer;transition:all 0.15s;margin-top:8px;
-}
+.back-btn{width:100%;background:none;border:1px solid var(--border2);border-radius:9px;padding:10px;color:var(--muted);font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s;margin-top:8px;display:flex;align-items:center;justify-content:center;gap:6px}
+.back-btn svg{width:14px;height:14px;stroke:currentColor}
 .back-btn:hover{color:var(--text);border-color:var(--text)}
-
-/* DIVIDER */
 hr{border:none;border-top:1px solid var(--border);margin:16px 0}
 
 /* SUCCESS */
@@ -263,29 +86,15 @@ hr{border:none;border-top:1px solid var(--border);margin:16px 0}
 .success-title{font-size:20px;font-weight:700;color:#fff;margin-bottom:6px}
 .success-sub{font-size:13px;color:var(--muted);font-family:'DM Mono',monospace;line-height:1.5;margin-bottom:20px}
 
-/* ERROR */
-.err-msg{
-  font-size:12px;font-family:'DM Mono',monospace;color:var(--red);
-  background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);
-  border-radius:8px;padding:8px 12px;margin-top:12px;display:none;
-}
+/* ERRORS */
+.err-msg{font-size:12px;font-family:'DM Mono',monospace;color:var(--red);background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:8px;padding:8px 12px;margin-top:12px;display:none}
 .err-msg.show{display:block}
-
-/* BOTTOM LINK */
-.bottom-link{
-  font-size:13px;font-family:'DM Mono',monospace;
-  color:var(--muted);text-align:center;
-}
+.bottom-link{font-size:13px;font-family:'DM Mono',monospace;color:var(--muted);text-align:center}
 .bottom-link a{color:var(--accent2);text-decoration:none;font-weight:600}
 .bottom-link a:hover{text-decoration:underline}
-
-/* SPINNER */
-@keyframes spin{to{transform:rotate(360deg)}}
-.spin{animation:spin 0.7s linear infinite;display:inline-block}
 </style>
 </head>
 <body>
-
 <div class="wrapper">
   <div class="logo">
     <div class="logo-mark">V</div>
@@ -297,65 +106,47 @@ hr{border:none;border-top:1px solid var(--border);margin:16px 0}
     <div class="card-title">CREATE ACCOUNT</div>
     <div class="card-sub">Invite key required to join.</div>
 
-    <!-- STEP INDICATOR -->
     <div class="steps">
       <div class="step active" id="s1"><div class="step-num">1</div><div class="step-label">ACCOUNT</div></div>
       <div class="step" id="s2"><div class="step-num">2</div><div class="step-label">PROFILE</div></div>
       <div class="step" id="s3"><div class="step-num">3</div><div class="step-label">INVITE</div></div>
+      <div class="step" id="s4"><div class="step-num">4</div><div class="step-label">VERIFY</div></div>
     </div>
 
     <!-- STEP 1: Account -->
     <div class="step-panel active" id="panel1">
       <div class="field">
         <div class="field-label">USERNAME</div>
-        <div class="field-wrap">
-          <i class="ti ti-user"></i>
-          <input class="field-input" id="username" placeholder="ViperUser" autocomplete="username" oninput="clearErr()" />
-        </div>
+        <div class="field-wrap"><i data-lucide="user"></i><input class="field-input" id="username" placeholder="ViperUser" autocomplete="username" oninput="clearErr()" /></div>
       </div>
       <div class="field">
         <div class="field-label">PASSWORD</div>
-        <div class="field-wrap">
-          <i class="ti ti-lock"></i>
-          <input class="field-input" id="password" type="password" placeholder="••••••••" oninput="checkStrength()" />
-        </div>
-        <div class="strength-wrap">
-          <div class="strength-bar"><div class="strength-fill" id="strengthFill"></div></div>
-          <div class="strength-label" id="strengthLabel">Enter a password</div>
-        </div>
+        <div class="field-wrap"><i data-lucide="lock"></i><input class="field-input" id="password" type="password" placeholder="••••••••" oninput="checkStrength()" /></div>
+        <div class="strength-wrap"><div class="strength-bar"><div class="strength-fill" id="strengthFill"></div></div><div class="strength-label" id="strengthLabel">Enter a password</div></div>
       </div>
       <div class="field" style="margin-bottom:0">
         <div class="field-label">CONFIRM PASSWORD</div>
-        <div class="field-wrap">
-          <i class="ti ti-lock-check"></i>
-          <input class="field-input" id="confirmPassword" type="password" placeholder="••••••••" oninput="clearErr()" />
-        </div>
+        <div class="field-wrap"><i data-lucide="lock"></i><input class="field-input" id="confirmPassword" type="password" placeholder="••••••••" oninput="clearErr()" /></div>
       </div>
       <div class="err-msg" id="err1"></div>
       <hr />
-      <button class="next-btn" onclick="step1Next()"><span>Next</span> <i class="ti ti-arrow-right"></i></button>
+      <button class="next-btn" onclick="step1Next()"><span>Next</span><i data-lucide="arrow-right"></i></button>
     </div>
 
     <!-- STEP 2: Profile -->
     <div class="step-panel" id="panel2">
       <div class="field">
-        <div class="field-label">EMAIL <span class="opt">OPTIONAL</span></div>
-        <div class="field-wrap">
-          <i class="ti ti-mail"></i>
-          <input class="field-input" id="email" type="email" placeholder="you@example.com" />
-        </div>
+        <div class="field-label">EMAIL</div>
+        <div class="field-wrap"><i data-lucide="mail"></i><input class="field-input" id="email" type="email" placeholder="you@example.com" /></div>
       </div>
       <div class="field" style="margin-bottom:0">
         <div class="field-label">VRCHAT ID <span class="opt">OPTIONAL</span></div>
-        <div class="field-wrap">
-          <i class="ti ti-cube"></i>
-          <input class="field-input" id="vrchat" placeholder="usr_xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" />
-        </div>
+        <div class="field-wrap"><i data-lucide="box"></i><input class="field-input" id="vrchat" placeholder="usr_xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" /></div>
       </div>
       <div class="err-msg" id="err2"></div>
       <hr />
-      <button class="next-btn" onclick="step2Next()"><span>Next</span> <i class="ti ti-arrow-right"></i></button>
-      <button class="back-btn" onclick="goStep(1)"><i class="ti ti-arrow-left"></i> Back</button>
+      <button class="next-btn" onclick="step2Next()"><span>Next</span><i data-lucide="arrow-right"></i></button>
+      <button class="back-btn" onclick="goStep(1)"><i data-lucide="arrow-left"></i> Back</button>
     </div>
 
     <!-- STEP 3: Invite Key -->
@@ -363,152 +154,132 @@ hr{border:none;border-top:1px solid var(--border);margin:16px 0}
       <div class="field" style="margin-bottom:0">
         <div class="field-label">INVITE KEY</div>
         <div class="field-wrap key-field-wrap">
-          <i class="ti ti-key"></i>
+          <i data-lucide="key"></i>
           <input class="field-input" id="inviteKey" placeholder="XXXXX-XXXXX-XXXXX" oninput="formatKey(this)" maxlength="17" />
-          <i class="key-valid-icon ti ti-check" id="keyOk"></i>
-          <i class="key-valid-icon ti ti-x" id="keyErr"></i>
+          <span class="key-valid-icon" id="keyOk">✓</span>
+          <span class="key-valid-icon" id="keyErr">✗</span>
         </div>
       </div>
       <div class="err-msg" id="err3"></div>
       <hr />
       <button class="next-btn" id="submitBtn" onclick="submitSignup()">
-        <span id="submitText"><i class="ti ti-user-plus"></i> Create Account</span>
+        <span id="submitText">Send Verification Email</span><i data-lucide="mail"></i>
       </button>
-      <button class="back-btn" onclick="goStep(2)"><i class="ti ti-arrow-left"></i> Back</button>
+      <button class="back-btn" onclick="goStep(2)"><i data-lucide="arrow-left"></i> Back</button>
     </div>
 
-    <!-- STEP 4: Success -->
+    <!-- STEP 4: Verify Email Code -->
     <div class="step-panel" id="panel4">
+      <div class="verify-email-note">
+        We sent a 6-digit code to<br>
+        <span class="verify-email-addr" id="emailDisplay"></span>
+      </div>
+      <div class="code-wrap">
+        <input class="code-digit" maxlength="1" id="d0" oninput="codeInput(0)" onkeydown="codeKey(event,0)" />
+        <input class="code-digit" maxlength="1" id="d1" oninput="codeInput(1)" onkeydown="codeKey(event,1)" />
+        <input class="code-digit" maxlength="1" id="d2" oninput="codeInput(2)" onkeydown="codeKey(event,2)" />
+        <input class="code-digit" maxlength="1" id="d3" oninput="codeInput(3)" onkeydown="codeKey(event,3)" />
+        <input class="code-digit" maxlength="1" id="d4" oninput="codeInput(4)" onkeydown="codeKey(event,4)" />
+        <input class="code-digit" maxlength="1" id="d5" oninput="codeInput(5)" onkeydown="codeKey(event,5)" />
+      </div>
+      <div class="err-msg" id="err4"></div>
+      <button class="next-btn" id="verifyBtn" onclick="verifyCode()">
+        <span id="verifyText">Verify Code</span><i data-lucide="check"></i>
+      </button>
+      <button class="resend-btn" id="resendBtn" onclick="resendCode()">Resend code</button>
+    </div>
+
+    <!-- STEP 5: Success -->
+    <div class="step-panel" id="panel5">
       <div class="success-wrap">
         <span class="success-icon">🎉</span>
-        <div class="success-title">Welcome to Viper Studios</div>
-        <div class="success-sub">Your account has been created.<br>You can now log in.</div>
-        <button class="next-btn" onclick="window.location.href='index.html'">
-          <i class="ti ti-login"></i> Go to Login
-        </button>
+        <div class="success-title">You're in!</div>
+        <div class="success-sub">Your account has been verified and created.<br>Welcome to Viper Studios.</div>
+        <button class="next-btn" onclick="window.location.href='index.html'"><i data-lucide="log-in"></i> Go to Login</button>
       </div>
     </div>
-
   </div>
 
-  <div class="bottom-link">
-    Already have an account? <a href="index.html">Log In</a>
-  </div>
+  <div class="bottom-link">Already have an account? <a href="index.html">Log In</a></div>
 </div>
 
 <script>
+lucide.createIcons();
 const API = 'http://localhost:3000';
 let currentStep = 1;
+let signupToken = null; // returned by server after step 3
+let resendTimer = null;
 
-function goStep(n){
+function goStep(n) {
   document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
-  document.getElementById('panel'+n).classList.add('active');
-
-  for(let i=1;i<=3;i++){
-    const s = document.getElementById('s'+i);
-    s.classList.remove('active','done');
-    if(i < n) s.classList.add('done');
-    else if(i === n) s.classList.add('active');
+  document.getElementById('panel' + n).classList.add('active');
+  for (let i = 1; i <= 4; i++) {
+    const s = document.getElementById('s' + i);
+    if (!s) continue;
+    s.classList.remove('active', 'done');
+    if (i < n) s.classList.add('done');
+    else if (i === n) s.classList.add('active');
   }
   currentStep = n;
+  lucide.createIcons();
 }
 
-function showErr(id, msg){
-  const el = document.getElementById(id);
-  el.textContent = msg;
-  el.classList.add('show');
-}
+function showErr(id, msg) { const el = document.getElementById(id); el.textContent = msg; el.classList.add('show'); }
+function clearErr() { document.querySelectorAll('.err-msg').forEach(e => e.classList.remove('show')); }
 
-function clearErr(){
-  document.querySelectorAll('.err-msg').forEach(e => e.classList.remove('show'));
-}
-
-function checkStrength(){
+function checkStrength() {
   const pw = document.getElementById('password').value;
-  const fill = document.getElementById('strengthFill');
-  const label = document.getElementById('strengthLabel');
+  const fill = document.getElementById('strengthFill'), label = document.getElementById('strengthLabel');
   let score = 0;
-  if(pw.length >= 8) score++;
-  if(/[A-Z]/.test(pw)) score++;
-  if(/[0-9]/.test(pw)) score++;
-  if(/[^A-Za-z0-9]/.test(pw)) score++;
-
-  const colors = ['#ef4444','#f59e0b','#3b82f6','#22c55e'];
-  const labels = ['Weak','Fair','Good','Strong'];
-  const pcts = ['25%','50%','75%','100%'];
-
-  if(!pw){ fill.style.width='0'; label.textContent='Enter a password'; return; }
-  const i = Math.max(0, score-1);
-  fill.style.width = pcts[i];
-  fill.style.background = colors[i];
-  label.textContent = labels[i];
-  label.style.color = colors[i];
+  if (pw.length >= 8) score++; if (/[A-Z]/.test(pw)) score++; if (/[0-9]/.test(pw)) score++; if (/[^A-Za-z0-9]/.test(pw)) score++;
+  const colors = ['#ef4444','#f59e0b','#3b82f6','#22c55e'], labels = ['Weak','Fair','Good','Strong'], pcts = ['25%','50%','75%','100%'];
+  if (!pw) { fill.style.width = '0'; label.textContent = 'Enter a password'; return; }
+  const i = Math.max(0, score - 1);
+  fill.style.width = pcts[i]; fill.style.background = colors[i]; label.textContent = labels[i]; label.style.color = colors[i];
 }
 
-function formatKey(input){
-  let v = input.value.replace(/[^A-Za-z0-9]/g,'').toUpperCase().slice(0,15);
+function formatKey(input) {
+  let v = input.value.replace(/[^A-Za-z0-9]/g, '').toUpperCase().slice(0, 15);
   let out = '';
-  for(let i=0;i<v.length;i++){
-    if(i===5||i===10) out+='-';
-    out+=v[i];
-  }
+  for (let i = 0; i < v.length; i++) { if (i === 5 || i === 10) out += '-'; out += v[i]; }
   input.value = out;
-
-  const ok = document.getElementById('keyOk');
-  const err = document.getElementById('keyErr');
-  ok.className = 'key-valid-icon ti ti-check';
-  err.className = 'key-valid-icon ti ti-x';
-  if(out.length === 17){
-    ok.classList.add('show-ok');
-  } else if(out.length > 0){
-    err.classList.add('show-err');
-  }
+  const ok = document.getElementById('keyOk'), err = document.getElementById('keyErr');
+  ok.className = 'key-valid-icon'; err.className = 'key-valid-icon';
+  if (out.length === 17) ok.classList.add('show-ok');
+  else if (out.length > 0) err.classList.add('show-err');
 }
 
-function step1Next(){
+function step1Next() {
   clearErr();
   const username = document.getElementById('username').value.trim();
   const password = document.getElementById('password').value;
   const confirm = document.getElementById('confirmPassword').value;
-
-  if(!username) return showErr('err1','Username is required.');
-  if(username.length < 3) return showErr('err1','Username must be at least 3 characters.');
-  if(!password) return showErr('err1','Password is required.');
-  if(password.length < 6) return showErr('err1','Password must be at least 6 characters.');
-  if(password !== confirm) return showErr('err1','Passwords do not match.');
+  if (!username) return showErr('err1', 'Username is required.');
+  if (username.length < 3) return showErr('err1', 'Username must be at least 3 characters.');
+  if (!password) return showErr('err1', 'Password is required.');
+  if (password.length < 6) return showErr('err1', 'Password must be at least 6 characters.');
+  if (password !== confirm) return showErr('err1', 'Passwords do not match.');
   goStep(2);
 }
 
-function step2Next(){
+function step2Next() {
   clearErr();
+  const email = document.getElementById('email').value.trim();
+  if (!email || !email.includes('@')) return showErr('err2', 'A valid email is required for verification.');
   goStep(3);
 }
 
-function signupSuccess(){
-  document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
-  document.getElementById('panel4').classList.add('active');
-  for(let i=1;i<=3;i++){
-    document.getElementById('s'+i).classList.remove('active');
-    document.getElementById('s'+i).classList.add('done');
-  }
-}
-
-async function submitSignup(){
+async function submitSignup() {
   clearErr();
   const key = document.getElementById('inviteKey').value.trim();
-  if(key.length !== 17) return showErr('err3','Enter a valid invite key (XXXXX-XXXXX-XXXXX).');
+  if (key.length !== 17) return showErr('err3', 'Enter a valid invite key (XXXXX-XXXXX-XXXXX).');
 
-  const btn = document.getElementById('submitBtn');
-  const txt = document.getElementById('submitText');
-  btn.classList.add('loading');
-  txt.innerHTML = '<i class="ti ti-loader spin"></i> Creating account...';
-
-  const username = document.getElementById('username').value.trim();
-  const password = document.getElementById('password').value;
+  const btn = document.getElementById('submitBtn'), txt = document.getElementById('submitText');
+  btn.classList.add('loading'); txt.textContent = 'Sending email...';
 
   const body = {
-    username,
-    password,
+    username: document.getElementById('username').value.trim(),
+    password: document.getElementById('password').value,
     confirmPassword: document.getElementById('confirmPassword').value,
     email: document.getElementById('email').value.trim(),
     vrchat: document.getElementById('vrchat').value.trim(),
@@ -516,37 +287,136 @@ async function submitSignup(){
   };
 
   try {
-    const res = await fetch(`${API}/api/signup`, {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify(body),
+    const res = await fetch(`${API}/api/signup`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    const data = await res.json();
+    btn.classList.remove('loading'); txt.textContent = 'Send Verification Email';
+
+    if (!res.ok) return showErr('err3', data.error || 'Signup failed.');
+
+    signupToken = data.token;
+    document.getElementById('emailDisplay').textContent = body.email;
+    goStep(4);
+    startResendTimer();
+  } catch {
+    btn.classList.remove('loading'); txt.textContent = 'Send Verification Email';
+    showErr('err3', 'Could not reach server. Is it running?');
+  }
+}
+
+/* ── CODE INPUT ── */
+function codeInput(i) {
+  const el = document.getElementById('d' + i);
+  const val = el.value.replace(/\D/g, '');
+  el.value = val ? val[0] : '';
+  el.classList.toggle('filled', !!el.value);
+  if (el.value && i < 5) document.getElementById('d' + (i + 1)).focus();
+  // auto-verify when all 6 filled
+  const code = getCode();
+  if (code.length === 6) verifyCode();
+}
+
+function codeKey(e, i) {
+  if (e.key === 'Backspace' && !document.getElementById('d' + i).value && i > 0) {
+    document.getElementById('d' + (i - 1)).focus();
+  }
+  if (e.key === 'v' && (e.ctrlKey || e.metaKey)) {
+    // handle paste
+    e.preventDefault();
+    navigator.clipboard.readText().then(text => {
+      const digits = text.replace(/\D/g, '').slice(0, 6);
+      for (let j = 0; j < digits.length; j++) {
+        const d = document.getElementById('d' + j);
+        if (d) { d.value = digits[j]; d.classList.add('filled'); }
+      }
+      if (digits.length === 6) verifyCode();
+    });
+  }
+}
+
+function getCode() {
+  return [0,1,2,3,4,5].map(i => document.getElementById('d'+i).value).join('');
+}
+
+async function verifyCode() {
+  clearErr();
+  const code = getCode();
+  if (code.length !== 6) return showErr('err4', 'Enter all 6 digits.');
+
+  const btn = document.getElementById('verifyBtn'), txt = document.getElementById('verifyText');
+  btn.classList.add('loading'); txt.textContent = 'Verifying...';
+
+  try {
+    const res = await fetch(`${API}/api/signup/verify`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: signupToken, code })
     });
     const data = await res.json();
-    btn.classList.remove('loading');
-    txt.innerHTML = '<i class="ti ti-user-plus"></i> Create Account';
+    btn.classList.remove('loading'); txt.textContent = 'Verify Code';
 
-    if(!res.ok) return showErr('err3', data.error || 'Signup failed.');
+    if (!res.ok) {
+      showErr('err4', data.error || 'Verification failed.');
+      // clear digits on wrong code
+      [0,1,2,3,4,5].forEach(i => { const d = document.getElementById('d'+i); d.value=''; d.classList.remove('filled'); });
+      document.getElementById('d0').focus();
+      return;
+    }
 
-    signupSuccess();
+    // Clear timer and show success
+    clearInterval(resendTimer);
+    document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('panel5').classList.add('active');
+    for (let i = 1; i <= 4; i++) { const s = document.getElementById('s'+i); if(s){ s.classList.remove('active'); s.classList.add('done'); } }
+    lucide.createIcons();
+  } catch {
+    btn.classList.remove('loading'); txt.textContent = 'Verify Code';
+    showErr('err4', 'Could not reach server.');
+  }
+}
 
-  } catch(e){
-    // Server offline — store locally and proceed
-    btn.classList.remove('loading');
-    txt.innerHTML = '<i class="ti ti-user-plus"></i> Create Account';
-    localStorage.setItem('token', 'offline-token');
-    localStorage.setItem('username', username);
-    localStorage.setItem('rank', 'User');
-    const vrchat = document.getElementById('vrchat').value.trim();
-    if(vrchat) localStorage.setItem('vrchat', vrchat);
-    signupSuccess();
+/* ── RESEND ── */
+function startResendTimer() {
+  let secs = 60;
+  const btn = document.getElementById('resendBtn');
+  btn.disabled = true;
+  btn.textContent = `Resend code (${secs}s)`;
+  resendTimer = setInterval(() => {
+    secs--;
+    btn.textContent = secs > 0 ? `Resend code (${secs}s)` : 'Resend code';
+    if (secs <= 0) { clearInterval(resendTimer); btn.disabled = false; }
+  }, 1000);
+}
+
+async function resendCode() {
+  document.getElementById('resendBtn').disabled = true;
+  [0,1,2,3,4,5].forEach(i => { const d = document.getElementById('d'+i); d.value=''; d.classList.remove('filled'); });
+  clearErr();
+
+  // Re-submit the same data
+  const body = {
+    username: document.getElementById('username').value.trim(),
+    password: document.getElementById('password').value,
+    confirmPassword: document.getElementById('confirmPassword').value,
+    email: document.getElementById('email').value.trim(),
+    vrchat: document.getElementById('vrchat').value.trim(),
+    key: document.getElementById('inviteKey').value.trim(),
+  };
+
+  try {
+    const res = await fetch(`${API}/api/signup`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    const data = await res.json();
+    if (res.ok) { signupToken = data.token; startResendTimer(); }
+    else showErr('err4', data.error || 'Could not resend.');
+  } catch {
+    showErr('err4', 'Could not reach server.');
   }
 }
 
 document.addEventListener('keydown', e => {
-  if(e.key !== 'Enter') return;
-  if(currentStep === 1) step1Next();
-  else if(currentStep === 2) step2Next();
-  else if(currentStep === 3) submitSignup();
+  if (e.key !== 'Enter') return;
+  if (currentStep === 1) step1Next();
+  else if (currentStep === 2) step2Next();
+  else if (currentStep === 3) submitSignup();
 });
 </script>
 </body>
