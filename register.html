@@ -359,7 +359,7 @@ if (!localStorage.getItem("token")) {
 let generatedKeys = JSON.parse(localStorage.getItem('vs_keys') || '[]');
 let selectedColor = localStorage.getItem('vs_color') || '#3b82f6';
 let selectedColor2 = localStorage.getItem('vs_color2') || '#60a5fa';
-let currentUserRank = 'member';
+let current = 'member';
 let allMembers = [];
 let pendingAction = null; // { type, userId, username }
 
@@ -426,7 +426,7 @@ function roleClass(r){
 
 function initials(name){ return (name||'??').slice(0,2).toUpperCase(); }
 
-function isAdmin(){ return ['Admin','Owner'].includes(currentUserRank); }
+function isAdmin(){ return ['admin','owner'].includes(currentUserRank.toLowerCase()); }
 
 async function load(){
   try {
