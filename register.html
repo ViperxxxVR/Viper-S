@@ -8,34 +8,22 @@
 <link rel="stylesheet" href="https://unpkg.com/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#07090f;
-  --panel:#0d1018;
-  --panel2:#111520;
-  --border:rgba(255,255,255,0.07);
-  --border2:rgba(255,255,255,0.12);
-  --accent:#3b82f6;
-  --accent2:#60a5fa;
-  --text:#e8eaf0;
-  --muted:#6b7280;
-  --green:#22c55e;
-  --red:#ef4444;
-  --amber:#f59e0b;
-}
+:root{--bg:#07090f;--panel:#0d1018;--panel2:#111520;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);--accent:#3b82f6;--accent2:#60a5fa;--text:#e8eaf0;--muted:#6b7280;--green:#22c55e;--red:#ef4444;--amber:#f59e0b}
 body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;font-size:15px;height:100vh;overflow:hidden}
 .shell{display:flex;height:100vh}
-
-/* SIDEBAR */
-.sidebar{width:220px;background:var(--panel);border-right:1px solid var(--border);display:flex;flex-direction:column;padding:0;flex-shrink:0}
+.sidebar{width:220px;background:var(--panel);border-right:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0}
 .logo{padding:22px 20px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
 .logo-icon{width:32px;height:32px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;font-weight:700}
 .logo-text{font-size:17px;font-weight:700;letter-spacing:1px;color:#fff}
 .logo-sub{font-size:10px;color:var(--muted);letter-spacing:2px;font-family:'DM Mono',monospace}
 .nav{padding:16px 10px;flex:1;display:flex;flex-direction:column;gap:4px}
 .nav-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;cursor:pointer;color:var(--muted);font-weight:600;font-size:14px;letter-spacing:0.5px;transition:all 0.15s;border:none;background:none;width:100%;text-align:left}
-.nav-item i{font-size:18px}
+.nav-item i{font-size:18px;flex-shrink:0}
 .nav-item:hover{background:rgba(255,255,255,0.05);color:var(--text)}
 .nav-item.active{background:rgba(59,130,246,0.15);color:var(--accent2);border:1px solid rgba(59,130,246,0.2)}
+.nav-item.admin-nav{color:#f87171}
+.nav-item.admin-nav:hover{background:rgba(239,68,68,0.1);color:#fca5a5}
+.nav-item.admin-nav.active{background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3)}
 .nav-item.danger{color:#f87171}
 .nav-item.danger:hover{background:rgba(239,68,68,0.1)}
 .sidebar-bottom{padding:12px 10px;border-top:1px solid var(--border)}
@@ -44,69 +32,49 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .user-chip-info{flex:1;min-width:0}
 .user-chip-name{font-size:13px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .user-chip-role{font-size:11px;color:var(--accent2);font-family:'DM Mono',monospace}
-
-/* MAIN */
 .main{flex:1;overflow-y:auto;background:var(--bg)}
 .topbar{height:56px;border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 28px;gap:16px;background:var(--panel);position:sticky;top:0;z-index:10}
-.topbar-title{font-size:18px;font-weight:700;letter-spacing:0.5px;color:#fff}
+.topbar-title{font-size:18px;font-weight:700;color:#fff}
 .topbar-badge{font-size:11px;font-family:'DM Mono',monospace;background:rgba(59,130,246,0.15);color:var(--accent2);padding:3px 10px;border-radius:999px;border:1px solid rgba(59,130,246,0.25)}
-.dot-live{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);flex-shrink:0;margin-left:auto}
+.dot-live{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);margin-left:auto}
 .content{padding:28px}
-
-/* TAB PANELS */
-.tab-panel{display:none}
-.tab-panel.active{display:block}
-
-/* PROFILE CARD */
+.tab-panel{display:none}.tab-panel.active{display:block}
 .profile-card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:24px;display:flex;gap:20px;align-items:flex-start;max-width:560px;margin-bottom:24px;position:relative;overflow:hidden}
-.profile-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#3b82f6,#8b5cf6,#06b6d4)}
+.profile-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),#8b5cf6,#06b6d4)}
 .avatar-lg{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;color:#fff;flex-shrink:0;border:2px solid rgba(59,130,246,0.3)}
-.profile-name{font-size:22px;font-weight:700;color:#fff;letter-spacing:0.5px}
+.profile-name{font-size:22px;font-weight:700;color:#fff}
 .profile-status{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--green);margin:4px 0 8px;font-family:'DM Mono',monospace}
 .status-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green)}
-.role-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:0.5px;font-family:'DM Mono',monospace}
+.role-badge{display:inline-flex;align-items:center;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:600;font-family:'DM Mono',monospace}
 .role-owner{background:rgba(245,158,11,0.15);color:#fbbf24;border:1px solid rgba(245,158,11,0.3)}
 .role-admin{background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3)}
 .role-member{background:rgba(59,130,246,0.15);color:var(--accent2);border:1px solid rgba(59,130,246,0.25)}
 .bio-text{margin-top:10px;font-size:14px;color:var(--muted);line-height:1.5}
 .vrchat-tag{margin-top:8px;font-size:13px;color:var(--muted);font-family:'DM Mono',monospace;display:flex;align-items:center;gap:6px}
-
-/* STAT CARDS */
 .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;max-width:560px}
 .stat-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px 18px}
 .stat-label{font-size:12px;color:var(--muted);letter-spacing:1px;font-family:'DM Mono',monospace;margin-bottom:6px}
 .stat-val{font-size:24px;font-weight:700;color:#fff}
 .stat-sub{font-size:12px;color:var(--green);margin-top:2px}
-
-/* SETTINGS */
 .settings-section{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:16px;max-width:560px}
 .settings-section h4{font-size:14px;font-weight:700;color:var(--muted);letter-spacing:2px;margin-bottom:18px;font-family:'DM Mono',monospace}
 .field-label{font-size:13px;color:var(--muted);margin-bottom:6px;font-family:'DM Mono',monospace}
 .field-input{width:100%;background:var(--bg);border:1px solid var(--border2);border-radius:8px;padding:10px 14px;color:var(--text);font-family:'Rajdhani',sans-serif;font-size:14px;margin-bottom:14px;outline:none;transition:border 0.15s}
 .field-input:focus{border-color:var(--accent)}
 .field-textarea{min-height:80px;resize:vertical}
-.save-btn{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:10px 22px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:0.5px;transition:opacity 0.15s}
-.save-btn:hover{opacity:0.85}
-.save-btn.saved{background:#22c55e}
-
-/* COLOR PICKER */
+.save-btn{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:10px 22px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s}
+.save-btn:hover{opacity:0.85}.save-btn.saved{background:#22c55e}
 .color-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
 .color-swatch{border-radius:10px;height:44px;cursor:pointer;border:2px solid transparent;transition:all 0.15s;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:rgba(255,255,255,0.85);letter-spacing:0.5px}
 .color-swatch.selected{border-color:#fff;transform:scale(1.05)}
-.color-swatch.c-blue{background:linear-gradient(135deg,#1d4ed8,#3b82f6)}
-.color-swatch.c-red{background:linear-gradient(135deg,#b91c1c,#ef4444)}
-.color-swatch.c-green{background:linear-gradient(135deg,#15803d,#22c55e)}
-.color-swatch.c-purple{background:linear-gradient(135deg,#7c3aed,#a78bfa)}
-.color-swatch.c-amber{background:linear-gradient(135deg,#b45309,#f59e0b)}
-.color-swatch.c-pink{background:linear-gradient(135deg,#be185d,#f472b6)}
-.color-swatch.c-cyan{background:linear-gradient(135deg,#0e7490,#06b6d4)}
-.color-swatch.c-orange{background:linear-gradient(135deg,#c2410c,#f97316)}
-
-/* MEMBERS */
+.c-blue{background:linear-gradient(135deg,#1d4ed8,#3b82f6)}.c-red{background:linear-gradient(135deg,#b91c1c,#ef4444)}
+.c-green{background:linear-gradient(135deg,#15803d,#22c55e)}.c-purple{background:linear-gradient(135deg,#7c3aed,#a78bfa)}
+.c-amber{background:linear-gradient(135deg,#b45309,#f59e0b)}.c-pink{background:linear-gradient(135deg,#be185d,#f472b6)}
+.c-cyan{background:linear-gradient(135deg,#0e7490,#06b6d4)}.c-orange{background:linear-gradient(135deg,#c2410c,#f97316)}
 .members-wrap{max-width:680px}
 .members-toolbar{display:flex;align-items:center;gap:10px;margin-bottom:16px}
 .search-wrap{position:relative;flex:1}
-.search-wrap i{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:16px}
+.search-wrap i{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:16px;color:var(--muted);pointer-events:none}
 .search-input{width:100%;background:var(--panel);border:1px solid var(--border);border-radius:9px;padding:9px 14px 9px 36px;color:var(--text);font-family:'Rajdhani',sans-serif;font-size:14px;outline:none;transition:border 0.15s}
 .search-input:focus{border-color:var(--accent)}
 .search-input::placeholder{color:var(--muted)}
@@ -119,43 +87,39 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .member-info{flex:1;min-width:0}
 .member-name{font-size:15px;font-weight:700;color:var(--text)}
 .member-meta{font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.warn-count{color:var(--amber)}
-.banned-tag{color:var(--red)}
+.warn-count{color:var(--amber)}.banned-tag{color:var(--red)}
 .member-actions{display:flex;align-items:center;gap:6px;flex-shrink:0}
 .action-btn{background:none;border:1px solid var(--border2);border-radius:7px;color:var(--muted);padding:5px 10px;cursor:pointer;font-size:12px;font-family:'DM Mono',monospace;font-weight:600;transition:all 0.15s;display:flex;align-items:center;gap:5px;white-space:nowrap}
 .action-btn:hover{color:var(--text);border-color:var(--text)}
 .action-btn.warn-btn:hover{color:var(--amber);border-color:var(--amber);background:rgba(245,158,11,0.08)}
 .action-btn.ban-btn:hover{color:var(--red);border-color:var(--red);background:rgba(239,68,68,0.08)}
 .action-btn.unban-btn:hover{color:var(--green);border-color:var(--green);background:rgba(34,197,94,0.08)}
-.members-empty{text-align:center;padding:40px;color:var(--muted);font-family:'DM Mono',monospace;font-size:13px}
-.members-loading{text-align:center;padding:40px;color:var(--muted);font-family:'DM Mono',monospace;font-size:13px}
-
-/* ADMIN */
-.admin-header{display:flex;align-items:center;gap:12px;margin-bottom:22px}
-.admin-badge{background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3);padding:4px 12px;border-radius:999px;font-size:12px;font-family:'DM Mono',monospace;font-weight:600}
-.keygen-card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:16px;max-width:620px}
+.members-empty,.members-loading{text-align:center;padding:40px;color:var(--muted);font-family:'DM Mono',monospace;font-size:13px}
+.admin-hero{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.admin-hero-icon{width:42px;height:42px;background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#f87171;font-size:22px}
+.admin-badge{background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3);padding:5px 14px;border-radius:999px;font-size:12px;font-family:'DM Mono',monospace;font-weight:600}
+.keygen-card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:16px;max-width:640px;position:relative;overflow:hidden}
+.keygen-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#ef4444,#f97316)}
 .keygen-card h4{font-size:14px;font-weight:700;color:var(--muted);letter-spacing:2px;margin-bottom:18px;font-family:'DM Mono',monospace}
 .keygen-form{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
-.gen-btn{background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3);border-radius:8px;padding:10px 20px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:0.5px;transition:all 0.15s;display:flex;align-items:center;gap:8px}
-.gen-btn:hover{background:rgba(239,68,68,0.25)}
-.gen-btn:disabled{opacity:0.5;pointer-events:none}
-.key-list{display:flex;flex-direction:column;gap:8px;margin-top:14px}
-.key-row{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:12px}
-.key-code{font-family:'DM Mono',monospace;font-size:13px;color:var(--accent2);flex:1;letter-spacing:1px}
-.key-tier{font-size:11px;font-family:'DM Mono',monospace;padding:3px 10px;border-radius:999px;font-weight:600}
+.gen-btn{background:rgba(239,68,68,0.12);color:#f87171;border:1px solid rgba(239,68,68,0.3);border-radius:8px;padding:10px 22px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s;display:inline-flex;align-items:center;gap:8px}
+.gen-btn:hover{background:rgba(239,68,68,0.22)}
+.key-list{display:flex;flex-direction:column;gap:8px;margin-top:16px}
+.key-row{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.key-code{font-family:'DM Mono',monospace;font-size:13px;color:var(--accent2);flex:1;letter-spacing:1.5px;min-width:180px}
+.key-tier{font-size:11px;font-family:'DM Mono',monospace;padding:3px 10px;border-radius:999px;font-weight:600;white-space:nowrap}
 .tier-vip{background:rgba(245,158,11,0.15);color:#fbbf24;border:1px solid rgba(245,158,11,0.25)}
 .tier-mod{background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.25)}
 .tier-booster{background:rgba(139,92,246,0.15);color:#a78bfa;border:1px solid rgba(139,92,246,0.25)}
-.key-status{font-size:11px;font-family:'DM Mono',monospace;color:var(--green)}
-.key-copy{background:none;border:1px solid var(--border2);border-radius:6px;color:var(--muted);padding:5px 10px;cursor:pointer;font-size:13px;transition:all 0.15s;display:flex;align-items:center;gap:4px}
+.key-uses{font-size:11px;color:var(--muted);font-family:'DM Mono',monospace;white-space:nowrap}
+.key-status{font-size:11px;font-family:'DM Mono',monospace;color:var(--green);white-space:nowrap}
+.key-copy,.key-del{background:none;border:1px solid var(--border2);border-radius:6px;color:var(--muted);padding:5px 8px;cursor:pointer;transition:all 0.15s;display:flex;align-items:center;font-size:14px}
+.key-del{border:none;padding:4px 6px}
 .key-copy:hover{color:var(--text);border-color:var(--text)}
-.key-revoke{background:none;border:none;color:var(--muted);cursor:pointer;font-size:16px;padding:4px;transition:color 0.15s}
-.key-revoke:hover{color:var(--red)}
+.key-del:hover{color:var(--red)}
 .select-field{width:100%;background:var(--bg);border:1px solid var(--border2);border-radius:8px;padding:10px 14px;color:var(--text);font-family:'Rajdhani',sans-serif;font-size:14px;outline:none;appearance:none;cursor:pointer}
-select option{background:#111}
+select option{background:#0d1018}
 .empty-keys{text-align:center;padding:30px;color:var(--muted);font-family:'DM Mono',monospace;font-size:13px}
-
-/* MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:100;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.2s}
 .modal-overlay.show{opacity:1;pointer-events:all}
 .modal{background:var(--panel);border:1px solid var(--border2);border-radius:16px;padding:28px;width:360px;position:relative;transform:translateY(10px);transition:transform 0.2s}
@@ -170,8 +134,6 @@ select option{background:#111}
 .modal-confirm:hover{background:rgba(245,158,11,0.25)}
 .modal-confirm.danger{background:rgba(239,68,68,0.15);border-color:rgba(239,68,68,0.3);color:#f87171}
 .modal-confirm.danger:hover{background:rgba(239,68,68,0.25)}
-
-/* TOAST */
 .toast{position:fixed;bottom:24px;right:24px;background:var(--panel2);border:1px solid var(--border2);border-radius:10px;padding:12px 18px;font-size:13px;font-family:'DM Mono',monospace;color:var(--text);z-index:999;opacity:0;transform:translateY(8px);transition:all 0.2s;pointer-events:none}
 .toast.show{opacity:1;transform:translateY(0)}
 .toast.success{border-color:rgba(34,197,94,0.4);color:var(--green)}
@@ -180,14 +142,8 @@ select option{background:#111}
 </style>
 </head>
 <body>
+<script>if (!localStorage.getItem("token")) window.location.href = "index.html";</script>
 
-<script>
-if (!localStorage.getItem("token")) {
-  window.location.href = "index.html";
-}
-</script>
-
-<!-- WARN MODAL -->
 <div class="modal-overlay" id="warnModal">
   <div class="modal">
     <h3>⚠ Warn User</h3>
@@ -200,36 +156,30 @@ if (!localStorage.getItem("token")) {
     </div>
   </div>
 </div>
-
-<!-- BAN MODAL -->
 <div class="modal-overlay" id="banModal">
-  <div class="modal" style="--modal-color:var(--red)">
+  <div class="modal">
     <h3>🚫 Ban User</h3>
     <div class="modal-sub" id="banModalSub">Banning: Username</div>
-    <p style="font-size:13px;color:var(--muted);line-height:1.5">This user will be blocked from logging in. You can unban them from the members list.</p>
+    <p style="font-size:13px;color:var(--muted);line-height:1.5">This user will be blocked from logging in.</p>
     <div class="modal-actions">
       <button class="modal-cancel" onclick="closeModal('banModal')">Cancel</button>
       <button class="modal-confirm danger" id="banConfirmBtn">Ban User</button>
     </div>
   </div>
 </div>
-
 <div class="toast" id="toast"></div>
 
 <div class="shell">
   <div class="sidebar">
     <div class="logo">
       <div class="logo-icon">V</div>
-      <div>
-        <div class="logo-text">VIPER</div>
-        <div class="logo-sub">STUDIOS</div>
-      </div>
+      <div><div class="logo-text">VIPER</div><div class="logo-sub">STUDIOS</div></div>
     </div>
     <nav class="nav">
-      <button class="nav-item active" onclick="switchTab('home',this)"><i class="ti ti-home" aria-hidden="true"></i> Home</button>
-      <button class="nav-item" onclick="switchTab('settings',this)"><i class="ti ti-settings" aria-hidden="true"></i> Settings</button>
-      <button class="nav-item" onclick="switchTab('users',this)" id="usersNav"><i class="ti ti-users" aria-hidden="true"></i> Users</button>
-      <button class="nav-item" id="adminNav" onclick="switchTab('admin',this)" style="display:none"><i class="ti ti-shield-lock" aria-hidden="true"></i> Admin</button>
+      <button class="nav-item active" onclick="switchTab('home',this)"><i class="ti ti-home"></i> Home</button>
+      <button class="nav-item" onclick="switchTab('settings',this)"><i class="ti ti-settings"></i> Settings</button>
+      <button class="nav-item" onclick="switchTab('users',this)"><i class="ti ti-users"></i> Members</button>
+      <button class="nav-item admin-nav" id="adminNav" onclick="switchTab('admin',this)" style="display:none"><i class="ti ti-shield"></i> Admin</button>
     </nav>
     <div class="sidebar-bottom">
       <div class="user-chip">
@@ -239,7 +189,7 @@ if (!localStorage.getItem("token")) {
           <div class="user-chip-role" id="chipRole">member</div>
         </div>
       </div>
-      <button class="nav-item danger" style="margin-top:8px" onclick="logout()"><i class="ti ti-logout" aria-hidden="true"></i> Logout</button>
+      <button class="nav-item danger" style="margin-top:8px" onclick="logout()"><i class="ti ti-logout"></i> Logout</button>
     </div>
   </div>
 
@@ -247,25 +197,25 @@ if (!localStorage.getItem("token")) {
     <div class="topbar">
       <span class="topbar-title" id="topbarTitle">Dashboard</span>
       <span class="topbar-badge" id="topbarBadge">HOME</span>
-      <span class="dot-live" title="Online"></span>
+      <span class="dot-live"></span>
     </div>
     <div class="content">
 
       <!-- HOME -->
       <div class="tab-panel active" id="tab-home">
-        <div class="profile-card" id="profileCard">
+        <div class="profile-card">
           <div class="avatar-lg" id="avatarLg">VS</div>
           <div style="flex:1">
             <div class="profile-name" id="profileName">ViperUser</div>
             <div class="profile-status"><span class="status-dot"></span>Online</div>
             <span class="role-badge role-member" id="profileRole">MEMBER</span>
-            <div class="vrchat-tag" id="vrchatTag"><i class="ti ti-mood-happy" style="font-size:15px" aria-hidden="true"></i> VRChat: Not connected</div>
+            <div class="vrchat-tag" id="vrchatTag">😊 VRChat: Not connected</div>
             <div class="bio-text" id="bioDisplay">No bio set yet.</div>
           </div>
         </div>
         <div class="stats-grid">
           <div class="stat-card"><div class="stat-label">STATUS</div><div class="stat-val" style="color:var(--green);font-size:18px">● ONLINE</div></div>
-          <div class="stat-card"><div class="stat-label">KEYS OWNED</div><div class="stat-val" id="statKeys">0</div><div class="stat-sub">active</div></div>
+          <div class="stat-card"><div class="stat-label">ACTIVE KEYS</div><div class="stat-val" id="statKeys">0</div><div class="stat-sub">generated</div></div>
           <div class="stat-card"><div class="stat-label">ROLE</div><div class="stat-val" id="statRole" style="font-size:16px;color:var(--accent2)">MEMBER</div></div>
         </div>
       </div>
@@ -296,7 +246,7 @@ if (!localStorage.getItem("token")) {
         </div>
       </div>
 
-      <!-- USERS -->
+      <!-- MEMBERS -->
       <div class="tab-panel" id="tab-users">
         <div class="members-wrap">
           <div class="members-toolbar">
@@ -307,16 +257,19 @@ if (!localStorage.getItem("token")) {
             <span class="member-count" id="memberCount">— members</span>
           </div>
           <div class="members-list" id="membersList">
-            <div class="members-loading"><i class="ti ti-loader" style="font-size:20px;margin-bottom:8px;display:block"></i>Loading members...</div>
+            <div class="members-loading">Loading members...</div>
           </div>
         </div>
       </div>
 
       <!-- ADMIN -->
       <div class="tab-panel" id="tab-admin">
-        <div class="admin-header">
-          <span style="font-size:20px;font-weight:700;color:#fff">Admin Panel</span>
-          <span class="admin-badge"><i class="ti ti-shield" style="font-size:12px"></i> RESTRICTED</span>
+        <div class="admin-hero">
+          <div class="admin-hero-icon"><i class="ti ti-shield"></i></div>
+          <div>
+            <div style="font-size:20px;font-weight:700;color:#fff;line-height:1">Admin Panel</div>
+            <div style="margin-top:6px"><span class="admin-badge">🔒 RESTRICTED ACCESS</span></div>
+          </div>
         </div>
         <div class="keygen-card">
           <h4>KEY GENERATOR</h4>
@@ -324,25 +277,23 @@ if (!localStorage.getItem("token")) {
             <div>
               <div class="field-label">KEY TIER</div>
               <select class="select-field" id="keyTier">
-                <option value="vip">VIP — Special perks</option>
-                <option value="mod">Moderator — Mod powers</option>
-                <option value="booster">Booster — Extra features</option>
+                <option value="vip">⭐ VIP — Special perks</option>
+                <option value="mod">🛡️ Moderator — Mod powers</option>
+                <option value="booster">⚡ Booster — Extra features</option>
               </select>
             </div>
             <div>
-              <div class="field-label">USES</div>
+              <div class="field-label">MAX USES</div>
               <select class="select-field" id="keyUses">
-                <option value="1">Single use</option>
+                <option value="1">Single use (1×)</option>
                 <option value="5">5 uses</option>
                 <option value="10">10 uses</option>
                 <option value="0">Unlimited</option>
               </select>
             </div>
           </div>
-          <button class="gen-btn" id="genBtn" onclick="generateKey()"><i class="ti ti-key" aria-hidden="true"></i> Generate Key</button>
-          <div class="key-list" id="keyList">
-            <div class="empty-keys">No keys generated yet.</div>
-          </div>
+          <button class="gen-btn" onclick="generateKey()"><i class="ti ti-key"></i> Generate Key</button>
+          <div class="key-list" id="keyList"><div class="empty-keys">No keys generated yet.</div></div>
         </div>
       </div>
 
@@ -357,90 +308,70 @@ let selectedColor2 = localStorage.getItem('vs_color2') || '#60a5fa';
 let currentUserRank = 'member';
 let allMembers = [];
 let pendingAction = null;
-
 const API = 'http://localhost:3000';
 const token = () => localStorage.getItem('token');
 
-function applyColor(c, c2){
-  document.documentElement.style.setProperty('--accent', c);
-  document.documentElement.style.setProperty('--accent2', c2);
-}
+function applyColor(c,c2){ document.documentElement.style.setProperty('--accent',c); document.documentElement.style.setProperty('--accent2',c2); }
+function setColor(el){ document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('selected')); el.classList.add('selected'); selectedColor=el.dataset.color; selectedColor2=el.dataset.color2; applyColor(selectedColor,selectedColor2); }
+function saveColor(){ localStorage.setItem('vs_color',selectedColor); localStorage.setItem('vs_color2',selectedColor2); toast('Accent color saved!','success'); }
 
-function setColor(el){
-  document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('selected'));
-  el.classList.add('selected');
-  selectedColor = el.dataset.color;
-  selectedColor2 = el.dataset.color2;
-  applyColor(selectedColor, selectedColor2);
-}
-
-function saveColor(){
-  localStorage.setItem('vs_color', selectedColor);
-  localStorage.setItem('vs_color2', selectedColor2);
-  toast('Accent color saved!', 'success');
-}
-
-function switchTab(id, btn){
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+function switchTab(id,btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(b=>b.classList.remove('active'));
   document.getElementById('tab-'+id).classList.add('active');
   if(btn) btn.classList.add('active');
-  const labels = {home:'Dashboard',settings:'Settings',users:'Members',admin:'Admin Panel'};
-  const codes = {home:'HOME',settings:'SETTINGS',users:'USERS',admin:'ADMIN'};
-  document.getElementById('topbarTitle').textContent = labels[id]||id;
-  document.getElementById('topbarBadge').textContent = codes[id]||id.toUpperCase();
-  if(id === 'users') loadMembers();
+  const labels={home:'Dashboard',settings:'Settings',users:'Members',admin:'Admin Panel'};
+  const codes={home:'HOME',settings:'SETTINGS',users:'MEMBERS',admin:'ADMIN'};
+  document.getElementById('topbarTitle').textContent=labels[id]||id;
+  document.getElementById('topbarBadge').textContent=codes[id]||id.toUpperCase();
+  if(id==='users') loadMembers();
 }
 
-function saveProfile(){
+async function saveProfile(){
   const v = document.getElementById('vrchatInput').value.trim();
   const b = document.getElementById('bioInput').value.trim();
-  localStorage.setItem('vrchat', v);
-  localStorage.setItem('bio', b);
-  loadProfile();
+  try {
+    const res = await fetch(`${API}/api/me/profile`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token() },
+      body: JSON.stringify({ vrchat: v, bio: b })
+    });
+    if (!res.ok) { toast('Failed to save profile', 'error'); return; }
+  } catch(e) {
+    toast('Server offline — changes not saved', 'error');
+    return;
+  }
+  document.getElementById('vrchatTag').textContent = `😊 VRChat: ${v || 'Not connected'}`;
+  document.getElementById('bioDisplay').textContent = b || 'No bio set yet.';
   const btn = document.getElementById('profileSaveBtn');
-  btn.textContent = 'Saved!';
-  btn.classList.add('saved');
+  btn.textContent = 'Saved!'; btn.classList.add('saved');
   setTimeout(() => { btn.textContent = 'Save Changes'; btn.classList.remove('saved'); }, 2000);
 }
 
-function loadProfile(){
-  const v = localStorage.getItem('vrchat') || '';
-  const b = localStorage.getItem('bio') || '';
+function loadProfile(vrchat, bio){
+  const v = vrchat || '', b = bio || '';
   document.getElementById('vrchatInput').value = v;
   document.getElementById('bioInput').value = b;
-  document.getElementById('vrchatTag').innerHTML = `<i class="ti ti-mood-happy" style="font-size:15px" aria-hidden="true"></i> VRChat: ${v || 'Not connected'}`;
+  document.getElementById('vrchatTag').textContent = `😊 VRChat: ${v || 'Not connected'}`;
   document.getElementById('bioDisplay').textContent = b || 'No bio set yet.';
 }
 
-function roleClass(r){
-  const rl = (r||'').toLowerCase();
-  if(rl==='owner') return 'role-owner';
-  if(rl==='admin') return 'role-admin';
-  return 'role-member';
-}
-
-function initials(name){ return (name||'??').slice(0,2).toUpperCase(); }
-
-function isAdmin(){ return ['admin','owner'].includes(currentUserRank.toLowerCase()); }
+function roleClass(r){ return r==='owner'?'role-owner':r==='admin'?'role-admin':'role-member'; }
+function initials(n){ return (n||'VS').slice(0,2).toUpperCase(); }
+function isAdmin(){ return currentUserRank==='admin'||currentUserRank==='owner'; }
 
 async function load(){
+  let u, r, vrchat='', bio='';
   try {
-    const res = await fetch(`${API}/api/me`, {
-      headers: { Authorization: 'Bearer ' + token() }
-    });
-    const data = await res.json();
-    const u = data.username || localStorage.getItem('username') || 'ViperUser';
-    const r = (data.rank || data.role || localStorage.getItem('rank') || 'member').trim().toLowerCase();
-    applyUser(u, r);
-  } catch(e){
-    const u = localStorage.getItem('username') || 'ViperUser';
-    const r = (localStorage.getItem('rank') || 'member').trim().toLowerCase();
-    applyUser(u, r);
+    const res = await fetch(`${API}/api/me`, { headers: { Authorization: 'Bearer ' + token() } });
+    const d = await res.json();
+    u = d.username || localStorage.getItem('username') || 'ViperUser';
+    r = (d.rank || d.role || localStorage.getItem('rank') || 'member').trim().toLowerCase();
+    vrchat = d.vrchat || ''; bio = d.bio || '';
+  } catch {
+    u = localStorage.getItem('username') || 'ViperUser';
+    r = (localStorage.getItem('rank') || 'member').trim().toLowerCase();
   }
-}
-
-function applyUser(u, r){
   currentUserRank = r;
   const ini = initials(u);
   document.getElementById('avatarSm').textContent = ini;
@@ -452,273 +383,112 @@ function applyUser(u, r){
   document.getElementById('profileRole').className = 'role-badge ' + roleClass(r);
   document.getElementById('statRole').textContent = r.toUpperCase();
   document.getElementById('statKeys').textContent = generatedKeys.filter(k=>k.active).length;
-  if(isAdmin()){
-    document.getElementById('adminNav').style.display = 'flex';
-  }
+  if(isAdmin()) document.getElementById('adminNav').style.display = 'flex';
+  loadProfile(vrchat, bio);
 }
-
-// ── MEMBERS ──────────────────────────────────────────────
 
 async function loadMembers(){
   const list = document.getElementById('membersList');
-  list.innerHTML = '<div class="members-loading"><i class="ti ti-loader" style="font-size:20px;margin-bottom:8px;display:block"></i>Loading members...</div>';
+  list.innerHTML = '<div class="members-loading">Loading members...</div>';
   try {
-    const res = await fetch(`${API}/api/users`, {
-      headers: { Authorization: 'Bearer ' + token() }
-    });
-    allMembers = await res.json();
-    renderMembers(allMembers);
-  } catch(e){
-    list.innerHTML = '<div class="members-empty">Could not load members — server offline?</div>';
-  }
+    const res = await fetch(`${API}/api/users`, { headers: { Authorization: 'Bearer ' + token() } });
+    allMembers = await res.json(); renderMembers(allMembers);
+  } catch { list.innerHTML = '<div class="members-empty">Could not load members — server offline?</div>'; }
 }
 
-function filterMembers(){
-  const q = document.getElementById('memberSearch').value.toLowerCase();
-  const filtered = allMembers.filter(m => m.username.toLowerCase().includes(q));
-  renderMembers(filtered);
-}
-
-function rankOrder(r){
-  const rl = (r||'').toLowerCase();
-  return rl==='owner'?0:rl==='admin'?1:2;
-}
+function filterMembers(){ const q=document.getElementById('memberSearch').value.toLowerCase(); renderMembers(allMembers.filter(m=>m.username.toLowerCase().includes(q))); }
+function rankOrder(r){ return r==='owner'?0:r==='admin'?1:2; }
 
 function renderMembers(members){
   const list = document.getElementById('membersList');
   const myName = localStorage.getItem('username') || '';
   document.getElementById('memberCount').textContent = `${members.length} member${members.length!==1?'s':''}`;
-
-  if(!members.length){
-    list.innerHTML = '<div class="members-empty">No members found.</div>';
-    return;
-  }
-
-  const sorted = [...members].sort((a,b) => rankOrder(a.role||a.rank) - rankOrder(b.role||b.rank) || a.username.localeCompare(b.username));
-
+  if(!members.length){ list.innerHTML='<div class="members-empty">No members found.</div>'; return; }
+  const sorted = [...members].sort((a,b)=>rankOrder(a.role||a.rank)-rankOrder(b.role||b.rank)||a.username.localeCompare(b.username));
   list.innerHTML = sorted.map(m => {
-    const isMe = m.username === myName;
-    const isBanned = m.banned;
-    const warns = m.warnings || 0;
-    const memberRank = (m.role || m.rank || 'user').toLowerCase();
-    const canAct = isAdmin() && !isMe && memberRank !== 'owner';
-
+    const r = (m.role||m.rank||'user').toLowerCase();
+    const isMe = m.username === myName, isBanned = m.banned, warns = m.warnings || 0;
+    const canAct = isAdmin() && !isMe && r !== 'owner';
     const metaParts = [];
-    if(m.vrchat) metaParts.push(`<i class="ti ti-cube" style="font-size:11px"></i> ${m.vrchat}`);
-    if(warns > 0) metaParts.push(`<span class="warn-count">⚠ ${warns} warn${warns!==1?'s':''}</span>`);
+    if(m.vrchat) metaParts.push(m.vrchat);
+    if(warns>0) metaParts.push(`<span class="warn-count">⚠ ${warns} warn${warns!==1?'s':''}</span>`);
     if(isBanned) metaParts.push(`<span class="banned-tag">🚫 BANNED</span>`);
-
     let actions = '';
     if(canAct){
-      if(isBanned){
-        actions = `<button class="action-btn unban-btn" onclick="openUnban('${m._id}','${m.username}')"><i class="ti ti-user-check" style="font-size:13px"></i> Unban</button>`;
-      } else {
-        actions = `
-          <button class="action-btn warn-btn" onclick="openWarn('${m._id}','${m.username}')"><i class="ti ti-alert-triangle" style="font-size:13px"></i> Warn</button>
-          <button class="action-btn ban-btn" onclick="openBan('${m._id}','${m.username}')"><i class="ti ti-ban" style="font-size:13px"></i> Ban</button>
-        `;
-      }
+      if(isBanned) actions=`<button class="action-btn unban-btn" onclick="doUnban('${m._id}','${m.username}')">✓ Unban</button>`;
+      else actions=`<button class="action-btn warn-btn" onclick="openWarn('${m._id}','${m.username}')">⚠ Warn</button><button class="action-btn ban-btn" onclick="openBan('${m._id}','${m.username}')">🚫 Ban</button>`;
     }
-
-    return `
-      <div class="member-row ${isBanned?'banned-row':''}">
-        <div class="member-avatar">${initials(m.username)}</div>
-        <div class="member-info">
-          <div class="member-name">${m.username}${isMe?' <span style="font-size:11px;color:var(--muted);font-family:\'DM Mono\',monospace">(you)</span>':''}</div>
-          <div class="member-meta">
-            <span class="role-badge ${roleClass(memberRank)}" style="font-size:10px;padding:2px 8px">${memberRank.toUpperCase()}</span>
-            ${metaParts.join(' · ')}
-          </div>
-        </div>
-        <div class="member-actions">${actions}</div>
+    return `<div class="member-row ${isBanned?'banned-row':''}">
+      <div class="member-avatar">${initials(m.username)}</div>
+      <div class="member-info">
+        <div class="member-name">${m.username}${isMe?' <span style="font-size:11px;color:var(--muted)">(you)</span>':''}</div>
+        <div class="member-meta"><span class="role-badge ${roleClass(r)}" style="font-size:10px;padding:2px 8px">${r.toUpperCase()}</span>${metaParts.join(' · ')}</div>
       </div>
-    `;
+      <div class="member-actions">${actions}</div>
+    </div>`;
   }).join('');
 }
 
-// ── MODALS ────────────────────────────────────────────────
-
-function openWarn(id, username){
-  pendingAction = { type: 'warn', userId: id, username };
-  document.getElementById('warnModalSub').textContent = `Warning: ${username}`;
-  document.getElementById('warnReason').value = '';
-  document.getElementById('warnModal').classList.add('show');
-  document.getElementById('warnConfirmBtn').onclick = confirmWarn;
-}
-
-function openBan(id, username){
-  pendingAction = { type: 'ban', userId: id, username };
-  document.getElementById('banModalSub').textContent = `Banning: ${username}`;
-  document.getElementById('banModal').classList.add('show');
-  document.getElementById('banConfirmBtn').onclick = confirmBan;
-}
-
-function openUnban(id, username){
-  doUnban(id, username);
-}
-
-function closeModal(id){
-  document.getElementById(id).classList.remove('show');
-  pendingAction = null;
-}
-
-document.querySelectorAll('.modal-overlay').forEach(o => {
-  o.addEventListener('click', e => { if(e.target === o) o.classList.remove('show'); });
-});
+function openWarn(id,username){ pendingAction={type:'warn',userId:id,username}; document.getElementById('warnModalSub').textContent=`Warning: ${username}`; document.getElementById('warnReason').value=''; document.getElementById('warnModal').classList.add('show'); document.getElementById('warnConfirmBtn').onclick=confirmWarn; }
+function openBan(id,username){ pendingAction={type:'ban',userId:id,username}; document.getElementById('banModalSub').textContent=`Banning: ${username}`; document.getElementById('banModal').classList.add('show'); document.getElementById('banConfirmBtn').onclick=confirmBan; }
+function closeModal(id){ document.getElementById(id).classList.remove('show'); pendingAction=null; }
+document.querySelectorAll('.modal-overlay').forEach(o=>{ o.addEventListener('click',e=>{ if(e.target===o) o.classList.remove('show'); }); });
 
 async function confirmWarn(){
   if(!pendingAction) return;
-  const reason = document.getElementById('warnReason').value.trim() || 'No reason given';
+  const reason=document.getElementById('warnReason').value.trim()||'No reason given';
   closeModal('warnModal');
-  try {
-    const res = await fetch(`${API}/api/users/${pendingAction.userId}/warn`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token() },
-      body: JSON.stringify({ reason })
-    });
-    const data = await res.json();
-    if(res.ok){
-      toast(`⚠ ${pendingAction.username} warned (${data.warnings} total)`, 'warn');
-      loadMembers();
-    } else {
-      toast(data.error || 'Failed to warn', 'error');
-    }
-  } catch(e){
-    toast('Server error', 'error');
-  }
+  try{ const res=await fetch(`${API}/api/users/${pendingAction.userId}/warn`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({reason})}); const d=await res.json(); res.ok?toast(`⚠ ${pendingAction.username} warned`,'warn'):toast(d.error||'Failed','error'); loadMembers(); }catch{ toast('Server error','error'); }
 }
-
 async function confirmBan(){
   if(!pendingAction) return;
-  const { userId, username } = pendingAction;
-  closeModal('banModal');
-  try {
-    const res = await fetch(`${API}/api/users/${userId}/ban`, {
-      method: 'POST',
-      headers: { Authorization: 'Bearer ' + token() }
-    });
-    const data = await res.json();
-    if(res.ok){
-      toast(`🚫 ${username} has been banned`, 'error');
-      loadMembers();
-    } else {
-      toast(data.error || 'Failed to ban', 'error');
-    }
-  } catch(e){
-    toast('Server error', 'error');
-  }
+  const {userId,username}=pendingAction; closeModal('banModal');
+  try{ const res=await fetch(`${API}/api/users/${userId}/ban`,{method:'POST',headers:{Authorization:'Bearer '+token()}}); const d=await res.json(); res.ok?toast(`🚫 ${username} banned`,'error'):toast(d.error||'Failed','error'); loadMembers(); }catch{ toast('Server error','error'); }
+}
+async function doUnban(userId,username){
+  try{ const res=await fetch(`${API}/api/users/${userId}/unban`,{method:'POST',headers:{Authorization:'Bearer '+token()}}); const d=await res.json(); res.ok?toast(`✓ ${username} unbanned`,'success'):toast(d.error||'Failed','error'); loadMembers(); }catch{ toast('Server error','error'); }
 }
 
-async function doUnban(userId, username){
-  try {
-    const res = await fetch(`${API}/api/users/${userId}/unban`, {
-      method: 'POST',
-      headers: { Authorization: 'Bearer ' + token() }
-    });
-    const data = await res.json();
-    if(res.ok){
-      toast(`✓ ${username} has been unbanned`, 'success');
-      loadMembers();
-    } else {
-      toast(data.error || 'Failed to unban', 'error');
-    }
-  } catch(e){
-    toast('Server error', 'error');
-  }
-}
+function genCode(){ const c='ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; const s=()=>Array.from({length:5},()=>c[Math.floor(Math.random()*c.length)]).join(''); return [s(),s(),s()].join('-'); }
 
-// ── KEYGEN ────────────────────────────────────────────────
-
-async function generateKey(){
-  const tier = document.getElementById('keyTier').value;
-  const uses = parseInt(document.getElementById('keyUses').value);
-  const btn = document.getElementById('genBtn');
-
-  btn.disabled = true;
-  btn.innerHTML = '<i class="ti ti-loader" style="animation:spin 0.7s linear infinite;display:inline-block"></i> Generating...';
-
-  try {
-    const res = await fetch(`${API}/api/admin/keys/generate`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token()
-      },
-      body: JSON.stringify({ tier, uses })
-    });
-
-    const data = await res.json();
-    btn.disabled = false;
-    btn.innerHTML = '<i class="ti ti-key" aria-hidden="true"></i> Generate Key';
-
-    if(!res.ok){
-      toast(data.error || 'Failed to generate key', 'error');
-      return;
-    }
-
-    // Save to localStorage for display
-    const usesDisplay = data.uses === -1 ? '∞' : String(data.uses);
-    generatedKeys.unshift({ code: data.code, tier: data.tier, uses: usesDisplay, active: true });
-    localStorage.setItem('vs_keys', JSON.stringify(generatedKeys));
-    document.getElementById('statKeys').textContent = generatedKeys.filter(k=>k.active).length;
-    renderKeys();
-    toast('Key generated: ' + data.code, 'success');
-
-  } catch(e){
-    btn.disabled = false;
-    btn.innerHTML = '<i class="ti ti-key" aria-hidden="true"></i> Generate Key';
-    toast('Could not reach server', 'error');
-  }
+function generateKey(){
+  const tier=document.getElementById('keyTier').value, uses=document.getElementById('keyUses').value;
+  const key={code:genCode(),tier,uses:uses==='0'?'∞':uses,active:true,created:new Date().toLocaleDateString()};
+  generatedKeys.unshift(key); localStorage.setItem('vs_keys',JSON.stringify(generatedKeys));
+  document.getElementById('statKeys').textContent=generatedKeys.filter(k=>k.active).length;
+  renderKeys(); toast('Key generated!','success');
 }
 
 function renderKeys(){
-  const list = document.getElementById('keyList');
-  const active = generatedKeys.filter(k=>k.active);
-  if(active.length === 0){ list.innerHTML='<div class="empty-keys">No keys generated yet.</div>'; return; }
-  list.innerHTML = active.map((k,i) => `
+  const list=document.getElementById('keyList');
+  const active=generatedKeys.filter(k=>k.active);
+  if(!active.length){ list.innerHTML='<div class="empty-keys">No keys generated yet.</div>'; return; }
+  list.innerHTML=active.map((k,i)=>`
     <div class="key-row">
       <span class="key-code">${k.code}</span>
       <span class="key-tier tier-${k.tier}">${k.tier.toUpperCase()}</span>
-      <span style="font-size:11px;color:var(--muted);font-family:'DM Mono',monospace">${k.uses} use${k.uses==='1'?'':'s'}</span>
+      <span class="key-uses">${k.uses} use${k.uses==='1'?'':'s'}</span>
       <span class="key-status">● ACTIVE</span>
-      <button class="key-copy" onclick="copyKey('${k.code}')"><i class="ti ti-copy" style="font-size:13px"></i></button>
-      <button class="key-revoke" onclick="revokeKey(${i})" title="Revoke"><i class="ti ti-x" style="font-size:15px"></i></button>
-    </div>
-  `).join('');
+      <button class="key-copy" onclick="copyKey('${k.code}')" title="Copy"><i class="ti ti-copy"></i></button>
+      <button class="key-del" onclick="revokeKey(${i})" title="Revoke"><i class="ti ti-trash"></i></button>
+    </div>`).join('');
 }
 
-function copyKey(code){
-  navigator.clipboard.writeText(code).then(()=> toast('Copied: '+code, 'success'));
+function copyKey(code){ navigator.clipboard.writeText(code).then(()=>toast('Copied: '+code,'success')); }
+function revokeKey(i){
+  const active=generatedKeys.filter(k=>k.active);
+  generatedKeys[generatedKeys.indexOf(active[i])].active=false;
+  localStorage.setItem('vs_keys',JSON.stringify(generatedKeys));
+  document.getElementById('statKeys').textContent=generatedKeys.filter(k=>k.active).length;
+  renderKeys(); toast('Key revoked','');
 }
 
-function revokeKey(idx){
-  const activeKeys = generatedKeys.filter(k=>k.active);
-  const key = activeKeys[idx];
-  const realIdx = generatedKeys.indexOf(key);
-  generatedKeys[realIdx].active = false;
-  localStorage.setItem('vs_keys', JSON.stringify(generatedKeys));
-  document.getElementById('statKeys').textContent = generatedKeys.filter(k=>k.active).length;
-  renderKeys();
-  toast('Key revoked', '');
-}
+function logout(){ localStorage.removeItem('token'); window.location.href='index.html'; }
+function toast(msg,type){ const t=document.getElementById('toast'); t.textContent=msg; t.className='toast show'+(type?' '+type:''); setTimeout(()=>t.classList.remove('show'),2500); }
 
-function logout(){
-  localStorage.removeItem('token');
-  window.location.href = 'index.html';
-}
-
-function toast(msg, type){
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = 'toast show' + (type?' '+type:'');
-  setTimeout(()=>{ t.classList.remove('show'); }, 2500);
-}
-
-// ── INIT ──────────────────────────────────────────────────
-applyColor(selectedColor, selectedColor2);
-const savedSwatch = document.querySelector(`.color-swatch[data-color="${selectedColor}"]`);
-if(savedSwatch){ document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('selected')); savedSwatch.classList.add('selected'); }
-loadProfile();
+applyColor(selectedColor,selectedColor2);
+const sw=document.querySelector(`.color-swatch[data-color="${selectedColor}"]`);
+if(sw){ document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('selected')); sw.classList.add('selected'); }
 renderKeys();
 load();
 </script>
