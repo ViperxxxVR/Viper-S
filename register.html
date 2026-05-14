@@ -4,15 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Viper Studios - Dashboard</title>
-<link rel="stylesheet" href="assets/tabler-icons.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
 <style>
-  @font-face {
-  font-family: "tabler-icons";
-  font-style: normal;
-  font-weight: 400;
-  src: url("https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/fonts/tabler-icons.woff2") format("woff2");
-}
-  
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#07090f;
@@ -144,6 +138,7 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .keygen-form{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
 .gen-btn{background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3);border-radius:8px;padding:10px 20px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:0.5px;transition:all 0.15s;display:flex;align-items:center;gap:8px}
 .gen-btn:hover{background:rgba(239,68,68,0.25)}
+.gen-btn:disabled{opacity:0.5;pointer-events:none}
 .key-list{display:flex;flex-direction:column;gap:8px;margin-top:14px}
 .key-row{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:12px}
 .key-code{font-family:'DM Mono',monospace;font-size:13px;color:var(--accent2);flex:1;letter-spacing:1px}
@@ -344,9 +339,9 @@ if (!localStorage.getItem("token")) {
               </select>
             </div>
           </div>
-          <button class="gen-btn" onclick="generateKey()"><i class="ti ti-key" aria-hidden="true"></i> Generate Key</button>
+          <button class="gen-btn" id="genBtn" onclick="generateKey()"><i class="ti ti-key" aria-hidden="true"></i> Generate Key</button>
           <div class="key-list" id="keyList">
-            <div class="empty-keys" id="emptyMsg">No keys generated yet.</div>
+            <div class="empty-keys">No keys generated yet.</div>
           </div>
         </div>
       </div>
@@ -359,9 +354,9 @@ if (!localStorage.getItem("token")) {
 let generatedKeys = JSON.parse(localStorage.getItem('vs_keys') || '[]');
 let selectedColor = localStorage.getItem('vs_color') || '#3b82f6';
 let selectedColor2 = localStorage.getItem('vs_color2') || '#60a5fa';
-let current = 'member';
+let currentUserRank = 'member';
 let allMembers = [];
-let pendingAction = null; // { type, userId, username }
+let pendingAction = null;
 
 const API = 'http://localhost:3000';
 const token = () => localStorage.getItem('token');
@@ -419,8 +414,9 @@ function loadProfile(){
 }
 
 function roleClass(r){
-  if(r==='Owner') return 'role-owner';
-  if(r==='Admin') return 'role-admin';
+  const rl = (r||'').toLowerCase();
+  if(rl==='owner') return 'role-owner';
+  if(rl==='admin') return 'role-admin';
   return 'role-member';
 }
 
@@ -483,7 +479,10 @@ function filterMembers(){
   renderMembers(filtered);
 }
 
-function rankOrder(r){ return r==='owner'?0:r==='admin'?1:2; }
+function rankOrder(r){
+  const rl = (r||'').toLowerCase();
+  return rl==='owner'?0:rl==='admin'?1:2;
+}
 
 function renderMembers(members){
   const list = document.getElementById('membersList');
@@ -495,13 +494,14 @@ function renderMembers(members){
     return;
   }
 
-  const sorted = [...members].sort((a,b) => rankOrder(a.rank) - rankOrder(b.rank) || a.username.localeCompare(b.username));
+  const sorted = [...members].sort((a,b) => rankOrder(a.role||a.rank) - rankOrder(b.role||b.rank) || a.username.localeCompare(b.username));
 
   list.innerHTML = sorted.map(m => {
     const isMe = m.username === myName;
     const isBanned = m.banned;
     const warns = m.warnings || 0;
-    const canAct = isAdmin() && !isMe && m.rank !== 'owner';
+    const memberRank = (m.role || m.rank || 'user').toLowerCase();
+    const canAct = isAdmin() && !isMe && memberRank !== 'owner';
 
     const metaParts = [];
     if(m.vrchat) metaParts.push(`<i class="ti ti-cube" style="font-size:11px"></i> ${m.vrchat}`);
@@ -526,7 +526,7 @@ function renderMembers(members){
         <div class="member-info">
           <div class="member-name">${m.username}${isMe?' <span style="font-size:11px;color:var(--muted);font-family:\'DM Mono\',monospace">(you)</span>':''}</div>
           <div class="member-meta">
-            <span class="role-badge ${roleClass(m.rank)}" style="font-size:10px;padding:2px 8px">${(m.rank||'member').toUpperCase()}</span>
+            <span class="role-badge ${roleClass(memberRank)}" style="font-size:10px;padding:2px 8px">${memberRank.toUpperCase()}</span>
             ${metaParts.join(' · ')}
           </div>
         </div>
@@ -554,7 +554,6 @@ function openBan(id, username){
 }
 
 function openUnban(id, username){
-  // Quick unban, no modal needed
   doUnban(id, username);
 }
 
@@ -563,7 +562,6 @@ function closeModal(id){
   pendingAction = null;
 }
 
-// Close on overlay click
 document.querySelectorAll('.modal-overlay').forEach(o => {
   o.addEventListener('click', e => { if(e.target === o) o.classList.remove('show'); });
 });
@@ -631,27 +629,52 @@ async function doUnban(userId, username){
 
 // ── KEYGEN ────────────────────────────────────────────────
 
-function genKeyCode(){
-  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-  const seg = () => Array.from({length:5}, ()=>chars[Math.floor(Math.random()*chars.length)]).join('');
-  return [seg(),seg(),seg()].join('-');
-}
-
-function generateKey(){
+async function generateKey(){
   const tier = document.getElementById('keyTier').value;
-  const uses = document.getElementById('keyUses').value;
-  const key = { code: genKeyCode(), tier, uses: uses==='0'?'∞':uses, active: true, created: new Date().toLocaleDateString() };
-  generatedKeys.unshift(key);
-  localStorage.setItem('vs_keys', JSON.stringify(generatedKeys));
-  document.getElementById('statKeys').textContent = generatedKeys.filter(k=>k.active).length;
-  renderKeys();
-  toast('Key generated!', 'success');
+  const uses = parseInt(document.getElementById('keyUses').value);
+  const btn = document.getElementById('genBtn');
+
+  btn.disabled = true;
+  btn.innerHTML = '<i class="ti ti-loader" style="animation:spin 0.7s linear infinite;display:inline-block"></i> Generating...';
+
+  try {
+    const res = await fetch(`${API}/api/admin/keys/generate`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token()
+      },
+      body: JSON.stringify({ tier, uses })
+    });
+
+    const data = await res.json();
+    btn.disabled = false;
+    btn.innerHTML = '<i class="ti ti-key" aria-hidden="true"></i> Generate Key';
+
+    if(!res.ok){
+      toast(data.error || 'Failed to generate key', 'error');
+      return;
+    }
+
+    // Save to localStorage for display
+    const usesDisplay = data.uses === -1 ? '∞' : String(data.uses);
+    generatedKeys.unshift({ code: data.code, tier: data.tier, uses: usesDisplay, active: true });
+    localStorage.setItem('vs_keys', JSON.stringify(generatedKeys));
+    document.getElementById('statKeys').textContent = generatedKeys.filter(k=>k.active).length;
+    renderKeys();
+    toast('Key generated: ' + data.code, 'success');
+
+  } catch(e){
+    btn.disabled = false;
+    btn.innerHTML = '<i class="ti ti-key" aria-hidden="true"></i> Generate Key';
+    toast('Could not reach server', 'error');
+  }
 }
 
 function renderKeys(){
   const list = document.getElementById('keyList');
   const active = generatedKeys.filter(k=>k.active);
-  if(active.length === 0){ list.innerHTML='<div class="empty-keys" id="emptyMsg">No keys generated yet.</div>'; return; }
+  if(active.length === 0){ list.innerHTML='<div class="empty-keys">No keys generated yet.</div>'; return; }
   list.innerHTML = active.map((k,i) => `
     <div class="key-row">
       <span class="key-code">${k.code}</span>
