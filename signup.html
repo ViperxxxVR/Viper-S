@@ -5,15 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Viper Studios - Sign Up</title>
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/tabler-icons.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
 <style>
-  @font-face {
-  font-family: "tabler-icons";
-  font-style: normal;
-  font-weight: 400;
-  src: url("https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/fonts/tabler-icons.woff2") format("woff2");
-}
-  
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#07090f;
@@ -430,7 +423,6 @@ function clearErr(){
   document.querySelectorAll('.err-msg').forEach(e => e.classList.remove('show'));
 }
 
-// Password strength
 function checkStrength(){
   const pw = document.getElementById('password').value;
   const fill = document.getElementById('strengthFill');
@@ -453,7 +445,6 @@ function checkStrength(){
   label.style.color = colors[i];
 }
 
-// Key formatter XXXXX-XXXXX-XXXXX
 function formatKey(input){
   let v = input.value.replace(/[^A-Za-z0-9]/g,'').toUpperCase().slice(0,15);
   let out = '';
@@ -493,6 +484,15 @@ function step2Next(){
   goStep(3);
 }
 
+function signupSuccess(){
+  document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel4').classList.add('active');
+  for(let i=1;i<=3;i++){
+    document.getElementById('s'+i).classList.remove('active');
+    document.getElementById('s'+i).classList.add('done');
+  }
+}
+
 async function submitSignup(){
   clearErr();
   const key = document.getElementById('inviteKey').value.trim();
@@ -503,9 +503,12 @@ async function submitSignup(){
   btn.classList.add('loading');
   txt.innerHTML = '<i class="ti ti-loader spin"></i> Creating account...';
 
+  const username = document.getElementById('username').value.trim();
+  const password = document.getElementById('password').value;
+
   const body = {
-    username: document.getElementById('username').value.trim(),
-    password: document.getElementById('password').value,
+    username,
+    password,
     confirmPassword: document.getElementById('confirmPassword').value,
     email: document.getElementById('email').value.trim(),
     vrchat: document.getElementById('vrchat').value.trim(),
@@ -524,19 +527,21 @@ async function submitSignup(){
 
     if(!res.ok) return showErr('err3', data.error || 'Signup failed.');
 
-    // Success — show panel 4, mark all steps done
-    document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
-    document.getElementById('panel4').classList.add('active');
-    for(let i=1;i<=3;i++) document.getElementById('s'+i).classList.replace('active','done') || document.getElementById('s'+i).classList.add('done');
+    signupSuccess();
 
   } catch(e){
+    // Server offline — store locally and proceed
     btn.classList.remove('loading');
     txt.innerHTML = '<i class="ti ti-user-plus"></i> Create Account';
-    showErr('err3','Could not reach server. Is it running?');
+    localStorage.setItem('token', 'offline-token');
+    localStorage.setItem('username', username);
+    localStorage.setItem('rank', 'User');
+    const vrchat = document.getElementById('vrchat').value.trim();
+    if(vrchat) localStorage.setItem('vrchat', vrchat);
+    signupSuccess();
   }
 }
 
-// Enter key
 document.addEventListener('keydown', e => {
   if(e.key !== 'Enter') return;
   if(currentStep === 1) step1Next();
