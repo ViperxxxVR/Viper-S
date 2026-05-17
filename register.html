@@ -37,13 +37,10 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .topbar-title{font-size:18px;font-weight:700;color:#fff}
 .topbar-badge{font-size:11px;font-family:'DM Mono',monospace;background:rgba(59,130,246,0.15);color:var(--accent2);padding:3px 10px;border-radius:999px;border:1px solid rgba(59,130,246,0.25)}
 .dot-live{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);margin-left:auto}
-/* scrollable content wrapper */
 .content-scroll{flex:1;overflow-y:auto}
 .content{padding:28px}
 .tab-panel{display:none}.tab-panel.active{display:block}
 #tab-chat.active{display:flex;flex-direction:column;height:100%}
-
-/* HOME */
 .profile-card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:24px;display:flex;gap:20px;align-items:flex-start;max-width:560px;margin-bottom:24px;position:relative;overflow:hidden}
 .profile-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),#8b5cf6,#06b6d4)}
 .avatar-lg{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;color:#fff;flex-shrink:0;border:2px solid rgba(59,130,246,0.3)}
@@ -61,8 +58,6 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .stat-label{font-size:12px;color:var(--muted);letter-spacing:1px;font-family:'DM Mono',monospace;margin-bottom:6px}
 .stat-val{font-size:24px;font-weight:700;color:#fff}
 .stat-sub{font-size:12px;color:var(--green);margin-top:2px}
-
-/* SETTINGS */
 .settings-section{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:16px;max-width:560px}
 .settings-section h4{font-size:14px;font-weight:700;color:var(--muted);letter-spacing:2px;margin-bottom:18px;font-family:'DM Mono',monospace}
 .field-label{font-size:13px;color:var(--muted);margin-bottom:6px;font-family:'DM Mono',monospace}
@@ -78,8 +73,6 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .c-green{background:linear-gradient(135deg,#15803d,#22c55e)}.c-purple{background:linear-gradient(135deg,#7c3aed,#a78bfa)}
 .c-amber{background:linear-gradient(135deg,#b45309,#f59e0b)}.c-pink{background:linear-gradient(135deg,#be185d,#f472b6)}
 .c-cyan{background:linear-gradient(135deg,#0e7490,#06b6d4)}.c-orange{background:linear-gradient(135deg,#c2410c,#f97316)}
-
-/* MEMBERS */
 .members-wrap{max-width:680px}
 .members-toolbar{display:flex;align-items:center;gap:10px;margin-bottom:16px}
 .search-wrap{position:relative;flex:1}
@@ -104,8 +97,6 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .action-btn.ban-btn:hover{color:var(--red);border-color:var(--red);background:rgba(239,68,68,0.08)}
 .action-btn.unban-btn:hover{color:var(--green);border-color:var(--green);background:rgba(34,197,94,0.08)}
 .members-empty,.members-loading{text-align:center;padding:40px;color:var(--muted);font-family:'DM Mono',monospace;font-size:13px}
-
-/* ADMIN */
 .admin-hero{display:flex;align-items:center;gap:12px;margin-bottom:24px}
 .admin-hero-icon{width:42px;height:42px;background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#f87171;font-size:22px}
 .admin-badge{background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3);padding:5px 14px;border-radius:999px;font-size:12px;font-family:'DM Mono',monospace;font-weight:600}
@@ -115,6 +106,7 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .keygen-form{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
 .gen-btn{background:rgba(239,68,68,0.12);color:#f87171;border:1px solid rgba(239,68,68,0.3);border-radius:8px;padding:10px 22px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s;display:inline-flex;align-items:center;gap:8px}
 .gen-btn:hover{background:rgba(239,68,68,0.22)}
+.gen-btn:disabled{opacity:0.5;pointer-events:none}
 .key-list{display:flex;flex-direction:column;gap:8px;margin-top:16px}
 .key-row{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .key-code{font-family:'DM Mono',monospace;font-size:13px;color:var(--accent2);flex:1;letter-spacing:1.5px;min-width:180px}
@@ -131,8 +123,6 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .select-field{width:100%;background:var(--bg);border:1px solid var(--border2);border-radius:8px;padding:10px 14px;color:var(--text);font-family:'Rajdhani',sans-serif;font-size:14px;outline:none;appearance:none;cursor:pointer}
 select option{background:#0d1018}
 .empty-keys{text-align:center;padding:30px;color:var(--muted);font-family:'DM Mono',monospace;font-size:13px}
-
-/* CHAT */
 .chat-messages{flex:1;overflow-y:auto;padding:20px 28px;display:flex;flex-direction:column;gap:2px;scroll-behavior:smooth}
 .chat-messages::-webkit-scrollbar{width:4px}
 .chat-messages::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:4px}
@@ -166,8 +156,6 @@ select option{background:#0d1018}
 .chat-send-btn{background:var(--accent);border:none;border-radius:7px;color:#fff;padding:9px 16px;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;transition:opacity 0.15s;flex-shrink:0}
 .chat-send-btn:hover{opacity:0.85}
 .chat-send-btn i{font-size:17px}
-
-/* MODALS */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:100;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.2s}
 .modal-overlay.show{opacity:1;pointer-events:all}
 .modal{background:var(--panel);border:1px solid var(--border2);border-radius:16px;padding:28px;width:360px;position:relative;transform:translateY(10px);transition:transform 0.2s}
@@ -187,12 +175,12 @@ select option{background:#0d1018}
 .toast.success{border-color:rgba(34,197,94,0.4);color:var(--green)}
 .toast.error{border-color:rgba(239,68,68,0.4);color:var(--red)}
 .toast.warn{border-color:rgba(245,158,11,0.4);color:#fbbf24}
+@keyframes spin{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
 <script>if (!localStorage.getItem("token")) window.location.href = "index.html";</script>
 
-<!-- WARN MODAL -->
 <div class="modal-overlay" id="warnModal">
   <div class="modal">
     <h3>⚠ Warn User</h3>
@@ -206,7 +194,6 @@ select option{background:#0d1018}
   </div>
 </div>
 
-<!-- BAN MODAL -->
 <div class="modal-overlay" id="banModal">
   <div class="modal">
     <h3>🚫 Ban User</h3>
@@ -219,7 +206,6 @@ select option{background:#0d1018}
   </div>
 </div>
 
-<!-- REPORT MODAL -->
 <div class="modal-overlay" id="reportModal">
   <div class="modal">
     <h3>🚩 Report Message</h3>
@@ -232,9 +218,7 @@ select option{background:#0d1018}
       <option value="Threats or abuse">Threats or abuse</option>
       <option value="Other">Other</option>
     </select>
-    <div style="font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:6px">
-      DETAILS <span style="font-size:10px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:999px;padding:1px 7px">OPTIONAL</span>
-    </div>
+    <div style="font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:6px">DETAILS <span style="font-size:10px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:999px;padding:1px 7px">OPTIONAL</span></div>
     <input class="field-input" id="reportDetails" placeholder="Any extra context..." style="margin-bottom:0" />
     <div class="modal-actions">
       <button class="modal-cancel" onclick="closeModal('reportModal')">Cancel</button>
@@ -246,7 +230,6 @@ select option{background:#0d1018}
 <div class="toast" id="toast"></div>
 
 <div class="shell">
-  <!-- SIDEBAR -->
   <div class="sidebar">
     <div class="logo">
       <div class="logo-icon">V</div>
@@ -271,7 +254,6 @@ select option{background:#0d1018}
     </div>
   </div>
 
-  <!-- MAIN -->
   <div class="main">
     <div class="topbar">
       <span class="topbar-title" id="topbarTitle">Dashboard</span>
@@ -279,11 +261,9 @@ select option{background:#0d1018}
       <span class="dot-live"></span>
     </div>
 
-    <!-- scrollable wrapper for normal tabs -->
     <div class="content-scroll" id="contentScroll">
       <div class="content" id="contentPad">
 
-        <!-- HOME -->
         <div class="tab-panel active" id="tab-home">
           <div class="profile-card">
             <div class="avatar-lg" id="avatarLg">VS</div>
@@ -302,12 +282,8 @@ select option{background:#0d1018}
           </div>
         </div>
 
-        <!-- CHAT (hidden here, shown fullscreen when active) -->
-        <div class="tab-panel" id="tab-chat">
-          <!-- content injected by switchTab -->
-        </div>
+        <div class="tab-panel" id="tab-chat"></div>
 
-        <!-- SETTINGS -->
         <div class="tab-panel" id="tab-settings">
           <div class="settings-section">
             <h4>PROFILE</h4>
@@ -333,7 +309,6 @@ select option{background:#0d1018}
           </div>
         </div>
 
-        <!-- MEMBERS -->
         <div class="tab-panel" id="tab-users">
           <div class="members-wrap">
             <div class="members-toolbar">
@@ -349,7 +324,6 @@ select option{background:#0d1018}
           </div>
         </div>
 
-        <!-- ADMIN -->
         <div class="tab-panel" id="tab-admin">
           <div class="admin-hero">
             <div class="admin-hero-icon"><i class="ti ti-shield"></i></div>
@@ -379,15 +353,14 @@ select option{background:#0d1018}
                 </select>
               </div>
             </div>
-            <button class="gen-btn" onclick="generateKey()"><i class="ti ti-key"></i> Generate Key</button>
+            <button class="gen-btn" id="genBtn" onclick="generateKey()"><i class="ti ti-key"></i> Generate Key</button>
             <div class="key-list" id="keyList"><div class="empty-keys">No keys generated yet.</div></div>
           </div>
         </div>
 
-      </div><!-- /contentPad -->
-    </div><!-- /contentScroll -->
+      </div>
+    </div>
 
-    <!-- CHAT FULLSCREEN PANEL (lives outside scroll so it fills .main) -->
     <div id="chatPanel" style="display:none;flex-direction:column;flex:1;overflow:hidden">
       <div class="chat-messages" id="chatMessages"></div>
       <div class="chat-bar">
@@ -400,16 +373,14 @@ select option{background:#0d1018}
       </div>
     </div>
 
-  </div><!-- /main -->
-</div><!-- /shell -->
+  </div>
+</div>
 
 <script>
-// ── CONFIG — paste your Discord webhook URL ──────────────────
 const DISCORD_WEBHOOK = 'https://ptb.discord.com/api/webhooks/1504629614406795345/m5wdP_PqGFdgBUdffveke9CLs4x1rCdCeJPx3nc0WptxAADt0DTydBo7OimNC6R4DRiY';
 const API = 'https://viperstudios-production.up.railway.app';
 const token = () => localStorage.getItem('token');
 
-// ── STATE ───────────────────────────────────────────────────
 let generatedKeys   = JSON.parse(localStorage.getItem('vs_keys') || '[]');
 let selectedColor   = localStorage.getItem('vs_color')  || '#3b82f6';
 let selectedColor2  = localStorage.getItem('vs_color2') || '#60a5fa';
@@ -420,33 +391,17 @@ let chatMessages    = JSON.parse(localStorage.getItem('vs_chat') || '[]');
 let pendingAction   = null;
 let pendingReport   = null;
 
-// ── COLOR ───────────────────────────────────────────────────
-function applyColor(c,c2){
-  document.documentElement.style.setProperty('--accent',c);
-  document.documentElement.style.setProperty('--accent2',c2);
-}
-function setColor(el){
-  document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('selected'));
-  el.classList.add('selected');
-  selectedColor=el.dataset.color; selectedColor2=el.dataset.color2;
-  applyColor(selectedColor,selectedColor2);
-}
-function saveColor(){
-  localStorage.setItem('vs_color',selectedColor);
-  localStorage.setItem('vs_color2',selectedColor2);
-  toast('Accent color saved!','success');
-}
+function applyColor(c,c2){ document.documentElement.style.setProperty('--accent',c); document.documentElement.style.setProperty('--accent2',c2); }
+function setColor(el){ document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('selected')); el.classList.add('selected'); selectedColor=el.dataset.color; selectedColor2=el.dataset.color2; applyColor(selectedColor,selectedColor2); }
+function saveColor(){ localStorage.setItem('vs_color',selectedColor); localStorage.setItem('vs_color2',selectedColor2); toast('Accent color saved!','success'); }
 
-// ── TABS ────────────────────────────────────────────────────
 const chatPanel    = document.getElementById('chatPanel');
 const contentScroll= document.getElementById('contentScroll');
 
 function switchTab(id,btn){
-  // toggle panels
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(b=>b.classList.remove('active'));
   if(btn) btn.classList.add('active');
-
   if(id==='chat'){
     contentScroll.style.display='none';
     chatPanel.style.display='flex';
@@ -457,7 +412,6 @@ function switchTab(id,btn){
     chatPanel.style.display='none';
     document.getElementById('tab-'+id).classList.add('active');
   }
-
   const labels={home:'Dashboard',chat:'Chat',settings:'Settings',users:'Members',admin:'Admin Panel'};
   const codes ={home:'HOME',chat:'CHAT',settings:'SETTINGS',users:'MEMBERS',admin:'ADMIN'};
   document.getElementById('topbarTitle').textContent=labels[id]||id;
@@ -465,13 +419,11 @@ function switchTab(id,btn){
   if(id==='users') loadMembers();
 }
 
-// ── HELPERS ─────────────────────────────────────────────────
 function roleClass(r){ return r==='owner'?'role-owner':r==='admin'?'role-admin':'role-member'; }
 function initials(n){ return (n||'VS').slice(0,2).toUpperCase(); }
 function isAdmin(){ return currentUserRank==='admin'||currentUserRank==='owner'; }
 function escHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
-// ── LOAD PROFILE ────────────────────────────────────────────
 async function load(){
   let u,r,vrchat='',bio='';
   try {
@@ -519,7 +471,6 @@ function loadProfile(vrchat,bio){
   document.getElementById('bioDisplay').textContent=bio||'No bio set yet.';
 }
 
-// ── MEMBERS ─────────────────────────────────────────────────
 async function loadMembers(){
   const list=document.getElementById('membersList');
   list.innerHTML='<div class="members-loading">Loading members...</div>';
@@ -560,7 +511,6 @@ function renderMembers(members){
   }).join('');
 }
 
-// member modals
 function openWarn(id,username){ pendingAction={type:'warn',userId:id,username}; document.getElementById('warnModalSub').textContent=`Warning: ${username}`; document.getElementById('warnReason').value=''; document.getElementById('warnModal').classList.add('show'); document.getElementById('warnConfirmBtn').onclick=confirmWarn; }
 function openBan(id,username){ pendingAction={type:'ban',userId:id,username}; document.getElementById('banModalSub').textContent=`Banning: ${username}`; document.getElementById('banModal').classList.add('show'); document.getElementById('banConfirmBtn').onclick=confirmBan; }
 function closeModal(id){ document.getElementById(id).classList.remove('show'); pendingAction=null; pendingReport=null; }
@@ -580,15 +530,36 @@ async function doUnban(userId,username){
   try{ const res=await fetch(`${API}/api/users/${userId}/unban`,{method:'POST',headers:{Authorization:'Bearer '+token()}}); const d=await res.json(); res.ok?toast(`✓ ${username} unbanned`,'success'):toast(d.error||'Failed','error'); loadMembers(); }catch{ toast('Server error','error'); }
 }
 
-// ── KEYS ────────────────────────────────────────────────────
-function genCode(){ const c='ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; const s=()=>Array.from({length:5},()=>c[Math.floor(Math.random()*c.length)]).join(''); return [s(),s(),s()].join('-'); }
-function generateKey(){
-  const tier=document.getElementById('keyTier').value,uses=document.getElementById('keyUses').value;
-  const key={code:genCode(),tier,uses:uses==='0'?'∞':uses,active:true,created:new Date().toLocaleDateString()};
-  generatedKeys.unshift(key); localStorage.setItem('vs_keys',JSON.stringify(generatedKeys));
-  document.getElementById('statKeys').textContent=generatedKeys.filter(k=>k.active).length;
-  renderKeys(); toast('Key generated!','success');
+// ── KEYGEN — hits real server ─────────────────────────────
+async function generateKey(){
+  const tier=document.getElementById('keyTier').value;
+  const uses=parseInt(document.getElementById('keyUses').value);
+  const btn=document.getElementById('genBtn');
+  btn.disabled=true;
+  btn.innerHTML='<i class="ti ti-loader" style="animation:spin 0.7s linear infinite;display:inline-block"></i> Generating...';
+  try {
+    const res=await fetch(`${API}/api/admin/keys/generate`,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer '+token()},
+      body:JSON.stringify({tier,uses})
+    });
+    const data=await res.json();
+    btn.disabled=false;
+    btn.innerHTML='<i class="ti ti-key"></i> Generate Key';
+    if(!res.ok){ toast(data.error||'Failed to generate key','error'); return; }
+    const usesDisplay=data.uses===-1?'∞':String(data.uses);
+    generatedKeys.unshift({code:data.code,tier:data.tier,uses:usesDisplay,active:true});
+    localStorage.setItem('vs_keys',JSON.stringify(generatedKeys));
+    document.getElementById('statKeys').textContent=generatedKeys.filter(k=>k.active).length;
+    renderKeys();
+    toast('Key generated: '+data.code,'success');
+  } catch(e){
+    btn.disabled=false;
+    btn.innerHTML='<i class="ti ti-key"></i> Generate Key';
+    toast('Could not reach server','error');
+  }
 }
+
 function renderKeys(){
   const list=document.getElementById('keyList');
   const active=generatedKeys.filter(k=>k.active);
@@ -612,41 +583,26 @@ function revokeKey(i){
   renderKeys(); toast('Key revoked','');
 }
 
-// ── CHAT ────────────────────────────────────────────────────
-function fmtDate(ts){
-  return new Date(ts).toLocaleDateString('en-GB',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-}
-function fmtTime(ts){
-  return new Date(ts).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
-}
-function fmtFull(ts){
-  const d=new Date(ts);
-  return d.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'})+' at '+d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
-}
+// ── CHAT ─────────────────────────────────────────────────
+function fmtDate(ts){ return new Date(ts).toLocaleDateString('en-GB',{weekday:'long',year:'numeric',month:'long',day:'numeric'}); }
+function fmtTime(ts){ return new Date(ts).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}); }
+function fmtFull(ts){ const d=new Date(ts); return d.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'})+' at '+d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',second:'2-digit'}); }
 function rankClass(r){ return r==='owner'?'rank-owner':r==='admin'?'rank-admin':'rank-member'; }
 
 function renderChat(){
   const el=document.getElementById('chatMessages');
   const visible=chatMessages.filter(m=>!m.deleted);
-  if(!visible.length){
-    el.innerHTML='<div class="chat-empty-state"><i class="ti ti-message-circle" aria-hidden="true"></i>No messages yet — say something!</div>';
-    return;
-  }
-  let html='', lastDate='';
+  if(!visible.length){ el.innerHTML='<div class="chat-empty-state"><i class="ti ti-message-circle" aria-hidden="true"></i>No messages yet — say something!</div>'; return; }
+  let html='',lastDate='';
   chatMessages.forEach((msg,idx)=>{
     if(msg.deleted) return;
     const dateStr=fmtDate(msg.timestamp);
-    if(dateStr!==lastDate){
-      html+=`<div class="chat-date-divider">${dateStr}</div>`;
-      lastDate=dateStr;
-    }
+    if(dateStr!==lastDate){ html+=`<div class="chat-date-divider">${dateStr}</div>`; lastDate=dateStr; }
     const rank=(msg.rank||'member').toLowerCase();
     const mine=msg.author===currentUsername;
-    // admin sees delete; anyone but author sees report
     let acts='';
     if(isAdmin()) acts+=`<button class="msg-act-btn delete-btn" title="Delete" onclick="deleteMessage(${idx})"><i class="ti ti-trash" aria-hidden="true"></i></button>`;
     if(!mine)     acts+=`<button class="msg-act-btn report-btn" title="Report" onclick="openReport(${idx})"><i class="ti ti-flag" aria-hidden="true"></i></button>`;
-
     html+=`<div class="chat-msg" id="cmsg-${idx}">
       <div class="msg-avatar">${initials(msg.author)}</div>
       <div class="msg-body">
@@ -663,22 +619,13 @@ function renderChat(){
   el.innerHTML=html;
 }
 
-function scrollChatBottom(){
-  const el=document.getElementById('chatMessages');
-  if(el) el.scrollTop=el.scrollHeight;
-}
+function scrollChatBottom(){ const el=document.getElementById('chatMessages'); if(el) el.scrollTop=el.scrollHeight; }
 
 function sendChatMessage(){
   const inp=document.getElementById('chatInput');
   const content=inp.value.trim();
   if(!content) return;
-  chatMessages.push({
-    author:currentUsername,
-    rank:currentUserRank,
-    content,
-    timestamp:Date.now(),
-    deleted:false
-  });
+  chatMessages.push({author:currentUsername,rank:currentUserRank,content,timestamp:Date.now(),deleted:false});
   localStorage.setItem('vs_chat',JSON.stringify(chatMessages));
   inp.value='';
   renderChat();
@@ -686,12 +633,7 @@ function sendChatMessage(){
 }
 
 function deleteMessage(idx){
-  if(chatMessages[idx]){
-    chatMessages[idx].deleted=true;
-    localStorage.setItem('vs_chat',JSON.stringify(chatMessages));
-    renderChat();
-    toast('Message deleted','');
-  }
+  if(chatMessages[idx]){ chatMessages[idx].deleted=true; localStorage.setItem('vs_chat',JSON.stringify(chatMessages)); renderChat(); toast('Message deleted',''); }
 }
 
 function openReport(idx){
@@ -710,46 +652,27 @@ async function confirmReport(){
   const reason=document.getElementById('reportReason').value;
   const details=document.getElementById('reportDetails').value.trim();
   closeModal('reportModal');
-
-  const embed={
-    title:'🚩 Message Reported — Viper Studios',
-    color:0xf59e0b,
-    fields:[
-      {name:'Reported User', value:`**${msg.author}** · rank: \`${msg.rank}\``, inline:true},
-      {name:'Reported By',   value:`**${currentUsername}** · rank: \`${currentUserRank}\``, inline:true},
-      {name:'\u200b',value:'\u200b',inline:false},
-      {name:'Reason',        value:reason, inline:true},
-      {name:'Message sent',  value:fmtFull(msg.timestamp), inline:true},
-      {name:'Reported at',   value:fmtFull(Date.now()), inline:true},
-      {name:'Message content', value:`\`\`\`${msg.content.slice(0,900)}\`\`\``, inline:false},
-    ]
-  };
-  if(details) embed.fields.push({name:'Extra details', value:details, inline:false});
-
+  const embed={title:'🚩 Message Reported — Viper Studios',color:0xf59e0b,fields:[
+    {name:'Reported User',value:`**${msg.author}** · rank: \`${msg.rank}\``,inline:true},
+    {name:'Reported By',value:`**${currentUsername}** · rank: \`${currentUserRank}\``,inline:true},
+    {name:'\u200b',value:'\u200b',inline:false},
+    {name:'Reason',value:reason,inline:true},
+    {name:'Message sent',value:fmtFull(msg.timestamp),inline:true},
+    {name:'Reported at',value:fmtFull(Date.now()),inline:true},
+    {name:'Message content',value:`\`\`\`${msg.content.slice(0,900)}\`\`\``,inline:false},
+  ]};
+  if(details) embed.fields.push({name:'Extra details',value:details,inline:false});
   try {
-    const r=await fetch(DISCORD_WEBHOOK,{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({embeds:[embed]})
-    });
-    (r.ok||r.status===204) ? toast('Report sent to moderators','warn') : toast('Webhook failed — check the URL','error');
+    const r=await fetch(DISCORD_WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({embeds:[embed]})});
+    (r.ok||r.status===204)?toast('Report sent to moderators','warn'):toast('Webhook failed — check the URL','error');
   } catch { toast('Could not reach Discord','error'); }
 }
 
-// ── MISC ────────────────────────────────────────────────────
 function logout(){ localStorage.removeItem('token'); window.location.href='index.html'; }
-function toast(msg,type){
-  const t=document.getElementById('toast');
-  t.textContent=msg; t.className='toast show'+(type?' '+type:'');
-  setTimeout(()=>t.classList.remove('show'),2500);
-}
+function toast(msg,type){ const t=document.getElementById('toast'); t.textContent=msg; t.className='toast show'+(type?' '+type:''); setTimeout(()=>t.classList.remove('show'),2500); }
 
-// Enter to send in chat
-document.getElementById('chatInput').addEventListener('keydown',e=>{
-  if(e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); sendChatMessage(); }
-});
+document.getElementById('chatInput').addEventListener('keydown',e=>{ if(e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); sendChatMessage(); } });
 
-// ── INIT ────────────────────────────────────────────────────
 applyColor(selectedColor,selectedColor2);
 const sw=document.querySelector(`.color-swatch[data-color="${selectedColor}"]`);
 if(sw){ document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('selected')); sw.classList.add('selected'); }
