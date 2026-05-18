@@ -327,7 +327,7 @@ select option{background:#0d1018}
     <nav class="nav">
       <button class="nav-item active" onclick="switchTab('home',this)"><i class="ti ti-home"></i> Home</button>
       <button class="nav-item" onclick="switchTab('chat',this)"><i class="ti ti-message-circle"></i> Chat</button>
-      <button class="nav-item" onclick="switchTab('world',this)"><i class="ti ti-planet"></i> World</button>
+      <button class="nav-item" onclick="switchTab('world',this)"><i class="ti ti-planet"></i> Events (NEW!)</button>
       <button class="nav-item" onclick="switchTab('settings',this)"><i class="ti ti-settings"></i> Settings</button>
       <button class="nav-item" onclick="switchTab('users',this)"><i class="ti ti-users"></i> Members</button>
       <button class="nav-item admin-nav" id="adminNav" onclick="switchTab('admin',this)" style="display:none"><i class="ti ti-shield"></i> Admin</button>
@@ -381,20 +381,6 @@ select option{background:#0d1018}
         <!-- WORLD (events + instances) -->
         <div class="tab-panel" id="tab-world">
           <div class="world-wrap">
-
-            <!-- instance stats -->
-            <div class="stats-row-mini">
-              <div class="mini-stat"><div class="mini-stat-label">PLAYERS ONLINE</div><div class="mini-stat-val" id="totalPlayers">47</div></div>
-              <div class="mini-stat"><div class="mini-stat-label">ACTIVE INSTANCES</div><div class="mini-stat-val">6</div></div>
-              <div class="mini-stat"><div class="mini-stat-label">PEAK TODAY</div><div class="mini-stat-val">124</div></div>
-            </div>
-
-            <!-- instances -->
-            <div class="section-hdr">
-              <span class="section-title"><span class="live-pip"></span> LIVE INSTANCES</span>
-              <span class="section-sub">updates every 8s</span>
-            </div>
-            <div class="instances-grid" id="instancesGrid"></div>
 
             <!-- events -->
             <div class="section-hdr">
@@ -565,14 +551,7 @@ let events = JSON.parse(localStorage.getItem('vs_events') || 'null') || [
   {id:3,title:"World Tour Sunday",date:"2026-06-01",time:"16:00",host:"NeonPaw",desc:"Exploring 10 community worlds together.",rsvps:["YZ","WX","MN","OP"]},
 ];
 
-const instances = [
-  {id:"#98271",type:"public",players:18,max:32,region:"US West"},
-  {id:"#44103",type:"public",players:11,max:32,region:"EU Central"},
-  {id:"#77490",type:"friends+",players:7,max:20,region:"US East"},
-  {id:"#20811",type:"invite",players:4,max:10,region:"Asia"},
-  {id:"#55203",type:"public",players:5,max:32,region:"US West"},
-  {id:"#31045",type:"private",players:2,max:8,region:"EU West"},
-];
+
 
 const pipColors = ["#3b82f6","#22c55e","#f59e0b","#ef4444","#8b5cf6","#06b6d4"];
 const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
@@ -602,7 +581,7 @@ function switchTab(id, btn){
     contentScroll.style.display='';
     chatWrap.style.display='none';
     document.getElementById('tab-'+id).classList.add('active');
-    if(id==='world'){ renderInstances(); renderEvents(); }
+    if(id==='world'){ renderEvents(); }
     if(id==='users') loadMembers();
     if(id==='admin'){ renderAdminEvents(); }
   }
@@ -772,25 +751,7 @@ function revokeKey(i){
   renderKeys(); toast('Key revoked','');
 }
 
-// ── INSTANCES ──
-function instBadgeClass(t){ return t==='public'?'ib-public':t==='friends+'?'ib-friends':t==='invite'?'ib-invite':'ib-private'; }
-function renderInstances(){
-  const grid=document.getElementById('instancesGrid');
-  grid.innerHTML=instances.map(inst=>{
-    const pct=Math.round((inst.players/inst.max)*100);
-    return `<div class="inst-card">
-      <div class="inst-top">
-        <span class="inst-id">${inst.id}</span>
-        <span class="inst-badge ${instBadgeClass(inst.type)}">${inst.type}</span>
-      </div>
-      <div class="bar-row">
-        <div class="bar-bg"><div class="bar-fill ${pct>=90?'bar-full':''}" style="width:${pct}%"></div></div>
-        <span class="bar-count">${inst.players}/${inst.max}</span>
-      </div>
-      <div class="inst-region"><i class="ti ti-map-pin"></i>${inst.region}</div>
-    </div>`;
-  }).join('');
-}
+
 
 // ── EVENTS ──
 function renderEvents(){
@@ -951,15 +912,7 @@ async function confirmReport(){
 
 function logout(){ localStorage.removeItem('token'); window.location.href='index.html'; }
 
-// live instance tick
-setInterval(()=>{
-  instances.forEach(inst=>{ const d=Math.floor(Math.random()*3)-1; inst.players=Math.max(1,Math.min(inst.max,inst.players+d)); });
-  const total=instances.reduce((s,i)=>s+i.players,0);
-  const tp=document.getElementById('totalPlayers');
-  if(tp) tp.textContent=total;
-  const g=document.getElementById('instancesGrid');
-  if(g&&g.children.length) renderInstances();
-},8000);
+
 
 document.getElementById('chatInput').addEventListener('keydown',e=>{ if(e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); sendChatMessage(); } });
 
