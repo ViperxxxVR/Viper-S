@@ -25,9 +25,9 @@ body::after{content:'';position:fixed;top:-120px;left:50%;transform:translateX(-
 .card-sub{font-size:13px;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:22px;line-height:1.5}
 .steps{display:flex;align-items:center;margin-bottom:24px}
 .step{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;position:relative}
-.step:not(:last-child)::after{content:'';position:absolute;top:14px;left:50%;width:100%;height:1px;background:var(--border2);z-:0}
+.step:not(:last-child)::after{content:'';position:absolute;top:14px;left:50%;width:100%;height:1px;background:var(--border2);z-index:0}
 .step.done:not(:last-child)::after{background:var(--accent)}
-.step-num{width:28px;height:28px;border-radius:50%;background:var(--panel2);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;font-family:'DM Mono',monospace;color:var(--muted);position:relative;z-:1;transition:all 0.2s}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--panel2);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;font-family:'DM Mono',monospace;color:var(--muted);position:relative;z-index:1;transition:all 0.2s}
 .step.active .step-num{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 0 10px rgba(59,130,246,0.4)}
 .step.done .step-num{background:var(--green);border-color:var(--green);color:#fff}
 .step-label{font-size:10px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:0.5px}
@@ -63,9 +63,6 @@ body::after{content:'';position:fixed;top:-120px;left:50%;transform:translateX(-
 .next-btn.loading{opacity:0.7;pointer-events:none}
 .back-btn{width:100%;background:none;border:1px solid var(--border2);border-radius:9px;padding:10px;color:var(--muted);font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s;margin-top:8px;display:flex;align-items:center;justify-content:center;gap:6px}
 .back-btn:hover{color:var(--text);border-color:var(--text)}
-/* email skip link */
-.skip-email{display:block;text-align:center;margin-top:10px;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;cursor:pointer;transition:color 0.15s;background:none;border:none;width:100%;padding:4px}
-.skip-email:hover{color:var(--accent2)}
 hr{border:none;border-top:1px solid var(--border);margin:16px 0}
 .success-wrap{text-align:center;padding:10px 0}
 .success-icon{font-size:48px;margin-bottom:12px;display:block}
@@ -76,7 +73,6 @@ hr{border:none;border-top:1px solid var(--border);margin:16px 0}
 .bottom-link{font-size:13px;font-family:'DM Mono',monospace;color:var(--muted);text-align:center}
 .bottom-link a{color:var(--accent2);text-decoration:none;font-weight:600}
 .bottom-link a:hover{text-decoration:underline}
-/* no-email warning chip */
 .warn-chip{display:flex;align-items:center;gap:8px;font-size:12px;color:#f59e0b;font-family:'DM Mono',monospace;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-radius:8px;padding:8px 12px;margin-top:10px}
 .warn-chip i{font-size:15px;flex-shrink:0}
 </style>
@@ -93,7 +89,6 @@ hr{border:none;border-top:1px solid var(--border);margin:16px 0}
     <div class="card-title">CREATE ACCOUNT</div>
     <div class="card-sub">Invite key required to join.</div>
 
-    <!-- Steps — 4 shown, verify hidden when no email -->
     <div class="steps">
       <div class="step active" id="s1"><div class="step-num">1</div><div class="step-label">ACCOUNT</div></div>
       <div class="step" id="s2"><div class="step-num">2</div><div class="step-label">PROFILE</div></div>
@@ -146,7 +141,6 @@ hr{border:none;border-top:1px solid var(--border);margin:16px 0}
           <input class="field-input" id="vrchat" placeholder="usr_xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" />
         </div>
       </div>
-      <!-- shown when email is empty -->
       <div class="warn-chip" id="noEmailWarn" style="display:none">
         <i class="ti ti-alert-triangle"></i>
         No email — you won't be able to recover your account if you forget your password.
@@ -177,7 +171,7 @@ hr{border:none;border-top:1px solid var(--border);margin:16px 0}
       <button class="back-btn" onclick="goStep(2)"><i class="ti ti-arrow-left"></i> Back</button>
     </div>
 
-    <!-- STEP 4: Verify Email Code (skipped if no email) -->
+    <!-- STEP 4: Verify Email Code -->
     <div class="step-panel" id="panel4">
       <div class="verify-email-note">
         We sent a 6-digit code to<br>
@@ -209,7 +203,7 @@ hr{border:none;border-top:1px solid var(--border);margin:16px 0}
     </div>
   </div>
 
-  <div class="bottom-link">Already have an account? <a href="register.html">Log In</a></div>
+  <div class="bottom-link">Already have an account? <a href="index.html">Log In</a></div>
 </div>
 
 <script>
@@ -217,7 +211,7 @@ const API = 'https://viperstudios-production.up.railway.app';
 let currentStep = 1;
 let signupToken = null;
 let resendTimer = null;
-let skipEmail = false; // true when user chooses no email
+let skipEmail = false;
 
 function goStep(n) {
   document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
@@ -279,9 +273,8 @@ function step1Next() {
 function step2Next() {
   clearErr();
   const email = document.getElementById('email').value.trim();
-  skipEmail = !email; // if email blank, we'll skip verify step
+  skipEmail = !email;
 
-  // Update step 3 button label based on whether email is provided
   if (skipEmail) {
     document.getElementById('submitText').textContent = 'Create Account';
     document.getElementById('submitIcon').className = 'ti ti-user-plus';
@@ -307,10 +300,10 @@ async function submitSignup() {
     username: document.getElementById('username').value.trim(),
     password: document.getElementById('password').value,
     confirmPassword: document.getElementById('confirmPassword').value,
-    email: document.getElementById('email').value.trim() || '', // empty string = no email
+    email: document.getElementById('email').value.trim() || '',
     vrchat: document.getElementById('vrchat').value.trim(),
     key,
-    skipEmailVerify: skipEmail, // tell server to skip verification
+    skipEmailVerify: skipEmail,
   };
 
   try {
@@ -325,12 +318,11 @@ async function submitSignup() {
 
     if (!res.ok) return showErr('err3', data.error || 'Signup failed.');
 
-    if (skipEmail) {
-      // Account created immediately — go straight to success
+    // data.noEmail = true when server created the account immediately (no email path)
+    if (data.noEmail || skipEmail) {
       markAllStepsDone();
       showSuccess();
     } else {
-      // Has email — go to verify step
       signupToken = data.token;
       document.getElementById('emailDisplay').textContent = body.email;
       goStep(4);
