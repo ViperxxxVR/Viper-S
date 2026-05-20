@@ -25,9 +25,9 @@ body::after{content:'';position:fixed;top:-120px;left:50%;transform:translateX(-
 .card-sub{font-size:13px;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:22px;line-height:1.5}
 .steps{display:flex;align-items:center;margin-bottom:24px}
 .step{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;position:relative}
-.step:not(:last-child)::after{content:'';position:absolute;top:14px;left:50%;width:100%;height:1px;background:var(--border2);z-index:0}
+.step:not(:last-child)::after{content:'';position:absolute;top:14px;left:50%;width:100%;height:1px;background:var(--border2);z-:0}
 .step.done:not(:last-child)::after{background:var(--accent)}
-.step-num{width:28px;height:28px;border-radius:50%;background:var(--panel2);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;font-family:'DM Mono',monospace;color:var(--muted);position:relative;z-index:1;transition:all 0.2s}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--panel2);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;font-family:'DM Mono',monospace;color:var(--muted);position:relative;z-:1;transition:all 0.2s}
 .step.active .step-num{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 0 10px rgba(59,130,246,0.4)}
 .step.done .step-num{background:var(--green);border-color:var(--green);color:#fff}
 .step-label{font-size:10px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:0.5px}
@@ -209,7 +209,7 @@ hr{border:none;border-top:1px solid var(--border);margin:16px 0}
     </div>
   </div>
 
-  <div class="bottom-link">Already have an account? <a href="index.html">Log In</a></div>
+  <div class="bottom-link">Already have an account? <a href="register.html">Log In</a></div>
 </div>
 
 <script>
