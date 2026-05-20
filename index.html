@@ -9,17 +9,9 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#07090f;
-  --panel:#0d1018;
-  --panel2:#111520;
-  --border:rgba(255,255,255,0.07);
-  --border2:rgba(255,255,255,0.12);
-  --accent:#3b82f6;
-  --accent2:#60a5fa;
-  --text:#e8eaf0;
-  --muted:#6b7280;
-  --green:#22c55e;
-  --red:#ef4444;
+  --bg:#07090f;--panel:#0d1018;--panel2:#111520;--border:rgba(255,255,255,0.07);
+  --border2:rgba(255,255,255,0.12);--accent:#3b82f6;--accent2:#60a5fa;
+  --text:#e8eaf0;--muted:#6b7280;--green:#22c55e;--red:#ef4444;
 }
 body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;font-size:15px;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center}
 body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(59,130,246,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0}
@@ -41,7 +33,6 @@ body::after{content:'';position:fixed;top:-120px;left:50%;transform:translateX(-
 .field-input{width:100%;background:var(--bg);border:1px solid var(--border2);border-radius:9px;padding:10px 14px 10px 38px;color:var(--text);font-family:'Rajdhani',sans-serif;font-size:14px;outline:none;transition:border 0.15s,box-shadow 0.15s}
 .field-input::placeholder{color:rgba(107,114,128,0.7)}
 .field-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(59,130,246,0.12)}
-.opt-tag{font-size:10px;font-family:'DM Mono',monospace;color:var(--muted);background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:999px;padding:2px 8px;margin-left:8px;vertical-align:middle;letter-spacing:0.5px}
 hr{border:none;border-top:1px solid var(--border);margin:18px 0}
 .login-btn{width:100%;background:linear-gradient(135deg,#1d4ed8,#3b82f6);color:#fff;border:none;border-radius:9px;padding:12px;font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;letter-spacing:1px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity 0.15s,transform 0.1s,box-shadow 0.2s;box-shadow:0 4px 18px rgba(59,130,246,0.25);position:relative;overflow:hidden}
 .login-btn::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent);transform:translateX(-100%);transition:transform 0.4s}
@@ -56,8 +47,6 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0}
 .dot-live{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green)}
 .error-msg{font-size:12px;font-family:'DM Mono',monospace;color:var(--red);text-align:center;padding:8px;border-radius:7px;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);display:none;margin-top:10px}
 .error-msg.show{display:block}
-.info-chip{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.12);border-radius:999px;padding:6px 14px}
-.info-chip i{color:var(--accent2);font-size:14px}
 @keyframes spin{to{transform:rotate(360deg)}}
 .spinner{width:15px;height:15px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.6s linear infinite;display:none}
 .login-btn.loading .spinner{display:block}
@@ -79,23 +68,15 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0}
     <div class="field">
       <div class="field-label">USERNAME</div>
       <div class="field-wrap">
-        <i class="ti ti-user" aria-hidden="true"></i>
+        <i class="ti ti-user"></i>
         <input class="field-input" id="username" placeholder="ViperUser" autocomplete="username" />
-      </div>
-    </div>
-
-    <div class="field">
-      <div class="field-label">VRCHAT ID <span class="opt-tag">OPTIONAL</span></div>
-      <div class="field-wrap">
-        <i class="ti ti-cube" aria-hidden="true"></i>
-        <input class="field-input" id="vrchat" placeholder="usr_xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" />
       </div>
     </div>
 
     <div class="field" style="margin-bottom:0">
       <div class="field-label">PASSWORD</div>
       <div class="field-wrap">
-        <i class="ti ti-lock" aria-hidden="true"></i>
+        <i class="ti ti-lock"></i>
         <input class="field-input" id="password" type="password" placeholder="••••••••" autocomplete="current-password" />
       </div>
     </div>
@@ -103,7 +84,7 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0}
     <hr />
 
     <button class="login-btn" id="loginBtn" onclick="login()">
-      <span class="btn-text"><i class="ti ti-login" style="font-size:16px" aria-hidden="true"></i> ENTER VIPER</span>
+      <span class="btn-text"><i class="ti ti-login" style="font-size:16px"></i> ENTER VIPER</span>
       <div class="spinner"></div>
     </button>
 
@@ -118,65 +99,59 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0}
       SERVERS ONLINE
     </div>
   </div>
-
-  <div class="info-chip">
-    <i class="ti ti-info-circle" aria-hidden="true"></i>
-    VRChat ID unlocks avatar features
-  </div>
 </div>
 
 <script>
+const API = 'https://viperstudios-production.up.railway.app';
+
 async function login() {
-  const username = document.getElementById("username").value.trim();
-  const password = document.getElementById("password").value || "demo";
-  const vrchat = document.getElementById("vrchat").value.trim();
-  const btn = document.getElementById("loginBtn");
-  const err = document.getElementById("errorMsg");
+  const username = document.getElementById('username').value.trim();
+  const password = document.getElementById('password').value;
+  const btn = document.getElementById('loginBtn');
+  const err = document.getElementById('errorMsg');
 
-  err.classList.remove("show");
-  if (!username) { showError("Username is required."); return; }
+  err.classList.remove('show');
+  if (!username) { showError('Username is required.'); return; }
+  if (!password) { showError('Password is required.'); return; }
 
-  btn.classList.add("loading");
+  btn.classList.add('loading');
 
   try {
-  const res = await fetch("https://viper-studios.onrender.com", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+    const res = await fetch(`${API}/api/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password })
     });
 
     const data = await res.json();
 
     if (!res.ok) {
-      showError(data.error || "Login failed.");
-      btn.classList.remove("loading");
+      showError(data.error || 'Invalid username or password.');
+      btn.classList.remove('loading');
       return;
     }
 
-    localStorage.setItem("token", data.token);
-    localStorage.setItem("username", data.username);
-    localStorage.setItem("rank", data.role || data.rank);
-    if (vrchat) localStorage.setItem("vrchat", vrchat);
+    localStorage.setItem('token', data.token);
+    localStorage.setItem('username', data.username);
+    localStorage.setItem('rank', data.role || data.rank);
 
-    window.location.href = "register.html";
+    window.location.href = 'dashboard.html';
 
   } catch (e) {
-    localStorage.setItem("token", "offline-token");
-    localStorage.setItem("username", username);
-    localStorage.setItem("rank", "User");
-    if (vrchat) localStorage.setItem("vrchat", vrchat);
-    window.location.href = "register.html";
+    // NO offline fallback — must authenticate properly
+    showError('Cannot reach server. Please try again.');
+    btn.classList.remove('loading');
   }
 }
 
 function showError(msg) {
-  const err = document.getElementById("errorMsg");
+  const err = document.getElementById('errorMsg');
   err.textContent = msg;
-  err.classList.add("show");
-  document.getElementById("loginBtn").classList.remove("loading");
+  err.classList.add('show');
+  document.getElementById('loginBtn').classList.remove('loading');
 }
 
-document.addEventListener("keydown", e => { if (e.key === "Enter") login(); });
+document.addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
 </script>
 </body>
 </html>
