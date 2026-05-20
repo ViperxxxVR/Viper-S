@@ -11,8 +11,6 @@
 :root{--bg:#07090f;--panel:#0d1018;--panel2:#111520;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);--accent:#3b82f6;--accent2:#60a5fa;--text:#e8eaf0;--muted:#6b7280;--green:#22c55e;--red:#ef4444;--amber:#f59e0b;--pro:#f59e0b}
 body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;font-size:15px;height:100vh;overflow:hidden}
 .shell{display:flex;height:100vh}
-
-/* SIDEBAR */
 .sidebar{width:220px;background:var(--panel);border-right:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0}
 .logo{padding:22px 20px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
 .logo-icon{width:32px;height:32px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;font-weight:700}
@@ -34,8 +32,6 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .avatar-sm img{width:100%;height:100%;object-fit:cover}
 .user-chip-name{font-size:13px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .user-chip-role{font-size:11px;color:var(--accent2);font-family:'DM Mono',monospace}
-
-/* MAIN */
 .main{flex:1;display:flex;flex-direction:column;overflow:hidden;background:var(--bg)}
 .topbar{height:56px;border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 28px;gap:16px;background:var(--panel);flex-shrink:0;z-index:10}
 .topbar-title{font-size:18px;font-weight:700;color:#fff}
@@ -47,8 +43,6 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .content-scroll::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.08);border-radius:4px}
 .content{padding:28px}
 .tab-panel{display:none}.tab-panel.active{display:block}
-
-/* HOME */
 .profile-card{border-radius:14px;padding:24px;display:flex;gap:20px;align-items:flex-start;max-width:580px;margin-bottom:24px;position:relative;overflow:hidden;border:1px solid var(--border);background:var(--panel)}
 .profile-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),#8b5cf6,#06b6d4)}
 .profile-card.pro-card::before{background:linear-gradient(90deg,#f59e0b,#f97316,#fbbf24)}
@@ -74,8 +68,6 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .stat-label{font-size:12px;color:var(--muted);letter-spacing:1px;font-family:'DM Mono',monospace;margin-bottom:6px}
 .stat-val{font-size:24px;font-weight:700;color:#fff}
 .stat-sub{font-size:12px;color:var(--green);margin-top:2px}
-
-/* SETTINGS */
 .settings-section{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:16px;max-width:580px}
 .settings-section h4{font-size:14px;font-weight:700;color:var(--muted);letter-spacing:2px;margin-bottom:18px;font-family:'DM Mono',monospace}
 .field-label{font-size:13px;color:var(--muted);margin-bottom:6px;font-family:'DM Mono',monospace}
@@ -95,14 +87,10 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .c-cyan{background:linear-gradient(135deg,#0e7490,#06b6d4)}.c-orange{background:linear-gradient(135deg,#c2410c,#f97316)}
 .c-rose{background:linear-gradient(135deg,#9f1239,#fb7185)}.c-lime{background:linear-gradient(135deg,#3f6212,#a3e635)}
 .c-violet{background:linear-gradient(135deg,#5b21b6,#c4b5fd)}.c-teal{background:linear-gradient(135deg,#134e4a,#2dd4bf)}
-
-/* UPLOAD BTN */
 .upload-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.05);border:1px solid var(--border2);border-radius:8px;padding:9px 16px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:600;color:var(--muted);cursor:pointer;transition:all 0.15s;margin-bottom:14px}
 .upload-btn:hover{color:var(--text);border-color:var(--text)}
 .upload-btn input{display:none}
 .img-preview{width:60px;height:60px;border-radius:8px;object-fit:cover;border:1px solid var(--border2);margin-bottom:10px;display:none}
-
-/* PRO PLAN CARD */
 .pro-plan-card{background:var(--panel);border:1px solid rgba(245,158,11,0.3);border-radius:14px;padding:22px;margin-bottom:16px;max-width:580px;position:relative;overflow:hidden}
 .pro-plan-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#f59e0b,#f97316,#fbbf24)}
 .pro-plan-title{font-size:18px;font-weight:700;color:#fbbf24;margin-bottom:4px;display:flex;align-items:center;gap:8px}
@@ -113,7 +101,6 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .pro-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .purchase-btn{display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,#b45309,#f59e0b);color:#000;border:none;border-radius:9px;padding:11px 22px;font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all 0.15s;box-shadow:0 4px 18px rgba(245,158,11,0.25)}
 .purchase-btn:hover{opacity:0.9;transform:translateY(-1px)}
-.purchase-btn:disabled{opacity:0.5;pointer-events:none}
 .redeem-wrap{display:flex;gap:8px;align-items:center}
 .redeem-input{background:var(--bg);border:1px solid var(--border2);border-radius:8px;padding:10px 14px;color:var(--text);font-family:'DM Mono',monospace;font-size:13px;outline:none;width:200px;letter-spacing:1px;transition:border 0.15s}
 .redeem-input:focus{border-color:var(--amber)}
@@ -121,8 +108,6 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .redeem-btn:hover{background:rgba(245,158,11,0.22)}
 .pro-owned-banner{background:linear-gradient(135deg,rgba(245,158,11,0.1),rgba(249,115,22,0.08));border:1px solid rgba(245,158,11,0.3);border-radius:10px;padding:14px 18px;display:flex;align-items:center;gap:12px;font-size:14px;color:#fbbf24;font-family:'DM Mono',monospace}
 .pro-owned-banner i{font-size:22px}
-
-/* MEMBERS */
 .members-wrap{max-width:680px}
 .members-toolbar{display:flex;align-items:center;gap:10px;margin-bottom:16px}
 .search-wrap{position:relative;flex:1}
@@ -148,8 +133,6 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .action-btn.ban-btn:hover{color:var(--red);border-color:var(--red);background:rgba(239,68,68,0.08)}
 .action-btn.unban-btn:hover{color:var(--green);border-color:var(--green);background:rgba(34,197,94,0.08)}
 .members-empty,.members-loading{text-align:center;padding:40px;color:var(--muted);font-family:'DM Mono',monospace;font-size:13px}
-
-/* ADMIN */
 .admin-hero{display:flex;align-items:center;gap:12px;margin-bottom:24px}
 .admin-hero-icon{width:42px;height:42px;background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#f87171;font-size:22px}
 .admin-badge{background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3);padding:5px 14px;border-radius:999px;font-size:12px;font-family:'DM Mono',monospace;font-weight:600}
@@ -182,8 +165,6 @@ select option{background:#0d1018}
 .admin-give-card h4{font-size:14px;font-weight:700;color:var(--muted);letter-spacing:2px;margin-bottom:18px;font-family:'DM Mono',monospace}
 .give-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(245,158,11,0.12);color:#fbbf24;border:1px solid rgba(245,158,11,0.3);border-radius:8px;padding:10px 22px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s}
 .give-btn:hover{background:rgba(245,158,11,0.22)}
-
-/* CHAT */
 .chat-wrap{display:none;flex-direction:column;flex:1;overflow:hidden}
 .chat-messages{flex:1;overflow-y:auto;padding:20px 28px;display:flex;flex-direction:column;gap:2px;scroll-behavior:smooth}
 .chat-messages::-webkit-scrollbar{width:4px}
@@ -219,12 +200,9 @@ select option{background:#0d1018}
 .chat-input::placeholder{color:var(--muted)}
 .chat-send-btn{background:var(--accent);border:none;border-radius:7px;color:#fff;padding:9px 16px;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;transition:opacity 0.15s;flex-shrink:0}
 .chat-send-btn:hover{opacity:0.85}
-
-/* EVENTS */
 .world-wrap{max-width:720px}
 .section-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
 .section-title{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:2px;font-family:'DM Mono',monospace;display:flex;align-items:center;gap:8px}
-.section-sub{font-size:12px;color:var(--muted);font-family:'DM Mono',monospace}
 .events-list{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
 .event-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:14px 18px;display:grid;grid-template-columns:54px 1fr auto;gap:14px;align-items:center;transition:border-color 0.15s}
 .event-card:hover{border-color:var(--border2)}
@@ -258,8 +236,6 @@ select option{background:#0d1018}
 .del-ev-btn:hover{color:var(--red);border-color:rgba(239,68,68,0.4)}
 .confirm-chip{font-size:12px;font-family:'DM Mono',monospace;color:var(--green);opacity:0;transition:opacity 0.3s}
 .confirm-chip.show{opacity:1}
-
-/* MEMORY GAME */
 .game-wrap{max-width:580px}
 .game-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px}
 .game-stats{display:flex;gap:12px}
@@ -283,8 +259,6 @@ select option{background:#0d1018}
 .win-banner i{font-size:24px;color:var(--green)}
 .win-text{font-size:14px;color:var(--green)}
 .win-pts{font-size:18px;font-weight:700;color:#fbbf24}
-
-/* MODALS */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:100;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.2s}
 .modal-overlay.show{opacity:1;pointer-events:all}
 .modal{background:var(--panel);border:1px solid var(--border2);border-radius:16px;padding:28px;width:360px;position:relative;transform:translateY(10px);transition:transform 0.2s}
@@ -309,7 +283,7 @@ select option{background:#0d1018}
 </style>
 </head>
 <body>
-<script>if(!localStorage.getItem("token"))window.location.href="index.html";</script>
+<script>if(!localStorage.getItem('token'))window.location.href='index.html';</script>
 
 <!-- MODALS -->
 <div class="modal-overlay" id="warnModal">
@@ -389,7 +363,6 @@ select option{background:#0d1018}
 
     <div class="content-scroll" id="contentScroll">
       <div class="content">
-
         <!-- HOME -->
         <div class="tab-panel active" id="tab-home">
           <div class="profile-card" id="profileCard">
@@ -457,8 +430,6 @@ select option{background:#0d1018}
             <textarea class="field-input field-textarea" id="bioInput" placeholder="Tell the community about yourself..."></textarea>
             <button class="save-btn" id="profileSaveBtn" onclick="saveProfile()">Save Changes</button>
           </div>
-
-          <!-- PRO: avatar & background upload -->
           <div class="settings-section" id="proCustomSection" style="display:none">
             <h4>⭐ PRO CUSTOMIZATION</h4>
             <div class="field-label">Profile Avatar</div>
@@ -468,28 +439,24 @@ select option{background:#0d1018}
             <img id="bgPreview" class="img-preview" />
             <label class="upload-btn"><i class="ti ti-photo" style="font-size:16px"></i> Upload Background <input type="file" accept="image/*" onchange="uploadBg(this)" /></label>
           </div>
-
           <div class="settings-section">
             <h4>ACCENT COLOR</h4>
             <div class="color-grid">
               <div class="color-swatch c-blue selected" data-color="#3b82f6" data-color2="#60a5fa" onclick="setColor(this)">BLUE</div>
-              <div class="color-swatch c-red"    data-color="#ef4444" data-color2="#f87171" onclick="setColor(this)">RED</div>
-              <div class="color-swatch c-green"  data-color="#22c55e" data-color2="#4ade80" onclick="setColor(this)">GREEN</div>
+              <div class="color-swatch c-red" data-color="#ef4444" data-color2="#f87171" onclick="setColor(this)">RED</div>
+              <div class="color-swatch c-green" data-color="#22c55e" data-color2="#4ade80" onclick="setColor(this)">GREEN</div>
               <div class="color-swatch c-purple" data-color="#8b5cf6" data-color2="#a78bfa" onclick="setColor(this)">PURPLE</div>
-              <div class="color-swatch c-amber"  data-color="#f59e0b" data-color2="#fbbf24" onclick="setColor(this)">AMBER</div>
-              <div class="color-swatch c-pink"   data-color="#ec4899" data-color2="#f472b6" onclick="setColor(this)">PINK</div>
-              <div class="color-swatch c-cyan"   data-color="#06b6d4" data-color2="#22d3ee" onclick="setColor(this)">CYAN</div>
+              <div class="color-swatch c-amber" data-color="#f59e0b" data-color2="#fbbf24" onclick="setColor(this)">AMBER</div>
+              <div class="color-swatch c-pink" data-color="#ec4899" data-color2="#f472b6" onclick="setColor(this)">PINK</div>
+              <div class="color-swatch c-cyan" data-color="#06b6d4" data-color2="#22d3ee" onclick="setColor(this)">CYAN</div>
               <div class="color-swatch c-orange" data-color="#f97316" data-color2="#fb923c" onclick="setColor(this)">ORANGE</div>
-              <!-- PRO colors -->
-              <div class="color-swatch c-rose pro-locked"  data-color="#fb7185" data-color2="#fda4af" data-pro="1" onclick="setColor(this)">ROSE</div>
-              <div class="color-swatch c-lime pro-locked"  data-color="#a3e635" data-color2="#bef264" data-pro="1" onclick="setColor(this)">LIME</div>
+              <div class="color-swatch c-rose pro-locked" data-color="#fb7185" data-color2="#fda4af" data-pro="1" onclick="setColor(this)">ROSE</div>
+              <div class="color-swatch c-lime pro-locked" data-color="#a3e635" data-color2="#bef264" data-pro="1" onclick="setColor(this)">LIME</div>
               <div class="color-swatch c-violet pro-locked" data-color="#c4b5fd" data-color2="#ddd6fe" data-pro="1" onclick="setColor(this)">VIOLET</div>
-              <div class="color-swatch c-teal pro-locked"  data-color="#2dd4bf" data-color2="#5eead4" data-pro="1" onclick="setColor(this)">TEAL</div>
+              <div class="color-swatch c-teal pro-locked" data-color="#2dd4bf" data-color2="#5eead4" data-pro="1" onclick="setColor(this)">TEAL</div>
             </div>
             <button class="save-btn" onclick="saveColor()">Apply Color</button>
           </div>
-
-          <!-- PRO PLAN -->
           <div class="pro-plan-card">
             <div class="pro-plan-title"><i class="ti ti-star" style="font-size:20px"></i> PRO PLAN</div>
             <div class="pro-plan-sub">Unlock the full Viper Studios experience</div>
@@ -507,9 +474,7 @@ select option{background:#0d1018}
               <div class="pro-owned-banner" id="proOwnedBanner" style="display:none"><i class="ti ti-crown"></i> You already own PRO — enjoy the perks!</div>
               <div id="proBuySection">
                 <div class="pro-actions">
-                  <button class="purchase-btn" id="purchaseBtn" onclick="purchasePro()">
-                    <i class="ti ti-coin" style="font-size:18px"></i> Purchase — 1000 pts
-                  </button>
+                  <button class="purchase-btn" id="purchaseBtn" onclick="purchasePro()"><i class="ti ti-coin" style="font-size:18px"></i> Purchase — 1000 pts</button>
                   <div style="color:var(--muted);font-size:13px;font-family:'DM Mono',monospace">or redeem a key:</div>
                 </div>
                 <div class="redeem-wrap" style="margin-top:12px">
@@ -525,10 +490,7 @@ select option{background:#0d1018}
         <div class="tab-panel" id="tab-users">
           <div class="members-wrap">
             <div class="members-toolbar">
-              <div class="search-wrap">
-                <i class="ti ti-search"></i>
-                <input class="search-input" id="memberSearch" placeholder="Search members..." oninput="filterMembers()" />
-              </div>
+              <div class="search-wrap"><i class="ti ti-search"></i><input class="search-input" id="memberSearch" placeholder="Search members..." oninput="filterMembers()" /></div>
               <span class="member-count" id="memberCount">— members</span>
             </div>
             <div class="members-list" id="membersList"><div class="members-loading">Loading members...</div></div>
@@ -544,8 +506,6 @@ select option{background:#0d1018}
               <div style="margin-top:6px"><span class="admin-badge">🔒 RESTRICTED ACCESS</span></div>
             </div>
           </div>
-
-          <!-- Key generator -->
           <div class="keygen-card">
             <h4>KEY GENERATOR</h4>
             <div class="keygen-form">
@@ -571,19 +531,11 @@ select option{background:#0d1018}
             <button class="gen-btn" id="genBtn" onclick="generateKey()"><i class="ti ti-key"></i> Generate Key</button>
             <div class="key-list" id="keyList"><div class="empty-keys">No keys generated yet.</div></div>
           </div>
-
-          <!-- Give PRO / Points -->
           <div class="admin-give-card">
             <h4>GIVE PRO & POINTS</h4>
             <div class="form-2col" style="margin-bottom:12px">
-              <div class="form-group">
-                <div class="field-label">USERNAME</div>
-                <input class="field-input" id="giveUsername" placeholder="exact username" style="margin-bottom:0" />
-              </div>
-              <div class="form-group">
-                <div class="field-label">POINTS TO ADD</div>
-                <input class="field-input" id="givePoints" type="number" placeholder="e.g. 500" style="margin-bottom:0" min="0" />
-              </div>
+              <div class="form-group"><div class="field-label">USERNAME</div><input class="field-input" id="giveUsername" placeholder="exact username" style="margin-bottom:0" /></div>
+              <div class="form-group"><div class="field-label">POINTS TO ADD</div><input class="field-input" id="givePoints" type="number" placeholder="e.g. 500" style="margin-bottom:0" min="0" /></div>
             </div>
             <div style="display:flex;gap:10px;flex-wrap:wrap">
               <button class="give-btn" onclick="adminGivePro()"><i class="ti ti-crown"></i> Give PRO</button>
@@ -591,8 +543,6 @@ select option{background:#0d1018}
             </div>
             <div class="confirm-chip" id="giveConfirm" style="margin-top:10px"><i class="ti ti-check"></i> Done!</div>
           </div>
-
-          <!-- Event manager -->
           <div class="admin-event-card">
             <h4>EVENT MANAGER</h4>
             <div class="form-2col">
@@ -617,7 +567,6 @@ select option{background:#0d1018}
             </div>
           </div>
         </div>
-
       </div>
     </div>
 
@@ -635,74 +584,33 @@ select option{background:#0d1018}
 </div>
 
 <script>
-const DISCORD_WEBHOOK='https://ptb.discord.com/api/webhooks/1504629614406795345/m5wdP_PqGFdgBUdffveke9CLs4x1rCdCeJPx3nc0WptxAADt0DTydBo7OimNC6R4DRiY';
-const API='https://viperstudios-production.up.railway.app';
-const token=()=>localStorage.getItem('token');
+const API = 'https://viperstudios-production.up.railway.app';
+const token = () => localStorage.getItem('token');
 
-let generatedKeys=JSON.parse(localStorage.getItem('vs_keys')||'[]');
-let selectedColor=localStorage.getItem('vs_color')||'#3b82f6';
-let selectedColor2=localStorage.getItem('vs_color2')||'#60a5fa';
-let currentUserRank='member';
-let currentUsername='ViperUser';
-let allMembers=[];
-let chatMessages=JSON.parse(localStorage.getItem('vs_chat')||'[]');
-let pendingAction=null;
-let pendingReport=null;
-let myRsvps=new Set(JSON.parse(localStorage.getItem('vs_rsvps')||'[]'));
-let nextEvId=10;
-let userPoints=parseInt(localStorage.getItem('vs_points')||'0');
-let userPro=localStorage.getItem('vs_pro')==='1';
-let userAvatar=localStorage.getItem('vs_avatar')||'';
-let userBg=localStorage.getItem('vs_bg')||'';
-let gameActive=false;
-let gameCards=[];
-let flipped=[];
-let matched=0;
-let moves=0;
-let timerInterval=null;
-let gameSeconds=0;
-let canFlip=true;
-const PRO_COST=1000;
-const PRO_EMOJIS=['🦇','🕷️','🌲','💀','🔦','🌙','🐺','🪦','🕯️','🌕','🗝️','🩸','🌿','👁️','🎃','🪓'];
+// ── PER-USER STATE (loaded from server, NOT shared localStorage) ──
+let currentUsername = '';
+let currentUserRank = 'member';
+let userPro = false;
+let userPoints = 0;
+let userAvatar = '';   // only current user's avatar
+let userBg = '';       // only current user's background
+let selectedColor = '#3b82f6';
+let selectedColor2 = '#60a5fa';
 
-let events=JSON.parse(localStorage.getItem('vs_events')||'null')||[
-  {id:1,title:"Friday Game Night",date:"2026-05-23",time:"20:00",host:"Kira_VRC",desc:"Prop hunt + horror maps!",rsvps:["TK","LM","RJ"]},
-  {id:2,title:"Chill Hangout & Music",date:"2026-05-27",time:"18:00",host:"StarGazer99",desc:"Come vibe, no pressure.",rsvps:["AB","CD"]},
-  {id:3,title:"World Tour Sunday",date:"2026-06-01",time:"16:00",host:"NeonPaw",desc:"Exploring 10 community worlds.",rsvps:["YZ","WX","MN","OP"]},
-];
-const pipColors=["#3b82f6","#22c55e","#f59e0b","#ef4444","#8b5cf6","#06b6d4"];
-const months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+// ── OTHER STATE ──
+let allMembers = [];
+let serverMessages = []; // chat from server
+let pendingAction = null;
+let pendingReport = null;
+let serverEvents = [];
+let generatedKeys = [];
+let gameActive = false, gameCards = [], flipped = [], matched = 0, moves = 0;
+let timerInterval = null, gameSeconds = 0, canFlip = true;
 
-function saveEvents(){localStorage.setItem('vs_events',JSON.stringify(events));}
-function saveRsvps(){localStorage.setItem('vs_rsvps',JSON.stringify([...myRsvps]));}
-function savePoints(){localStorage.setItem('vs_points',userPoints);document.getElementById('pointsDisplay').textContent=userPoints;document.getElementById('statPoints').textContent=userPoints;}
-function savePro(){localStorage.setItem('vs_pro',userPro?'1':'0');}
-
-// ── COLOR ──
-function applyColor(c,c2){document.documentElement.style.setProperty('--accent',c);document.documentElement.style.setProperty('--accent2',c2);}
-function setColor(el){
-  if(el.dataset.pro&&!userPro){toast('⭐ PRO required for this color','pro');return;}
-  document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('selected'));
-  el.classList.add('selected');
-  selectedColor=el.dataset.color;selectedColor2=el.dataset.color2;
-  applyColor(selectedColor,selectedColor2);
-}
-function saveColor(){localStorage.setItem('vs_color',selectedColor);localStorage.setItem('vs_color2',selectedColor2);toast('Accent color saved!','success');}
-
-// ── TAB ──
-const contentScroll=document.getElementById('contentScroll');
-const chatWrap=document.getElementById('chatWrap');
-function switchTab(id,btn){
-  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(b=>b.classList.remove('active'));
-  if(btn)btn.classList.add('active');
-  if(id==='chat'){contentScroll.style.display='none';chatWrap.style.display='flex';renderChat();setTimeout(scrollChatBottom,50);}
-  else{contentScroll.style.display='';chatWrap.style.display='none';document.getElementById('tab-'+id).classList.add('active');if(id==='world')renderEvents();if(id==='users')loadMembers();if(id==='admin'){renderAdminEvents();}}
-  const labels={home:'Dashboard',chat:'Chat',world:'World',games:'Games',settings:'Settings',users:'Members',admin:'Admin Panel'};
-  const codes={home:'HOME',chat:'CHAT',world:'WORLD',games:'GAMES',settings:'SETTINGS',users:'MEMBERS',admin:'ADMIN'};
-  document.getElementById('topbarTitle').textContent=labels[id]||id;
-  document.getElementById('topbarBadge').textContent=codes[id]||id.toUpperCase();
-}
+const PRO_COST = 1000;
+const PRO_EMOJIS = ['🦇','🕷️','🌲','💀','🔦','🌙','🐺','🪦','🕯️','🌕','🗝️','🩸','🌿','👁️','🎃','🪓'];
+const pipColors = ['#3b82f6','#22c55e','#f59e0b','#ef4444','#8b5cf6','#06b6d4'];
+const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
 // ── HELPERS ──
 function roleClass(r){return r==='owner'?'role-owner':r==='admin'?'role-admin':'role-member';}
@@ -710,141 +618,267 @@ function initials(n){return(n||'VS').slice(0,2).toUpperCase();}
 function isAdmin(){return currentUserRank==='admin'||currentUserRank==='owner';}
 function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function toast(msg,type){const t=document.getElementById('toast');t.textContent=msg;t.className='toast show'+(type?' '+type:'');setTimeout(()=>t.classList.remove('show'),2800);}
+function applyColor(c,c2){document.documentElement.style.setProperty('--accent',c);document.documentElement.style.setProperty('--accent2',c2);}
 
-// ── PRO ──
-function applyPro(){
-  userPro=true;savePro();
+// ── COLOR ──
+function setColor(el){
+  if(el.dataset.pro&&!userPro){toast('⭐ PRO required for this color','pro');return;}
+  document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedColor=el.dataset.color;selectedColor2=el.dataset.color2;
+  applyColor(selectedColor,selectedColor2);
+}
+async function saveColor(){
+  localStorage.setItem('vs_color',selectedColor);
+  localStorage.setItem('vs_color2',selectedColor2);
+  try{await fetch(`${API}/api/me/accent`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({accentColor:selectedColor,accentColor2:selectedColor2})});}catch{}
+  toast('Accent color saved!','success');
+}
+
+// ── TAB ──
+const contentScroll = document.getElementById('contentScroll');
+const chatWrap = document.getElementById('chatWrap');
+function switchTab(id,btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  if(id==='chat'){contentScroll.style.display='none';chatWrap.style.display='flex';loadChat();setTimeout(scrollChatBottom,100);}
+  else{contentScroll.style.display='';chatWrap.style.display='none';document.getElementById('tab-'+id).classList.add('active');
+    if(id==='world')loadEvents();
+    if(id==='users')loadMembers();
+    if(id==='admin'){loadAdminKeys();renderAdminEvents();}
+  }
+  const labels={home:'Dashboard',chat:'Chat',world:'World',games:'Games',settings:'Settings',users:'Members',admin:'Admin Panel'};
+  const codes={home:'HOME',chat:'CHAT',world:'WORLD',games:'GAMES',settings:'SETTINGS',users:'MEMBERS',admin:'ADMIN'};
+  document.getElementById('topbarTitle').textContent=labels[id]||id;
+  document.getElementById('topbarBadge').textContent=codes[id]||id.toUpperCase();
+}
+
+// ── LOAD USER (from server only) ──
+async function load(){
+  try{
+    const res = await fetch(`${API}/api/me`,{headers:{Authorization:'Bearer '+token()}});
+    if(res.status===401||res.status===403){logout();return;}
+    const d = await res.json();
+    currentUsername = d.username;
+    currentUserRank = (d.role||d.rank||'user').trim().toLowerCase();
+    userPro = d.pro || false;
+    userPoints = d.points || 0;
+    // ── FIX: only load THIS user's avatar/bg from server ──
+    userAvatar = d.avatar || '';
+    userBg = d.background || '';
+    selectedColor = d.accentColor || localStorage.getItem('vs_color') || '#3b82f6';
+    selectedColor2 = d.accentColor2 || localStorage.getItem('vs_color2') || '#60a5fa';
+  } catch(e){
+    toast('Could not reach server','error');
+    return;
+  }
+
+  // Update UI
+  document.getElementById('chipName').textContent = currentUsername;
+  document.getElementById('chipRole').textContent = currentUserRank;
+  document.getElementById('profileName').childNodes[0].textContent = currentUsername + ' ';
+  document.getElementById('profileRole').textContent = currentUserRank.toUpperCase();
+  document.getElementById('profileRole').className = 'role-badge ' + roleClass(currentUserRank);
+  document.getElementById('statRole').textContent = currentUserRank.toUpperCase();
+  document.getElementById('pointsDisplay').textContent = userPoints;
+  document.getElementById('statPoints').textContent = userPoints;
+
+  if(isAdmin()) document.getElementById('adminNav').style.display='flex';
+
+  // Apply PRO state
+  if(userPro) applyProUI();
+
+  // Apply this user's avatar/bg (not shared with others)
+  refreshMyAvatars();
+  if(userBg){
+    document.getElementById('profileBgEl').style.backgroundImage = `url(${userBg})`;
+    document.getElementById('bgPreview').src = userBg;
+    document.getElementById('bgPreview').style.display = 'block';
+  }
+  if(userAvatar){
+    document.getElementById('avatarPreview').src = userAvatar;
+    document.getElementById('avatarPreview').style.display = 'block';
+  }
+
+  // Apply accent color
+  applyColor(selectedColor, selectedColor2);
+  const sw = document.querySelector(`.color-swatch[data-color="${selectedColor}"]`);
+  if(sw){document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('selected'));sw.classList.add('selected');}
+
+  // Load profile fields
+  try{
+    const res2 = await fetch(`${API}/api/me`,{headers:{Authorization:'Bearer '+token()}});
+    const d2 = await res2.json();
+    loadProfileFields(d2.vrchat||'', d2.bio||'');
+  } catch{}
+
+  renderBoard();
+}
+
+function applyProUI(){
   document.getElementById('proBadge').style.display='';
+  document.getElementById('profileCard').classList.add('pro-card');
   document.getElementById('proOwnedBanner').style.display='flex';
   document.getElementById('proBuySection').style.display='none';
   document.getElementById('proCustomSection').style.display='';
-  document.getElementById('profileCard').classList.add('pro-card');
   document.querySelectorAll('.color-swatch.pro-locked').forEach(s=>s.classList.remove('pro-locked'));
-  toast('⭐ PRO Plan activated! Enjoy the perks.','pro');
-}
-function purchasePro(){
-  if(userPro){toast('You already have PRO!','pro');return;}
-  if(userPoints<PRO_COST){toast(`Need ${PRO_COST} points — you have ${userPoints}`,'error');return;}
-  userPoints-=PRO_COST;savePoints();applyPro();
-}
-function fmtProKey(input){
-  let v=input.value.replace(/[^A-Za-z0-9]/g,'').toUpperCase().slice(0,15);
-  let out='';for(let i=0;i<v.length;i++){if(i===5||i===10)out+='-';out+=v[i];}
-  input.value=out;
-}
-function redeemProKey(){
-  const key=document.getElementById('proKeyInput').value.trim().toUpperCase();
-  if(key.length!==17){toast('Enter a valid key (XXXXX-XXXXX-XXXXX)','error');return;}
-  // Check against locally stored pro keys
-  const proKeys=JSON.parse(localStorage.getItem('vs_pro_keys')||'[]');
-  const found=proKeys.find(k=>k.code===key&&k.active);
-  if(!found){toast('Invalid or already used key','error');return;}
-  found.active=false;
-  localStorage.setItem('vs_pro_keys',JSON.stringify(proKeys));
-  applyPro();
 }
 
-// ── AVATAR / BG UPLOAD ──
-function uploadAvatar(input){
-  const file=input.files[0];if(!file)return;
-  const reader=new FileReader();
-  reader.onload=e=>{
-    userAvatar=e.target.result;localStorage.setItem('vs_avatar',userAvatar);
-    document.getElementById('avatarPreview').src=userAvatar;document.getElementById('avatarPreview').style.display='block';
-    refreshAvatars();toast('Avatar updated!','success');
-  };reader.readAsDataURL(file);
-}
-function uploadBg(input){
-  const file=input.files[0];if(!file)return;
-  const reader=new FileReader();
-  reader.onload=e=>{
-    userBg=e.target.result;localStorage.setItem('vs_bg',userBg);
-    document.getElementById('bgPreview').src=userBg;document.getElementById('bgPreview').style.display='block';
-    document.getElementById('profileBgEl').style.backgroundImage=`url(${userBg})`;
-    toast('Background updated!','success');
-  };reader.readAsDataURL(file);
-}
-function refreshAvatars(){
-  const avatars=document.querySelectorAll('#avatarLg,#avatarSm');
-  avatars.forEach(el=>{
+// Only refresh the CURRENT USER's avatars (sidebar + profile card)
+function refreshMyAvatars(){
+  const els = [document.getElementById('avatarLg'), document.getElementById('avatarSm')];
+  els.forEach(el=>{
+    if(!el)return;
     if(userAvatar){el.innerHTML=`<img src="${userAvatar}" alt="avatar" />`;el.style.background='none';}
     else{el.textContent=initials(currentUsername);el.style.background='';}
   });
 }
 
-// ── LOAD USER ──
-async function load(){
-  let u,r,vrchat='',bio='';
-  try{const res=await fetch(`${API}/api/me`,{headers:{Authorization:'Bearer '+token()}});const d=await res.json();u=(d.username||localStorage.getItem('username')||'ViperUser');r=(d.rank||d.role||localStorage.getItem('rank')||'member').trim().toLowerCase();vrchat=d.vrchat||'';bio=d.bio||'';}
-  catch{u=localStorage.getItem('username')||'ViperUser';r=(localStorage.getItem('rank')||'member').trim().toLowerCase();}
-  currentUserRank=r;currentUsername=u;
-  document.getElementById('chipName').textContent=u;
-  document.getElementById('chipRole').textContent=r;
-  document.getElementById('profileName').childNodes[0].textContent=u+' ';
-  document.getElementById('profileRole').textContent=r.toUpperCase();
-  document.getElementById('profileRole').className='role-badge '+roleClass(r);
-  document.getElementById('statRole').textContent=r.toUpperCase();
-  document.getElementById('statKeys').textContent=generatedKeys.filter(k=>k.active).length;
-  if(isAdmin())document.getElementById('adminNav').style.display='flex';
-  savePoints();
-  if(userPro){document.getElementById('proBadge').style.display='';document.getElementById('profileCard').classList.add('pro-card');document.getElementById('proOwnedBanner').style.display='flex';document.getElementById('proBuySection').style.display='none';document.getElementById('proCustomSection').style.display='';document.querySelectorAll('.color-swatch.pro-locked').forEach(s=>s.classList.remove('pro-locked'));}
-  if(userAvatar){document.getElementById('avatarPreview').src=userAvatar;document.getElementById('avatarPreview').style.display='block';refreshAvatars();}
-  if(userBg){document.getElementById('bgPreview').src=userBg;document.getElementById('bgPreview').style.display='block';document.getElementById('profileBgEl').style.backgroundImage=`url(${userBg})`;}
-  loadProfile(vrchat,bio);
-}
-
 // ── PROFILE ──
 async function saveProfile(){
-  const v=document.getElementById('vrchatInput').value.trim();
-  const b=document.getElementById('bioInput').value.trim();
-  try{const res=await fetch(`${API}/api/me/profile`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({vrchat:v,bio:b})});if(!res.ok){toast('Failed to save','error');return;}}
-  catch{toast('Server offline','error');return;}
+  const v = document.getElementById('vrchatInput').value.trim();
+  const b = document.getElementById('bioInput').value.trim();
+  try{
+    const res = await fetch(`${API}/api/me/profile`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({vrchat:v,bio:b})});
+    if(!res.ok){toast('Failed to save','error');return;}
+  }catch{toast('Server offline','error');return;}
   document.getElementById('vrchatTag').innerHTML=`<i class="ti ti-cube" style="font-size:14px"></i> VRChat: ${v||'Not connected'}`;
   document.getElementById('bioDisplay').textContent=b||'No bio set yet.';
   const btn=document.getElementById('profileSaveBtn');btn.textContent='Saved!';btn.classList.add('saved');
   setTimeout(()=>{btn.textContent='Save Changes';btn.classList.remove('saved');},2000);
 }
-function loadProfile(vrchat,bio){
+
+function loadProfileFields(vrchat,bio){
   document.getElementById('vrchatInput').value=vrchat||'';
   document.getElementById('bioInput').value=bio||'';
   document.getElementById('vrchatTag').innerHTML=`<i class="ti ti-cube" style="font-size:14px"></i> VRChat: ${vrchat||'Not connected'}`;
   document.getElementById('bioDisplay').textContent=bio||'No bio set yet.';
 }
 
+// ── AVATAR / BG UPLOAD (PRO only, saved to server) ──
+function uploadAvatar(input){
+  const file=input.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=async e=>{
+    userAvatar=e.target.result;
+    document.getElementById('avatarPreview').src=userAvatar;
+    document.getElementById('avatarPreview').style.display='block';
+    refreshMyAvatars(); // only updates current user's UI elements
+    try{
+      const res=await fetch(`${API}/api/me/avatar`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({avatar:userAvatar})});
+      if(res.ok)toast('Avatar updated!','success');
+      else toast('Failed to save avatar','error');
+    }catch{toast('Server offline','error');}
+  };
+  reader.readAsDataURL(file);
+}
+
+function uploadBg(input){
+  const file=input.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=async e=>{
+    userBg=e.target.result;
+    document.getElementById('bgPreview').src=userBg;
+    document.getElementById('bgPreview').style.display='block';
+    document.getElementById('profileBgEl').style.backgroundImage=`url(${userBg})`;
+    try{
+      const res=await fetch(`${API}/api/me/background`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({background:userBg})});
+      if(res.ok)toast('Background updated!','success');
+      else toast('Failed to save background','error');
+    }catch{toast('Server offline','error');}
+  };
+  reader.readAsDataURL(file);
+}
+
+// ── PRO ──
+async function purchasePro(){
+  if(userPro){toast('You already have PRO!','pro');return;}
+  if(userPoints<PRO_COST){toast(`Need ${PRO_COST} points — you have ${userPoints}`,'error');return;}
+  try{
+    const res=await fetch(`${API}/api/me/pro/purchase`,{method:'POST',headers:{Authorization:'Bearer '+token()}});
+    const d=await res.json();
+    if(!res.ok){toast(d.error||'Failed','error');return;}
+    userPoints=d.points;
+    document.getElementById('pointsDisplay').textContent=userPoints;
+    document.getElementById('statPoints').textContent=userPoints;
+    userPro=true;applyProUI();
+    toast('⭐ PRO Plan activated! Enjoy the perks.','pro');
+  }catch{toast('Server offline','error');}
+}
+
+function fmtProKey(input){
+  let v=input.value.replace(/[^A-Za-z0-9]/g,'').toUpperCase().slice(0,15);
+  let out='';for(let i=0;i<v.length;i++){if(i===5||i===10)out+='-';out+=v[i];}
+  input.value=out;
+}
+
+async function redeemProKey(){
+  const key=document.getElementById('proKeyInput').value.trim().toUpperCase();
+  if(key.length!==17){toast('Enter a valid key (XXXXX-XXXXX-XXXXX)','error');return;}
+  try{
+    const res=await fetch(`${API}/api/me/pro/redeem`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({code:key})});
+    const d=await res.json();
+    if(!res.ok){toast(d.error||'Invalid key','error');return;}
+    userPro=true;applyProUI();
+    toast('⭐ PRO activated via key!','pro');
+  }catch{toast('Server offline','error');}
+}
+
 // ── MEMBERS ──
 async function loadMembers(){
-  const list=document.getElementById('membersList');list.innerHTML='<div class="members-loading">Loading members...</div>';
-  try{const res=await fetch(`${API}/api/users`,{headers:{Authorization:'Bearer '+token()}});allMembers=await res.json();renderMembers(allMembers);}
-  catch{list.innerHTML='<div class="members-empty">Could not load members.</div>';}
+  const list=document.getElementById('membersList');
+  list.innerHTML='<div class="members-loading">Loading members...</div>';
+  try{
+    const res=await fetch(`${API}/api/users`,{headers:{Authorization:'Bearer '+token()}});
+    allMembers=await res.json();
+    renderMembers(allMembers);
+  }catch{list.innerHTML='<div class="members-empty">Could not load members.</div>';}
 }
-function filterMembers(){const q=document.getElementById('memberSearch').value.toLowerCase();renderMembers(allMembers.filter(m=>m.username.toLowerCase().includes(q)));}
+
+function filterMembers(){
+  const q=document.getElementById('memberSearch').value.toLowerCase();
+  renderMembers(allMembers.filter(m=>m.username.toLowerCase().includes(q)));
+}
+
 function rankOrder(r){return r==='owner'?0:r==='admin'?1:2;}
+
 function renderMembers(members){
   const list=document.getElementById('membersList');
-  const myName=localStorage.getItem('username')||'';
   document.getElementById('memberCount').textContent=`${members.length} member${members.length!==1?'s':''}`;
   if(!members.length){list.innerHTML='<div class="members-empty">No members found.</div>';return;}
   const sorted=[...members].sort((a,b)=>rankOrder(a.role||a.rank)-rankOrder(b.role||b.rank)||a.username.localeCompare(b.username));
   list.innerHTML=sorted.map(m=>{
     const r=(m.role||m.rank||'user').toLowerCase();
-    const isMe=m.username===myName,isBanned=m.banned,warns=m.warnings||0;
+    const isMe=m.username===currentUsername;
+    const isBanned=m.banned;
+    const warns=m.warnings||0;
     const canAct=isAdmin()&&!isMe&&r!=='owner';
     const metaParts=[];
     if(m.vrchat)metaParts.push(m.vrchat);
     if(warns>0)metaParts.push(`<span class="warn-count">⚠ ${warns} warn${warns!==1?'s':''}</span>`);
     if(isBanned)metaParts.push(`<span class="banned-tag">🚫 BANNED</span>`);
+    if(m.pro)metaParts.push(`<span style="color:#fbbf24">⭐ PRO</span>`);
     let actions='';
-    if(canAct){if(isBanned)actions=`<button class="action-btn unban-btn" onclick="doUnban('${m._id}','${m.username}')">✓ Unban</button>`;else actions=`<button class="action-btn warn-btn" onclick="openWarn('${m._id}','${m.username}')">⚠ Warn</button><button class="action-btn ban-btn" onclick="openBan('${m._id}','${m.username}')">🚫 Ban</button>`;}
+    if(canAct){
+      if(isBanned) actions=`<button class="action-btn unban-btn" onclick="doUnban('${m._id}','${m.username}')">✓ Unban</button>`;
+      else actions=`<button class="action-btn warn-btn" onclick="openWarn('${m._id}','${m.username}')">⚠ Warn</button><button class="action-btn ban-btn" onclick="openBan('${m._id}','${m.username}')">🚫 Ban</button>`;
+    }
+    // ── FIX: use per-member avatar from server, not global userAvatar ──
+    const avatarHtml = m.avatar
+      ? `<img src="${m.avatar}" alt="${m.username}" style="width:100%;height:100%;object-fit:cover;border-radius:50%" />`
+      : initials(m.username);
     return `<div class="member-row ${isBanned?'banned-row':''}">
-      <div class="member-avatar">${initials(m.username)}</div>
+      <div class="member-avatar">${avatarHtml}</div>
       <div class="member-info">
-        <div class="member-name">${m.username}${isMe?' <span style="font-size:11px;color:var(--muted)">(you)</span>':''}</div>
+        <div class="member-name">${escHtml(m.username)}${isMe?' <span style="font-size:11px;color:var(--muted)">(you)</span>':''}</div>
         <div class="member-meta"><span class="role-badge ${roleClass(r)}" style="font-size:10px;padding:2px 8px">${r.toUpperCase()}</span>${metaParts.join(' · ')}</div>
       </div>
       <div class="member-actions">${actions}</div>
     </div>`;
   }).join('');
 }
+
 function openWarn(id,username){pendingAction={type:'warn',userId:id,username};document.getElementById('warnModalSub').textContent=`Warning: ${username}`;document.getElementById('warnReason').value='';document.getElementById('warnModal').classList.add('show');document.getElementById('warnConfirmBtn').onclick=confirmWarn;}
 function openBan(id,username){pendingAction={type:'ban',userId:id,username};document.getElementById('banModalSub').textContent=`Banning: ${username}`;document.getElementById('banModal').classList.add('show');document.getElementById('banConfirmBtn').onclick=confirmBan;}
 function closeModal(id){document.getElementById(id).classList.remove('show');pendingAction=null;pendingReport=null;}
@@ -853,99 +887,155 @@ async function confirmWarn(){if(!pendingAction)return;const reason=document.getE
 async function confirmBan(){if(!pendingAction)return;const{userId,username}=pendingAction;closeModal('banModal');try{const res=await fetch(`${API}/api/users/${userId}/ban`,{method:'POST',headers:{Authorization:'Bearer '+token()}});const d=await res.json();res.ok?toast(`🚫 ${username} banned`,'error'):toast(d.error||'Failed','error');loadMembers();}catch{toast('Server error','error');}}
 async function doUnban(userId,username){try{const res=await fetch(`${API}/api/users/${userId}/unban`,{method:'POST',headers:{Authorization:'Bearer '+token()}});const d=await res.json();res.ok?toast(`✓ ${username} unbanned`,'success'):toast(d.error||'Failed','error');loadMembers();}catch{toast('Server error','error');}}
 
-// ── KEYGEN ──
+// ── ADMIN KEYS ──
+async function loadAdminKeys(){
+  try{
+    const res=await fetch(`${API}/api/admin/keys`,{headers:{Authorization:'Bearer '+token()}});
+    if(res.ok){generatedKeys=await res.json();renderKeys();}
+  }catch{}
+}
+
 async function generateKey(){
   const tier=document.getElementById('keyTier').value;
   const uses=parseInt(document.getElementById('keyUses').value);
   const btn=document.getElementById('genBtn');
   btn.disabled=true;btn.innerHTML='<i class="ti ti-loader" style="animation:spin 0.7s linear infinite;display:inline-block"></i> Generating...';
   try{
-    const res=await fetch(`${API}/api/admin/keys/generate`,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token()},body:JSON.stringify({tier,uses})});
+    const res=await fetch(`${API}/api/admin/keys/generate`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({tier,uses})});
     const data=await res.json();
     btn.disabled=false;btn.innerHTML='<i class="ti ti-key"></i> Generate Key';
     if(!res.ok){toast(data.error||'Failed','error');return;}
-    const usesDisplay=data.uses===-1?'∞':String(data.uses);
-    const keyObj={code:data.code,tier:data.tier,uses:usesDisplay,active:true};
-    generatedKeys.unshift(keyObj);
-    localStorage.setItem('vs_keys',JSON.stringify(generatedKeys));
-    // If PRO key, also save to pro_keys list for local redemption
-    if(tier==='pro'){const proKeys=JSON.parse(localStorage.getItem('vs_pro_keys')||'[]');proKeys.push({code:data.code,active:true});localStorage.setItem('vs_pro_keys',JSON.stringify(proKeys));}
-    document.getElementById('statKeys').textContent=generatedKeys.filter(k=>k.active).length;
+    generatedKeys.unshift(data);
+    document.getElementById('statKeys').textContent=generatedKeys.length;
     renderKeys();toast('Key generated: '+data.code,'success');
   }catch{btn.disabled=false;btn.innerHTML='<i class="ti ti-key"></i> Generate Key';toast('Could not reach server','error');}
 }
+
 function renderKeys(){
   const list=document.getElementById('keyList');
-  const active=generatedKeys.filter(k=>k.active);
-  if(!active.length){list.innerHTML='<div class="empty-keys">No keys generated yet.</div>';return;}
-  list.innerHTML=active.map((k,i)=>`
-    <div class="key-row">
+  if(!generatedKeys.length){list.innerHTML='<div class="empty-keys">No keys generated yet.</div>';return;}
+  list.innerHTML=generatedKeys.map((k)=>{
+    const usesDisplay=k.uses===-1?'∞':String(k.uses);
+    return `<div class="key-row">
       <span class="key-code">${k.code}</span>
       <span class="key-tier tier-${k.tier}">${k.tier.toUpperCase()}</span>
-      <span class="key-uses">${k.uses} use${k.uses==='1'?'':'s'}</span>
+      <span class="key-uses">${usesDisplay} use${usesDisplay==='1'?'':'s'}</span>
       <span class="key-status">● ACTIVE</span>
       <button class="key-copy" onclick="copyKey('${k.code}')" title="Copy"><i class="ti ti-copy"></i></button>
-      <button class="key-del" onclick="revokeKey(${i})" title="Revoke"><i class="ti ti-trash"></i></button>
-    </div>`).join('');
-}
-function copyKey(code){navigator.clipboard.writeText(code).then(()=>toast('Copied: '+code,'success'));}
-function revokeKey(i){const active=generatedKeys.filter(k=>k.active);generatedKeys[generatedKeys.indexOf(active[i])].active=false;localStorage.setItem('vs_keys',JSON.stringify(generatedKeys));document.getElementById('statKeys').textContent=generatedKeys.filter(k=>k.active).length;renderKeys();toast('Key revoked','');}
-
-// ── ADMIN GIVE ──
-function adminGivePro(){
-  const username=document.getElementById('giveUsername').value.trim();
-  if(!username){toast('Enter a username','error');return;}
-  // In a real app this would hit an API. For now, if it's the current user just apply it.
-  if(username===currentUsername){applyPro();}
-  else{toast(`PRO granted to ${username} (server-side needed)`,'')}
-  showGiveConfirm();
-}
-function adminGivePoints(){
-  const username=document.getElementById('giveUsername').value.trim();
-  const pts=parseInt(document.getElementById('givePoints').value)||0;
-  if(!username||pts<=0){toast('Enter username and points','error');return;}
-  if(username===currentUsername){userPoints+=pts;savePoints();toast(`+${pts} points added!`,'success');}
-  else{toast(`+${pts} points granted to ${username} (server-side needed)`,'')}
-  showGiveConfirm();
-}
-function showGiveConfirm(){const c=document.getElementById('giveConfirm');c.classList.add('show');setTimeout(()=>c.classList.remove('show'),2000);}
-
-// ── EVENTS ──
-function renderEvents(){
-  const list=document.getElementById('eventsList');
-  if(!events.length){list.innerHTML='<div class="ev-empty">No events scheduled yet.</div>';return;}
-  list.innerHTML=events.map(ev=>{
-    const d=new Date(ev.date+'T12:00:00');
-    const mon=months[d.getMonth()];const day=d.getDate();
-    const going=myRsvps.has(ev.id);
-    const pips=ev.rsvps.slice(0,3).map((r,i)=>`<div class="pip" style="background:${pipColors[i%pipColors.length]}">${r}</div>`).join('');
-    const extra=ev.rsvps.length>3?`<div class="pip" style="background:var(--panel2);color:var(--muted);border:1px solid var(--border2);font-size:9px">+${ev.rsvps.length-3}</div>`:'';
-    return `<div class="event-card">
-      <div class="ev-date"><span class="ev-month">${mon}</span><span class="ev-day">${day}</span></div>
-      <div><div class="ev-title">${escHtml(ev.title)}</div><div class="ev-meta"><span><i class="ti ti-user"></i>${escHtml(ev.host)}</span><span><i class="ti ti-clock"></i>${ev.time} UTC</span></div><div class="ev-desc">${escHtml(ev.desc)}</div></div>
-      <div class="ev-right"><button class="rsvp-btn ${going?'going':''}" onclick="toggleRsvp(${ev.id})">${going?'<i class="ti ti-check"></i> Going':'RSVP'}</button><div class="attendee-pips">${pips}${extra}</div></div>
+      <button class="key-del" onclick="revokeKey('${k._id}')" title="Revoke"><i class="ti ti-trash"></i></button>
     </div>`;
   }).join('');
 }
-function toggleRsvp(id){if(myRsvps.has(id))myRsvps.delete(id);else myRsvps.add(id);saveRsvps();renderEvents();}
-function addEvent(){
+
+function copyKey(code){navigator.clipboard.writeText(code).then(()=>toast('Copied: '+code,'success'));}
+async function revokeKey(id){
+  try{
+    await fetch(`${API}/api/admin/keys/${id}/revoke`,{method:'POST',headers:{Authorization:'Bearer '+token()}});
+    generatedKeys=generatedKeys.filter(k=>k._id!==id);
+    document.getElementById('statKeys').textContent=generatedKeys.length;
+    renderKeys();toast('Key revoked','');
+  }catch{toast('Server error','error');}
+}
+
+// ── ADMIN GIVE ──
+async function adminGivePro(){
+  const username=document.getElementById('giveUsername').value.trim();
+  if(!username){toast('Enter a username','error');return;}
+  try{
+    const res=await fetch(`${API}/api/admin/give/pro`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({username})});
+    const d=await res.json();
+    res.ok?toast(`⭐ PRO given to ${username}`,'pro'):toast(d.error||'Failed','error');
+    if(res.ok)showGiveConfirm();
+  }catch{toast('Server error','error');}
+}
+
+async function adminGivePoints(){
+  const username=document.getElementById('giveUsername').value.trim();
+  const pts=parseInt(document.getElementById('givePoints').value)||0;
+  if(!username||pts<=0){toast('Enter username and points','error');return;}
+  try{
+    const res=await fetch(`${API}/api/admin/give/points`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({username,points:pts})});
+    const d=await res.json();
+    if(res.ok){
+      toast(`+${pts} points given to ${username}`,'success');
+      // If giving to self, update display
+      if(username===currentUsername){userPoints=d.points;document.getElementById('pointsDisplay').textContent=userPoints;document.getElementById('statPoints').textContent=userPoints;}
+      showGiveConfirm();
+    }else{toast(d.error||'Failed','error');}
+  }catch{toast('Server error','error');}
+}
+
+function showGiveConfirm(){const c=document.getElementById('giveConfirm');c.classList.add('show');setTimeout(()=>c.classList.remove('show'),2000);}
+
+// ── EVENTS ──
+async function loadEvents(){
+  try{
+    const res=await fetch(`${API}/api/events`,{headers:{Authorization:'Bearer '+token()}});
+    serverEvents=await res.json();
+    renderEvents();
+  }catch{renderEvents();}
+}
+
+function renderEvents(){
+  const list=document.getElementById('eventsList');
+  if(!serverEvents.length){list.innerHTML='<div class="ev-empty">No events scheduled yet.</div>';return;}
+  list.innerHTML=serverEvents.map(ev=>{
+    const d=new Date(ev.date+'T12:00:00');
+    const mon=months[d.getMonth()];const day=d.getDate();
+    const going=ev.rsvps&&ev.rsvps.includes(currentUsername);
+    const pips=(ev.rsvps||[]).slice(0,3).map((r,i)=>`<div class="pip" style="background:${pipColors[i%pipColors.length]}">${r.slice(0,2).toUpperCase()}</div>`).join('');
+    const extra=(ev.rsvps||[]).length>3?`<div class="pip" style="background:var(--panel2);color:var(--muted);border:1px solid var(--border2);font-size:9px">+${ev.rsvps.length-3}</div>`:'';
+    return `<div class="event-card">
+      <div class="ev-date"><span class="ev-month">${mon}</span><span class="ev-day">${day}</span></div>
+      <div><div class="ev-title">${escHtml(ev.title)}</div><div class="ev-meta"><span><i class="ti ti-user"></i>${escHtml(ev.host)}</span><span><i class="ti ti-clock"></i>${ev.time} UTC</span></div><div class="ev-desc">${escHtml(ev.desc)}</div></div>
+      <div class="ev-right"><button class="rsvp-btn ${going?'going':''}" onclick="toggleRsvp('${ev._id}')">${going?'<i class="ti ti-check"></i> Going':'RSVP'}</button><div class="attendee-pips">${pips}${extra}</div></div>
+    </div>`;
+  }).join('');
+}
+
+async function toggleRsvp(id){
+  try{
+    const res=await fetch(`${API}/api/events/${id}/rsvp`,{method:'POST',headers:{Authorization:'Bearer '+token()}});
+    const d=await res.json();
+    if(res.ok){
+      const ev=serverEvents.find(e=>e._id===id);
+      if(ev)ev.rsvps=d.rsvps;
+      renderEvents();
+    }
+  }catch{toast('Server error','error');}
+}
+
+async function addEvent(){
   const title=document.getElementById('newEvTitle').value.trim();
   const host=document.getElementById('newEvHost').value.trim();
   const date=document.getElementById('newEvDate').value;
   const time=document.getElementById('newEvTime').value;
   const desc=document.getElementById('newEvDesc').value.trim();
   if(!title||!host||!date||!time){toast('Fill all fields','error');return;}
-  events.push({id:nextEvId++,title,host,date,time,desc:desc||'No description.',rsvps:[]});
-  saveEvents();
-  document.getElementById('newEvTitle').value='';document.getElementById('newEvHost').value='';document.getElementById('newEvDate').value='';document.getElementById('newEvTime').value='';document.getElementById('newEvDesc').value='';
-  const chip=document.getElementById('evConfirm');chip.classList.add('show');setTimeout(()=>chip.classList.remove('show'),2000);
-  renderAdminEvents();toast('Event added!','success');
+  try{
+    const res=await fetch(`${API}/api/events`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({title,host,date,time,desc:desc||'No description.'})});
+    const d=await res.json();
+    if(!res.ok){toast(d.error||'Failed','error');return;}
+    serverEvents.push(d);
+    document.getElementById('newEvTitle').value='';document.getElementById('newEvHost').value='';
+    document.getElementById('newEvDate').value='';document.getElementById('newEvTime').value='';document.getElementById('newEvDesc').value='';
+    const chip=document.getElementById('evConfirm');chip.classList.add('show');setTimeout(()=>chip.classList.remove('show'),2000);
+    renderAdminEvents();toast('Event added!','success');
+  }catch{toast('Server error','error');}
 }
-function deleteEvent(id){events=events.filter(e=>e.id!==id);saveEvents();renderAdminEvents();toast('Event removed.','');}
+
+async function deleteEvent(id){
+  try{
+    await fetch(`${API}/api/events/${id}`,{method:'DELETE',headers:{Authorization:'Bearer '+token()}});
+    serverEvents=serverEvents.filter(e=>e._id!==id);
+    renderAdminEvents();toast('Event removed.','');
+  }catch{toast('Server error','error');}
+}
+
 function renderAdminEvents(){
   const el=document.getElementById('adminEvList');
-  if(!events.length){el.innerHTML='<div style="font-size:13px;color:var(--muted);font-family:\'DM Mono\',monospace">No events yet.</div>';return;}
-  el.innerHTML=events.map(ev=>`<div class="admin-ev-row"><div><div class="admin-ev-name">${escHtml(ev.title)}</div><div class="admin-ev-date">${ev.date} · ${ev.time} UTC · ${escHtml(ev.host)}</div></div><button class="del-ev-btn" onclick="deleteEvent(${ev.id})"><i class="ti ti-trash"></i> Remove</button></div>`).join('');
+  if(!serverEvents.length){el.innerHTML='<div style="font-size:13px;color:var(--muted);font-family:\'DM Mono\',monospace">No events yet.</div>';return;}
+  el.innerHTML=serverEvents.map(ev=>`<div class="admin-ev-row"><div><div class="admin-ev-name">${escHtml(ev.title)}</div><div class="admin-ev-date">${ev.date} · ${ev.time} UTC · ${escHtml(ev.host)}</div></div><button class="del-ev-btn" onclick="deleteEvent('${ev._id}')"><i class="ti ti-trash"></i> Remove</button></div>`).join('');
 }
 
 // ── MEMORY GAME ──
@@ -962,6 +1052,7 @@ function startGame(){
   gameCards=[...emojis,...emojis].sort(()=>Math.random()-0.5);
   renderBoard();
 }
+
 function renderBoard(){
   const board=document.getElementById('gameBoard');
   if(!gameActive){board.innerHTML=`<div class="game-idle"><i class="ti ti-cards"></i>Press Start to play — match all pairs to earn 100 points!</div>`;return;}
@@ -971,73 +1062,72 @@ function renderBoard(){
       <div class="card-back">${emoji}</div>
     </button>`).join('')}</div>`;
 }
+
 function flipCard(i){
   if(!canFlip||!gameActive)return;
   const card=document.getElementById('mc-'+i);
   if(card.classList.contains('flipped')||card.classList.contains('matched'))return;
-  card.classList.add('flipped');
-  flipped.push(i);
+  card.classList.add('flipped');flipped.push(i);
   if(flipped.length===2){
-    moves++;document.getElementById('moveCount').textContent=moves;
-    canFlip=false;
+    moves++;document.getElementById('moveCount').textContent=moves;canFlip=false;
     const[a,b]=flipped;
     if(gameCards[a]===gameCards[b]){
-      setTimeout(()=>{
-        document.getElementById('mc-'+a).classList.add('matched');
-        document.getElementById('mc-'+b).classList.add('matched');
-        flipped=[];matched++;canFlip=true;
-        if(matched===8)winGame();
-      },400);
-    } else {
-      setTimeout(()=>{
-        document.getElementById('mc-'+a).classList.remove('flipped');
-        document.getElementById('mc-'+b).classList.remove('flipped');
-        flipped=[];canFlip=true;
-      },800);
+      setTimeout(()=>{document.getElementById('mc-'+a).classList.add('matched');document.getElementById('mc-'+b).classList.add('matched');flipped=[];matched++;canFlip=true;if(matched===8)winGame();},400);
+    }else{
+      setTimeout(()=>{document.getElementById('mc-'+a).classList.remove('flipped');document.getElementById('mc-'+b).classList.remove('flipped');flipped=[];canFlip=true;},800);
     }
   }
 }
-function winGame(){
+
+async function winGame(){
   clearInterval(timerInterval);gameActive=false;
   document.getElementById('startBtn').disabled=false;
-  userPoints+=100;savePoints();
-  const banner=document.getElementById('winBanner');
+  // Award points via server
+  try{
+    const res=await fetch(`${API}/api/me/points/add`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({amount:100})});
+    const d=await res.json();
+    if(res.ok){userPoints=d.points;document.getElementById('pointsDisplay').textContent=userPoints;document.getElementById('statPoints').textContent=userPoints;}
+  }catch{}
   document.getElementById('winPts').textContent=`+100 points — total: ${userPoints}`;
-  banner.style.display='flex';
+  document.getElementById('winBanner').style.display='flex';
   toast('🎉 You won! +100 points','success');
 }
 
-// ── CHAT ──
+// ── CHAT (from server) ──
+async function loadChat(){
+  try{
+    const res=await fetch(`${API}/api/chat`,{headers:{Authorization:'Bearer '+token()}});
+    serverMessages=await res.json();
+    renderChat();scrollChatBottom();
+  }catch{renderChat();}
+}
+
 function fmtDate(ts){return new Date(ts).toLocaleDateString('en-GB',{weekday:'long',year:'numeric',month:'long',day:'numeric'});}
 function fmtTime(ts){return new Date(ts).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});}
-function fmtFull(ts){const d=new Date(ts);return d.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'})+' at '+d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',second:'2-digit'});}
-function rankClass(r){
-  if(r==='owner')return'rank-owner';
-  if(r==='admin')return'rank-admin';
-  return'rank-member';
-}
+
 function chatRankLabel(r,isPro){
   if(r==='owner')return`<span class="msg-rank rank-owner">OWNER</span>`;
   if(r==='admin')return`<span class="msg-rank rank-admin">ADMIN</span>`;
   if(isPro)return`<span class="msg-rank rank-pro">⭐ PRO</span>`;
   return`<span class="msg-rank rank-member">MEMBER</span>`;
 }
+
 function renderChat(){
   const el=document.getElementById('chatMessages');
-  const visible=chatMessages.filter(m=>!m.deleted);
-  if(!visible.length){el.innerHTML='<div class="chat-empty-state"><i class="ti ti-message-circle"></i>No messages yet — say something!</div>';return;}
+  if(!serverMessages.length){el.innerHTML='<div class="chat-empty-state"><i class="ti ti-message-circle"></i>No messages yet — say something!</div>';return;}
   let html='',lastDate='';
-  chatMessages.forEach((msg,idx)=>{
+  serverMessages.forEach((msg,idx)=>{
     if(msg.deleted)return;
     const dateStr=fmtDate(msg.timestamp);
     if(dateStr!==lastDate){html+=`<div class="chat-date-divider">${dateStr}</div>`;lastDate=dateStr;}
-    const rank=(msg.rank||'member').toLowerCase();
+    const rank=(msg.rank||'user').toLowerCase();
     const mine=msg.author===currentUsername;
     const isPro=msg.isPro||false;
     const nameColor=isPro?'color:#fbbf24':'';
     let acts='';
-    if(isAdmin())acts+=`<button class="msg-act-btn delete-btn" onclick="deleteMessage(${idx})" title="Delete"><i class="ti ti-trash"></i></button>`;
-    if(!mine)acts+=`<button class="msg-act-btn report-btn" onclick="openReport(${idx})" title="Report"><i class="ti ti-flag"></i></button>`;
+    if(isAdmin())acts+=`<button class="msg-act-btn delete-btn" onclick="deleteMessage('${msg._id}')" title="Delete"><i class="ti ti-trash"></i></button>`;
+    if(!mine)acts+=`<button class="msg-act-btn report-btn" onclick="openReport('${msg._id}','${escHtml(msg.author)}')" title="Report"><i class="ti ti-flag"></i></button>`;
+    // ── FIX: each message uses its OWN stored avatar, not the current user's ──
     const avatarHtml=msg.avatar?`<img src="${msg.avatar}" alt="avatar" />`:(initials(msg.author));
     html+=`<div class="chat-msg" id="cmsg-${idx}">
       <div class="msg-avatar">${avatarHtml}</div>
@@ -1050,31 +1140,54 @@ function renderChat(){
   });
   el.innerHTML=html;
 }
+
 function scrollChatBottom(){const el=document.getElementById('chatMessages');if(el)el.scrollTop=el.scrollHeight;}
-function sendChatMessage(){
+
+async function sendChatMessage(){
   const inp=document.getElementById('chatInput');
   const content=inp.value.trim();if(!content)return;
-  chatMessages.push({author:currentUsername,rank:currentUserRank,content,timestamp:Date.now(),deleted:false,isPro:userPro,avatar:userAvatar||null});
-  localStorage.setItem('vs_chat',JSON.stringify(chatMessages));
-  inp.value='';renderChat();scrollChatBottom();
-}
-function deleteMessage(idx){if(chatMessages[idx]){chatMessages[idx].deleted=true;localStorage.setItem('vs_chat',JSON.stringify(chatMessages));renderChat();toast('Message deleted','');}}
-function openReport(idx){pendingReport={idx};const msg=chatMessages[idx];document.getElementById('reportModalSub').textContent=`Reporting message from: ${msg.author}`;document.getElementById('reportReason').value='Spam';document.getElementById('reportDetails').value='';document.getElementById('reportModal').classList.add('show');document.getElementById('reportConfirmBtn').onclick=confirmReport;}
-async function confirmReport(){
-  if(pendingReport===null)return;const msg=chatMessages[pendingReport.idx];const reason=document.getElementById('reportReason').value;const details=document.getElementById('reportDetails').value.trim();closeModal('reportModal');
-  const embed={title:'🚩 Message Reported — Viper Studios',color:0xf59e0b,fields:[{name:'Reported User',value:`**${msg.author}**`,inline:true},{name:'Reported By',value:`**${currentUsername}**`,inline:true},{name:'Reason',value:reason,inline:false},{name:'Message',value:`\`\`\`${msg.content.slice(0,900)}\`\`\``,inline:false}]};
-  if(details)embed.fields.push({name:'Extra details',value:details,inline:false});
-  try{const r=await fetch(DISCORD_WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({embeds:[embed]})});(r.ok||r.status===204)?toast('Report sent','warn'):toast('Webhook failed','error');}
-  catch{toast('Could not reach Discord','error');}
+  inp.value='';
+  try{
+    const res=await fetch(`${API}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({content})});
+    const d=await res.json();
+    if(res.ok){serverMessages.push(d);renderChat();scrollChatBottom();}
+    else toast(d.error||'Failed to send','error');
+  }catch{toast('Server offline','error');}
 }
 
-function logout(){localStorage.removeItem('token');window.location.href='index.html';}
+async function deleteMessage(id){
+  try{
+    const res=await fetch(`${API}/api/chat/${id}`,{method:'DELETE',headers:{Authorization:'Bearer '+token()}});
+    if(res.ok){serverMessages=serverMessages.filter(m=>m._id!==id);renderChat();toast('Message deleted','');}
+  }catch{toast('Server error','error');}
+}
+
+function openReport(id,author){
+  pendingReport={id};
+  document.getElementById('reportModalSub').textContent=`Reporting message from: ${author}`;
+  document.getElementById('reportReason').value='Spam';
+  document.getElementById('reportDetails').value='';
+  document.getElementById('reportModal').classList.add('show');
+  document.getElementById('reportConfirmBtn').onclick=confirmReport;
+}
+
+async function confirmReport(){
+  if(!pendingReport)return;
+  const reason=document.getElementById('reportReason').value;
+  const details=document.getElementById('reportDetails').value.trim();
+  closeModal('reportModal');
+  try{
+    const res=await fetch(`${API}/api/chat/${pendingReport.id}/report`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({reason,details})});
+    (res.ok||res.status===204)?toast('Report sent','warn'):toast('Failed','error');
+  }catch{toast('Could not reach server','error');}
+}
+
+function logout(){localStorage.removeItem('token');localStorage.removeItem('username');localStorage.removeItem('rank');window.location.href='index.html';}
 
 document.getElementById('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChatMessage();}});
+
+// Init
 applyColor(selectedColor,selectedColor2);
-const sw=document.querySelector(`.color-swatch[data-color="${selectedColor}"]`);
-if(sw){document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('selected'));sw.classList.add('selected');}
-renderKeys();
 renderBoard();
 load();
 </script>
