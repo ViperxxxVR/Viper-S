@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Viper Studios - Sign Up</title>
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/lucide@0.395.0/dist/umd/lucide.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#07090f;--panel:#0d1018;--panel2:#111520;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);--accent:#3b82f6;--accent2:#60a5fa;--text:#e8eaf0;--muted:#6b7280;--green:#22c55e;--red:#ef4444}
@@ -23,8 +23,6 @@ body::after{content:'';position:fixed;top:-120px;left:50%;transform:translateX(-
 .card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#3b82f6,#8b5cf6,#06b6d4)}
 .card-title{font-size:14px;font-weight:700;color:var(--muted);letter-spacing:2px;font-family:'DM Mono',monospace;margin-bottom:6px}
 .card-sub{font-size:13px;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:22px;line-height:1.5}
-
-/* STEPS */
 .steps{display:flex;align-items:center;margin-bottom:24px}
 .step{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;position:relative}
 .step:not(:last-child)::after{content:'';position:absolute;top:14px;left:50%;width:100%;height:1px;background:var(--border2);z-index:0}
@@ -35,25 +33,22 @@ body::after{content:'';position:fixed;top:-120px;left:50%;transform:translateX(-
 .step-label{font-size:10px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:0.5px}
 .step.active .step-label{color:var(--accent2)}.step.done .step-label{color:var(--green)}
 .step-panel{display:none}.step-panel.active{display:block}
-
-/* FIELDS */
 .field{margin-bottom:14px}
 .field-label{font-size:12px;color:var(--muted);letter-spacing:1px;font-family:'DM Mono',monospace;margin-bottom:6px;display:flex;align-items:center;gap:6px}
 .opt{font-size:10px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:999px;padding:1px 7px;color:var(--muted);letter-spacing:0.5px}
 .field-wrap{position:relative;display:flex;align-items:center}
-.field-wrap svg{position:absolute;left:12px;width:17px;height:17px;color:var(--muted);stroke:currentColor;pointer-events:none}
+.field-wrap i.fi{position:absolute;left:12px;font-size:17px;color:var(--muted);pointer-events:none}
 .field-input{width:100%;background:var(--bg);border:1px solid var(--border2);border-radius:9px;padding:10px 14px 10px 38px;color:var(--text);font-family:'Rajdhani',sans-serif;font-size:14px;outline:none;transition:border 0.15s,box-shadow 0.15s}
 .field-input::placeholder{color:rgba(107,114,128,0.7)}
 .field-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(59,130,246,0.12)}
-
-/* KEY FIELD */
-.key-field-wrap{position:relative}
-.key-field-wrap input{text-transform:uppercase;letter-spacing:2px;font-family:'DM Mono',monospace;font-size:15px;padding-left:38px}
+.key-field-wrap input{text-transform:uppercase;letter-spacing:2px;font-family:'DM Mono',monospace;font-size:15px}
 .key-valid-icon{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:16px;display:none;font-style:normal}
 .key-valid-icon.show-ok{display:block;color:var(--green)}
 .key-valid-icon.show-err{display:block;color:var(--red)}
-
-/* CODE INPUT */
+.strength-wrap{margin-top:6px}
+.strength-bar{height:3px;border-radius:999px;background:var(--border2);overflow:hidden}
+.strength-fill{height:100%;border-radius:999px;width:0;transition:width 0.3s,background 0.3s}
+.strength-label{font-size:11px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:4px}
 .code-wrap{display:flex;gap:8px;justify-content:center;margin:20px 0}
 .code-digit{width:48px;height:60px;background:var(--bg);border:1px solid var(--border2);border-radius:10px;text-align:center;font-size:26px;font-weight:700;font-family:'DM Mono',monospace;color:var(--text);outline:none;transition:border 0.15s,box-shadow 0.15s;caret-color:transparent}
 .code-digit:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(59,130,246,0.12)}
@@ -63,35 +58,27 @@ body::after{content:'';position:fixed;top:-120px;left:50%;transform:translateX(-
 .resend-btn{background:none;border:none;color:var(--muted);font-family:'DM Mono',monospace;font-size:12px;cursor:pointer;padding:0;transition:color 0.15s;display:block;margin:10px auto 0}
 .resend-btn:hover{color:var(--accent2)}
 .resend-btn:disabled{opacity:0.4;pointer-events:none}
-
-/* STRENGTH BAR */
-.strength-wrap{margin-top:6px}
-.strength-bar{height:3px;border-radius:999px;background:var(--border2);overflow:hidden}
-.strength-fill{height:100%;border-radius:999px;width:0;transition:width 0.3s,background 0.3s}
-.strength-label{font-size:11px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:4px}
-
-/* BUTTONS */
 .next-btn{width:100%;background:linear-gradient(135deg,#1d4ed8,#3b82f6);color:#fff;border:none;border-radius:9px;padding:12px;font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;letter-spacing:1px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity 0.15s,transform 0.1s,box-shadow 0.2s;box-shadow:0 4px 18px rgba(59,130,246,0.25);margin-top:4px}
-.next-btn svg{width:16px;height:16px;stroke:currentColor}
 .next-btn:hover{opacity:0.9;transform:translateY(-1px)}.next-btn:active{transform:translateY(0)}
 .next-btn.loading{opacity:0.7;pointer-events:none}
 .back-btn{width:100%;background:none;border:1px solid var(--border2);border-radius:9px;padding:10px;color:var(--muted);font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s;margin-top:8px;display:flex;align-items:center;justify-content:center;gap:6px}
-.back-btn svg{width:14px;height:14px;stroke:currentColor}
 .back-btn:hover{color:var(--text);border-color:var(--text)}
+/* email skip link */
+.skip-email{display:block;text-align:center;margin-top:10px;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;cursor:pointer;transition:color 0.15s;background:none;border:none;width:100%;padding:4px}
+.skip-email:hover{color:var(--accent2)}
 hr{border:none;border-top:1px solid var(--border);margin:16px 0}
-
-/* SUCCESS */
 .success-wrap{text-align:center;padding:10px 0}
 .success-icon{font-size:48px;margin-bottom:12px;display:block}
 .success-title{font-size:20px;font-weight:700;color:#fff;margin-bottom:6px}
 .success-sub{font-size:13px;color:var(--muted);font-family:'DM Mono',monospace;line-height:1.5;margin-bottom:20px}
-
-/* ERRORS */
 .err-msg{font-size:12px;font-family:'DM Mono',monospace;color:var(--red);background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:8px;padding:8px 12px;margin-top:12px;display:none}
 .err-msg.show{display:block}
 .bottom-link{font-size:13px;font-family:'DM Mono',monospace;color:var(--muted);text-align:center}
 .bottom-link a{color:var(--accent2);text-decoration:none;font-weight:600}
 .bottom-link a:hover{text-decoration:underline}
+/* no-email warning chip */
+.warn-chip{display:flex;align-items:center;gap:8px;font-size:12px;color:#f59e0b;font-family:'DM Mono',monospace;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-radius:8px;padding:8px 12px;margin-top:10px}
+.warn-chip i{font-size:15px;flex-shrink:0}
 </style>
 </head>
 <body>
@@ -106,6 +93,7 @@ hr{border:none;border-top:1px solid var(--border);margin:16px 0}
     <div class="card-title">CREATE ACCOUNT</div>
     <div class="card-sub">Invite key required to join.</div>
 
+    <!-- Steps — 4 shown, verify hidden when no email -->
     <div class="steps">
       <div class="step active" id="s1"><div class="step-num">1</div><div class="step-label">ACCOUNT</div></div>
       <div class="step" id="s2"><div class="step-num">2</div><div class="step-label">PROFILE</div></div>
@@ -117,36 +105,56 @@ hr{border:none;border-top:1px solid var(--border);margin:16px 0}
     <div class="step-panel active" id="panel1">
       <div class="field">
         <div class="field-label">USERNAME</div>
-        <div class="field-wrap"><i data-lucide="user"></i><input class="field-input" id="username" placeholder="ViperUser" autocomplete="username" oninput="clearErr()" /></div>
+        <div class="field-wrap">
+          <i class="ti ti-user fi"></i>
+          <input class="field-input" id="username" placeholder="ViperUser" autocomplete="username" oninput="clearErr()" />
+        </div>
       </div>
       <div class="field">
         <div class="field-label">PASSWORD</div>
-        <div class="field-wrap"><i data-lucide="lock"></i><input class="field-input" id="password" type="password" placeholder="••••••••" oninput="checkStrength()" /></div>
+        <div class="field-wrap">
+          <i class="ti ti-lock fi"></i>
+          <input class="field-input" id="password" type="password" placeholder="••••••••" oninput="checkStrength()" />
+        </div>
         <div class="strength-wrap"><div class="strength-bar"><div class="strength-fill" id="strengthFill"></div></div><div class="strength-label" id="strengthLabel">Enter a password</div></div>
       </div>
       <div class="field" style="margin-bottom:0">
         <div class="field-label">CONFIRM PASSWORD</div>
-        <div class="field-wrap"><i data-lucide="lock"></i><input class="field-input" id="confirmPassword" type="password" placeholder="••••••••" oninput="clearErr()" /></div>
+        <div class="field-wrap">
+          <i class="ti ti-lock fi"></i>
+          <input class="field-input" id="confirmPassword" type="password" placeholder="••••••••" oninput="clearErr()" />
+        </div>
       </div>
       <div class="err-msg" id="err1"></div>
       <hr />
-      <button class="next-btn" onclick="step1Next()"><span>Next</span><i data-lucide="arrow-right"></i></button>
+      <button class="next-btn" onclick="step1Next()"><i class="ti ti-arrow-right"></i> Next</button>
     </div>
 
-    <!-- STEP 2: Profile -->
+    <!-- STEP 2: Profile / Email -->
     <div class="step-panel" id="panel2">
       <div class="field">
-        <div class="field-label">EMAIL</div>
-        <div class="field-wrap"><i data-lucide="mail"></i><input class="field-input" id="email" type="email" placeholder="you@example.com" /></div>
+        <div class="field-label">EMAIL <span class="opt">OPTIONAL</span></div>
+        <div class="field-wrap">
+          <i class="ti ti-mail fi"></i>
+          <input class="field-input" id="email" type="email" placeholder="you@example.com" oninput="onEmailInput()" />
+        </div>
       </div>
       <div class="field" style="margin-bottom:0">
         <div class="field-label">VRCHAT ID <span class="opt">OPTIONAL</span></div>
-        <div class="field-wrap"><i data-lucide="box"></i><input class="field-input" id="vrchat" placeholder="usr_xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" /></div>
+        <div class="field-wrap">
+          <i class="ti ti-cube fi"></i>
+          <input class="field-input" id="vrchat" placeholder="usr_xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" />
+        </div>
+      </div>
+      <!-- shown when email is empty -->
+      <div class="warn-chip" id="noEmailWarn" style="display:none">
+        <i class="ti ti-alert-triangle"></i>
+        No email — you won't be able to recover your account if you forget your password.
       </div>
       <div class="err-msg" id="err2"></div>
       <hr />
-      <button class="next-btn" onclick="step2Next()"><span>Next</span><i data-lucide="arrow-right"></i></button>
-      <button class="back-btn" onclick="goStep(1)"><i data-lucide="arrow-left"></i> Back</button>
+      <button class="next-btn" onclick="step2Next()"><i class="ti ti-arrow-right"></i> Next</button>
+      <button class="back-btn" onclick="goStep(1)"><i class="ti ti-arrow-left"></i> Back</button>
     </div>
 
     <!-- STEP 3: Invite Key -->
@@ -154,7 +162,7 @@ hr{border:none;border-top:1px solid var(--border);margin:16px 0}
       <div class="field" style="margin-bottom:0">
         <div class="field-label">INVITE KEY</div>
         <div class="field-wrap key-field-wrap">
-          <i data-lucide="key"></i>
+          <i class="ti ti-key fi"></i>
           <input class="field-input" id="inviteKey" placeholder="XXXXX-XXXXX-XXXXX" oninput="formatKey(this)" maxlength="17" />
           <span class="key-valid-icon" id="keyOk">✓</span>
           <span class="key-valid-icon" id="keyErr">✗</span>
@@ -163,12 +171,13 @@ hr{border:none;border-top:1px solid var(--border);margin:16px 0}
       <div class="err-msg" id="err3"></div>
       <hr />
       <button class="next-btn" id="submitBtn" onclick="submitSignup()">
-        <span id="submitText">Send Verification Email</span><i data-lucide="mail"></i>
+        <i class="ti ti-mail" id="submitIcon"></i>
+        <span id="submitText">Send Verification Email</span>
       </button>
-      <button class="back-btn" onclick="goStep(2)"><i data-lucide="arrow-left"></i> Back</button>
+      <button class="back-btn" onclick="goStep(2)"><i class="ti ti-arrow-left"></i> Back</button>
     </div>
 
-    <!-- STEP 4: Verify Email Code -->
+    <!-- STEP 4: Verify Email Code (skipped if no email) -->
     <div class="step-panel" id="panel4">
       <div class="verify-email-note">
         We sent a 6-digit code to<br>
@@ -184,7 +193,7 @@ hr{border:none;border-top:1px solid var(--border);margin:16px 0}
       </div>
       <div class="err-msg" id="err4"></div>
       <button class="next-btn" id="verifyBtn" onclick="verifyCode()">
-        <span id="verifyText">Verify Code</span><i data-lucide="check"></i>
+        <i class="ti ti-check"></i> <span id="verifyText">Verify Code</span>
       </button>
       <button class="resend-btn" id="resendBtn" onclick="resendCode()">Resend code</button>
     </div>
@@ -194,8 +203,8 @@ hr{border:none;border-top:1px solid var(--border);margin:16px 0}
       <div class="success-wrap">
         <span class="success-icon">🎉</span>
         <div class="success-title">You're in!</div>
-        <div class="success-sub">Your account has been verified and created.<br>Welcome to Viper Studios.</div>
-        <button class="next-btn" onclick="window.location.href='index.html'"><i data-lucide="log-in"></i> Go to Login</button>
+        <div class="success-sub">Your account has been created.<br>Welcome to Viper Studios.</div>
+        <button class="next-btn" onclick="window.location.href='index.html'"><i class="ti ti-login"></i> Go to Login</button>
       </div>
     </div>
   </div>
@@ -204,11 +213,11 @@ hr{border:none;border-top:1px solid var(--border);margin:16px 0}
 </div>
 
 <script>
-lucide.createIcons();
-const API = 'https://viper-studios.onrender.com';
+const API = 'https://viperstudios-production.up.railway.app';
 let currentStep = 1;
-let signupToken = null; // returned by server after step 3
+let signupToken = null;
 let resendTimer = null;
+let skipEmail = false; // true when user chooses no email
 
 function goStep(n) {
   document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
@@ -221,11 +230,16 @@ function goStep(n) {
     else if (i === n) s.classList.add('active');
   }
   currentStep = n;
-  lucide.createIcons();
 }
 
 function showErr(id, msg) { const el = document.getElementById(id); el.textContent = msg; el.classList.add('show'); }
 function clearErr() { document.querySelectorAll('.err-msg').forEach(e => e.classList.remove('show')); }
+
+function onEmailInput() {
+  const email = document.getElementById('email').value.trim();
+  const warn = document.getElementById('noEmailWarn');
+  warn.style.display = email ? 'none' : 'flex';
+}
 
 function checkStrength() {
   const pw = document.getElementById('password').value;
@@ -265,7 +279,17 @@ function step1Next() {
 function step2Next() {
   clearErr();
   const email = document.getElementById('email').value.trim();
-  if (!email || !email.includes('@')) return showErr('err2', 'A valid email is required for verification.');
+  skipEmail = !email; // if email blank, we'll skip verify step
+
+  // Update step 3 button label based on whether email is provided
+  if (skipEmail) {
+    document.getElementById('submitText').textContent = 'Create Account';
+    document.getElementById('submitIcon').className = 'ti ti-user-plus';
+  } else {
+    document.getElementById('submitText').textContent = 'Send Verification Email';
+    document.getElementById('submitIcon').className = 'ti ti-mail';
+  }
+
   goStep(3);
 }
 
@@ -274,33 +298,61 @@ async function submitSignup() {
   const key = document.getElementById('inviteKey').value.trim();
   if (key.length !== 17) return showErr('err3', 'Enter a valid invite key (XXXXX-XXXXX-XXXXX).');
 
-  const btn = document.getElementById('submitBtn'), txt = document.getElementById('submitText');
-  btn.classList.add('loading'); txt.textContent = 'Sending email...';
+  const btn = document.getElementById('submitBtn');
+  const txt = document.getElementById('submitText');
+  btn.classList.add('loading');
+  txt.textContent = skipEmail ? 'Creating account...' : 'Sending email...';
 
   const body = {
     username: document.getElementById('username').value.trim(),
     password: document.getElementById('password').value,
     confirmPassword: document.getElementById('confirmPassword').value,
-    email: document.getElementById('email').value.trim(),
+    email: document.getElementById('email').value.trim() || '', // empty string = no email
     vrchat: document.getElementById('vrchat').value.trim(),
     key,
+    skipEmailVerify: skipEmail, // tell server to skip verification
   };
 
   try {
-    const res = await fetch(`${API}/api/signup`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    const res = await fetch(`${API}/api/signup`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
     const data = await res.json();
-    btn.classList.remove('loading'); txt.textContent = 'Send Verification Email';
+    btn.classList.remove('loading');
+    txt.textContent = skipEmail ? 'Create Account' : 'Send Verification Email';
 
     if (!res.ok) return showErr('err3', data.error || 'Signup failed.');
 
-    signupToken = data.token;
-    document.getElementById('emailDisplay').textContent = body.email;
-    goStep(4);
-    startResendTimer();
+    if (skipEmail) {
+      // Account created immediately — go straight to success
+      markAllStepsDone();
+      showSuccess();
+    } else {
+      // Has email — go to verify step
+      signupToken = data.token;
+      document.getElementById('emailDisplay').textContent = body.email;
+      goStep(4);
+      startResendTimer();
+    }
   } catch {
-    btn.classList.remove('loading'); txt.textContent = 'Send Verification Email';
+    btn.classList.remove('loading');
+    txt.textContent = skipEmail ? 'Create Account' : 'Send Verification Email';
     showErr('err3', 'Could not reach server. Is it running?');
   }
+}
+
+function markAllStepsDone() {
+  for (let i = 1; i <= 4; i++) {
+    const s = document.getElementById('s' + i);
+    if (s) { s.classList.remove('active'); s.classList.add('done'); }
+  }
+}
+
+function showSuccess() {
+  document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel5').classList.add('active');
 }
 
 /* ── CODE INPUT ── */
@@ -310,9 +362,7 @@ function codeInput(i) {
   el.value = val ? val[0] : '';
   el.classList.toggle('filled', !!el.value);
   if (el.value && i < 5) document.getElementById('d' + (i + 1)).focus();
-  // auto-verify when all 6 filled
-  const code = getCode();
-  if (code.length === 6) verifyCode();
+  if (getCode().length === 6) verifyCode();
 }
 
 function codeKey(e, i) {
@@ -320,7 +370,6 @@ function codeKey(e, i) {
     document.getElementById('d' + (i - 1)).focus();
   }
   if (e.key === 'v' && (e.ctrlKey || e.metaKey)) {
-    // handle paste
     e.preventDefault();
     navigator.clipboard.readText().then(text => {
       const digits = text.replace(/\D/g, '').slice(0, 6);
@@ -356,25 +405,20 @@ async function verifyCode() {
 
     if (!res.ok) {
       showErr('err4', data.error || 'Verification failed.');
-      // clear digits on wrong code
       [0,1,2,3,4,5].forEach(i => { const d = document.getElementById('d'+i); d.value=''; d.classList.remove('filled'); });
       document.getElementById('d0').focus();
       return;
     }
 
-    // Clear timer and show success
     clearInterval(resendTimer);
-    document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
-    document.getElementById('panel5').classList.add('active');
-    for (let i = 1; i <= 4; i++) { const s = document.getElementById('s'+i); if(s){ s.classList.remove('active'); s.classList.add('done'); } }
-    lucide.createIcons();
+    markAllStepsDone();
+    showSuccess();
   } catch {
     btn.classList.remove('loading'); txt.textContent = 'Verify Code';
     showErr('err4', 'Could not reach server.');
   }
 }
 
-/* ── RESEND ── */
 function startResendTimer() {
   let secs = 60;
   const btn = document.getElementById('resendBtn');
@@ -392,7 +436,6 @@ async function resendCode() {
   [0,1,2,3,4,5].forEach(i => { const d = document.getElementById('d'+i); d.value=''; d.classList.remove('filled'); });
   clearErr();
 
-  // Re-submit the same data
   const body = {
     username: document.getElementById('username').value.trim(),
     password: document.getElementById('password').value,
