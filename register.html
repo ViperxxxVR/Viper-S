@@ -8,18 +8,17 @@
 <link rel="stylesheet" href="https://unpkg.com/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#07090f;--panel:#0d1018;--panel2:#111520;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);--accent:#3b82f6;--accent2:#60a5fa;--text:#e8eaf0;--muted:#6b7280;--green:#22c55e;--red:#ef4444;--amber:#f59e0b}
+:root{--bg:#07090f;--panel:#0d1018;--panel2:#111520;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);--accent:#3b82f6;--accent2:#60a5fa;--text:#e8eaf0;--muted:#6b7280;--green:#22c55e;--red:#ef4444;--amber:#f59e0b;--pro:#f59e0b}
 body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;font-size:15px;height:100vh;overflow:hidden}
 .shell{display:flex;height:100vh}
 
-/* ── SIDEBAR ── */
+/* SIDEBAR */
 .sidebar{width:220px;background:var(--panel);border-right:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0}
 .logo{padding:22px 20px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
 .logo-icon{width:32px;height:32px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;font-weight:700}
 .logo-text{font-size:17px;font-weight:700;letter-spacing:1px;color:#fff}
 .logo-sub{font-size:10px;color:var(--muted);letter-spacing:2px;font-family:'DM Mono',monospace}
 .nav{padding:16px 10px;flex:1;display:flex;flex-direction:column;gap:4px}
-.nav-label{font-size:10px;color:var(--muted);letter-spacing:2px;font-family:'DM Mono',monospace;padding:10px 12px 4px;opacity:0.6}
 .nav-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;cursor:pointer;color:var(--muted);font-weight:600;font-size:14px;letter-spacing:0.5px;transition:all 0.15s;border:none;background:none;width:100%;text-align:left}
 .nav-item i{font-size:18px;flex-shrink:0}
 .nav-item:hover{background:rgba(255,255,255,0.05);color:var(--text)}
@@ -31,11 +30,12 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .nav-item.danger:hover{background:rgba(239,68,68,0.1)}
 .sidebar-bottom{padding:12px 10px;border-top:1px solid var(--border)}
 .user-chip{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;background:var(--panel2)}
-.avatar-sm{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#fff;flex-shrink:0}
+.avatar-sm{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#fff;flex-shrink:0;overflow:hidden}
+.avatar-sm img{width:100%;height:100%;object-fit:cover}
 .user-chip-name{font-size:13px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .user-chip-role{font-size:11px;color:var(--accent2);font-family:'DM Mono',monospace}
 
-/* ── MAIN ── */
+/* MAIN */
 .main{flex:1;display:flex;flex-direction:column;overflow:hidden;background:var(--bg)}
 .topbar{height:56px;border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 28px;gap:16px;background:var(--panel);flex-shrink:0;z-index:10}
 .topbar-title{font-size:18px;font-weight:700;color:#fff}
@@ -48,11 +48,17 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .content{padding:28px}
 .tab-panel{display:none}.tab-panel.active{display:block}
 
-/* ── HOME ── */
-.profile-card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:24px;display:flex;gap:20px;align-items:flex-start;max-width:560px;margin-bottom:24px;position:relative;overflow:hidden}
+/* HOME */
+.profile-card{border-radius:14px;padding:24px;display:flex;gap:20px;align-items:flex-start;max-width:580px;margin-bottom:24px;position:relative;overflow:hidden;border:1px solid var(--border);background:var(--panel)}
 .profile-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),#8b5cf6,#06b6d4)}
-.avatar-lg{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;color:#fff;flex-shrink:0;border:2px solid rgba(59,130,246,0.3)}
-.profile-name{font-size:22px;font-weight:700;color:#fff}
+.profile-card.pro-card::before{background:linear-gradient(90deg,#f59e0b,#f97316,#fbbf24)}
+.profile-card.pro-card{border-color:rgba(245,158,11,0.25)}
+.profile-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0.12;pointer-events:none}
+.avatar-lg{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;color:#fff;flex-shrink:0;border:2px solid rgba(59,130,246,0.3);overflow:hidden;position:relative;z-index:1}
+.avatar-lg img{width:100%;height:100%;object-fit:cover}
+.profile-info{flex:1;position:relative;z-index:1}
+.profile-name{font-size:22px;font-weight:700;color:#fff;display:flex;align-items:center;gap:8px}
+.pro-badge{font-size:10px;font-family:'DM Mono',monospace;background:linear-gradient(135deg,rgba(245,158,11,0.2),rgba(249,115,22,0.2));color:#fbbf24;border:1px solid rgba(245,158,11,0.4);padding:3px 10px;border-radius:999px;font-weight:700;letter-spacing:1px}
 .profile-status{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--green);margin:4px 0 8px;font-family:'DM Mono',monospace}
 .status-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green)}
 .role-badge{display:inline-flex;align-items:center;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:600;font-family:'DM Mono',monospace}
@@ -61,14 +67,16 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .role-member{background:rgba(59,130,246,0.15);color:var(--accent2);border:1px solid rgba(59,130,246,0.25)}
 .bio-text{margin-top:10px;font-size:14px;color:var(--muted);line-height:1.5}
 .vrchat-tag{margin-top:8px;font-size:13px;color:var(--muted);font-family:'DM Mono',monospace;display:flex;align-items:center;gap:6px}
-.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;max-width:560px}
+.points-row{margin-top:10px;display:flex;align-items:center;gap:8px;font-size:13px;font-family:'DM Mono',monospace}
+.points-val{color:#fbbf24;font-weight:700;font-size:16px}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px;max-width:580px}
 .stat-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px 18px}
 .stat-label{font-size:12px;color:var(--muted);letter-spacing:1px;font-family:'DM Mono',monospace;margin-bottom:6px}
 .stat-val{font-size:24px;font-weight:700;color:#fff}
 .stat-sub{font-size:12px;color:var(--green);margin-top:2px}
 
-/* ── SETTINGS ── */
-.settings-section{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:16px;max-width:560px}
+/* SETTINGS */
+.settings-section{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:16px;max-width:580px}
 .settings-section h4{font-size:14px;font-weight:700;color:var(--muted);letter-spacing:2px;margin-bottom:18px;font-family:'DM Mono',monospace}
 .field-label{font-size:13px;color:var(--muted);margin-bottom:6px;font-family:'DM Mono',monospace}
 .field-input{width:100%;background:var(--bg);border:1px solid var(--border2);border-radius:8px;padding:10px 14px;color:var(--text);font-family:'Rajdhani',sans-serif;font-size:14px;margin-bottom:14px;outline:none;transition:border 0.15s}
@@ -79,12 +87,42 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .color-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
 .color-swatch{border-radius:10px;height:44px;cursor:pointer;border:2px solid transparent;transition:all 0.15s;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:rgba(255,255,255,0.85);letter-spacing:0.5px}
 .color-swatch.selected{border-color:#fff;transform:scale(1.05)}
+.color-swatch.pro-locked{position:relative;overflow:hidden}
+.color-swatch.pro-locked::after{content:'PRO';position:absolute;inset:0;background:rgba(0,0,0,0.55);display:flex;align-items:center;justify-content:center;font-size:10px;font-family:'DM Mono',monospace;color:#fbbf24;letter-spacing:1px}
 .c-blue{background:linear-gradient(135deg,#1d4ed8,#3b82f6)}.c-red{background:linear-gradient(135deg,#b91c1c,#ef4444)}
 .c-green{background:linear-gradient(135deg,#15803d,#22c55e)}.c-purple{background:linear-gradient(135deg,#7c3aed,#a78bfa)}
 .c-amber{background:linear-gradient(135deg,#b45309,#f59e0b)}.c-pink{background:linear-gradient(135deg,#be185d,#f472b6)}
 .c-cyan{background:linear-gradient(135deg,#0e7490,#06b6d4)}.c-orange{background:linear-gradient(135deg,#c2410c,#f97316)}
+.c-rose{background:linear-gradient(135deg,#9f1239,#fb7185)}.c-lime{background:linear-gradient(135deg,#3f6212,#a3e635)}
+.c-violet{background:linear-gradient(135deg,#5b21b6,#c4b5fd)}.c-teal{background:linear-gradient(135deg,#134e4a,#2dd4bf)}
 
-/* ── MEMBERS ── */
+/* UPLOAD BTN */
+.upload-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.05);border:1px solid var(--border2);border-radius:8px;padding:9px 16px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:600;color:var(--muted);cursor:pointer;transition:all 0.15s;margin-bottom:14px}
+.upload-btn:hover{color:var(--text);border-color:var(--text)}
+.upload-btn input{display:none}
+.img-preview{width:60px;height:60px;border-radius:8px;object-fit:cover;border:1px solid var(--border2);margin-bottom:10px;display:none}
+
+/* PRO PLAN CARD */
+.pro-plan-card{background:var(--panel);border:1px solid rgba(245,158,11,0.3);border-radius:14px;padding:22px;margin-bottom:16px;max-width:580px;position:relative;overflow:hidden}
+.pro-plan-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#f59e0b,#f97316,#fbbf24)}
+.pro-plan-title{font-size:18px;font-weight:700;color:#fbbf24;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.pro-plan-sub{font-size:13px;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:18px}
+.pro-perks{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px}
+.pro-perk{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text)}
+.pro-perk i{color:#fbbf24;font-size:16px}
+.pro-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.purchase-btn{display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,#b45309,#f59e0b);color:#000;border:none;border-radius:9px;padding:11px 22px;font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all 0.15s;box-shadow:0 4px 18px rgba(245,158,11,0.25)}
+.purchase-btn:hover{opacity:0.9;transform:translateY(-1px)}
+.purchase-btn:disabled{opacity:0.5;pointer-events:none}
+.redeem-wrap{display:flex;gap:8px;align-items:center}
+.redeem-input{background:var(--bg);border:1px solid var(--border2);border-radius:8px;padding:10px 14px;color:var(--text);font-family:'DM Mono',monospace;font-size:13px;outline:none;width:200px;letter-spacing:1px;transition:border 0.15s}
+.redeem-input:focus{border-color:var(--amber)}
+.redeem-btn{background:rgba(245,158,11,0.12);color:#fbbf24;border:1px solid rgba(245,158,11,0.3);border-radius:8px;padding:10px 18px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s}
+.redeem-btn:hover{background:rgba(245,158,11,0.22)}
+.pro-owned-banner{background:linear-gradient(135deg,rgba(245,158,11,0.1),rgba(249,115,22,0.08));border:1px solid rgba(245,158,11,0.3);border-radius:10px;padding:14px 18px;display:flex;align-items:center;gap:12px;font-size:14px;color:#fbbf24;font-family:'DM Mono',monospace}
+.pro-owned-banner i{font-size:22px}
+
+/* MEMBERS */
 .members-wrap{max-width:680px}
 .members-toolbar{display:flex;align-items:center;gap:10px;margin-bottom:16px}
 .search-wrap{position:relative;flex:1}
@@ -97,9 +135,10 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .member-row{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:14px;transition:border-color 0.15s}
 .member-row:hover{border-color:var(--border2)}
 .member-row.banned-row{opacity:0.55;border-color:rgba(239,68,68,0.2)}
-.member-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff;flex-shrink:0}
+.member-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff;flex-shrink:0;overflow:hidden}
+.member-avatar img{width:100%;height:100%;object-fit:cover}
 .member-info{flex:1;min-width:0}
-.member-name{font-size:15px;font-weight:700;color:var(--text)}
+.member-name{font-size:15px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:6px}
 .member-meta{font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .warn-count{color:var(--amber)}.banned-tag{color:var(--red)}
 .member-actions{display:flex;align-items:center;gap:6px;flex-shrink:0}
@@ -110,7 +149,7 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .action-btn.unban-btn:hover{color:var(--green);border-color:var(--green);background:rgba(34,197,94,0.08)}
 .members-empty,.members-loading{text-align:center;padding:40px;color:var(--muted);font-family:'DM Mono',monospace;font-size:13px}
 
-/* ── ADMIN ── */
+/* ADMIN */
 .admin-hero{display:flex;align-items:center;gap:12px;margin-bottom:24px}
 .admin-hero-icon{width:42px;height:42px;background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#f87171;font-size:22px}
 .admin-badge{background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3);padding:5px 14px;border-radius:999px;font-size:12px;font-family:'DM Mono',monospace;font-weight:600}
@@ -128,6 +167,7 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .tier-vip{background:rgba(245,158,11,0.15);color:#fbbf24;border:1px solid rgba(245,158,11,0.25)}
 .tier-mod{background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.25)}
 .tier-booster{background:rgba(139,92,246,0.15);color:#a78bfa;border:1px solid rgba(139,92,246,0.25)}
+.tier-pro{background:linear-gradient(135deg,rgba(245,158,11,0.2),rgba(249,115,22,0.2));color:#fbbf24;border:1px solid rgba(245,158,11,0.4)}
 .key-uses{font-size:11px;color:var(--muted);font-family:'DM Mono',monospace;white-space:nowrap}
 .key-status{font-size:11px;font-family:'DM Mono',monospace;color:var(--green);white-space:nowrap}
 .key-copy,.key-del{background:none;border:1px solid var(--border2);border-radius:6px;color:var(--muted);padding:5px 8px;cursor:pointer;transition:all 0.15s;display:flex;align-items:center;font-size:14px}
@@ -137,8 +177,13 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .select-field{width:100%;background:var(--bg);border:1px solid var(--border2);border-radius:8px;padding:10px 14px;color:var(--text);font-family:'Rajdhani',sans-serif;font-size:14px;outline:none;appearance:none;cursor:pointer}
 select option{background:#0d1018}
 .empty-keys{text-align:center;padding:30px;color:var(--muted);font-family:'DM Mono',monospace;font-size:13px}
+.admin-give-card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:16px;max-width:640px;position:relative;overflow:hidden}
+.admin-give-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#f59e0b,#fbbf24)}
+.admin-give-card h4{font-size:14px;font-weight:700;color:var(--muted);letter-spacing:2px;margin-bottom:18px;font-family:'DM Mono',monospace}
+.give-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(245,158,11,0.12);color:#fbbf24;border:1px solid rgba(245,158,11,0.3);border-radius:8px;padding:10px 22px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s}
+.give-btn:hover{background:rgba(245,158,11,0.22)}
 
-/* ── CHAT ── */
+/* CHAT */
 .chat-wrap{display:none;flex-direction:column;flex:1;overflow:hidden}
 .chat-messages{flex:1;overflow-y:auto;padding:20px 28px;display:flex;flex-direction:column;gap:2px;scroll-behavior:smooth}
 .chat-messages::-webkit-scrollbar{width:4px}
@@ -148,7 +193,8 @@ select option{background:#0d1018}
 .chat-msg{display:flex;gap:12px;padding:6px 10px;border-radius:8px;transition:background 0.1s;position:relative;flex-shrink:0}
 .chat-msg:hover{background:rgba(255,255,255,0.03)}
 .chat-msg:hover .msg-actions{opacity:1;pointer-events:all}
-.msg-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#fff;flex-shrink:0;margin-top:2px}
+.msg-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#fff;flex-shrink:0;margin-top:2px;overflow:hidden}
+.msg-avatar img{width:100%;height:100%;object-fit:cover}
 .msg-body{flex:1;min-width:0}
 .msg-header{display:flex;align-items:baseline;gap:8px;margin-bottom:3px;flex-wrap:wrap}
 .msg-author{font-size:15px;font-weight:700;color:#fff}
@@ -156,6 +202,7 @@ select option{background:#0d1018}
 .rank-owner{background:rgba(245,158,11,0.15);color:#fbbf24;border:1px solid rgba(245,158,11,0.3)}
 .rank-admin{background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3)}
 .rank-member{background:rgba(59,130,246,0.15);color:var(--accent2);border:1px solid rgba(59,130,246,0.2)}
+.rank-pro{background:linear-gradient(135deg,rgba(245,158,11,0.2),rgba(249,115,22,0.2));color:#fbbf24;border:1px solid rgba(245,158,11,0.35)}
 .msg-time{font-size:11px;color:var(--muted);font-family:'DM Mono',monospace}
 .msg-text{font-size:15px;color:var(--text);line-height:1.5;word-break:break-word}
 .msg-actions{opacity:0;pointer-events:none;display:flex;gap:2px;position:absolute;right:12px;top:50%;transform:translateY(-50%);background:var(--panel2);border:1px solid var(--border2);border-radius:8px;padding:3px 5px;transition:opacity 0.15s}
@@ -172,39 +219,12 @@ select option{background:#0d1018}
 .chat-input::placeholder{color:var(--muted)}
 .chat-send-btn{background:var(--accent);border:none;border-radius:7px;color:#fff;padding:9px 16px;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;transition:opacity 0.15s;flex-shrink:0}
 .chat-send-btn:hover{opacity:0.85}
-.chat-send-btn i{font-size:17px}
 
-/* ── EVENTS & INSTANCES ── */
+/* EVENTS */
 .world-wrap{max-width:720px}
 .section-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
 .section-title{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:2px;font-family:'DM Mono',monospace;display:flex;align-items:center;gap:8px}
 .section-sub{font-size:12px;color:var(--muted);font-family:'DM Mono',monospace}
-.live-pip{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);display:inline-block;animation:livepulse 2s infinite}
-
-/* Instance cards */
-.instances-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:28px}
-.inst-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:14px 16px;transition:border-color 0.15s}
-.inst-card:hover{border-color:var(--border2)}
-.inst-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.inst-id{font-size:13px;font-weight:600;color:var(--text);font-family:'DM Mono',monospace}
-.inst-badge{font-size:10px;padding:2px 9px;border-radius:999px;font-weight:600;font-family:'DM Mono',monospace}
-.ib-public{background:rgba(34,197,94,0.12);color:#4ade80;border:1px solid rgba(34,197,94,0.25)}
-.ib-friends{background:rgba(59,130,246,0.12);color:var(--accent2);border:1px solid rgba(59,130,246,0.25)}
-.ib-invite{background:rgba(245,158,11,0.12);color:#fbbf24;border:1px solid rgba(245,158,11,0.25)}
-.ib-private{background:rgba(255,255,255,0.05);color:var(--muted);border:1px solid var(--border2)}
-.bar-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
-.bar-bg{flex:1;height:3px;background:var(--border2);border-radius:999px;overflow:hidden}
-.bar-fill{height:100%;border-radius:999px;background:var(--accent);transition:width 0.4s}
-.bar-fill.bar-full{background:var(--red)}
-.bar-count{font-size:11px;color:var(--muted);font-family:'DM Mono',monospace;min-width:36px;text-align:right}
-.inst-region{font-size:11px;color:var(--muted);font-family:'DM Mono',monospace;display:flex;align-items:center;gap:5px}
-.inst-region i{font-size:13px}
-.stats-row-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:22px}
-.mini-stat{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px}
-.mini-stat-label{font-size:11px;color:var(--muted);letter-spacing:1px;font-family:'DM Mono',monospace;margin-bottom:4px}
-.mini-stat-val{font-size:22px;font-weight:700;color:#fff}
-
-/* Events */
 .events-list{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
 .event-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:14px 18px;display:grid;grid-template-columns:54px 1fr auto;gap:14px;align-items:center;transition:border-color 0.15s}
 .event-card:hover{border-color:var(--border2)}
@@ -213,17 +233,14 @@ select option{background:#0d1018}
 .ev-day{font-size:22px;font-weight:700;color:#fff;line-height:1.1}
 .ev-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:3px}
 .ev-meta{font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:4px}
-.ev-meta i{font-size:13px;vertical-align:-1px}
 .ev-desc{font-size:13px;color:var(--muted)}
 .ev-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
 .rsvp-btn{font-size:12px;padding:5px 14px;border-radius:8px;border:1px solid var(--border2);cursor:pointer;background:none;color:var(--muted);font-family:'DM Mono',monospace;font-weight:600;transition:all 0.15s;white-space:nowrap}
-.rsvp-btn:hover{color:var(--text);border-color:var(--border2);background:rgba(255,255,255,0.04)}
+.rsvp-btn:hover{color:var(--text);background:rgba(255,255,255,0.04)}
 .rsvp-btn.going{background:rgba(34,197,94,0.1);border-color:rgba(34,197,94,0.3);color:#4ade80}
 .attendee-pips{display:flex;gap:3px}
 .pip{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#fff}
 .ev-empty{text-align:center;padding:40px;color:var(--muted);font-family:'DM Mono',monospace;font-size:13px;background:var(--panel);border:1px solid var(--border);border-radius:12px}
-
-/* Admin event form */
 .admin-event-card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:16px;max-width:640px;position:relative;overflow:hidden}
 .admin-event-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#3b82f6,#06b6d4)}
 .admin-event-card h4{font-size:14px;font-weight:700;color:var(--muted);letter-spacing:2px;margin-bottom:18px;font-family:'DM Mono',monospace}
@@ -242,7 +259,32 @@ select option{background:#0d1018}
 .confirm-chip{font-size:12px;font-family:'DM Mono',monospace;color:var(--green);opacity:0;transition:opacity 0.3s}
 .confirm-chip.show{opacity:1}
 
-/* ── MODALS ── */
+/* MEMORY GAME */
+.game-wrap{max-width:580px}
+.game-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px}
+.game-stats{display:flex;gap:12px}
+.game-stat{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:8px 14px;text-align:center}
+.game-stat-label{font-size:10px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px}
+.game-stat-val{font-size:18px;font-weight:700;color:#fff}
+.game-start-btn{background:linear-gradient(135deg,#1d4ed8,#3b82f6);color:#fff;border:none;border-radius:9px;padding:11px 24px;font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all 0.15s;display:flex;align-items:center;gap:8px}
+.game-start-btn:hover{opacity:0.9;transform:translateY(-1px)}
+.game-start-btn:disabled{opacity:0.5;pointer-events:none}
+.memory-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.mem-card{height:80px;border-radius:10px;cursor:pointer;position:relative;transform-style:preserve-3d;transition:transform 0.35s;border:none;background:none;padding:0}
+.mem-card.flipped,.mem-card.matched{transform:rotateY(180deg)}
+.mem-card.matched .card-back{border-color:rgba(34,197,94,0.5);background:rgba(34,197,94,0.08)}
+.card-front,.card-back{position:absolute;inset:0;border-radius:10px;display:flex;align-items:center;justify-content:center;backface-visibility:hidden;font-size:28px}
+.card-front{background:var(--panel2);border:1px solid var(--border2)}
+.card-front::after{content:'?';font-size:20px;font-weight:700;color:var(--muted);font-family:'DM Mono',monospace}
+.card-back{background:var(--panel);border:1px solid rgba(59,130,246,0.3);transform:rotateY(180deg)}
+.game-idle{text-align:center;padding:40px;color:var(--muted);font-family:'DM Mono',monospace;font-size:13px;background:var(--panel);border:1px solid var(--border);border-radius:12px;margin-bottom:16px}
+.game-idle i{font-size:36px;opacity:0.25;display:block;margin-bottom:10px}
+.win-banner{background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:12px;margin-bottom:16px;font-family:'DM Mono',monospace}
+.win-banner i{font-size:24px;color:var(--green)}
+.win-text{font-size:14px;color:var(--green)}
+.win-pts{font-size:18px;font-weight:700;color:#fbbf24}
+
+/* MODALS */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:100;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.2s}
 .modal-overlay.show{opacity:1;pointer-events:all}
 .modal{background:var(--panel);border:1px solid var(--border2);border-radius:16px;padding:28px;width:360px;position:relative;transform:translateY(10px);transition:transform 0.2s}
@@ -262,6 +304,7 @@ select option{background:#0d1018}
 .toast.success{border-color:rgba(34,197,94,0.4);color:var(--green)}
 .toast.error{border-color:rgba(239,68,68,0.4);color:var(--red)}
 .toast.warn{border-color:rgba(245,158,11,0.4);color:#fbbf24}
+.toast.pro{border-color:rgba(245,158,11,0.5);color:#fbbf24;background:rgba(245,158,11,0.08)}
 @keyframes spin{to{transform:rotate(360deg)}}
 </style>
 </head>
@@ -281,7 +324,6 @@ select option{background:#0d1018}
     </div>
   </div>
 </div>
-
 <div class="modal-overlay" id="banModal">
   <div class="modal">
     <h3>🚫 Ban User</h3>
@@ -293,18 +335,13 @@ select option{background:#0d1018}
     </div>
   </div>
 </div>
-
 <div class="modal-overlay" id="reportModal">
   <div class="modal">
     <h3>🚩 Report Message</h3>
     <div class="modal-sub" id="reportModalSub">Reporting message from: Username</div>
     <div style="font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:6px">REASON</div>
     <select class="select-field" id="reportReason" style="margin-bottom:14px">
-      <option value="Spam">Spam</option>
-      <option value="Harassment">Harassment</option>
-      <option value="Inappropriate content">Inappropriate content</option>
-      <option value="Threats or abuse">Threats or abuse</option>
-      <option value="Other">Other</option>
+      <option>Spam</option><option>Harassment</option><option>Inappropriate content</option><option>Threats or abuse</option><option>Other</option>
     </select>
     <div style="font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:6px">DETAILS <span style="font-size:10px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:999px;padding:1px 7px">OPTIONAL</span></div>
     <input class="field-input" id="reportDetails" placeholder="Any extra context..." style="margin-bottom:0" />
@@ -314,11 +351,9 @@ select option{background:#0d1018}
     </div>
   </div>
 </div>
-
 <div class="toast" id="toast"></div>
 
 <div class="shell">
-  <!-- SIDEBAR -->
   <div class="sidebar">
     <div class="logo">
       <div class="logo-icon">V</div>
@@ -327,7 +362,8 @@ select option{background:#0d1018}
     <nav class="nav">
       <button class="nav-item active" onclick="switchTab('home',this)"><i class="ti ti-home"></i> Home</button>
       <button class="nav-item" onclick="switchTab('chat',this)"><i class="ti ti-message-circle"></i> Chat</button>
-      <button class="nav-item" onclick="switchTab('world',this)"><i class="ti ti-planet"></i> Events (NEW!)</button>
+      <button class="nav-item" onclick="switchTab('world',this)"><i class="ti ti-planet"></i> World</button>
+      <button class="nav-item" onclick="switchTab('games',this)"><i class="ti ti-device-gamepad-2"></i> Games</button>
       <button class="nav-item" onclick="switchTab('settings',this)"><i class="ti ti-settings"></i> Settings</button>
       <button class="nav-item" onclick="switchTab('users',this)"><i class="ti ti-users"></i> Members</button>
       <button class="nav-item admin-nav" id="adminNav" onclick="switchTab('admin',this)" style="display:none"><i class="ti ti-shield"></i> Admin</button>
@@ -344,7 +380,6 @@ select option{background:#0d1018}
     </div>
   </div>
 
-  <!-- MAIN -->
   <div class="main">
     <div class="topbar">
       <span class="topbar-title" id="topbarTitle">Dashboard</span>
@@ -352,42 +387,63 @@ select option{background:#0d1018}
       <span class="dot-live"></span>
     </div>
 
-    <!-- scrollable content area -->
     <div class="content-scroll" id="contentScroll">
-      <div class="content" id="contentPad">
+      <div class="content">
 
         <!-- HOME -->
         <div class="tab-panel active" id="tab-home">
-          <div class="profile-card">
+          <div class="profile-card" id="profileCard">
+            <div class="profile-bg" id="profileBgEl"></div>
             <div class="avatar-lg" id="avatarLg">VS</div>
-            <div style="flex:1">
-              <div class="profile-name" id="profileName">ViperUser</div>
+            <div class="profile-info">
+              <div class="profile-name" id="profileName">ViperUser <span class="pro-badge" id="proBadge" style="display:none">⭐ PRO</span></div>
               <div class="profile-status"><span class="status-dot"></span>Online</div>
               <span class="role-badge role-member" id="profileRole">MEMBER</span>
               <div class="vrchat-tag" id="vrchatTag"><i class="ti ti-cube" style="font-size:14px"></i> VRChat: Not connected</div>
               <div class="bio-text" id="bioDisplay">No bio set yet.</div>
+              <div class="points-row"><i class="ti ti-coin" style="color:#fbbf24;font-size:16px"></i> <span class="points-val" id="pointsDisplay">0</span> <span style="color:var(--muted)">points</span></div>
             </div>
           </div>
           <div class="stats-grid">
             <div class="stat-card"><div class="stat-label">STATUS</div><div class="stat-val" style="color:var(--green);font-size:18px">● ONLINE</div></div>
+            <div class="stat-card"><div class="stat-label">POINTS</div><div class="stat-val" id="statPoints">0</div><div class="stat-sub">earned</div></div>
             <div class="stat-card"><div class="stat-label">ACTIVE KEYS</div><div class="stat-val" id="statKeys">0</div><div class="stat-sub">generated</div></div>
             <div class="stat-card"><div class="stat-label">ROLE</div><div class="stat-val" id="statRole" style="font-size:16px;color:var(--accent2)">MEMBER</div></div>
           </div>
         </div>
 
-        <!-- CHAT placeholder — actual chat rendered separately -->
+        <!-- CHAT placeholder -->
         <div class="tab-panel" id="tab-chat"></div>
 
-        <!-- WORLD (events + instances) -->
+        <!-- WORLD -->
         <div class="tab-panel" id="tab-world">
           <div class="world-wrap">
-
-            <!-- events -->
-            <div class="section-hdr">
-              <span class="section-title"><i class="ti ti-calendar-event" style="font-size:15px"></i> UPCOMING EVENTS</span>
-            </div>
+            <div class="section-hdr"><span class="section-title"><i class="ti ti-calendar-event" style="font-size:15px"></i> UPCOMING EVENTS</span></div>
             <div class="events-list" id="eventsList"></div>
+          </div>
+        </div>
 
+        <!-- GAMES -->
+        <div class="tab-panel" id="tab-games">
+          <div class="game-wrap">
+            <div class="game-header">
+              <div>
+                <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:4px">🃏 Memory Game</div>
+                <div style="font-size:13px;color:var(--muted);font-family:'DM Mono',monospace">Match all pairs to win 100 points</div>
+              </div>
+              <div style="display:flex;gap:10px;align-items:center">
+                <div class="game-stats">
+                  <div class="game-stat"><div class="game-stat-label">MOVES</div><div class="game-stat-val" id="moveCount">0</div></div>
+                  <div class="game-stat"><div class="game-stat-label">TIME</div><div class="game-stat-val" id="gameTimer">0s</div></div>
+                </div>
+                <button class="game-start-btn" id="startBtn" onclick="startGame()"><i class="ti ti-player-play"></i> Start</button>
+              </div>
+            </div>
+            <div id="winBanner" style="display:none" class="win-banner">
+              <i class="ti ti-trophy"></i>
+              <div><div class="win-text">You matched all pairs!</div><div class="win-pts" id="winPts">+100 points earned</div></div>
+            </div>
+            <div id="gameBoard"></div>
           </div>
         </div>
 
@@ -396,11 +452,23 @@ select option{background:#0d1018}
           <div class="settings-section">
             <h4>PROFILE</h4>
             <div class="field-label">VRChat Username</div>
-            <input class="field-input" id="vrchatInput" placeholder="e.g. TungTungTungSahur" />
+            <input class="field-input" id="vrchatInput" placeholder="e.g. ViperxXx" />
             <div class="field-label">Bio</div>
             <textarea class="field-input field-textarea" id="bioInput" placeholder="Tell the community about yourself..."></textarea>
             <button class="save-btn" id="profileSaveBtn" onclick="saveProfile()">Save Changes</button>
           </div>
+
+          <!-- PRO: avatar & background upload -->
+          <div class="settings-section" id="proCustomSection" style="display:none">
+            <h4>⭐ PRO CUSTOMIZATION</h4>
+            <div class="field-label">Profile Avatar</div>
+            <img id="avatarPreview" class="img-preview" />
+            <label class="upload-btn"><i class="ti ti-upload" style="font-size:16px"></i> Upload Avatar <input type="file" accept="image/*" onchange="uploadAvatar(this)" /></label>
+            <div class="field-label" style="margin-top:4px">Profile Background</div>
+            <img id="bgPreview" class="img-preview" />
+            <label class="upload-btn"><i class="ti ti-photo" style="font-size:16px"></i> Upload Background <input type="file" accept="image/*" onchange="uploadBg(this)" /></label>
+          </div>
+
           <div class="settings-section">
             <h4>ACCENT COLOR</h4>
             <div class="color-grid">
@@ -412,8 +480,44 @@ select option{background:#0d1018}
               <div class="color-swatch c-pink"   data-color="#ec4899" data-color2="#f472b6" onclick="setColor(this)">PINK</div>
               <div class="color-swatch c-cyan"   data-color="#06b6d4" data-color2="#22d3ee" onclick="setColor(this)">CYAN</div>
               <div class="color-swatch c-orange" data-color="#f97316" data-color2="#fb923c" onclick="setColor(this)">ORANGE</div>
+              <!-- PRO colors -->
+              <div class="color-swatch c-rose pro-locked"  data-color="#fb7185" data-color2="#fda4af" data-pro="1" onclick="setColor(this)">ROSE</div>
+              <div class="color-swatch c-lime pro-locked"  data-color="#a3e635" data-color2="#bef264" data-pro="1" onclick="setColor(this)">LIME</div>
+              <div class="color-swatch c-violet pro-locked" data-color="#c4b5fd" data-color2="#ddd6fe" data-pro="1" onclick="setColor(this)">VIOLET</div>
+              <div class="color-swatch c-teal pro-locked"  data-color="#2dd4bf" data-color2="#5eead4" data-pro="1" onclick="setColor(this)">TEAL</div>
             </div>
             <button class="save-btn" onclick="saveColor()">Apply Color</button>
+          </div>
+
+          <!-- PRO PLAN -->
+          <div class="pro-plan-card">
+            <div class="pro-plan-title"><i class="ti ti-star" style="font-size:20px"></i> PRO PLAN</div>
+            <div class="pro-plan-sub">Unlock the full Viper Studios experience</div>
+            <div class="pro-perks">
+              <div class="pro-perk"><i class="ti ti-check"></i> ⭐ PRO badge on profile & chat</div>
+              <div class="pro-perk"><i class="ti ti-check"></i> Custom avatar image</div>
+              <div class="pro-perk"><i class="ti ti-check"></i> Custom profile background</div>
+              <div class="pro-perk"><i class="ti ti-check"></i> 4 exclusive accent colors</div>
+              <div class="pro-perk"><i class="ti ti-check"></i> Animated gold profile border</div>
+              <div class="pro-perk"><i class="ti ti-check"></i> Priority in member list</div>
+              <div class="pro-perk"><i class="ti ti-check"></i> Gold name in chat</div>
+              <div class="pro-perk"><i class="ti ti-check"></i> Exclusive PRO chat badge</div>
+            </div>
+            <div id="proSection">
+              <div class="pro-owned-banner" id="proOwnedBanner" style="display:none"><i class="ti ti-crown"></i> You already own PRO — enjoy the perks!</div>
+              <div id="proBuySection">
+                <div class="pro-actions">
+                  <button class="purchase-btn" id="purchaseBtn" onclick="purchasePro()">
+                    <i class="ti ti-coin" style="font-size:18px"></i> Purchase — 1000 pts
+                  </button>
+                  <div style="color:var(--muted);font-size:13px;font-family:'DM Mono',monospace">or redeem a key:</div>
+                </div>
+                <div class="redeem-wrap" style="margin-top:12px">
+                  <input class="redeem-input" id="proKeyInput" placeholder="XXXXX-XXXXX-XXXXX" maxlength="17" oninput="fmtProKey(this)" />
+                  <button class="redeem-btn" onclick="redeemProKey()"><i class="ti ti-key"></i> Redeem</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -427,9 +531,7 @@ select option{background:#0d1018}
               </div>
               <span class="member-count" id="memberCount">— members</span>
             </div>
-            <div class="members-list" id="membersList">
-              <div class="members-loading">Loading members...</div>
-            </div>
+            <div class="members-list" id="membersList"><div class="members-loading">Loading members...</div></div>
           </div>
         </div>
 
@@ -453,6 +555,7 @@ select option{background:#0d1018}
                   <option value="vip">⭐ VIP — Special perks</option>
                   <option value="mod">🛡️ Moderator — Mod powers</option>
                   <option value="booster">⚡ Booster — Extra features</option>
+                  <option value="pro">🌟 PRO Plan — Full PRO access</option>
                 </select>
               </div>
               <div>
@@ -469,28 +572,36 @@ select option{background:#0d1018}
             <div class="key-list" id="keyList"><div class="empty-keys">No keys generated yet.</div></div>
           </div>
 
+          <!-- Give PRO / Points -->
+          <div class="admin-give-card">
+            <h4>GIVE PRO & POINTS</h4>
+            <div class="form-2col" style="margin-bottom:12px">
+              <div class="form-group">
+                <div class="field-label">USERNAME</div>
+                <input class="field-input" id="giveUsername" placeholder="exact username" style="margin-bottom:0" />
+              </div>
+              <div class="form-group">
+                <div class="field-label">POINTS TO ADD</div>
+                <input class="field-input" id="givePoints" type="number" placeholder="e.g. 500" style="margin-bottom:0" min="0" />
+              </div>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <button class="give-btn" onclick="adminGivePro()"><i class="ti ti-crown"></i> Give PRO</button>
+              <button class="give-btn" style="background:rgba(59,130,246,0.12);color:var(--accent2);border-color:rgba(59,130,246,0.3)" onclick="adminGivePoints()"><i class="ti ti-coin"></i> Give Points</button>
+            </div>
+            <div class="confirm-chip" id="giveConfirm" style="margin-top:10px"><i class="ti ti-check"></i> Done!</div>
+          </div>
+
           <!-- Event manager -->
           <div class="admin-event-card">
             <h4>EVENT MANAGER</h4>
             <div class="form-2col">
-              <div class="form-group">
-                <div class="field-label">EVENT TITLE</div>
-                <input class="field-input" id="newEvTitle" placeholder="e.g. Friday Game Night" />
-              </div>
-              <div class="form-group">
-                <div class="field-label">HOST</div>
-                <input class="field-input" id="newEvHost" placeholder="VRChat display name" />
-              </div>
+              <div class="form-group"><div class="field-label">TITLE</div><input class="field-input" id="newEvTitle" placeholder="e.g. Friday Game Night" /></div>
+              <div class="form-group"><div class="field-label">HOST</div><input class="field-input" id="newEvHost" placeholder="VRChat display name" /></div>
             </div>
             <div class="form-2col">
-              <div class="form-group">
-                <div class="field-label">DATE</div>
-                <input class="field-input" type="date" id="newEvDate" />
-              </div>
-              <div class="form-group">
-                <div class="field-label">TIME (UTC)</div>
-                <input class="field-input" type="time" id="newEvTime" />
-              </div>
+              <div class="form-group"><div class="field-label">DATE</div><input class="field-input" type="date" id="newEvDate" /></div>
+              <div class="form-group"><div class="field-label">TIME (UTC)</div><input class="field-input" type="time" id="newEvTime" /></div>
             </div>
             <div class="form-group" style="margin-bottom:16px">
               <div class="field-label">DESCRIPTION</div>
@@ -500,27 +611,23 @@ select option{background:#0d1018}
               <button class="add-ev-btn" onclick="addEvent()"><i class="ti ti-calendar-plus" style="font-size:16px"></i> Add Event</button>
               <span class="confirm-chip" id="evConfirm"><i class="ti ti-check"></i> Added!</span>
             </div>
-
             <div style="margin-top:20px;border-top:1px solid var(--border);padding-top:16px">
               <div class="field-label" style="margin-bottom:12px">MANAGE EVENTS</div>
               <div id="adminEvList"><div style="font-size:13px;color:var(--muted);font-family:'DM Mono',monospace">No events yet.</div></div>
             </div>
           </div>
-
         </div>
 
       </div>
     </div>
 
-    <!-- Chat panel (sits outside scroll so it fills full height) -->
+    <!-- Chat panel -->
     <div class="chat-wrap" id="chatWrap">
       <div class="chat-messages" id="chatMessages"></div>
       <div class="chat-bar">
         <div class="chat-bar-inner">
-          <input class="chat-input" id="chatInput" placeholder="Message #general  —  press Enter to send" maxlength="500" />
-          <button class="chat-send-btn" onclick="sendChatMessage()">
-            <i class="ti ti-send" aria-hidden="true"></i> Send
-          </button>
+          <input class="chat-input" id="chatInput" placeholder="Message #general — press Enter to send" maxlength="500" />
+          <button class="chat-send-btn" onclick="sendChatMessage()"><i class="ti ti-send"></i> Send</button>
         </div>
       </div>
     </div>
@@ -528,101 +635,161 @@ select option{background:#0d1018}
 </div>
 
 <script>
-const DISCORD_WEBHOOK = 'https://ptb.discord.com/api/webhooks/1504629614406795345/m5wdP_PqGFdgBUdffveke9CLs4x1rCdCeJPx3nc0WptxAADt0DTydBo7OimNC6R4DRiY';
-const API = 'https://viper-studios.onrender.com';
-const token = () => localStorage.getItem('token');
+const DISCORD_WEBHOOK='https://ptb.discord.com/api/webhooks/1504629614406795345/m5wdP_PqGFdgBUdffveke9CLs4x1rCdCeJPx3nc0WptxAADt0DTydBo7OimNC6R4DRiY';
+const API='https://viperstudios-production.up.railway.app';
+const token=()=>localStorage.getItem('token');
 
-let generatedKeys   = JSON.parse(localStorage.getItem('vs_keys') || '[]');
-let selectedColor   = localStorage.getItem('vs_color')  || '#3b82f6';
-let selectedColor2  = localStorage.getItem('vs_color2') || '#60a5fa';
-let currentUserRank = 'member';
-let currentUsername = 'ViperUser';
-let allMembers      = [];
-let chatMessages    = JSON.parse(localStorage.getItem('vs_chat') || '[]');
-let pendingAction   = null;
-let pendingReport   = null;
-let myRsvps         = new Set(JSON.parse(localStorage.getItem('vs_rsvps') || '[]'));
-let nextEvId        = 10;
+let generatedKeys=JSON.parse(localStorage.getItem('vs_keys')||'[]');
+let selectedColor=localStorage.getItem('vs_color')||'#3b82f6';
+let selectedColor2=localStorage.getItem('vs_color2')||'#60a5fa';
+let currentUserRank='member';
+let currentUsername='ViperUser';
+let allMembers=[];
+let chatMessages=JSON.parse(localStorage.getItem('vs_chat')||'[]');
+let pendingAction=null;
+let pendingReport=null;
+let myRsvps=new Set(JSON.parse(localStorage.getItem('vs_rsvps')||'[]'));
+let nextEvId=10;
+let userPoints=parseInt(localStorage.getItem('vs_points')||'0');
+let userPro=localStorage.getItem('vs_pro')==='1';
+let userAvatar=localStorage.getItem('vs_avatar')||'';
+let userBg=localStorage.getItem('vs_bg')||'';
+let gameActive=false;
+let gameCards=[];
+let flipped=[];
+let matched=0;
+let moves=0;
+let timerInterval=null;
+let gameSeconds=0;
+let canFlip=true;
+const PRO_COST=1000;
+const PRO_EMOJIS=['🦇','🕷️','🌲','💀','🔦','🌙','🐺','🪦','🕯️','🌕','🗝️','🩸','🌿','👁️','🎃','🪓'];
 
-// Seeded events
-let events = JSON.parse(localStorage.getItem('vs_events') || 'null') || [
+let events=JSON.parse(localStorage.getItem('vs_events')||'null')||[
   {id:1,title:"Friday Game Night",date:"2026-05-23",time:"20:00",host:"Kira_VRC",desc:"Prop hunt + horror maps!",rsvps:["TK","LM","RJ"]},
   {id:2,title:"Chill Hangout & Music",date:"2026-05-27",time:"18:00",host:"StarGazer99",desc:"Come vibe, no pressure.",rsvps:["AB","CD"]},
-  {id:3,title:"World Tour Sunday",date:"2026-06-01",time:"16:00",host:"NeonPaw",desc:"Exploring 10 community worlds together.",rsvps:["YZ","WX","MN","OP"]},
+  {id:3,title:"World Tour Sunday",date:"2026-06-01",time:"16:00",host:"NeonPaw",desc:"Exploring 10 community worlds.",rsvps:["YZ","WX","MN","OP"]},
 ];
+const pipColors=["#3b82f6","#22c55e","#f59e0b","#ef4444","#8b5cf6","#06b6d4"];
+const months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
-
-
-const pipColors = ["#3b82f6","#22c55e","#f59e0b","#ef4444","#8b5cf6","#06b6d4"];
-const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-
-function saveEvents(){ localStorage.setItem('vs_events', JSON.stringify(events)); }
-function saveRsvps(){ localStorage.setItem('vs_rsvps', JSON.stringify([...myRsvps])); }
+function saveEvents(){localStorage.setItem('vs_events',JSON.stringify(events));}
+function saveRsvps(){localStorage.setItem('vs_rsvps',JSON.stringify([...myRsvps]));}
+function savePoints(){localStorage.setItem('vs_points',userPoints);document.getElementById('pointsDisplay').textContent=userPoints;document.getElementById('statPoints').textContent=userPoints;}
+function savePro(){localStorage.setItem('vs_pro',userPro?'1':'0');}
 
 // ── COLOR ──
-function applyColor(c,c2){ document.documentElement.style.setProperty('--accent',c); document.documentElement.style.setProperty('--accent2',c2); }
-function setColor(el){ document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('selected')); el.classList.add('selected'); selectedColor=el.dataset.color; selectedColor2=el.dataset.color2; applyColor(selectedColor,selectedColor2); }
-function saveColor(){ localStorage.setItem('vs_color',selectedColor); localStorage.setItem('vs_color2',selectedColor2); toast('Accent color saved!','success'); }
+function applyColor(c,c2){document.documentElement.style.setProperty('--accent',c);document.documentElement.style.setProperty('--accent2',c2);}
+function setColor(el){
+  if(el.dataset.pro&&!userPro){toast('⭐ PRO required for this color','pro');return;}
+  document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedColor=el.dataset.color;selectedColor2=el.dataset.color2;
+  applyColor(selectedColor,selectedColor2);
+}
+function saveColor(){localStorage.setItem('vs_color',selectedColor);localStorage.setItem('vs_color2',selectedColor2);toast('Accent color saved!','success');}
 
-// ── TAB SWITCHING ──
-const contentScroll = document.getElementById('contentScroll');
-const chatWrap      = document.getElementById('chatWrap');
-
-function switchTab(id, btn){
+// ── TAB ──
+const contentScroll=document.getElementById('contentScroll');
+const chatWrap=document.getElementById('chatWrap');
+function switchTab(id,btn){
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(b=>b.classList.remove('active'));
-  if(btn) btn.classList.add('active');
-  if(id==='chat'){
-    contentScroll.style.display='none';
-    chatWrap.style.display='flex';
-    renderChat();
-    setTimeout(scrollChatBottom,50);
-  } else {
-    contentScroll.style.display='';
-    chatWrap.style.display='none';
-    document.getElementById('tab-'+id).classList.add('active');
-    if(id==='world'){ renderEvents(); }
-    if(id==='users') loadMembers();
-    if(id==='admin'){ renderAdminEvents(); }
-  }
-  const labels={home:'Dashboard',chat:'Chat',world:'World',settings:'Settings',users:'Members',admin:'Admin Panel'};
-  const codes ={home:'HOME',chat:'CHAT',world:'WORLD',settings:'SETTINGS',users:'MEMBERS',admin:'ADMIN'};
-  document.getElementById('topbarTitle').textContent = labels[id]||id;
-  document.getElementById('topbarBadge').textContent = codes[id]||id.toUpperCase();
+  if(btn)btn.classList.add('active');
+  if(id==='chat'){contentScroll.style.display='none';chatWrap.style.display='flex';renderChat();setTimeout(scrollChatBottom,50);}
+  else{contentScroll.style.display='';chatWrap.style.display='none';document.getElementById('tab-'+id).classList.add('active');if(id==='world')renderEvents();if(id==='users')loadMembers();if(id==='admin'){renderAdminEvents();}}
+  const labels={home:'Dashboard',chat:'Chat',world:'World',games:'Games',settings:'Settings',users:'Members',admin:'Admin Panel'};
+  const codes={home:'HOME',chat:'CHAT',world:'WORLD',games:'GAMES',settings:'SETTINGS',users:'MEMBERS',admin:'ADMIN'};
+  document.getElementById('topbarTitle').textContent=labels[id]||id;
+  document.getElementById('topbarBadge').textContent=codes[id]||id.toUpperCase();
 }
 
 // ── HELPERS ──
-function roleClass(r){ return r==='owner'?'role-owner':r==='admin'?'role-admin':'role-member'; }
-function initials(n){ return (n||'VS').slice(0,2).toUpperCase(); }
-function isAdmin(){ return currentUserRank==='admin'||currentUserRank==='owner'; }
-function escHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-function toast(msg,type){ const t=document.getElementById('toast'); t.textContent=msg; t.className='toast show'+(type?' '+type:''); setTimeout(()=>t.classList.remove('show'),2500); }
+function roleClass(r){return r==='owner'?'role-owner':r==='admin'?'role-admin':'role-member';}
+function initials(n){return(n||'VS').slice(0,2).toUpperCase();}
+function isAdmin(){return currentUserRank==='admin'||currentUserRank==='owner';}
+function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function toast(msg,type){const t=document.getElementById('toast');t.textContent=msg;t.className='toast show'+(type?' '+type:'');setTimeout(()=>t.classList.remove('show'),2800);}
+
+// ── PRO ──
+function applyPro(){
+  userPro=true;savePro();
+  document.getElementById('proBadge').style.display='';
+  document.getElementById('proOwnedBanner').style.display='flex';
+  document.getElementById('proBuySection').style.display='none';
+  document.getElementById('proCustomSection').style.display='';
+  document.getElementById('profileCard').classList.add('pro-card');
+  document.querySelectorAll('.color-swatch.pro-locked').forEach(s=>s.classList.remove('pro-locked'));
+  toast('⭐ PRO Plan activated! Enjoy the perks.','pro');
+}
+function purchasePro(){
+  if(userPro){toast('You already have PRO!','pro');return;}
+  if(userPoints<PRO_COST){toast(`Need ${PRO_COST} points — you have ${userPoints}`,'error');return;}
+  userPoints-=PRO_COST;savePoints();applyPro();
+}
+function fmtProKey(input){
+  let v=input.value.replace(/[^A-Za-z0-9]/g,'').toUpperCase().slice(0,15);
+  let out='';for(let i=0;i<v.length;i++){if(i===5||i===10)out+='-';out+=v[i];}
+  input.value=out;
+}
+function redeemProKey(){
+  const key=document.getElementById('proKeyInput').value.trim().toUpperCase();
+  if(key.length!==17){toast('Enter a valid key (XXXXX-XXXXX-XXXXX)','error');return;}
+  // Check against locally stored pro keys
+  const proKeys=JSON.parse(localStorage.getItem('vs_pro_keys')||'[]');
+  const found=proKeys.find(k=>k.code===key&&k.active);
+  if(!found){toast('Invalid or already used key','error');return;}
+  found.active=false;
+  localStorage.setItem('vs_pro_keys',JSON.stringify(proKeys));
+  applyPro();
+}
+
+// ── AVATAR / BG UPLOAD ──
+function uploadAvatar(input){
+  const file=input.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    userAvatar=e.target.result;localStorage.setItem('vs_avatar',userAvatar);
+    document.getElementById('avatarPreview').src=userAvatar;document.getElementById('avatarPreview').style.display='block';
+    refreshAvatars();toast('Avatar updated!','success');
+  };reader.readAsDataURL(file);
+}
+function uploadBg(input){
+  const file=input.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    userBg=e.target.result;localStorage.setItem('vs_bg',userBg);
+    document.getElementById('bgPreview').src=userBg;document.getElementById('bgPreview').style.display='block';
+    document.getElementById('profileBgEl').style.backgroundImage=`url(${userBg})`;
+    toast('Background updated!','success');
+  };reader.readAsDataURL(file);
+}
+function refreshAvatars(){
+  const avatars=document.querySelectorAll('#avatarLg,#avatarSm');
+  avatars.forEach(el=>{
+    if(userAvatar){el.innerHTML=`<img src="${userAvatar}" alt="avatar" />`;el.style.background='none';}
+    else{el.textContent=initials(currentUsername);el.style.background='';}
+  });
+}
 
 // ── LOAD USER ──
 async function load(){
   let u,r,vrchat='',bio='';
-  try{
-    const res=await fetch(`${API}/api/me`,{headers:{Authorization:'Bearer '+token()}});
-    const d=await res.json();
-    u=(d.username||localStorage.getItem('username')||'ViperUser');
-    r=(d.rank||d.role||localStorage.getItem('rank')||'member').trim().toLowerCase();
-    vrchat=d.vrchat||''; bio=d.bio||'';
-  } catch {
-    u=localStorage.getItem('username')||'ViperUser';
-    r=(localStorage.getItem('rank')||'member').trim().toLowerCase();
-  }
-  currentUserRank=r; currentUsername=u;
-  const ini=initials(u);
-  document.getElementById('avatarSm').textContent=ini;
-  document.getElementById('avatarLg').textContent=ini;
+  try{const res=await fetch(`${API}/api/me`,{headers:{Authorization:'Bearer '+token()}});const d=await res.json();u=(d.username||localStorage.getItem('username')||'ViperUser');r=(d.rank||d.role||localStorage.getItem('rank')||'member').trim().toLowerCase();vrchat=d.vrchat||'';bio=d.bio||'';}
+  catch{u=localStorage.getItem('username')||'ViperUser';r=(localStorage.getItem('rank')||'member').trim().toLowerCase();}
+  currentUserRank=r;currentUsername=u;
   document.getElementById('chipName').textContent=u;
   document.getElementById('chipRole').textContent=r;
-  document.getElementById('profileName').textContent=u;
+  document.getElementById('profileName').childNodes[0].textContent=u+' ';
   document.getElementById('profileRole').textContent=r.toUpperCase();
   document.getElementById('profileRole').className='role-badge '+roleClass(r);
   document.getElementById('statRole').textContent=r.toUpperCase();
   document.getElementById('statKeys').textContent=generatedKeys.filter(k=>k.active).length;
-  if(isAdmin()) document.getElementById('adminNav').style.display='flex';
+  if(isAdmin())document.getElementById('adminNav').style.display='flex';
+  savePoints();
+  if(userPro){document.getElementById('proBadge').style.display='';document.getElementById('profileCard').classList.add('pro-card');document.getElementById('proOwnedBanner').style.display='flex';document.getElementById('proBuySection').style.display='none';document.getElementById('proCustomSection').style.display='';document.querySelectorAll('.color-swatch.pro-locked').forEach(s=>s.classList.remove('pro-locked'));}
+  if(userAvatar){document.getElementById('avatarPreview').src=userAvatar;document.getElementById('avatarPreview').style.display='block';refreshAvatars();}
+  if(userBg){document.getElementById('bgPreview').src=userBg;document.getElementById('bgPreview').style.display='block';document.getElementById('profileBgEl').style.backgroundImage=`url(${userBg})`;}
   loadProfile(vrchat,bio);
 }
 
@@ -630,14 +797,11 @@ async function load(){
 async function saveProfile(){
   const v=document.getElementById('vrchatInput').value.trim();
   const b=document.getElementById('bioInput').value.trim();
-  try{
-    const res=await fetch(`${API}/api/me/profile`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({vrchat:v,bio:b})});
-    if(!res.ok){toast('Failed to save profile','error');return;}
-  } catch { toast('Server offline — changes not saved','error'); return; }
+  try{const res=await fetch(`${API}/api/me/profile`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({vrchat:v,bio:b})});if(!res.ok){toast('Failed to save','error');return;}}
+  catch{toast('Server offline','error');return;}
   document.getElementById('vrchatTag').innerHTML=`<i class="ti ti-cube" style="font-size:14px"></i> VRChat: ${v||'Not connected'}`;
   document.getElementById('bioDisplay').textContent=b||'No bio set yet.';
-  const btn=document.getElementById('profileSaveBtn');
-  btn.textContent='Saved!'; btn.classList.add('saved');
+  const btn=document.getElementById('profileSaveBtn');btn.textContent='Saved!';btn.classList.add('saved');
   setTimeout(()=>{btn.textContent='Save Changes';btn.classList.remove('saved');},2000);
 }
 function loadProfile(vrchat,bio){
@@ -649,15 +813,12 @@ function loadProfile(vrchat,bio){
 
 // ── MEMBERS ──
 async function loadMembers(){
-  const list=document.getElementById('membersList');
-  list.innerHTML='<div class="members-loading">Loading members...</div>';
-  try{
-    const res=await fetch(`${API}/api/users`,{headers:{Authorization:'Bearer '+token()}});
-    allMembers=await res.json(); renderMembers(allMembers);
-  } catch { list.innerHTML='<div class="members-empty">Could not load members — server offline?</div>'; }
+  const list=document.getElementById('membersList');list.innerHTML='<div class="members-loading">Loading members...</div>';
+  try{const res=await fetch(`${API}/api/users`,{headers:{Authorization:'Bearer '+token()}});allMembers=await res.json();renderMembers(allMembers);}
+  catch{list.innerHTML='<div class="members-empty">Could not load members.</div>';}
 }
-function filterMembers(){ const q=document.getElementById('memberSearch').value.toLowerCase(); renderMembers(allMembers.filter(m=>m.username.toLowerCase().includes(q))); }
-function rankOrder(r){ return r==='owner'?0:r==='admin'?1:2; }
+function filterMembers(){const q=document.getElementById('memberSearch').value.toLowerCase();renderMembers(allMembers.filter(m=>m.username.toLowerCase().includes(q)));}
+function rankOrder(r){return r==='owner'?0:r==='admin'?1:2;}
 function renderMembers(members){
   const list=document.getElementById('membersList');
   const myName=localStorage.getItem('username')||'';
@@ -669,14 +830,11 @@ function renderMembers(members){
     const isMe=m.username===myName,isBanned=m.banned,warns=m.warnings||0;
     const canAct=isAdmin()&&!isMe&&r!=='owner';
     const metaParts=[];
-    if(m.vrchat) metaParts.push(m.vrchat);
-    if(warns>0) metaParts.push(`<span class="warn-count">⚠ ${warns} warn${warns!==1?'s':''}</span>`);
-    if(isBanned) metaParts.push(`<span class="banned-tag">🚫 BANNED</span>`);
+    if(m.vrchat)metaParts.push(m.vrchat);
+    if(warns>0)metaParts.push(`<span class="warn-count">⚠ ${warns} warn${warns!==1?'s':''}</span>`);
+    if(isBanned)metaParts.push(`<span class="banned-tag">🚫 BANNED</span>`);
     let actions='';
-    if(canAct){
-      if(isBanned) actions=`<button class="action-btn unban-btn" onclick="doUnban('${m._id}','${m.username}')">✓ Unban</button>`;
-      else actions=`<button class="action-btn warn-btn" onclick="openWarn('${m._id}','${m.username}')">⚠ Warn</button><button class="action-btn ban-btn" onclick="openBan('${m._id}','${m.username}')">🚫 Ban</button>`;
-    }
+    if(canAct){if(isBanned)actions=`<button class="action-btn unban-btn" onclick="doUnban('${m._id}','${m.username}')">✓ Unban</button>`;else actions=`<button class="action-btn warn-btn" onclick="openWarn('${m._id}','${m.username}')">⚠ Warn</button><button class="action-btn ban-btn" onclick="openBan('${m._id}','${m.username}')">🚫 Ban</button>`;}
     return `<div class="member-row ${isBanned?'banned-row':''}">
       <div class="member-avatar">${initials(m.username)}</div>
       <div class="member-info">
@@ -687,46 +845,34 @@ function renderMembers(members){
     </div>`;
   }).join('');
 }
-function openWarn(id,username){ pendingAction={type:'warn',userId:id,username}; document.getElementById('warnModalSub').textContent=`Warning: ${username}`; document.getElementById('warnReason').value=''; document.getElementById('warnModal').classList.add('show'); document.getElementById('warnConfirmBtn').onclick=confirmWarn; }
-function openBan(id,username){ pendingAction={type:'ban',userId:id,username}; document.getElementById('banModalSub').textContent=`Banning: ${username}`; document.getElementById('banModal').classList.add('show'); document.getElementById('banConfirmBtn').onclick=confirmBan; }
-function closeModal(id){ document.getElementById(id).classList.remove('show'); pendingAction=null; pendingReport=null; }
-document.querySelectorAll('.modal-overlay').forEach(o=>o.addEventListener('click',e=>{ if(e.target===o) o.classList.remove('show'); }));
-async function confirmWarn(){
-  if(!pendingAction) return;
-  const reason=document.getElementById('warnReason').value.trim()||'No reason given';
-  closeModal('warnModal');
-  try{ const res=await fetch(`${API}/api/users/${pendingAction.userId}/warn`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({reason})}); const d=await res.json(); res.ok?toast(`⚠ ${pendingAction.username} warned`,'warn'):toast(d.error||'Failed','error'); loadMembers(); }catch{ toast('Server error','error'); }
-}
-async function confirmBan(){
-  if(!pendingAction) return;
-  const {userId,username}=pendingAction; closeModal('banModal');
-  try{ const res=await fetch(`${API}/api/users/${userId}/ban`,{method:'POST',headers:{Authorization:'Bearer '+token()}}); const d=await res.json(); res.ok?toast(`🚫 ${username} banned`,'error'):toast(d.error||'Failed','error'); loadMembers(); }catch{ toast('Server error','error'); }
-}
-async function doUnban(userId,username){
-  try{ const res=await fetch(`${API}/api/users/${userId}/unban`,{method:'POST',headers:{Authorization:'Bearer '+token()}}); const d=await res.json(); res.ok?toast(`✓ ${username} unbanned`,'success'):toast(d.error||'Failed','error'); loadMembers(); }catch{ toast('Server error','error'); }
-}
+function openWarn(id,username){pendingAction={type:'warn',userId:id,username};document.getElementById('warnModalSub').textContent=`Warning: ${username}`;document.getElementById('warnReason').value='';document.getElementById('warnModal').classList.add('show');document.getElementById('warnConfirmBtn').onclick=confirmWarn;}
+function openBan(id,username){pendingAction={type:'ban',userId:id,username};document.getElementById('banModalSub').textContent=`Banning: ${username}`;document.getElementById('banModal').classList.add('show');document.getElementById('banConfirmBtn').onclick=confirmBan;}
+function closeModal(id){document.getElementById(id).classList.remove('show');pendingAction=null;pendingReport=null;}
+document.querySelectorAll('.modal-overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('show');}));
+async function confirmWarn(){if(!pendingAction)return;const reason=document.getElementById('warnReason').value.trim()||'No reason given';closeModal('warnModal');try{const res=await fetch(`${API}/api/users/${pendingAction.userId}/warn`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({reason})});const d=await res.json();res.ok?toast(`⚠ ${pendingAction.username} warned`,'warn'):toast(d.error||'Failed','error');loadMembers();}catch{toast('Server error','error');}}
+async function confirmBan(){if(!pendingAction)return;const{userId,username}=pendingAction;closeModal('banModal');try{const res=await fetch(`${API}/api/users/${userId}/ban`,{method:'POST',headers:{Authorization:'Bearer '+token()}});const d=await res.json();res.ok?toast(`🚫 ${username} banned`,'error'):toast(d.error||'Failed','error');loadMembers();}catch{toast('Server error','error');}}
+async function doUnban(userId,username){try{const res=await fetch(`${API}/api/users/${userId}/unban`,{method:'POST',headers:{Authorization:'Bearer '+token()}});const d=await res.json();res.ok?toast(`✓ ${username} unbanned`,'success'):toast(d.error||'Failed','error');loadMembers();}catch{toast('Server error','error');}}
 
 // ── KEYGEN ──
 async function generateKey(){
   const tier=document.getElementById('keyTier').value;
   const uses=parseInt(document.getElementById('keyUses').value);
   const btn=document.getElementById('genBtn');
-  btn.disabled=true;
-  btn.innerHTML='<i class="ti ti-loader" style="animation:spin 0.7s linear infinite;display:inline-block"></i> Generating...';
+  btn.disabled=true;btn.innerHTML='<i class="ti ti-loader" style="animation:spin 0.7s linear infinite;display:inline-block"></i> Generating...';
   try{
     const res=await fetch(`${API}/api/admin/keys/generate`,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token()},body:JSON.stringify({tier,uses})});
     const data=await res.json();
-    btn.disabled=false; btn.innerHTML='<i class="ti ti-key"></i> Generate Key';
-    if(!res.ok){toast(data.error||'Failed to generate key','error');return;}
+    btn.disabled=false;btn.innerHTML='<i class="ti ti-key"></i> Generate Key';
+    if(!res.ok){toast(data.error||'Failed','error');return;}
     const usesDisplay=data.uses===-1?'∞':String(data.uses);
-    generatedKeys.unshift({code:data.code,tier:data.tier,uses:usesDisplay,active:true});
+    const keyObj={code:data.code,tier:data.tier,uses:usesDisplay,active:true};
+    generatedKeys.unshift(keyObj);
     localStorage.setItem('vs_keys',JSON.stringify(generatedKeys));
+    // If PRO key, also save to pro_keys list for local redemption
+    if(tier==='pro'){const proKeys=JSON.parse(localStorage.getItem('vs_pro_keys')||'[]');proKeys.push({code:data.code,active:true});localStorage.setItem('vs_pro_keys',JSON.stringify(proKeys));}
     document.getElementById('statKeys').textContent=generatedKeys.filter(k=>k.active).length;
-    renderKeys(); toast('Key generated: '+data.code,'success');
-  } catch {
-    btn.disabled=false; btn.innerHTML='<i class="ti ti-key"></i> Generate Key';
-    toast('Could not reach server','error');
-  }
+    renderKeys();toast('Key generated: '+data.code,'success');
+  }catch{btn.disabled=false;btn.innerHTML='<i class="ti ti-key"></i> Generate Key';toast('Could not reach server','error');}
 }
 function renderKeys(){
   const list=document.getElementById('keyList');
@@ -742,122 +888,161 @@ function renderKeys(){
       <button class="key-del" onclick="revokeKey(${i})" title="Revoke"><i class="ti ti-trash"></i></button>
     </div>`).join('');
 }
-function copyKey(code){ navigator.clipboard.writeText(code).then(()=>toast('Copied: '+code,'success')); }
-function revokeKey(i){
-  const active=generatedKeys.filter(k=>k.active);
-  generatedKeys[generatedKeys.indexOf(active[i])].active=false;
-  localStorage.setItem('vs_keys',JSON.stringify(generatedKeys));
-  document.getElementById('statKeys').textContent=generatedKeys.filter(k=>k.active).length;
-  renderKeys(); toast('Key revoked','');
+function copyKey(code){navigator.clipboard.writeText(code).then(()=>toast('Copied: '+code,'success'));}
+function revokeKey(i){const active=generatedKeys.filter(k=>k.active);generatedKeys[generatedKeys.indexOf(active[i])].active=false;localStorage.setItem('vs_keys',JSON.stringify(generatedKeys));document.getElementById('statKeys').textContent=generatedKeys.filter(k=>k.active).length;renderKeys();toast('Key revoked','');}
+
+// ── ADMIN GIVE ──
+function adminGivePro(){
+  const username=document.getElementById('giveUsername').value.trim();
+  if(!username){toast('Enter a username','error');return;}
+  // In a real app this would hit an API. For now, if it's the current user just apply it.
+  if(username===currentUsername){applyPro();}
+  else{toast(`PRO granted to ${username} (server-side needed)`,'')}
+  showGiveConfirm();
 }
-
-
+function adminGivePoints(){
+  const username=document.getElementById('giveUsername').value.trim();
+  const pts=parseInt(document.getElementById('givePoints').value)||0;
+  if(!username||pts<=0){toast('Enter username and points','error');return;}
+  if(username===currentUsername){userPoints+=pts;savePoints();toast(`+${pts} points added!`,'success');}
+  else{toast(`+${pts} points granted to ${username} (server-side needed)`,'')}
+  showGiveConfirm();
+}
+function showGiveConfirm(){const c=document.getElementById('giveConfirm');c.classList.add('show');setTimeout(()=>c.classList.remove('show'),2000);}
 
 // ── EVENTS ──
 function renderEvents(){
   const list=document.getElementById('eventsList');
-  if(!events.length){
-    list.innerHTML='<div class="ev-empty">No events scheduled yet — check back soon!</div>';
-    return;
-  }
+  if(!events.length){list.innerHTML='<div class="ev-empty">No events scheduled yet.</div>';return;}
   list.innerHTML=events.map(ev=>{
     const d=new Date(ev.date+'T12:00:00');
-    const mon=months[d.getMonth()];
-    const day=d.getDate();
+    const mon=months[d.getMonth()];const day=d.getDate();
     const going=myRsvps.has(ev.id);
     const pips=ev.rsvps.slice(0,3).map((r,i)=>`<div class="pip" style="background:${pipColors[i%pipColors.length]}">${r}</div>`).join('');
     const extra=ev.rsvps.length>3?`<div class="pip" style="background:var(--panel2);color:var(--muted);border:1px solid var(--border2);font-size:9px">+${ev.rsvps.length-3}</div>`:'';
     return `<div class="event-card">
       <div class="ev-date"><span class="ev-month">${mon}</span><span class="ev-day">${day}</span></div>
-      <div>
-        <div class="ev-title">${escHtml(ev.title)}</div>
-        <div class="ev-meta">
-          <span><i class="ti ti-user"></i>${escHtml(ev.host)}</span>
-          <span><i class="ti ti-clock"></i>${ev.time} UTC</span>
-        </div>
-        <div class="ev-desc">${escHtml(ev.desc)}</div>
-      </div>
-      <div class="ev-right">
-        <button class="rsvp-btn ${going?'going':''}" onclick="toggleRsvp(${ev.id})">${going?'<i class="ti ti-check"></i> Going':'RSVP'}</button>
-        <div class="attendee-pips">${pips}${extra}</div>
-      </div>
+      <div><div class="ev-title">${escHtml(ev.title)}</div><div class="ev-meta"><span><i class="ti ti-user"></i>${escHtml(ev.host)}</span><span><i class="ti ti-clock"></i>${ev.time} UTC</span></div><div class="ev-desc">${escHtml(ev.desc)}</div></div>
+      <div class="ev-right"><button class="rsvp-btn ${going?'going':''}" onclick="toggleRsvp(${ev.id})">${going?'<i class="ti ti-check"></i> Going':'RSVP'}</button><div class="attendee-pips">${pips}${extra}</div></div>
     </div>`;
   }).join('');
 }
-function toggleRsvp(id){
-  if(myRsvps.has(id)) myRsvps.delete(id);
-  else myRsvps.add(id);
-  saveRsvps();
-  renderEvents();
-}
-
-// ── ADMIN EVENTS ──
+function toggleRsvp(id){if(myRsvps.has(id))myRsvps.delete(id);else myRsvps.add(id);saveRsvps();renderEvents();}
 function addEvent(){
   const title=document.getElementById('newEvTitle').value.trim();
   const host=document.getElementById('newEvHost').value.trim();
   const date=document.getElementById('newEvDate').value;
   const time=document.getElementById('newEvTime').value;
   const desc=document.getElementById('newEvDesc').value.trim();
-  if(!title||!host||!date||!time) return toast('Fill in all required fields.','error');
+  if(!title||!host||!date||!time){toast('Fill all fields','error');return;}
   events.push({id:nextEvId++,title,host,date,time,desc:desc||'No description.',rsvps:[]});
   saveEvents();
-  document.getElementById('newEvTitle').value='';
-  document.getElementById('newEvHost').value='';
-  document.getElementById('newEvDate').value='';
-  document.getElementById('newEvTime').value='';
-  document.getElementById('newEvDesc').value='';
-  const chip=document.getElementById('evConfirm');
-  chip.classList.add('show');
-  setTimeout(()=>chip.classList.remove('show'),2000);
-  renderAdminEvents();
-  toast('Event added!','success');
+  document.getElementById('newEvTitle').value='';document.getElementById('newEvHost').value='';document.getElementById('newEvDate').value='';document.getElementById('newEvTime').value='';document.getElementById('newEvDesc').value='';
+  const chip=document.getElementById('evConfirm');chip.classList.add('show');setTimeout(()=>chip.classList.remove('show'),2000);
+  renderAdminEvents();toast('Event added!','success');
 }
-function deleteEvent(id){
-  events=events.filter(e=>e.id!==id);
-  saveEvents();
-  renderAdminEvents();
-  toast('Event removed.','');
-}
+function deleteEvent(id){events=events.filter(e=>e.id!==id);saveEvents();renderAdminEvents();toast('Event removed.','');}
 function renderAdminEvents(){
   const el=document.getElementById('adminEvList');
   if(!events.length){el.innerHTML='<div style="font-size:13px;color:var(--muted);font-family:\'DM Mono\',monospace">No events yet.</div>';return;}
-  el.innerHTML=events.map(ev=>`
-    <div class="admin-ev-row">
-      <div>
-        <div class="admin-ev-name">${escHtml(ev.title)}</div>
-        <div class="admin-ev-date">${ev.date} · ${ev.time} UTC · ${escHtml(ev.host)}</div>
-      </div>
-      <button class="del-ev-btn" onclick="deleteEvent(${ev.id})"><i class="ti ti-trash"></i> Remove</button>
-    </div>`).join('');
+  el.innerHTML=events.map(ev=>`<div class="admin-ev-row"><div><div class="admin-ev-name">${escHtml(ev.title)}</div><div class="admin-ev-date">${ev.date} · ${ev.time} UTC · ${escHtml(ev.host)}</div></div><button class="del-ev-btn" onclick="deleteEvent(${ev.id})"><i class="ti ti-trash"></i> Remove</button></div>`).join('');
+}
+
+// ── MEMORY GAME ──
+function startGame(){
+  if(gameActive)return;
+  gameActive=true;flipped=[];matched=0;moves=0;gameSeconds=0;canFlip=true;
+  document.getElementById('winBanner').style.display='none';
+  document.getElementById('moveCount').textContent='0';
+  document.getElementById('gameTimer').textContent='0s';
+  document.getElementById('startBtn').disabled=true;
+  clearInterval(timerInterval);
+  timerInterval=setInterval(()=>{gameSeconds++;document.getElementById('gameTimer').textContent=gameSeconds+'s';},1000);
+  const emojis=[...PRO_EMOJIS].sort(()=>Math.random()-0.5).slice(0,8);
+  gameCards=[...emojis,...emojis].sort(()=>Math.random()-0.5);
+  renderBoard();
+}
+function renderBoard(){
+  const board=document.getElementById('gameBoard');
+  if(!gameActive){board.innerHTML=`<div class="game-idle"><i class="ti ti-cards"></i>Press Start to play — match all pairs to earn 100 points!</div>`;return;}
+  board.innerHTML=`<div class="memory-grid">${gameCards.map((emoji,i)=>`
+    <button class="mem-card" id="mc-${i}" onclick="flipCard(${i})">
+      <div class="card-front"></div>
+      <div class="card-back">${emoji}</div>
+    </button>`).join('')}</div>`;
+}
+function flipCard(i){
+  if(!canFlip||!gameActive)return;
+  const card=document.getElementById('mc-'+i);
+  if(card.classList.contains('flipped')||card.classList.contains('matched'))return;
+  card.classList.add('flipped');
+  flipped.push(i);
+  if(flipped.length===2){
+    moves++;document.getElementById('moveCount').textContent=moves;
+    canFlip=false;
+    const[a,b]=flipped;
+    if(gameCards[a]===gameCards[b]){
+      setTimeout(()=>{
+        document.getElementById('mc-'+a).classList.add('matched');
+        document.getElementById('mc-'+b).classList.add('matched');
+        flipped=[];matched++;canFlip=true;
+        if(matched===8)winGame();
+      },400);
+    } else {
+      setTimeout(()=>{
+        document.getElementById('mc-'+a).classList.remove('flipped');
+        document.getElementById('mc-'+b).classList.remove('flipped');
+        flipped=[];canFlip=true;
+      },800);
+    }
+  }
+}
+function winGame(){
+  clearInterval(timerInterval);gameActive=false;
+  document.getElementById('startBtn').disabled=false;
+  userPoints+=100;savePoints();
+  const banner=document.getElementById('winBanner');
+  document.getElementById('winPts').textContent=`+100 points — total: ${userPoints}`;
+  banner.style.display='flex';
+  toast('🎉 You won! +100 points','success');
 }
 
 // ── CHAT ──
-function fmtDate(ts){ return new Date(ts).toLocaleDateString('en-GB',{weekday:'long',year:'numeric',month:'long',day:'numeric'}); }
-function fmtTime(ts){ return new Date(ts).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}); }
-function fmtFull(ts){ const d=new Date(ts); return d.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'})+' at '+d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',second:'2-digit'}); }
-function rankClass(r){ return r==='owner'?'rank-owner':r==='admin'?'rank-admin':'rank-member'; }
+function fmtDate(ts){return new Date(ts).toLocaleDateString('en-GB',{weekday:'long',year:'numeric',month:'long',day:'numeric'});}
+function fmtTime(ts){return new Date(ts).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});}
+function fmtFull(ts){const d=new Date(ts);return d.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'})+' at '+d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',second:'2-digit'});}
+function rankClass(r){
+  if(r==='owner')return'rank-owner';
+  if(r==='admin')return'rank-admin';
+  return'rank-member';
+}
+function chatRankLabel(r,isPro){
+  if(r==='owner')return`<span class="msg-rank rank-owner">OWNER</span>`;
+  if(r==='admin')return`<span class="msg-rank rank-admin">ADMIN</span>`;
+  if(isPro)return`<span class="msg-rank rank-pro">⭐ PRO</span>`;
+  return`<span class="msg-rank rank-member">MEMBER</span>`;
+}
 function renderChat(){
   const el=document.getElementById('chatMessages');
   const visible=chatMessages.filter(m=>!m.deleted);
-  if(!visible.length){ el.innerHTML='<div class="chat-empty-state"><i class="ti ti-message-circle" aria-hidden="true"></i>No messages yet — say something!</div>'; return; }
+  if(!visible.length){el.innerHTML='<div class="chat-empty-state"><i class="ti ti-message-circle"></i>No messages yet — say something!</div>';return;}
   let html='',lastDate='';
   chatMessages.forEach((msg,idx)=>{
-    if(msg.deleted) return;
+    if(msg.deleted)return;
     const dateStr=fmtDate(msg.timestamp);
-    if(dateStr!==lastDate){ html+=`<div class="chat-date-divider">${dateStr}</div>`; lastDate=dateStr; }
+    if(dateStr!==lastDate){html+=`<div class="chat-date-divider">${dateStr}</div>`;lastDate=dateStr;}
     const rank=(msg.rank||'member').toLowerCase();
     const mine=msg.author===currentUsername;
+    const isPro=msg.isPro||false;
+    const nameColor=isPro?'color:#fbbf24':'';
     let acts='';
-    if(isAdmin()) acts+=`<button class="msg-act-btn delete-btn" title="Delete" onclick="deleteMessage(${idx})"><i class="ti ti-trash" aria-hidden="true"></i></button>`;
-    if(!mine)     acts+=`<button class="msg-act-btn report-btn" title="Report" onclick="openReport(${idx})"><i class="ti ti-flag" aria-hidden="true"></i></button>`;
+    if(isAdmin())acts+=`<button class="msg-act-btn delete-btn" onclick="deleteMessage(${idx})" title="Delete"><i class="ti ti-trash"></i></button>`;
+    if(!mine)acts+=`<button class="msg-act-btn report-btn" onclick="openReport(${idx})" title="Report"><i class="ti ti-flag"></i></button>`;
+    const avatarHtml=msg.avatar?`<img src="${msg.avatar}" alt="avatar" />`:(initials(msg.author));
     html+=`<div class="chat-msg" id="cmsg-${idx}">
-      <div class="msg-avatar">${initials(msg.author)}</div>
+      <div class="msg-avatar">${avatarHtml}</div>
       <div class="msg-body">
-        <div class="msg-header">
-          <span class="msg-author">${escHtml(msg.author)}</span>
-          <span class="msg-rank ${rankClass(rank)}">${rank.toUpperCase()}</span>
-          <span class="msg-time">${fmtTime(msg.timestamp)}</span>
-        </div>
+        <div class="msg-header"><span class="msg-author" style="${nameColor}">${escHtml(msg.author)}</span>${chatRankLabel(rank,isPro)}<span class="msg-time">${fmtTime(msg.timestamp)}</span></div>
         <div class="msg-text">${escHtml(msg.content)}</div>
       </div>
       ${acts?`<div class="msg-actions">${acts}</div>`:''}
@@ -865,61 +1050,32 @@ function renderChat(){
   });
   el.innerHTML=html;
 }
-function scrollChatBottom(){ const el=document.getElementById('chatMessages'); if(el) el.scrollTop=el.scrollHeight; }
+function scrollChatBottom(){const el=document.getElementById('chatMessages');if(el)el.scrollTop=el.scrollHeight;}
 function sendChatMessage(){
   const inp=document.getElementById('chatInput');
-  const content=inp.value.trim();
-  if(!content) return;
-  chatMessages.push({author:currentUsername,rank:currentUserRank,content,timestamp:Date.now(),deleted:false});
+  const content=inp.value.trim();if(!content)return;
+  chatMessages.push({author:currentUsername,rank:currentUserRank,content,timestamp:Date.now(),deleted:false,isPro:userPro,avatar:userAvatar||null});
   localStorage.setItem('vs_chat',JSON.stringify(chatMessages));
-  inp.value='';
-  renderChat();
-  scrollChatBottom();
+  inp.value='';renderChat();scrollChatBottom();
 }
-function deleteMessage(idx){
-  if(chatMessages[idx]){ chatMessages[idx].deleted=true; localStorage.setItem('vs_chat',JSON.stringify(chatMessages)); renderChat(); toast('Message deleted',''); }
-}
-function openReport(idx){
-  pendingReport={idx};
-  const msg=chatMessages[idx];
-  document.getElementById('reportModalSub').textContent=`Reporting message from: ${msg.author}`;
-  document.getElementById('reportReason').value='Spam';
-  document.getElementById('reportDetails').value='';
-  document.getElementById('reportModal').classList.add('show');
-  document.getElementById('reportConfirmBtn').onclick=confirmReport;
-}
+function deleteMessage(idx){if(chatMessages[idx]){chatMessages[idx].deleted=true;localStorage.setItem('vs_chat',JSON.stringify(chatMessages));renderChat();toast('Message deleted','');}}
+function openReport(idx){pendingReport={idx};const msg=chatMessages[idx];document.getElementById('reportModalSub').textContent=`Reporting message from: ${msg.author}`;document.getElementById('reportReason').value='Spam';document.getElementById('reportDetails').value='';document.getElementById('reportModal').classList.add('show');document.getElementById('reportConfirmBtn').onclick=confirmReport;}
 async function confirmReport(){
-  if(pendingReport===null) return;
-  const msg=chatMessages[pendingReport.idx];
-  const reason=document.getElementById('reportReason').value;
-  const details=document.getElementById('reportDetails').value.trim();
-  closeModal('reportModal');
-  const embed={title:'🚩 Message Reported — Viper Studios',color:0xf59e0b,fields:[
-    {name:'Reported User',value:`**${msg.author}** · rank: \`${msg.rank}\``,inline:true},
-    {name:'Reported By',value:`**${currentUsername}** · rank: \`${currentUserRank}\``,inline:true},
-    {name:'\u200b',value:'\u200b',inline:false},
-    {name:'Reason',value:reason,inline:true},
-    {name:'Message sent',value:fmtFull(msg.timestamp),inline:true},
-    {name:'Reported at',value:fmtFull(Date.now()),inline:true},
-    {name:'Message content',value:`\`\`\`${msg.content.slice(0,900)}\`\`\``,inline:false},
-  ]};
-  if(details) embed.fields.push({name:'Extra details',value:details,inline:false});
-  try{
-    const r=await fetch(DISCORD_WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({embeds:[embed]})});
-    (r.ok||r.status===204)?toast('Report sent to moderators','warn'):toast('Webhook failed','error');
-  } catch { toast('Could not reach Discord','error'); }
+  if(pendingReport===null)return;const msg=chatMessages[pendingReport.idx];const reason=document.getElementById('reportReason').value;const details=document.getElementById('reportDetails').value.trim();closeModal('reportModal');
+  const embed={title:'🚩 Message Reported — Viper Studios',color:0xf59e0b,fields:[{name:'Reported User',value:`**${msg.author}**`,inline:true},{name:'Reported By',value:`**${currentUsername}**`,inline:true},{name:'Reason',value:reason,inline:false},{name:'Message',value:`\`\`\`${msg.content.slice(0,900)}\`\`\``,inline:false}]};
+  if(details)embed.fields.push({name:'Extra details',value:details,inline:false});
+  try{const r=await fetch(DISCORD_WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({embeds:[embed]})});(r.ok||r.status===204)?toast('Report sent','warn'):toast('Webhook failed','error');}
+  catch{toast('Could not reach Discord','error');}
 }
 
-function logout(){ localStorage.removeItem('token'); window.location.href='index.html'; }
+function logout(){localStorage.removeItem('token');window.location.href='index.html';}
 
-
-
-document.getElementById('chatInput').addEventListener('keydown',e=>{ if(e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); sendChatMessage(); } });
-
+document.getElementById('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChatMessage();}});
 applyColor(selectedColor,selectedColor2);
 const sw=document.querySelector(`.color-swatch[data-color="${selectedColor}"]`);
-if(sw){ document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('selected')); sw.classList.add('selected'); }
+if(sw){document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('selected'));sw.classList.add('selected');}
 renderKeys();
+renderBoard();
 load();
 </script>
 </body>
