@@ -179,12 +179,16 @@ select option{background:#0d1018}
 .admin-give-card h4{font-size:14px;font-weight:700;color:var(--muted);letter-spacing:2px;margin-bottom:18px;font-family:'DM Mono',monospace}
 .give-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(245,158,11,0.12);color:#fbbf24;border:1px solid rgba(245,158,11,0.3);border-radius:8px;padding:10px 22px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s}
 .give-btn:hover{background:rgba(245,158,11,0.22)}
-  
+
+  <!-- Preview -->
+  <div class="badge-preview">
+    <div class="badge-preview-label">PREVIEW:</div>
+    <span class="custom-badge-tag" id="badgeLivePreview" style="background:rgba(59,130,246,0.15);border-color:rgba(59,130,246,0.35);color:#fff">🏅 Badge Name</span>
+  </div>
+
   <!-- BADGE MAKER CARD -->
 <div class="badge-maker-card">
   <h4>🏅 BADGE MAKER & GIVER</h4>
-
-  <!-- Create Badge -->
   <div class="form-2col" style="margin-bottom:12px">
     <div class="form-group">
       <div class="field-label">BADGE EMOJI</div>
@@ -195,7 +199,6 @@ select option{background:#0d1018}
       <input class="field-input" id="badgeName" placeholder="e.g. Champion" style="margin-bottom:0" />
     </div>
   </div>
-
   <div class="field-label">BADGE COLOR</div>
   <div class="badge-color-row" id="badgeColorRow">
     <div class="badge-color-btn selected" style="background:#3b82f6" data-color="#3b82f6" data-text="#fff" onclick="selectBadgeColor(this)"></div>
@@ -211,12 +214,56 @@ select option{background:#0d1018}
     <div class="badge-color-btn" style="background:#fbbf24" data-color="#fbbf24" data-text="#000" onclick="selectBadgeColor(this)"></div>
     <div class="badge-color-btn" style="background:#6366f1" data-color="#6366f1" data-text="#fff" onclick="selectBadgeColor(this)"></div>
   </div>
-
-  <!-- Preview -->
   <div class="badge-preview">
     <div class="badge-preview-label">PREVIEW:</div>
     <span class="custom-badge-tag" id="badgeLivePreview" style="background:rgba(59,130,246,0.15);border-color:rgba(59,130,246,0.35);color:#fff">🏅 Badge Name</span>
   </div>
+  <div class="field-label">DESCRIPTION / "EARN BY" TEXT</div>
+  <input class="field-input" id="badgeDesc" placeholder="e.g. Awarded to top players" style="margin-bottom:10px" />
+  <div class="claim-settings">
+    <div class="claim-toggle-row">
+      <label class="toggle-switch"><input type="checkbox" id="badgeClaimable" onchange="toggleClaimSettings()" /><span class="toggle-slider"></span></label>
+      <span style="font-size:13px;color:var(--text);font-family:'DM Mono',monospace">CLAIMABLE BY EVERYONE</span>
+    </div>
+    <div id="claimSettingsFields" style="display:none">
+      <div class="field-label" style="margin-bottom:6px">CLAIM EXPIRES (UTC)</div>
+      <input class="field-input" type="datetime-local" id="badgeExpiry" style="margin-bottom:10px" />
+      <div class="field-label" style="margin-bottom:6px">EARN BY</div>
+      <div class="earn-by-wrap" id="earnByWrap">
+        <button class="earn-by-tag" onclick="toggleEarnBy(this)" data-val="Playing a minigame">🎮 Playing a minigame</button>
+        <button class="earn-by-tag" onclick="toggleEarnBy(this)" data-val="Attending an event">📅 Attending an event</button>
+        <button class="earn-by-tag" onclick="toggleEarnBy(this)" data-val="Being active in chat">💬 Being active in chat</button>
+        <button class="earn-by-tag" onclick="toggleEarnBy(this)" data-val="Reaching 500 points">⭐ Reaching 500 points</button>
+        <button class="earn-by-tag" onclick="toggleEarnBy(this)" data-val="Visiting the world">🌍 Visiting the world</button>
+        <button class="earn-by-tag" onclick="toggleEarnBy(this)" data-val="Admin discretion">🛡️ Admin discretion</button>
+        <input class="field-input" id="earnByCustom" placeholder="Custom earn by text..." style="margin-bottom:0;margin-top:4px;font-size:13px" />
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">
+    <button class="create-badge-btn" onclick="createBadge()"><i class="ti ti-badge" style="font-size:15px"></i> Create Badge</button>
+    <span class="confirm-chip" id="badgeCreateConfirm"><i class="ti ti-check"></i> Created!</span>
+  </div>
+  <div style="border-top:1px solid var(--border);padding-top:16px;margin-top:4px">
+    <div class="field-label" style="margin-bottom:12px">GIVE BADGE TO USER</div>
+    <div class="form-2col" style="margin-bottom:12px">
+      <div class="form-group">
+        <div class="field-label">USERNAME</div>
+        <input class="field-input" id="giveBadgeUsername" placeholder="exact username" style="margin-bottom:0" />
+      </div>
+      <div class="form-group">
+        <div class="field-label">SELECT BADGE</div>
+        <select class="select-field" id="giveBadgeSelect"><option value="">— No badges created yet —</option></select>
+      </div>
+    </div>
+    <button class="give-badge-btn" onclick="adminGiveBadge()"><i class="ti ti-send" style="font-size:15px"></i> Give Badge</button>
+    <span class="confirm-chip" id="badgeGiveConfirm" style="margin-left:12px"><i class="ti ti-check"></i> Given!</span>
+  </div>
+  <div style="border-top:1px solid var(--border);padding-top:16px;margin-top:16px">
+    <div class="field-label" style="margin-bottom:12px">CREATED BADGES</div>
+    <div id="adminBadgeList"><div style="font-size:13px;color:var(--muted);font-family:'DM Mono',monospace">No badges created yet.</div></div>
+  </div>
+</div>
 
   <!-- Claim Settings -->
   <div class="field-label">DESCRIPTION / "EARN BY" TEXT</div>
@@ -321,6 +368,38 @@ select option{background:#0d1018}
 .chat-send-btn:hover{opacity:0.85}
 
   <style>
+
+  /* ── Custom Badges ── */
+.custom-badge-tag{font-size:11px;font-family:'DM Mono',monospace;padding:3px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);color:var(--text);background:rgba(255,255,255,0.06);display:inline-flex;align-items:center;gap:5px}
+.badge-maker-card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:16px;max-width:640px;position:relative;overflow:hidden}
+.badge-maker-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#8b5cf6,#06b6d4)}
+.badge-maker-card h4{font-size:14px;font-weight:700;color:var(--muted);letter-spacing:2px;margin-bottom:18px;font-family:'DM Mono',monospace}
+.badge-preview{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.badge-preview-label{font-size:12px;color:var(--muted);font-family:'DM Mono',monospace}
+.badge-color-row{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.badge-color-btn{width:28px;height:28px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:all 0.15s;flex-shrink:0}
+.badge-color-btn.selected{border-color:#fff;transform:scale(1.15)}
+.create-badge-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(139,92,246,0.12);color:#a78bfa;border:1px solid rgba(139,92,246,0.3);border-radius:8px;padding:10px 22px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s}
+.create-badge-btn:hover{background:rgba(139,92,246,0.22)}
+.give-badge-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(6,182,212,0.12);color:#22d3ee;border:1px solid rgba(6,182,212,0.3);border-radius:8px;padding:10px 22px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s}
+.give-badge-btn:hover{background:rgba(6,182,212,0.22)}
+.badge-list-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.badge-list-row:last-child{border-bottom:none}
+.badge-list-actions{display:flex;gap:6px;margin-left:auto}
+.del-badge-btn{background:none;border:1px solid var(--border2);border-radius:7px;color:var(--muted);padding:4px 8px;cursor:pointer;font-size:12px;font-family:'DM Mono',monospace;transition:all 0.15s;display:flex;align-items:center;gap:4px}
+.del-badge-btn:hover{color:var(--red);border-color:rgba(239,68,68,0.4)}
+.claim-settings{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-top:12px;margin-bottom:14px}
+.claim-toggle-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.toggle-switch{position:relative;width:36px;height:20px;flex-shrink:0}
+.toggle-switch input{opacity:0;width:0;height:0;position:absolute}
+.toggle-slider{position:absolute;inset:0;background:rgba(255,255,255,0.1);border-radius:999px;cursor:pointer;transition:background 0.2s}
+.toggle-switch input:checked+.toggle-slider{background:var(--accent)}
+.toggle-slider::before{content:'';position:absolute;height:14px;width:14px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:transform 0.2s}
+.toggle-switch input:checked+.toggle-slider::before{transform:translateX(16px)}
+.earn-by-wrap{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.earn-by-tag{font-size:12px;font-family:'DM Mono',monospace;padding:4px 12px;border-radius:999px;border:1px solid var(--border2);color:var(--muted);cursor:pointer;transition:all 0.15s;display:flex;align-items:center;gap:5px;background:none}
+.earn-by-tag.selected{background:rgba(59,130,246,0.12);color:var(--accent2);border-color:rgba(59,130,246,0.3)}
+.earn-by-tag:hover:not(.selected){color:var(--text);border-color:var(--text)}
 /* ── Custom Badges (admin-issued) ── */
 .custom-badge-tag{font-size:11px;font-family:'DM Mono',monospace;padding:3px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);color:var(--text);background:rgba(255,255,255,0.06);display:inline-flex;align-items:center;gap:5px}
 
@@ -1048,8 +1127,7 @@ if(id==='chat'){
   chatWrap.style.display='flex';
   chatWrap.style.height='100%';
   chatWrap.style.width='100%';
-  loadChat();
-  setTimeout(scrollChatBottom,100);
+  loadChat().then(()=>setTimeout(scrollChatBottom,80));
 }
   else{contentScroll.style.display='';chatWrap.style.display='none';document.getElementById('tab-'+id).classList.add('active');
     if(id==='world')loadEvents();
@@ -1501,7 +1579,14 @@ async function finishTyping(){
 // ══════════════════════════════════════
 // ── CHAT ──
 // ══════════════════════════════════════
-async function loadChat(){try{const res=await fetch(`${API}/api/chat`,{headers:{Authorization:'Bearer '+token()}});serverMessages=await res.json();renderChat();scrollChatBottom();}catch{renderChat();}}
+async function loadChat(){
+  try{
+    const res=await fetch(`${API}/api/chat`,{headers:{Authorization:'Bearer '+token()}});
+    serverMessages=await res.json();
+    renderChat();
+    setTimeout(scrollChatBottom,50);
+  }catch{renderChat();}
+}
 function fmtDate(ts){return new Date(ts).toLocaleDateString('en-GB',{weekday:'long',year:'numeric',month:'long',day:'numeric'});}
 function fmtTime(ts){return new Date(ts).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});}
 function chatRankLabel(r,isPro){if(r==='owner')return`<span class="msg-rank rank-owner">OWNER</span>`;if(r==='admin')return`<span class="msg-rank rank-admin">ADMIN</span>`;if(isPro)return`<span class="msg-rank rank-pro">⭐ PRO</span>`;return`<span class="msg-rank rank-member">MEMBER</span>`;}
