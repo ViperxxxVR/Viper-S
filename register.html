@@ -179,6 +179,100 @@ select option{background:#0d1018}
 .admin-give-card h4{font-size:14px;font-weight:700;color:var(--muted);letter-spacing:2px;margin-bottom:18px;font-family:'DM Mono',monospace}
 .give-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(245,158,11,0.12);color:#fbbf24;border:1px solid rgba(245,158,11,0.3);border-radius:8px;padding:10px 22px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s}
 .give-btn:hover{background:rgba(245,158,11,0.22)}
+  
+  <!-- BADGE MAKER CARD -->
+<div class="badge-maker-card">
+  <h4>🏅 BADGE MAKER & GIVER</h4>
+
+  <!-- Create Badge -->
+  <div class="form-2col" style="margin-bottom:12px">
+    <div class="form-group">
+      <div class="field-label">BADGE EMOJI</div>
+      <input class="field-input" id="badgeEmoji" placeholder="e.g. 🏆" maxlength="4" style="margin-bottom:0;font-size:20px" />
+    </div>
+    <div class="form-group">
+      <div class="field-label">BADGE NAME</div>
+      <input class="field-input" id="badgeName" placeholder="e.g. Champion" style="margin-bottom:0" />
+    </div>
+  </div>
+
+  <div class="field-label">BADGE COLOR</div>
+  <div class="badge-color-row" id="badgeColorRow">
+    <div class="badge-color-btn selected" style="background:#3b82f6" data-color="#3b82f6" data-text="#fff" onclick="selectBadgeColor(this)"></div>
+    <div class="badge-color-btn" style="background:#ef4444" data-color="#ef4444" data-text="#fff" onclick="selectBadgeColor(this)"></div>
+    <div class="badge-color-btn" style="background:#22c55e" data-color="#22c55e" data-text="#fff" onclick="selectBadgeColor(this)"></div>
+    <div class="badge-color-btn" style="background:#f59e0b" data-color="#f59e0b" data-text="#000" onclick="selectBadgeColor(this)"></div>
+    <div class="badge-color-btn" style="background:#8b5cf6" data-color="#8b5cf6" data-text="#fff" onclick="selectBadgeColor(this)"></div>
+    <div class="badge-color-btn" style="background:#06b6d4" data-color="#06b6d4" data-text="#000" onclick="selectBadgeColor(this)"></div>
+    <div class="badge-color-btn" style="background:#ec4899" data-color="#ec4899" data-text="#fff" onclick="selectBadgeColor(this)"></div>
+    <div class="badge-color-btn" style="background:#f97316" data-color="#f97316" data-text="#000" onclick="selectBadgeColor(this)"></div>
+    <div class="badge-color-btn" style="background:#a3e635" data-color="#a3e635" data-text="#000" onclick="selectBadgeColor(this)"></div>
+    <div class="badge-color-btn" style="background:#e11d48" data-color="#e11d48" data-text="#fff" onclick="selectBadgeColor(this)"></div>
+    <div class="badge-color-btn" style="background:#fbbf24" data-color="#fbbf24" data-text="#000" onclick="selectBadgeColor(this)"></div>
+    <div class="badge-color-btn" style="background:#6366f1" data-color="#6366f1" data-text="#fff" onclick="selectBadgeColor(this)"></div>
+  </div>
+
+  <!-- Preview -->
+  <div class="badge-preview">
+    <div class="badge-preview-label">PREVIEW:</div>
+    <span class="custom-badge-tag" id="badgeLivePreview" style="background:rgba(59,130,246,0.15);border-color:rgba(59,130,246,0.35);color:#fff">🏅 Badge Name</span>
+  </div>
+
+  <!-- Claim Settings -->
+  <div class="field-label">DESCRIPTION / "EARN BY" TEXT</div>
+  <input class="field-input" id="badgeDesc" placeholder="e.g. Awarded to top players" style="margin-bottom:10px" />
+
+  <div class="claim-settings">
+    <div class="claim-toggle-row">
+      <label class="toggle-switch"><input type="checkbox" id="badgeClaimable" onchange="toggleClaimSettings()" /><span class="toggle-slider"></span></label>
+      <span style="font-size:13px;color:var(--text);font-family:'DM Mono',monospace">CLAIMABLE BY EVERYONE</span>
+    </div>
+
+    <div id="claimSettingsFields" style="display:none">
+      <div class="field-label" style="margin-bottom:6px">CLAIM EXPIRES (UTC)</div>
+      <input class="field-input" type="datetime-local" id="badgeExpiry" style="margin-bottom:10px" />
+
+      <div class="field-label" style="margin-bottom:6px">EARN BY</div>
+      <div class="earn-by-wrap" id="earnByWrap">
+        <button class="earn-by-tag" onclick="toggleEarnBy(this)" data-val="Playing a minigame">🎮 Playing a minigame</button>
+        <button class="earn-by-tag" onclick="toggleEarnBy(this)" data-val="Attending an event">📅 Attending an event</button>
+        <button class="earn-by-tag" onclick="toggleEarnBy(this)" data-val="Being active in chat">💬 Being active in chat</button>
+        <button class="earn-by-tag" onclick="toggleEarnBy(this)" data-val="Reaching 500 points">⭐ Reaching 500 points</button>
+        <button class="earn-by-tag" onclick="toggleEarnBy(this)" data-val="Visiting the world">🌍 Visiting the world</button>
+        <button class="earn-by-tag" onclick="toggleEarnBy(this)" data-val="Admin discretion">🛡️ Admin discretion</button>
+        <input class="field-input" id="earnByCustom" placeholder="Custom earn by text..." style="margin-bottom:0;margin-top:4px;font-size:13px" />
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">
+    <button class="create-badge-btn" onclick="createBadge()"><i class="ti ti-badge" style="font-size:15px"></i> Create Badge</button>
+    <span class="confirm-chip" id="badgeCreateConfirm"><i class="ti ti-check"></i> Created!</span>
+  </div>
+
+  <!-- Give Badge to user -->
+  <div style="border-top:1px solid var(--border);padding-top:16px;margin-top:4px">
+    <div class="field-label" style="margin-bottom:12px">GIVE BADGE TO USER</div>
+    <div class="form-2col" style="margin-bottom:12px">
+      <div class="form-group">
+        <div class="field-label">USERNAME</div>
+        <input class="field-input" id="giveBadgeUsername" placeholder="exact username" style="margin-bottom:0" />
+      </div>
+      <div class="form-group">
+        <div class="field-label">SELECT BADGE</div>
+        <select class="select-field" id="giveBadgeSelect"><option value="">— No badges created yet —</option></select>
+      </div>
+    </div>
+    <button class="give-badge-btn" onclick="adminGiveBadge()"><i class="ti ti-send" style="font-size:15px"></i> Give Badge</button>
+    <span class="confirm-chip" id="badgeGiveConfirm" style="margin-left:12px"><i class="ti ti-check"></i> Given!</span>
+  </div>
+
+  <!-- Badge List -->
+  <div style="border-top:1px solid var(--border);padding-top:16px;margin-top:16px">
+    <div class="field-label" style="margin-bottom:12px">CREATED BADGES</div>
+    <div id="adminBadgeList"><div style="font-size:13px;color:var(--muted);font-family:'DM Mono',monospace">No badges created yet.</div></div>
+  </div>
+</div>
 
 /* ── Chat ── */
 .chat-wrap{display:none;flex-direction:column;flex:1;overflow:hidden}
@@ -225,6 +319,44 @@ select option{background:#0d1018}
 .chat-input::placeholder{color:var(--muted)}
 .chat-send-btn{background:var(--accent);border:none;border-radius:7px;color:#fff;padding:9px 16px;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;transition:opacity 0.15s;flex-shrink:0}
 .chat-send-btn:hover{opacity:0.85}
+
+  <style>
+/* ── Custom Badges (admin-issued) ── */
+.custom-badge-tag{font-size:11px;font-family:'DM Mono',monospace;padding:3px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);color:var(--text);background:rgba(255,255,255,0.06);display:inline-flex;align-items:center;gap:5px}
+
+/* ── Badge Maker Admin Card ── */
+.badge-maker-card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:16px;max-width:640px;position:relative;overflow:hidden}
+.badge-maker-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#8b5cf6,#06b6d4)}
+.badge-maker-card h4{font-size:14px;font-weight:700;color:var(--muted);letter-spacing:2px;margin-bottom:18px;font-family:'DM Mono',monospace}
+.badge-preview{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.badge-preview-label{font-size:12px;color:var(--muted);font-family:'DM Mono',monospace}
+.badge-color-row{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.badge-color-btn{width:28px;height:28px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:all 0.15s;flex-shrink:0}
+.badge-color-btn.selected{border-color:#fff;transform:scale(1.15)}
+.create-badge-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(139,92,246,0.12);color:#a78bfa;border:1px solid rgba(139,92,246,0.3);border-radius:8px;padding:10px 22px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s}
+.create-badge-btn:hover{background:rgba(139,92,246,0.22)}
+.give-badge-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(6,182,212,0.12);color:#22d3ee;border:1px solid rgba(6,182,212,0.3);border-radius:8px;padding:10px 22px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s}
+.give-badge-btn:hover{background:rgba(6,182,212,0.22)}
+.badge-list-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.badge-list-row:last-child{border-bottom:none}
+.badge-list-actions{display:flex;gap:6px;margin-left:auto}
+.del-badge-btn{background:none;border:1px solid var(--border2);border-radius:7px;color:var(--muted);padding:4px 8px;cursor:pointer;font-size:12px;font-family:'DM Mono',monospace;transition:all 0.15s;display:flex;align-items:center;gap:4px}
+.del-badge-btn:hover{color:var(--red);border-color:rgba(239,68,68,0.4)}
+
+/* Claimable badge settings */
+.claim-settings{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-top:12px;margin-bottom:14px}
+.claim-toggle-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.toggle-switch{position:relative;width:36px;height:20px;flex-shrink:0}
+.toggle-switch input{opacity:0;width:0;height:0;position:absolute}
+.toggle-slider{position:absolute;inset:0;background:rgba(255,255,255,0.1);border-radius:999px;cursor:pointer;transition:background 0.2s}
+.toggle-switch input:checked+.toggle-slider{background:var(--accent)}
+.toggle-slider::before{content:'';position:absolute;height:14px;width:14px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:transform 0.2s}
+.toggle-switch input:checked+.toggle-slider::before{transform:translateX(16px)}
+.earn-by-wrap{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.earn-by-tag{font-size:12px;font-family:'DM Mono',monospace;padding:4px 12px;border-radius:999px;border:1px solid var(--border2);color:var(--muted);cursor:pointer;transition:all 0.15s;display:flex;align-items:center;gap:5px;background:none}
+.earn-by-tag.selected{background:rgba(59,130,246,0.12);color:var(--accent2);border-color:rgba(59,130,246,0.3)}
+.earn-by-tag:hover:not(.selected){color:var(--text);border-color:var(--text)}
+
 
 /* ── World/Events ── */
 .world-wrap{max-width:720px}
@@ -835,6 +967,23 @@ const SHOP_ITEMS = [
   {id:'bg_viper',name:'🐍 Viper Badge',desc:'The classic Viper Studios mascot badge.',icon:'🐍',cat:'badge',price:200,profileFx:'badge_viper'},
   {id:'bg_crown',name:'👑 Crown Badge',desc:'Wear a crown — you earned it.',icon:'👑',cat:'badge',price:350,profileFx:'badge_crown'},
   {id:'bg_bolt',name:'⚡ Bolt Badge',desc:'High-energy bolt badge for active members.',icon:'⚡',cat:'badge',price:150,profileFx:'badge_bolt'},
+
+  // Titles (PRO-style exclusives)
+  {id:'pr_title_goat',name:'"GOAT" Title',desc:'Greatest of all time. Enough said.',icon:'🐐',cat:'profile',price:600,profileFx:'title_goat'},
+  {id:'pr_title_ghost',name:'"Ghost" Title',desc:'Silent but deadly presence.',icon:'👻',cat:'profile',price:320,profileFx:'title_ghost'},
+  {id:'pr_title_neon',name:'"Neon" Title',desc:'Electric vibes only.',icon:'💡',cat:'profile',price:280,profileFx:'title_neon'},
+  // Extra chat effects
+  {id:'fx_glitch',name:'Glitch Text',desc:'Your messages appear corrupted and glitchy.',icon:'📡',cat:'chat',price:250,effect:'glitch'},
+  {id:'fx_wave',name:'Wave Text',desc:'Letters rise and fall in a smooth wave.',icon:'〰️',cat:'chat',price:220,effect:'wave'},
+  // Extra badges
+  {id:'bg_fire',name:'🔥 Fire Badge',desc:'For the hottest members.',icon:'🔥',cat:'badge',price:130,profileFx:'badge_fire'},
+  {id:'bg_star',name:'⭐ Star Badge',desc:'A shining star in the community.',icon:'⭐',cat:'badge',price:180,profileFx:'badge_star'},
+  {id:'bg_alien',name:'👽 Alien Badge',desc:'Out of this world.',icon:'👽',cat:'badge',price:160,profileFx:'badge_alien'},
+  {id:'bg_robot',name:'🤖 Robot Badge',desc:'Machine precision.',icon:'🤖',cat:'badge',price:140,profileFx:'badge_robot'},
+  // Backgrounds (PRO unlock)
+  {id:'pr_bg_dark',name:'Dark Aura BG',desc:'A shifting dark animated profile background.',icon:'🌑',cat:'profile',price:500,profileFx:'bg_dark'},
+  {id:'pr_bg_galaxy',name:'Galaxy BG',desc:'Starfield background on your profile.',icon:'🌌',cat:'profile',price:600,profileFx:'bg_galaxy'},
+  
 ];
 
 // Loaded from localStorage (simulate persistence; would be server-side in prod)
@@ -898,7 +1047,7 @@ function switchTab(id,btn){
   else{contentScroll.style.display='';chatWrap.style.display='none';document.getElementById('tab-'+id).classList.add('active');
     if(id==='world')loadEvents();
     if(id==='users')loadMembers();
-    if(id==='admin'){loadAdminKeys();renderAdminEvents();}
+    if(id==='admin'){loadAdminKeys();renderAdminEvents();loadAdminBadges();}
     if(id==='shop'){renderShop();document.getElementById('shopBalDisplay').textContent=userPoints;}
   }
   const labels={home:'Dashboard',chat:'Chat',world:'World',games:'Games',shop:'Points Shop',settings:'Settings',users:'Members',admin:'Admin Panel'};
@@ -1382,6 +1531,154 @@ resetReactionUI();
 resetTypingUI();
 populateChatEffectDropdown();
 load();
+  // ══════════════════════════════════════
+// ── BADGE SYSTEM ──
+// ══════════════════════════════════════
+let createdBadges = JSON.parse(localStorage.getItem('vs_badges')||'[]');
+let selectedBadgeColor = '#3b82f6';
+let selectedBadgeTextColor = '#fff';
+let activeEarnByTags = [];
+
+function selectBadgeColor(el){
+  document.querySelectorAll('.badge-color-btn').forEach(b=>b.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedBadgeColor=el.dataset.color;
+  selectedBadgeTextColor=el.dataset.text;
+  updateBadgePreview();
+}
+
+function updateBadgePreview(){
+  const emoji=document.getElementById('badgeEmoji').value||'🏅';
+  const name=document.getElementById('badgeName').value||'Badge Name';
+  const prev=document.getElementById('badgeLivePreview');
+  const hex=selectedBadgeColor;
+  const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);
+  prev.style.background=`rgba(${r},${g},${b},0.18)`;
+  prev.style.borderColor=`rgba(${r},${g},${b},0.45)`;
+  prev.style.color=selectedBadgeTextColor==='#000'?hex:'var(--text)';
+  prev.textContent=`${emoji} ${name}`;
+}
+
+// Live preview on input
+['badgeEmoji','badgeName'].forEach(id=>{
+  const el=document.getElementById(id);
+  if(el)el.addEventListener('input',updateBadgePreview);
+});
+
+function toggleClaimSettings(){
+  const on=document.getElementById('badgeClaimable').checked;
+  document.getElementById('claimSettingsFields').style.display=on?'':'none';
+}
+
+function toggleEarnBy(btn){
+  btn.classList.toggle('selected');
+  const val=btn.dataset.val;
+  if(btn.classList.contains('selected'))activeEarnByTags.push(val);
+  else activeEarnByTags=activeEarnByTags.filter(v=>v!==val);
+}
+
+function createBadge(){
+  const emoji=document.getElementById('badgeEmoji').value.trim();
+  const name=document.getElementById('badgeName').value.trim();
+  const desc=document.getElementById('badgeDesc').value.trim();
+  if(!emoji||!name){toast('Enter emoji and name','error');return;}
+
+  const claimable=document.getElementById('badgeClaimable').checked;
+  const expiry=document.getElementById('badgeExpiry').value||null;
+  const earnByCustom=document.getElementById('earnByCustom').value.trim();
+  const earnBy=[...activeEarnByTags,...(earnByCustom?[earnByCustom]:[])];
+
+  const badge={
+    id:'badge_'+Date.now(),
+    emoji,name,desc,
+    color:selectedBadgeColor,
+    textColor:selectedBadgeTextColor,
+    claimable,
+    expiry,
+    earnBy,
+    createdAt:new Date().toISOString(),
+    recipients:[]
+  };
+
+  createdBadges.unshift(badge);
+  localStorage.setItem('vs_badges',JSON.stringify(createdBadges));
+  renderAdminBadgeList();
+  populateGiveBadgeSelect();
+
+  // Reset
+  document.getElementById('badgeEmoji').value='';
+  document.getElementById('badgeName').value='';
+  document.getElementById('badgeDesc').value='';
+  document.getElementById('badgeClaimable').checked=false;
+  document.getElementById('badgeExpiry').value='';
+  document.getElementById('earnByCustom').value='';
+  activeEarnByTags=[];
+  document.querySelectorAll('.earn-by-tag').forEach(t=>t.classList.remove('selected'));
+  document.getElementById('claimSettingsFields').style.display='none';
+  updateBadgePreview();
+
+  const c=document.getElementById('badgeCreateConfirm');c.classList.add('show');setTimeout(()=>c.classList.remove('show'),2000);
+  toast(`🏅 Badge "${name}" created!`,'success');
+}
+
+function renderAdminBadgeList(){
+  const el=document.getElementById('adminBadgeList');
+  if(!createdBadges.length){el.innerHTML='<div style="font-size:13px;color:var(--muted);font-family:\'DM Mono\',monospace">No badges created yet.</div>';return;}
+  el.innerHTML=createdBadges.map(b=>{
+    const r=parseInt(b.color.slice(1,3),16),g=parseInt(b.color.slice(3,5),16),bv=parseInt(b.color.slice(5,7),16);
+    const bgStyle=`background:rgba(${r},${g},${bv},0.18);border-color:rgba(${r},${g},${bv},0.45);color:var(--text)`;
+    const claimInfo=b.claimable?`<span style="font-size:10px;font-family:'DM Mono',monospace;color:var(--green)">● CLAIMABLE${b.expiry?' until '+new Date(b.expiry).toLocaleString():''}</span>`:'';
+    const earnInfo=b.earnBy&&b.earnBy.length?`<span style="font-size:11px;font-family:'DM Mono',monospace;color:var(--muted)">Earn by: ${b.earnBy.join(', ')}</span>`:'';
+    const given=b.recipients&&b.recipients.length?`<span style="font-size:10px;font-family:'DM Mono',monospace;color:var(--muted)">${b.recipients.length} given</span>`:'';
+    return `<div class="badge-list-row">
+      <span class="custom-badge-tag" style="${bgStyle}">${b.emoji} ${b.name}</span>
+      <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">${claimInfo}${earnInfo?'<div>'+earnInfo+'</div>':''}${given}</div>
+      <div class="badge-list-actions">
+        <button class="del-badge-btn" onclick="deleteBadge('${b.id}')"><i class="ti ti-trash"></i> Remove</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function deleteBadge(id){
+  createdBadges=createdBadges.filter(b=>b.id!==id);
+  localStorage.setItem('vs_badges',JSON.stringify(createdBadges));
+  renderAdminBadgeList();
+  populateGiveBadgeSelect();
+  toast('Badge removed','');
+}
+
+function populateGiveBadgeSelect(){
+  const sel=document.getElementById('giveBadgeSelect');
+  if(!createdBadges.length){sel.innerHTML='<option value="">— No badges created yet —</option>';return;}
+  sel.innerHTML=createdBadges.map(b=>`<option value="${b.id}">${b.emoji} ${b.name}</option>`).join('');
+}
+
+async function adminGiveBadge(){
+  const username=document.getElementById('giveBadgeUsername').value.trim();
+  const badgeId=document.getElementById('giveBadgeSelect').value;
+  if(!username||!badgeId){toast('Select a user and badge','error');return;}
+  const badge=createdBadges.find(b=>b.id===badgeId);
+  if(!badge){toast('Badge not found','error');return;}
+
+  // Track recipient locally
+  if(!badge.recipients)badge.recipients=[];
+  if(!badge.recipients.includes(username)){badge.recipients.push(username);}
+  localStorage.setItem('vs_badges',JSON.stringify(createdBadges));
+  renderAdminBadgeList();
+
+  // Try to push to server
+  try{
+    await fetch(`${API}/api/admin/give/badge`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({username,badge:{id:badge.id,emoji:badge.emoji,name:badge.name,color:badge.color,textColor:badge.textColor,desc:badge.desc,earnBy:badge.earnBy}})});
+  }catch{}
+
+  const c=document.getElementById('badgeGiveConfirm');c.classList.add('show');setTimeout(()=>c.classList.remove('show'),2000);
+  toast(`🏅 "${badge.name}" given to ${username}`,'success');
+}
+
+// Init badge UI when admin tab loads (add to existing loadAdminKeys call)
+const _origLoadAdmin=typeof loadAdminKeys!=='undefined'?loadAdminKeys:null;
+function loadAdminBadges(){renderAdminBadgeList();populateGiveBadgeSelect();}
 </script>
 </body>
 </html>
