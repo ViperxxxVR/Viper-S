@@ -16,7 +16,8 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .logo-icon{width:32px;height:32px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;font-weight:700}
 .logo-text{font-size:17px;font-weight:700;letter-spacing:1px;color:#fff}
 .logo-sub{font-size:10px;color:var(--muted);letter-spacing:2px;font-family:'DM Mono',monospace}
-.nav{padding:16px 10px;flex:1;display:flex;flex-direction:column;gap:4px}
+.nav{padding:16px 10px;flex:1;display:flex;flex-direction:column;gap:4px;overflow-y:auto}
+.nav::-webkit-scrollbar{width:3px}.nav::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.06);border-radius:3px}
 .nav-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;cursor:pointer;color:var(--muted);font-weight:600;font-size:14px;letter-spacing:0.5px;transition:all 0.15s;border:none;background:none;width:100%;text-align:left}
 .nav-item i{font-size:18px;flex-shrink:0}
 .nav-item:hover{background:rgba(255,255,255,0.05);color:var(--text)}
@@ -43,6 +44,8 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .content-scroll::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.08);border-radius:4px}
 .content{padding:28px}
 .tab-panel{display:none}.tab-panel.active{display:block}
+
+/* ── Profile Card ── */
 .profile-card{border-radius:14px;padding:24px;display:flex;gap:20px;align-items:flex-start;max-width:580px;margin-bottom:24px;position:relative;overflow:hidden;border:1px solid var(--border);background:var(--panel)}
 .profile-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),#8b5cf6,#06b6d4)}
 .profile-card.pro-card::before{background:linear-gradient(90deg,#f59e0b,#f97316,#fbbf24)}
@@ -51,7 +54,7 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .avatar-lg{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;color:#fff;flex-shrink:0;border:2px solid rgba(59,130,246,0.3);overflow:hidden;position:relative;z-index:1}
 .avatar-lg img{width:100%;height:100%;object-fit:cover}
 .profile-info{flex:1;position:relative;z-index:1}
-.profile-name{font-size:22px;font-weight:700;color:#fff;display:flex;align-items:center;gap:8px}
+.profile-name{font-size:22px;font-weight:700;color:#fff;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .pro-badge{font-size:10px;font-family:'DM Mono',monospace;background:linear-gradient(135deg,rgba(245,158,11,0.2),rgba(249,115,22,0.2));color:#fbbf24;border:1px solid rgba(245,158,11,0.4);padding:3px 10px;border-radius:999px;font-weight:700;letter-spacing:1px}
 .profile-status{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--green);margin:4px 0 8px;font-family:'DM Mono',monospace}
 .status-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green)}
@@ -63,11 +66,18 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .vrchat-tag{margin-top:8px;font-size:13px;color:var(--muted);font-family:'DM Mono',monospace;display:flex;align-items:center;gap:6px}
 .points-row{margin-top:10px;display:flex;align-items:center;gap:8px;font-size:13px;font-family:'DM Mono',monospace}
 .points-val{color:#fbbf24;font-weight:700;font-size:16px}
+
+/* equipped badge shown on profile */
+.equipped-effects{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
+.equipped-tag{font-size:11px;font-family:'DM Mono',monospace;padding:3px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.12);color:var(--muted)}
+
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px;max-width:580px}
 .stat-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px 18px}
 .stat-label{font-size:12px;color:var(--muted);letter-spacing:1px;font-family:'DM Mono',monospace;margin-bottom:6px}
 .stat-val{font-size:24px;font-weight:700;color:#fff}
 .stat-sub{font-size:12px;color:var(--green);margin-top:2px}
+
+/* ── Settings ── */
 .settings-section{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:16px;max-width:580px}
 .settings-section h4{font-size:14px;font-weight:700;color:var(--muted);letter-spacing:2px;margin-bottom:18px;font-family:'DM Mono',monospace}
 .field-label{font-size:13px;color:var(--muted);margin-bottom:6px;font-family:'DM Mono',monospace}
@@ -108,6 +118,8 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .redeem-btn:hover{background:rgba(245,158,11,0.22)}
 .pro-owned-banner{background:linear-gradient(135deg,rgba(245,158,11,0.1),rgba(249,115,22,0.08));border:1px solid rgba(245,158,11,0.3);border-radius:10px;padding:14px 18px;display:flex;align-items:center;gap:12px;font-size:14px;color:#fbbf24;font-family:'DM Mono',monospace}
 .pro-owned-banner i{font-size:22px}
+
+/* ── Members ── */
 .members-wrap{max-width:680px}
 .members-toolbar{display:flex;align-items:center;gap:10px;margin-bottom:16px}
 .search-wrap{position:relative;flex:1}
@@ -133,6 +145,8 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .action-btn.ban-btn:hover{color:var(--red);border-color:var(--red);background:rgba(239,68,68,0.08)}
 .action-btn.unban-btn:hover{color:var(--green);border-color:var(--green);background:rgba(34,197,94,0.08)}
 .members-empty,.members-loading{text-align:center;padding:40px;color:var(--muted);font-family:'DM Mono',monospace;font-size:13px}
+
+/* ── Admin ── */
 .admin-hero{display:flex;align-items:center;gap:12px;margin-bottom:24px}
 .admin-hero-icon{width:42px;height:42px;background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#f87171;font-size:22px}
 .admin-badge{background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3);padding:5px 14px;border-radius:999px;font-size:12px;font-family:'DM Mono',monospace;font-weight:600}
@@ -165,6 +179,8 @@ select option{background:#0d1018}
 .admin-give-card h4{font-size:14px;font-weight:700;color:var(--muted);letter-spacing:2px;margin-bottom:18px;font-family:'DM Mono',monospace}
 .give-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(245,158,11,0.12);color:#fbbf24;border:1px solid rgba(245,158,11,0.3);border-radius:8px;padding:10px 22px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s}
 .give-btn:hover{background:rgba(245,158,11,0.22)}
+
+/* ── Chat ── */
 .chat-wrap{display:none;flex-direction:column;flex:1;overflow:hidden}
 .chat-messages{flex:1;overflow-y:auto;padding:20px 28px;display:flex;flex-direction:column;gap:2px;scroll-behavior:smooth}
 .chat-messages::-webkit-scrollbar{width:4px}
@@ -186,6 +202,15 @@ select option{background:#0d1018}
 .rank-pro{background:linear-gradient(135deg,rgba(245,158,11,0.2),rgba(249,115,22,0.2));color:#fbbf24;border:1px solid rgba(245,158,11,0.35)}
 .msg-time{font-size:11px;color:var(--muted);font-family:'DM Mono',monospace}
 .msg-text{font-size:15px;color:var(--text);line-height:1.5;word-break:break-word}
+/* Chat effects */
+.effect-rainbow .msg-text{background:linear-gradient(90deg,#f87171,#fb923c,#fbbf24,#4ade80,#60a5fa,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700}
+.effect-glow .msg-text{text-shadow:0 0 8px var(--accent),0 0 20px var(--accent2);color:var(--accent2)}
+.effect-fire .msg-text{background:linear-gradient(180deg,#fbbf24,#f97316,#ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700}
+.effect-ghost .msg-text{color:rgba(200,200,255,0.55);font-style:italic;letter-spacing:1px}
+.effect-matrix .msg-text{color:#22c55e;font-family:'DM Mono',monospace;letter-spacing:1px}
+.effect-bold .msg-text{font-weight:700;font-size:17px}
+.effect-shake .msg-text{display:inline-block;animation:shakeTxt 0.4s ease infinite alternate}
+@keyframes shakeTxt{0%{transform:translateX(-2px) rotate(-0.5deg)}100%{transform:translateX(2px) rotate(0.5deg)}}
 .msg-actions{opacity:0;pointer-events:none;display:flex;gap:2px;position:absolute;right:12px;top:50%;transform:translateY(-50%);background:var(--panel2);border:1px solid var(--border2);border-radius:8px;padding:3px 5px;transition:opacity 0.15s}
 .msg-act-btn{background:none;border:none;cursor:pointer;color:var(--muted);padding:4px 7px;border-radius:5px;font-size:15px;transition:all 0.15s;display:flex;align-items:center}
 .msg-act-btn:hover{background:rgba(255,255,255,0.07)}
@@ -200,6 +225,8 @@ select option{background:#0d1018}
 .chat-input::placeholder{color:var(--muted)}
 .chat-send-btn{background:var(--accent);border:none;border-radius:7px;color:#fff;padding:9px 16px;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;transition:opacity 0.15s;flex-shrink:0}
 .chat-send-btn:hover{opacity:0.85}
+
+/* ── World/Events ── */
 .world-wrap{max-width:720px}
 .section-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
 .section-title{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:2px;font-family:'DM Mono',monospace;display:flex;align-items:center;gap:8px}
@@ -236,7 +263,14 @@ select option{background:#0d1018}
 .del-ev-btn:hover{color:var(--red);border-color:rgba(239,68,68,0.4)}
 .confirm-chip{font-size:12px;font-family:'DM Mono',monospace;color:var(--green);opacity:0;transition:opacity 0.3s}
 .confirm-chip.show{opacity:1}
-.game-wrap{max-width:580px}
+
+/* ── GAMES ── */
+.game-wrap{max-width:600px}
+.game-tabs{display:flex;gap:8px;margin-bottom:20px;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:6px}
+.game-tab{flex:1;text-align:center;padding:8px 12px;border-radius:7px;cursor:pointer;font-size:13px;font-weight:700;color:var(--muted);border:none;background:none;font-family:'Rajdhani',sans-serif;letter-spacing:0.5px;transition:all 0.15s}
+.game-tab:hover{color:var(--text);background:rgba(255,255,255,0.04)}
+.game-tab.active{background:var(--accent);color:#fff}
+.game-panel{display:none}.game-panel.active{display:block}
 .game-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px}
 .game-stats{display:flex;gap:12px}
 .game-stat{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:8px 14px;text-align:center}
@@ -245,6 +279,14 @@ select option{background:#0d1018}
 .game-start-btn{background:linear-gradient(135deg,#1d4ed8,#3b82f6);color:#fff;border:none;border-radius:9px;padding:11px 24px;font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all 0.15s;display:flex;align-items:center;gap:8px}
 .game-start-btn:hover{opacity:0.9;transform:translateY(-1px)}
 .game-start-btn:disabled{opacity:0.5;pointer-events:none}
+.game-idle{text-align:center;padding:40px;color:var(--muted);font-family:'DM Mono',monospace;font-size:13px;background:var(--panel);border:1px solid var(--border);border-radius:12px;margin-bottom:16px}
+.game-idle i{font-size:36px;opacity:0.25;display:block;margin-bottom:10px}
+.win-banner{background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:12px;margin-bottom:16px;font-family:'DM Mono',monospace}
+.win-banner i{font-size:24px;color:var(--green)}
+.win-text{font-size:14px;color:var(--green)}
+.win-pts{font-size:18px;font-weight:700;color:#fbbf24}
+
+/* Memory game */
 .memory-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
 .mem-card{height:80px;border-radius:10px;cursor:pointer;position:relative;transform-style:preserve-3d;transition:transform 0.35s;border:none;background:none;padding:0}
 .mem-card.flipped,.mem-card.matched{transform:rotateY(180deg)}
@@ -253,12 +295,74 @@ select option{background:#0d1018}
 .card-front{background:var(--panel2);border:1px solid var(--border2)}
 .card-front::after{content:'?';font-size:20px;font-weight:700;color:var(--muted);font-family:'DM Mono',monospace}
 .card-back{background:var(--panel);border:1px solid rgba(59,130,246,0.3);transform:rotateY(180deg)}
-.game-idle{text-align:center;padding:40px;color:var(--muted);font-family:'DM Mono',monospace;font-size:13px;background:var(--panel);border:1px solid var(--border);border-radius:12px;margin-bottom:16px}
-.game-idle i{font-size:36px;opacity:0.25;display:block;margin-bottom:10px}
-.win-banner{background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:12px;margin-bottom:16px;font-family:'DM Mono',monospace}
-.win-banner i{font-size:24px;color:var(--green)}
-.win-text{font-size:14px;color:var(--green)}
-.win-pts{font-size:18px;font-weight:700;color:#fbbf24}
+
+/* Snake */
+#snakeCanvas{border:1px solid var(--border2);border-radius:10px;display:block;background:#07090f}
+.snake-hud{display:flex;gap:12px;margin-bottom:12px;align-items:center}
+.snake-hint{font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:8px}
+
+/* Reaction Test */
+.reaction-arena{height:220px;border-radius:12px;border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:background 0.15s;user-select:none;margin-bottom:16px;font-family:'DM Mono',monospace}
+.reaction-arena.wait{background:rgba(239,68,68,0.08);border-color:rgba(239,68,68,0.2)}
+.reaction-arena.go{background:rgba(34,197,94,0.12);border-color:rgba(34,197,94,0.4)}
+.reaction-arena.idle{background:var(--panel);border-color:var(--border)}
+.reaction-arena.result{background:rgba(59,130,246,0.08);border-color:rgba(59,130,246,0.2)}
+.reaction-big{font-size:48px;font-weight:700;color:#fff;margin-bottom:8px}
+.reaction-sub{font-size:14px;color:var(--muted)}
+.reaction-best{font-size:12px;font-family:'DM Mono',monospace;color:var(--amber);margin-top:4px}
+.rt-results{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
+.rt-result{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;font-family:'DM Mono',monospace}
+.rt-result-val{font-size:20px;font-weight:700;color:#fff}
+.rt-result-lbl{font-size:11px;color:var(--muted);margin-top:3px}
+
+/* Typing Test */
+.typing-display{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:20px 24px;font-size:18px;line-height:2;margin-bottom:12px;min-height:110px;letter-spacing:0.5px;font-family:'DM Mono',monospace;position:relative}
+.t-correct{color:var(--green)}
+.t-wrong{color:var(--red);background:rgba(239,68,68,0.1);border-radius:2px}
+.t-cursor{border-right:2px solid var(--accent2);animation:blink 1s step-end infinite}
+@keyframes blink{0%,100%{border-color:var(--accent2)}50%{border-color:transparent}}
+.typing-input{width:100%;background:var(--bg);border:1px solid var(--border2);border-radius:8px;padding:12px 16px;color:var(--text);font-family:'DM Mono',monospace;font-size:15px;outline:none;margin-bottom:14px;transition:border 0.15s}
+.typing-input:focus{border-color:var(--accent)}
+.typing-input:disabled{opacity:0.4;cursor:not-allowed}
+.wpm-display{font-size:28px;font-weight:700;color:#fbbf24;font-family:'DM Mono',monospace}
+.typing-meta{font-size:13px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:4px}
+
+/* ── POINTS SHOP ── */
+.shop-wrap{max-width:760px}
+.shop-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px}
+.shop-bal{display:flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:10px 18px}
+.shop-bal-val{font-size:20px;font-weight:700;color:#fbbf24;font-family:'DM Mono',monospace}
+.shop-bal-lbl{font-size:12px;color:var(--muted);font-family:'DM Mono',monospace}
+.shop-cats{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.shop-cat{padding:7px 16px;border-radius:999px;border:1px solid var(--border2);font-size:12px;font-family:'DM Mono',monospace;font-weight:600;color:var(--muted);cursor:pointer;transition:all 0.15s;background:none}
+.shop-cat:hover{color:var(--text);border-color:var(--text)}
+.shop-cat.active{background:rgba(59,130,246,0.15);color:var(--accent2);border-color:rgba(59,130,246,0.4)}
+.shop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.shop-item{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px;transition:border-color 0.15s;position:relative;overflow:hidden}
+.shop-item:hover{border-color:var(--border2)}
+.shop-item.owned{border-color:rgba(34,197,94,0.3)}
+.shop-item.owned::after{content:'OWNED';position:absolute;top:10px;right:10px;font-size:9px;font-family:'DM Mono',monospace;background:rgba(34,197,94,0.15);color:var(--green);border:1px solid rgba(34,197,94,0.3);padding:2px 8px;border-radius:999px;font-weight:700}
+.shop-item.equipped{border-color:rgba(245,158,11,0.4)}
+.shop-item.equipped::after{content:'EQUIPPED';position:absolute;top:10px;right:10px;font-size:9px;font-family:'DM Mono',monospace;background:rgba(245,158,11,0.15);color:#fbbf24;border:1px solid rgba(245,158,11,0.35);padding:2px 8px;border-radius:999px;font-weight:700}
+.shop-item-icon{font-size:32px;margin-bottom:2px}
+.shop-item-name{font-size:15px;font-weight:700;color:#fff}
+.shop-item-desc{font-size:12px;color:var(--muted);line-height:1.5;flex:1}
+.shop-item-footer{display:flex;align-items:center;justify-content:space-between;margin-top:4px}
+.shop-price{font-size:13px;font-weight:700;color:#fbbf24;font-family:'DM Mono',monospace;display:flex;align-items:center;gap:5px}
+.shop-buy-btn{font-size:12px;font-family:'DM Mono',monospace;font-weight:700;padding:5px 14px;border-radius:7px;border:none;cursor:pointer;transition:all 0.15s}
+.shop-buy-btn.can-buy{background:rgba(59,130,246,0.15);color:var(--accent2);border:1px solid rgba(59,130,246,0.3)}
+.shop-buy-btn.can-buy:hover{background:rgba(59,130,246,0.25)}
+.shop-buy-btn.cant-buy{background:rgba(255,255,255,0.04);color:var(--muted);border:1px solid var(--border);cursor:not-allowed}
+.shop-buy-btn.equip-btn{background:rgba(245,158,11,0.12);color:#fbbf24;border:1px solid rgba(245,158,11,0.3)}
+.shop-buy-btn.equip-btn:hover{background:rgba(245,158,11,0.22)}
+.shop-buy-btn.unequip-btn{background:rgba(34,197,94,0.08);color:var(--green);border:1px solid rgba(34,197,94,0.2)}
+.shop-inventory{margin-top:28px}
+.shop-inv-title{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:2px;font-family:'DM Mono',monospace;margin-bottom:14px}
+.inv-grid{display:flex;gap:8px;flex-wrap:wrap}
+.inv-chip{background:var(--panel);border:1px solid var(--border2);border-radius:8px;padding:7px 14px;font-size:12px;font-family:'DM Mono',monospace;color:var(--text);display:flex;align-items:center;gap:6px}
+.inv-empty{font-size:13px;color:var(--muted);font-family:'DM Mono',monospace}
+
+/* ── Modals ── */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:100;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.2s}
 .modal-overlay.show{opacity:1;pointer-events:all}
 .modal{background:var(--panel);border:1px solid var(--border2);border-radius:16px;padding:28px;width:360px;position:relative;transform:translateY(10px);transition:transform 0.2s}
@@ -336,8 +440,9 @@ select option{background:#0d1018}
     <nav class="nav">
       <button class="nav-item active" onclick="switchTab('home',this)"><i class="ti ti-home"></i> Home</button>
       <button class="nav-item" onclick="switchTab('chat',this)"><i class="ti ti-message-circle"></i> Chat</button>
-      <button class="nav-item" onclick="switchTab('world',this)"><i class="ti ti-planet"></i> World</button>
+      <button class="nav-item" onclick="switchTab('world',this)"><i class="ti ti-planet"></i> Events</button>
       <button class="nav-item" onclick="switchTab('games',this)"><i class="ti ti-device-gamepad-2"></i> Games</button>
+      <button class="nav-item" onclick="switchTab('shop',this)"><i class="ti ti-shopping-bag"></i> Points Shop</button>
       <button class="nav-item" onclick="switchTab('settings',this)"><i class="ti ti-settings"></i> Settings</button>
       <button class="nav-item" onclick="switchTab('users',this)"><i class="ti ti-users"></i> Members</button>
       <button class="nav-item admin-nav" id="adminNav" onclick="switchTab('admin',this)" style="display:none"><i class="ti ti-shield"></i> Admin</button>
@@ -363,6 +468,7 @@ select option{background:#0d1018}
 
     <div class="content-scroll" id="contentScroll">
       <div class="content">
+
         <!-- HOME -->
         <div class="tab-panel active" id="tab-home">
           <div class="profile-card" id="profileCard">
@@ -374,13 +480,14 @@ select option{background:#0d1018}
               <span class="role-badge role-member" id="profileRole">MEMBER</span>
               <div class="vrchat-tag" id="vrchatTag"><i class="ti ti-cube" style="font-size:14px"></i> VRChat: Not connected</div>
               <div class="bio-text" id="bioDisplay">No bio set yet.</div>
+              <div class="equipped-effects" id="equippedEffects"></div>
               <div class="points-row"><i class="ti ti-coin" style="color:#fbbf24;font-size:16px"></i> <span class="points-val" id="pointsDisplay">0</span> <span style="color:var(--muted)">points</span></div>
             </div>
           </div>
           <div class="stats-grid">
             <div class="stat-card"><div class="stat-label">STATUS</div><div class="stat-val" style="color:var(--green);font-size:18px">● ONLINE</div></div>
             <div class="stat-card"><div class="stat-label">POINTS</div><div class="stat-val" id="statPoints">0</div><div class="stat-sub">earned</div></div>
-            <div class="stat-card"><div class="stat-label">ACTIVE KEYS</div><div class="stat-val" id="statKeys">0</div><div class="stat-sub">generated</div></div>
+            <div class="stat-card"><div class="stat-label">ITEMS OWNED</div><div class="stat-val" id="statItems">0</div><div class="stat-sub">in shop</div></div>
             <div class="stat-card"><div class="stat-label">ROLE</div><div class="stat-val" id="statRole" style="font-size:16px;color:var(--accent2)">MEMBER</div></div>
           </div>
         </div>
@@ -399,24 +506,120 @@ select option{background:#0d1018}
         <!-- GAMES -->
         <div class="tab-panel" id="tab-games">
           <div class="game-wrap">
-            <div class="game-header">
-              <div>
-                <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:4px">🃏 Memory Game</div>
-                <div style="font-size:13px;color:var(--muted);font-family:'DM Mono',monospace">Match all pairs to win 100 points</div>
-              </div>
-              <div style="display:flex;gap:10px;align-items:center">
-                <div class="game-stats">
-                  <div class="game-stat"><div class="game-stat-label">MOVES</div><div class="game-stat-val" id="moveCount">0</div></div>
-                  <div class="game-stat"><div class="game-stat-label">TIME</div><div class="game-stat-val" id="gameTimer">0s</div></div>
+            <div class="game-tabs">
+              <button class="game-tab active" onclick="switchGame('memory',this)">🃏 Memory</button>
+              <button class="game-tab" onclick="switchGame('snake',this)">🐍 Snake</button>
+              <button class="game-tab" onclick="switchGame('reaction',this)">⚡ Reaction</button>
+              <button class="game-tab" onclick="switchGame('typing',this)">⌨ Typing</button>
+            </div>
+
+            <!-- Memory -->
+            <div class="game-panel active" id="game-memory">
+              <div class="game-header">
+                <div>
+                  <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:4px">🃏 Memory Game</div>
+                  <div style="font-size:13px;color:var(--muted);font-family:'DM Mono',monospace">Match all pairs to win 100 pts</div>
                 </div>
-                <button class="game-start-btn" id="startBtn" onclick="startGame()"><i class="ti ti-player-play"></i> Start</button>
+                <div style="display:flex;gap:10px;align-items:center">
+                  <div class="game-stats">
+                    <div class="game-stat"><div class="game-stat-label">MOVES</div><div class="game-stat-val" id="moveCount">0</div></div>
+                    <div class="game-stat"><div class="game-stat-label">TIME</div><div class="game-stat-val" id="gameTimer">0s</div></div>
+                  </div>
+                  <button class="game-start-btn" id="startBtn" onclick="startMemory()"><i class="ti ti-player-play"></i> Start</button>
+                </div>
+              </div>
+              <div id="memWinBanner" style="display:none" class="win-banner"><i class="ti ti-trophy"></i><div><div class="win-text">You matched all pairs!</div><div class="win-pts" id="memWinPts">+100 pts</div></div></div>
+              <div id="gameBoard"></div>
+            </div>
+
+            <!-- Snake -->
+            <div class="game-panel" id="game-snake">
+              <div class="game-header">
+                <div>
+                  <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:4px">🐍 Snake</div>
+                  <div style="font-size:13px;color:var(--muted);font-family:'DM Mono',monospace">Eat food to grow · Arrow keys / WASD</div>
+                </div>
+                <div style="display:flex;gap:10px;align-items:center">
+                  <div class="game-stats">
+                    <div class="game-stat"><div class="game-stat-label">SCORE</div><div class="game-stat-val" id="snakeScore">0</div></div>
+                    <div class="game-stat"><div class="game-stat-label">HIGH</div><div class="game-stat-val" id="snakeHi">0</div></div>
+                  </div>
+                  <button class="game-start-btn" id="snakeStartBtn" onclick="startSnake()"><i class="ti ti-player-play"></i> Start</button>
+                </div>
+              </div>
+              <div id="snakeWinBanner" style="display:none" class="win-banner"><i class="ti ti-trophy"></i><div><div class="win-text" id="snakeWinText">Game over!</div><div class="win-pts" id="snakeWinPts">+0 pts earned</div></div></div>
+              <canvas id="snakeCanvas" width="400" height="400"></canvas>
+              <div class="snake-hint">Tip: Use Arrow Keys or WASD · Earn 5 pts per food eaten</div>
+            </div>
+
+            <!-- Reaction -->
+            <div class="game-panel" id="game-reaction">
+              <div class="game-header">
+                <div>
+                  <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:4px">⚡ Reaction Test</div>
+                  <div style="font-size:13px;color:var(--muted);font-family:'DM Mono',monospace">Click when green · 5 rounds · Earn pts for fast times</div>
+                </div>
+                <div class="game-stats">
+                  <div class="game-stat"><div class="game-stat-label">ROUND</div><div class="game-stat-val" id="rtRound">-</div></div>
+                  <div class="game-stat"><div class="game-stat-label">BEST</div><div class="game-stat-val" id="rtBest">-</div></div>
+                </div>
+              </div>
+              <div id="rtWinBanner" style="display:none" class="win-banner"><i class="ti ti-trophy"></i><div><div class="win-text" id="rtWinText">5 rounds complete!</div><div class="win-pts" id="rtWinPts">+0 pts</div></div></div>
+              <div class="reaction-arena idle" id="reactionArena" onclick="reactionClick()">
+                <div class="reaction-big" id="rtDisplay">🖱</div>
+                <div class="reaction-sub" id="rtSub">Click Start to play</div>
+              </div>
+              <div class="rt-results" id="rtResults"></div>
+              <button class="game-start-btn" id="rtStartBtn" onclick="startReaction()"><i class="ti ti-player-play"></i> Start</button>
+            </div>
+
+            <!-- Typing -->
+            <div class="game-panel" id="game-typing">
+              <div class="game-header">
+                <div>
+                  <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:4px">⌨ Typing Speed</div>
+                  <div style="font-size:13px;color:var(--muted);font-family:'DM Mono',monospace">Type the text as fast as you can · Earn pts for WPM</div>
+                </div>
+                <div class="game-stats">
+                  <div class="game-stat"><div class="game-stat-label">WPM</div><div class="game-stat-val" id="liveWpm">0</div></div>
+                  <div class="game-stat"><div class="game-stat-label">ACC</div><div class="game-stat-val" id="liveAcc">-</div></div>
+                </div>
+              </div>
+              <div id="typingWinBanner" style="display:none" class="win-banner"><i class="ti ti-trophy"></i><div><div class="win-text" id="typingWinText">Test complete!</div><div class="win-pts" id="typingWinPts">+0 pts</div></div></div>
+              <div class="typing-display" id="typingDisplay"><span style="color:var(--muted);font-size:14px">Press Start to begin the typing test...</span></div>
+              <input class="typing-input" id="typingInput" placeholder="Start typing here..." disabled />
+              <button class="game-start-btn" id="typingStartBtn" onclick="startTyping()"><i class="ti ti-player-play"></i> Start</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- POINTS SHOP -->
+        <div class="tab-panel" id="tab-shop">
+          <div class="shop-wrap">
+            <div class="shop-header">
+              <div>
+                <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:4px">🛒 Points Shop</div>
+                <div style="font-size:13px;color:var(--muted);font-family:'DM Mono',monospace">Spend your earned points on cool stuff</div>
+              </div>
+              <div class="shop-bal">
+                <i class="ti ti-coin" style="color:#fbbf24;font-size:20px"></i>
+                <div>
+                  <div class="shop-bal-val" id="shopBalDisplay">0</div>
+                  <div class="shop-bal-lbl">POINTS</div>
+                </div>
               </div>
             </div>
-            <div id="winBanner" style="display:none" class="win-banner">
-              <i class="ti ti-trophy"></i>
-              <div><div class="win-text">You matched all pairs!</div><div class="win-pts" id="winPts">+100 points earned</div></div>
+            <div class="shop-cats">
+              <button class="shop-cat active" onclick="filterShop('all',this)">ALL</button>
+              <button class="shop-cat" onclick="filterShop('chat',this)">CHAT EFFECTS</button>
+              <button class="shop-cat" onclick="filterShop('profile',this)">PROFILE</button>
+              <button class="shop-cat" onclick="filterShop('badge',this)">BADGES</button>
             </div>
-            <div id="gameBoard"></div>
+            <div class="shop-grid" id="shopGrid"></div>
+            <div class="shop-inventory">
+              <div class="shop-inv-title">YOUR INVENTORY</div>
+              <div class="inv-grid" id="invGrid"><div class="inv-empty">Nothing yet — buy something!</div></div>
+            </div>
           </div>
         </div>
 
@@ -567,6 +770,7 @@ select option{background:#0d1018}
             </div>
           </div>
         </div>
+
       </div>
     </div>
 
@@ -574,8 +778,15 @@ select option{background:#0d1018}
     <div class="chat-wrap" id="chatWrap">
       <div class="chat-messages" id="chatMessages"></div>
       <div class="chat-bar">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+          <span style="font-size:11px;color:var(--muted);font-family:'DM Mono',monospace">EFFECT:</span>
+          <select id="chatEffectSelect" style="background:var(--bg);border:1px solid var(--border2);border-radius:6px;padding:4px 10px;color:var(--text);font-family:'DM Mono',monospace;font-size:12px;outline:none;cursor:pointer" onchange="updateChatEffect()">
+            <option value="">None</option>
+          </select>
+          <span style="font-size:11px;color:var(--muted);font-family:'DM Mono',monospace" id="effectPreviewLabel"></span>
+        </div>
         <div class="chat-bar-inner">
-          <input class="chat-input" id="chatInput" placeholder="Message #general — press Enter to send" maxlength="500" />
+          <input class="chat-input" id="chatInput" placeholder="Message #general — Enter to send" maxlength="500" />
           <button class="chat-send-btn" onclick="sendChatMessage()"><i class="ti ti-send"></i> Send</button>
         </div>
       </div>
@@ -587,30 +798,74 @@ select option{background:#0d1018}
 const API = 'https://viperstudios-production.up.railway.app';
 const token = () => localStorage.getItem('token');
 
-// ── PER-USER STATE (loaded from server, NOT shared localStorage) ──
+// ── STATE ──
 let currentUsername = '';
 let currentUserRank = 'member';
 let userPro = false;
 let userPoints = 0;
-let userAvatar = '';   // only current user's avatar
-let userBg = '';       // only current user's background
+let userAvatar = '';
+let userBg = '';
 let selectedColor = '#3b82f6';
 let selectedColor2 = '#60a5fa';
-
-// ── OTHER STATE ──
 let allMembers = [];
-let serverMessages = []; // chat from server
+let serverMessages = [];
 let pendingAction = null;
 let pendingReport = null;
 let serverEvents = [];
 let generatedKeys = [];
-let gameActive = false, gameCards = [], flipped = [], matched = 0, moves = 0;
-let timerInterval = null, gameSeconds = 0, canFlip = true;
 
-const PRO_COST = 1000;
-const PRO_EMOJIS = ['🦇','🕷️','🌲','💀','🔦','🌙','🐺','🪦','🕯️','🌕','🗝️','🩸','🌿','👁️','🎃','🪓'];
-const pipColors = ['#3b82f6','#22c55e','#f59e0b','#ef4444','#8b5cf6','#06b6d4'];
-const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+// ── SHOP STATE ──
+const SHOP_ITEMS = [
+  // Chat Effects
+  {id:'fx_rainbow',name:'Rainbow Text',desc:'Your messages shimmer in all colors of the spectrum.',icon:'🌈',cat:'chat',price:200,effect:'rainbow'},
+  {id:'fx_glow',name:'Glow Text',desc:'Messages glow with your accent color.',icon:'✨',cat:'chat',price:150,effect:'glow'},
+  {id:'fx_fire',name:'Fire Text',desc:'Hot orange-red gradient on all your messages.',icon:'🔥',cat:'chat',price:150,effect:'fire'},
+  {id:'fx_ghost',name:'Ghost Text',desc:'Your messages appear faded and eerie.',icon:'👻',cat:'chat',price:100,effect:'ghost'},
+  {id:'fx_matrix',name:'Matrix Text',desc:'Green monospace — feel like a hacker.',icon:'💚',cat:'chat',price:120,effect:'matrix'},
+  {id:'fx_bold',name:'BIG Text',desc:'Your messages appear extra large and bold.',icon:'🔡',cat:'chat',price:80,effect:'bold'},
+  {id:'fx_shake',name:'Shaky Text',desc:'Your messages physically shake. Unsettling.',icon:'💥',cat:'chat',price:180,effect:'shake'},
+  // Profile
+  {id:'pr_border_gold',name:'Gold Border',desc:'A shimmering gold ring around your avatar.',icon:'🥇',cat:'profile',price:300,profileFx:'gold_border'},
+  {id:'pr_border_neon',name:'Neon Border',desc:'Electric cyan neon ring around your avatar.',icon:'💠',cat:'profile',price:280,profileFx:'neon_border'},
+  {id:'pr_title_vet',name:'"Veteran" Title',desc:'Show a special Veteran title on your profile.',icon:'🎖️',cat:'profile',price:400,profileFx:'title_vet'},
+  {id:'pr_title_elite',name:'"Elite" Title',desc:'Exclusive Elite title displayed below your name.',icon:'🌟',cat:'profile',price:500,profileFx:'title_elite'},
+  {id:'pr_title_shadow',name:'"Shadow" Title',desc:'For those who lurk in the darkness.',icon:'🕶️',cat:'profile',price:350,profileFx:'title_shadow'},
+  // Badges
+  {id:'bg_skull',name:'💀 Skull Badge',desc:'A cool skull next to your name everywhere.',icon:'💀',cat:'badge',price:120,profileFx:'badge_skull'},
+  {id:'bg_viper',name:'🐍 Viper Badge',desc:'The classic Viper Studios mascot badge.',icon:'🐍',cat:'badge',price:200,profileFx:'badge_viper'},
+  {id:'bg_crown',name:'👑 Crown Badge',desc:'Wear a crown — you earned it.',icon:'👑',cat:'badge',price:350,profileFx:'badge_crown'},
+  {id:'bg_bolt',name:'⚡ Bolt Badge',desc:'High-energy bolt badge for active members.',icon:'⚡',cat:'badge',price:150,profileFx:'badge_bolt'},
+];
+
+// Loaded from localStorage (simulate persistence; would be server-side in prod)
+let inventory = JSON.parse(localStorage.getItem('vs_inventory')||'[]');
+let equippedChatEffect = localStorage.getItem('vs_equippedFx')||'';
+let equippedProfileItems = JSON.parse(localStorage.getItem('vs_equippedProfile')||'[]');
+let currentShopFilter = 'all';
+
+// ── GAME STATE ──
+// Memory
+let memActive=false,memCards=[],memFlipped=[],memMatched=0,memMoves=0;
+let memTimer=null,memSeconds=0,memCanFlip=true;
+// Snake
+let snakeActive=false,snakeLoop=null,snake=[],snakeDir={x:1,y:0},snakeNextDir={x:1,y:0},snakeFood={x:0,y:0},snakeScore=0,snakeHi=parseInt(localStorage.getItem('vs_snakeHi')||'0');
+const SNAKE_CELL=20,SNAKE_COLS=20,SNAKE_ROWS=20;
+// Reaction
+let rtActive=false,rtRound=0,rtResults=[],rtTimeout=null,rtStart=0,rtWaiting=false,rtGo=false;
+const RT_ROUNDS=5;
+// Typing
+let typingActive=false,typingStart=0,typingTimer=null,typingWords=[],typingIdx=0,typingErrors=0;
+const TYPING_TEXTS=[
+  'The quick brown fox jumps over the lazy dog near the riverbank.',
+  'Coding at night with a warm coffee and lo-fi music is peak focus.',
+  'Viper Studios is the best VRChat community on the planet.',
+  'Speed is nothing without accuracy — type smart not just fast.',
+  'Every keystroke counts when the clock is ticking and points are on the line.',
+];
+
+const PRO_EMOJIS=['🦇','🕷️','🌲','💀','🔦','🌙','🐺','🪦','🕯️','🌕','🗝️','🩸','🌿','👁️','🎃','🪓'];
+const pipColors=['#3b82f6','#22c55e','#f59e0b','#ef4444','#8b5cf6','#06b6d4'];
+const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
 // ── HELPERS ──
 function roleClass(r){return r==='owner'?'role-owner':r==='admin'?'role-admin':'role-member';}
@@ -624,20 +879,17 @@ function applyColor(c,c2){document.documentElement.style.setProperty('--accent',
 function setColor(el){
   if(el.dataset.pro&&!userPro){toast('⭐ PRO required for this color','pro');return;}
   document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('selected'));
-  el.classList.add('selected');
-  selectedColor=el.dataset.color;selectedColor2=el.dataset.color2;
-  applyColor(selectedColor,selectedColor2);
+  el.classList.add('selected');selectedColor=el.dataset.color;selectedColor2=el.dataset.color2;applyColor(selectedColor,selectedColor2);
 }
 async function saveColor(){
-  localStorage.setItem('vs_color',selectedColor);
-  localStorage.setItem('vs_color2',selectedColor2);
+  localStorage.setItem('vs_color',selectedColor);localStorage.setItem('vs_color2',selectedColor2);
   try{await fetch(`${API}/api/me/accent`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({accentColor:selectedColor,accentColor2:selectedColor2})});}catch{}
   toast('Accent color saved!','success');
 }
 
 // ── TAB ──
-const contentScroll = document.getElementById('contentScroll');
-const chatWrap = document.getElementById('chatWrap');
+const contentScroll=document.getElementById('contentScroll');
+const chatWrap=document.getElementById('chatWrap');
 function switchTab(id,btn){
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(b=>b.classList.remove('active'));
@@ -647,73 +899,59 @@ function switchTab(id,btn){
     if(id==='world')loadEvents();
     if(id==='users')loadMembers();
     if(id==='admin'){loadAdminKeys();renderAdminEvents();}
+    if(id==='shop'){renderShop();document.getElementById('shopBalDisplay').textContent=userPoints;}
   }
-  const labels={home:'Dashboard',chat:'Chat',world:'World',games:'Games',settings:'Settings',users:'Members',admin:'Admin Panel'};
-  const codes={home:'HOME',chat:'CHAT',world:'WORLD',games:'GAMES',settings:'SETTINGS',users:'MEMBERS',admin:'ADMIN'};
+  const labels={home:'Dashboard',chat:'Chat',world:'World',games:'Games',shop:'Points Shop',settings:'Settings',users:'Members',admin:'Admin Panel'};
+  const codes={home:'HOME',chat:'CHAT',world:'WORLD',games:'GAMES',shop:'SHOP',settings:'SETTINGS',users:'MEMBERS',admin:'ADMIN'};
   document.getElementById('topbarTitle').textContent=labels[id]||id;
   document.getElementById('topbarBadge').textContent=codes[id]||id.toUpperCase();
 }
 
-// ── LOAD USER (from server only) ──
+// ── GAME TABS ──
+function switchGame(id,btn){
+  document.querySelectorAll('.game-tab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.game-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('game-'+id).classList.add('active');
+  if(id==='memory')renderMemBoard();
+  if(id==='snake')renderSnakeIdle();
+  if(id==='reaction'){rtActive=false;resetReactionUI();}
+  if(id==='typing'){typingActive=false;resetTypingUI();}
+}
+
+// ── LOAD USER ──
 async function load(){
   try{
-    const res = await fetch(`${API}/api/me`,{headers:{Authorization:'Bearer '+token()}});
+    const res=await fetch(`${API}/api/me`,{headers:{Authorization:'Bearer '+token()}});
     if(res.status===401||res.status===403){logout();return;}
-    const d = await res.json();
-    currentUsername = d.username;
-    currentUserRank = (d.role||d.rank||'user').trim().toLowerCase();
-    userPro = d.pro || false;
-    userPoints = d.points || 0;
-    // ── FIX: only load THIS user's avatar/bg from server ──
-    userAvatar = d.avatar || '';
-    userBg = d.background || '';
-    selectedColor = d.accentColor || localStorage.getItem('vs_color') || '#3b82f6';
-    selectedColor2 = d.accentColor2 || localStorage.getItem('vs_color2') || '#60a5fa';
-  } catch(e){
-    toast('Could not reach server','error');
-    return;
-  }
-
-  // Update UI
-  document.getElementById('chipName').textContent = currentUsername;
-  document.getElementById('chipRole').textContent = currentUserRank;
-  document.getElementById('profileName').childNodes[0].textContent = currentUsername + ' ';
-  document.getElementById('profileRole').textContent = currentUserRank.toUpperCase();
-  document.getElementById('profileRole').className = 'role-badge ' + roleClass(currentUserRank);
-  document.getElementById('statRole').textContent = currentUserRank.toUpperCase();
-  document.getElementById('pointsDisplay').textContent = userPoints;
-  document.getElementById('statPoints').textContent = userPoints;
-
-  if(isAdmin()) document.getElementById('adminNav').style.display='flex';
-
-  // Apply PRO state
-  if(userPro) applyProUI();
-
-  // Apply this user's avatar/bg (not shared with others)
+    const d=await res.json();
+    currentUsername=d.username;currentUserRank=(d.role||d.rank||'user').trim().toLowerCase();
+    userPro=d.pro||false;userPoints=d.points||0;userAvatar=d.avatar||'';userBg=d.background||'';
+    selectedColor=d.accentColor||localStorage.getItem('vs_color')||'#3b82f6';
+    selectedColor2=d.accentColor2||localStorage.getItem('vs_color2')||'#60a5fa';
+  }catch{toast('Could not reach server','error');return;}
+  document.getElementById('chipName').textContent=currentUsername;
+  document.getElementById('chipRole').textContent=currentUserRank;
+  document.getElementById('profileName').childNodes[0].textContent=currentUsername+' ';
+  document.getElementById('profileRole').textContent=currentUserRank.toUpperCase();
+  document.getElementById('profileRole').className='role-badge '+roleClass(currentUserRank);
+  document.getElementById('statRole').textContent=currentUserRank.toUpperCase();
+  document.getElementById('pointsDisplay').textContent=userPoints;
+  document.getElementById('statPoints').textContent=userPoints;
+  document.getElementById('statItems').textContent=inventory.length;
+  document.getElementById('snakeHi').textContent=snakeHi;
+  if(isAdmin())document.getElementById('adminNav').style.display='flex';
+  if(userPro)applyProUI();
   refreshMyAvatars();
-  if(userBg){
-    document.getElementById('profileBgEl').style.backgroundImage = `url(${userBg})`;
-    document.getElementById('bgPreview').src = userBg;
-    document.getElementById('bgPreview').style.display = 'block';
-  }
-  if(userAvatar){
-    document.getElementById('avatarPreview').src = userAvatar;
-    document.getElementById('avatarPreview').style.display = 'block';
-  }
-
-  // Apply accent color
-  applyColor(selectedColor, selectedColor2);
-  const sw = document.querySelector(`.color-swatch[data-color="${selectedColor}"]`);
+  if(userBg){document.getElementById('profileBgEl').style.backgroundImage=`url(${userBg})`;document.getElementById('bgPreview').src=userBg;document.getElementById('bgPreview').style.display='block';}
+  if(userAvatar){document.getElementById('avatarPreview').src=userAvatar;document.getElementById('avatarPreview').style.display='block';}
+  applyColor(selectedColor,selectedColor2);
+  const sw=document.querySelector(`.color-swatch[data-color="${selectedColor}"]`);
   if(sw){document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('selected'));sw.classList.add('selected');}
-
-  // Load profile fields
-  try{
-    const res2 = await fetch(`${API}/api/me`,{headers:{Authorization:'Bearer '+token()}});
-    const d2 = await res2.json();
-    loadProfileFields(d2.vrchat||'', d2.bio||'');
-  } catch{}
-
-  renderBoard();
+  try{const r2=await fetch(`${API}/api/me`,{headers:{Authorization:'Bearer '+token()}});const d2=await r2.json();loadProfileFields(d2.vrchat||'',d2.bio||'');}catch{}
+  renderMemBoard();
+  renderEquippedProfile();
+  populateChatEffectDropdown();
 }
 
 function applyProUI(){
@@ -725,160 +963,178 @@ function applyProUI(){
   document.querySelectorAll('.color-swatch.pro-locked').forEach(s=>s.classList.remove('pro-locked'));
 }
 
-// Only refresh the CURRENT USER's avatars (sidebar + profile card)
 function refreshMyAvatars(){
-  const els = [document.getElementById('avatarLg'), document.getElementById('avatarSm')];
-  els.forEach(el=>{
+  [document.getElementById('avatarLg'),document.getElementById('avatarSm')].forEach(el=>{
     if(!el)return;
-    if(userAvatar){el.innerHTML=`<img src="${userAvatar}" alt="avatar" />`;el.style.background='none';}
+    if(userAvatar){el.innerHTML=`<img src="${userAvatar}" alt="avatar"/>`;el.style.background='none';}
     else{el.textContent=initials(currentUsername);el.style.background='';}
   });
 }
 
 // ── PROFILE ──
 async function saveProfile(){
-  const v = document.getElementById('vrchatInput').value.trim();
-  const b = document.getElementById('bioInput').value.trim();
-  try{
-    const res = await fetch(`${API}/api/me/profile`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({vrchat:v,bio:b})});
-    if(!res.ok){toast('Failed to save','error');return;}
-  }catch{toast('Server offline','error');return;}
+  const v=document.getElementById('vrchatInput').value.trim();const b=document.getElementById('bioInput').value.trim();
+  try{const res=await fetch(`${API}/api/me/profile`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({vrchat:v,bio:b})});if(!res.ok){toast('Failed to save','error');return;}}catch{toast('Server offline','error');return;}
   document.getElementById('vrchatTag').innerHTML=`<i class="ti ti-cube" style="font-size:14px"></i> VRChat: ${v||'Not connected'}`;
   document.getElementById('bioDisplay').textContent=b||'No bio set yet.';
-  const btn=document.getElementById('profileSaveBtn');btn.textContent='Saved!';btn.classList.add('saved');
-  setTimeout(()=>{btn.textContent='Save Changes';btn.classList.remove('saved');},2000);
+  const btn=document.getElementById('profileSaveBtn');btn.textContent='Saved!';btn.classList.add('saved');setTimeout(()=>{btn.textContent='Save Changes';btn.classList.remove('saved');},2000);
+}
+function loadProfileFields(v,b){
+  document.getElementById('vrchatInput').value=v||'';document.getElementById('bioInput').value=b||'';
+  document.getElementById('vrchatTag').innerHTML=`<i class="ti ti-cube" style="font-size:14px"></i> VRChat: ${v||'Not connected'}`;
+  document.getElementById('bioDisplay').textContent=b||'No bio set yet.';
 }
 
-function loadProfileFields(vrchat,bio){
-  document.getElementById('vrchatInput').value=vrchat||'';
-  document.getElementById('bioInput').value=bio||'';
-  document.getElementById('vrchatTag').innerHTML=`<i class="ti ti-cube" style="font-size:14px"></i> VRChat: ${vrchat||'Not connected'}`;
-  document.getElementById('bioDisplay').textContent=bio||'No bio set yet.';
-}
-
-// ── AVATAR / BG UPLOAD (PRO only, saved to server) ──
-function uploadAvatar(input){
-  const file=input.files[0];if(!file)return;
-  const reader=new FileReader();
-  reader.onload=async e=>{
-    userAvatar=e.target.result;
-    document.getElementById('avatarPreview').src=userAvatar;
-    document.getElementById('avatarPreview').style.display='block';
-    refreshMyAvatars(); // only updates current user's UI elements
-    try{
-      const res=await fetch(`${API}/api/me/avatar`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({avatar:userAvatar})});
-      if(res.ok)toast('Avatar updated!','success');
-      else toast('Failed to save avatar','error');
-    }catch{toast('Server offline','error');}
-  };
-  reader.readAsDataURL(file);
-}
-
-function uploadBg(input){
-  const file=input.files[0];if(!file)return;
-  const reader=new FileReader();
-  reader.onload=async e=>{
-    userBg=e.target.result;
-    document.getElementById('bgPreview').src=userBg;
-    document.getElementById('bgPreview').style.display='block';
-    document.getElementById('profileBgEl').style.backgroundImage=`url(${userBg})`;
-    try{
-      const res=await fetch(`${API}/api/me/background`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({background:userBg})});
-      if(res.ok)toast('Background updated!','success');
-      else toast('Failed to save background','error');
-    }catch{toast('Server offline','error');}
-  };
-  reader.readAsDataURL(file);
-}
+// ── AVATAR/BG ──
+function uploadAvatar(input){const file=input.files[0];if(!file)return;const reader=new FileReader();reader.onload=async e=>{userAvatar=e.target.result;document.getElementById('avatarPreview').src=userAvatar;document.getElementById('avatarPreview').style.display='block';refreshMyAvatars();try{const res=await fetch(`${API}/api/me/avatar`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({avatar:userAvatar})});res.ok?toast('Avatar updated!','success'):toast('Failed to save avatar','error');}catch{toast('Server offline','error');}};reader.readAsDataURL(file);}
+function uploadBg(input){const file=input.files[0];if(!file)return;const reader=new FileReader();reader.onload=async e=>{userBg=e.target.result;document.getElementById('bgPreview').src=userBg;document.getElementById('bgPreview').style.display='block';document.getElementById('profileBgEl').style.backgroundImage=`url(${userBg})`;try{const res=await fetch(`${API}/api/me/background`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({background:userBg})});res.ok?toast('Background updated!','success'):toast('Failed','error');}catch{toast('Server offline','error');}};reader.readAsDataURL(file);}
 
 // ── PRO ──
 async function purchasePro(){
   if(userPro){toast('You already have PRO!','pro');return;}
-  if(userPoints<PRO_COST){toast(`Need ${PRO_COST} points — you have ${userPoints}`,'error');return;}
-  try{
-    const res=await fetch(`${API}/api/me/pro/purchase`,{method:'POST',headers:{Authorization:'Bearer '+token()}});
-    const d=await res.json();
-    if(!res.ok){toast(d.error||'Failed','error');return;}
-    userPoints=d.points;
-    document.getElementById('pointsDisplay').textContent=userPoints;
-    document.getElementById('statPoints').textContent=userPoints;
-    userPro=true;applyProUI();
-    toast('⭐ PRO Plan activated! Enjoy the perks.','pro');
-  }catch{toast('Server offline','error');}
+  if(userPoints<1000){toast(`Need 1000 points — you have ${userPoints}`,'error');return;}
+  try{const res=await fetch(`${API}/api/me/pro/purchase`,{method:'POST',headers:{Authorization:'Bearer '+token()}});const d=await res.json();if(!res.ok){toast(d.error||'Failed','error');return;}userPoints=d.points;updatePtsUI();userPro=true;applyProUI();toast('⭐ PRO Plan activated!','pro');}catch{toast('Server offline','error');}
+}
+function fmtProKey(input){let v=input.value.replace(/[^A-Za-z0-9]/g,'').toUpperCase().slice(0,15);let out='';for(let i=0;i<v.length;i++){if(i===5||i===10)out+='-';out+=v[i];}input.value=out;}
+async function redeemProKey(){const key=document.getElementById('proKeyInput').value.trim().toUpperCase();if(key.length!==17){toast('Enter a valid key','error');return;}try{const res=await fetch(`${API}/api/me/pro/redeem`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({code:key})});const d=await res.json();if(!res.ok){toast(d.error||'Invalid key','error');return;}userPro=true;applyProUI();toast('⭐ PRO activated via key!','pro');}catch{toast('Server offline','error');}}
+
+// ── POINTS SHOP ──
+function renderShop(){
+  const filtered=SHOP_ITEMS.filter(i=>currentShopFilter==='all'||i.cat===currentShopFilter);
+  document.getElementById('shopGrid').innerHTML=filtered.map(item=>{
+    const owned=inventory.includes(item.id);
+    const isEquippedChat=item.effect&&equippedChatEffect===item.effect;
+    const isEquippedProf=item.profileFx&&equippedProfileItems.includes(item.profileFx);
+    const isEquipped=isEquippedChat||isEquippedProf;
+    const canAfford=userPoints>=item.price;
+    let btnHtml='';
+    if(isEquipped) btnHtml=`<button class="shop-buy-btn unequip-btn" onclick="unequipItem('${item.id}')">Unequip</button>`;
+    else if(owned) btnHtml=`<button class="shop-buy-btn equip-btn" onclick="equipItem('${item.id}')">Equip</button>`;
+    else if(canAfford) btnHtml=`<button class="shop-buy-btn can-buy" onclick="buyItem('${item.id}')">Buy</button>`;
+    else btnHtml=`<button class="shop-buy-btn cant-buy" disabled>${item.price} pts</button>`;
+    return `<div class="shop-item ${isEquipped?'equipped':owned?'owned':''}">
+      <div class="shop-item-icon">${item.icon}</div>
+      <div class="shop-item-name">${item.name}</div>
+      <div class="shop-item-desc">${item.desc}</div>
+      <div class="shop-item-footer">
+        <div class="shop-price"><i class="ti ti-coin" style="font-size:14px"></i>${owned?'Owned':`${item.price} pts`}</div>
+        ${btnHtml}
+      </div>
+    </div>`;
+  }).join('');
+  renderInventory();
 }
 
-function fmtProKey(input){
-  let v=input.value.replace(/[^A-Za-z0-9]/g,'').toUpperCase().slice(0,15);
-  let out='';for(let i=0;i<v.length;i++){if(i===5||i===10)out+='-';out+=v[i];}
-  input.value=out;
+function filterShop(cat,btn){
+  currentShopFilter=cat;
+  document.querySelectorAll('.shop-cat').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderShop();
 }
 
-async function redeemProKey(){
-  const key=document.getElementById('proKeyInput').value.trim().toUpperCase();
-  if(key.length!==17){toast('Enter a valid key (XXXXX-XXXXX-XXXXX)','error');return;}
-  try{
-    const res=await fetch(`${API}/api/me/pro/redeem`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({code:key})});
-    const d=await res.json();
-    if(!res.ok){toast(d.error||'Invalid key','error');return;}
-    userPro=true;applyProUI();
-    toast('⭐ PRO activated via key!','pro');
-  }catch{toast('Server offline','error');}
+function buyItem(id){
+  const item=SHOP_ITEMS.find(i=>i.id===id);if(!item)return;
+  if(userPoints<item.price){toast(`Need ${item.price} pts — you have ${userPoints}`,'error');return;}
+  userPoints-=item.price;
+  updatePtsUI();
+  inventory.push(id);
+  localStorage.setItem('vs_inventory',JSON.stringify(inventory));
+  document.getElementById('statItems').textContent=inventory.length;
+  // Try to sync points to server
+  syncPtsServer();
+  toast(`✅ Bought: ${item.name}`,'success');
+  renderShop();
+}
+
+function equipItem(id){
+  const item=SHOP_ITEMS.find(i=>i.id===id);if(!item)return;
+  if(item.effect){
+    equippedChatEffect=item.effect;localStorage.setItem('vs_equippedFx',equippedChatEffect);
+    populateChatEffectDropdown();
+  }
+  if(item.profileFx){
+    // Only one of each type at a time — unequip others in same group
+    const prefix=item.profileFx.split('_')[0];
+    equippedProfileItems=equippedProfileItems.filter(p=>!p.startsWith(prefix));
+    equippedProfileItems.push(item.profileFx);
+    localStorage.setItem('vs_equippedProfile',JSON.stringify(equippedProfileItems));
+    renderEquippedProfile();
+  }
+  toast(`🎮 Equipped: ${item.name}`,'success');
+  renderShop();
+}
+
+function unequipItem(id){
+  const item=SHOP_ITEMS.find(i=>i.id===id);if(!item)return;
+  if(item.effect&&equippedChatEffect===item.effect){equippedChatEffect='';localStorage.setItem('vs_equippedFx','');populateChatEffectDropdown();}
+  if(item.profileFx){equippedProfileItems=equippedProfileItems.filter(p=>p!==item.profileFx);localStorage.setItem('vs_equippedProfile',JSON.stringify(equippedProfileItems));renderEquippedProfile();}
+  toast('Item unequipped','');renderShop();
+}
+
+function renderInventory(){
+  const inv=document.getElementById('invGrid');
+  if(!inventory.length){inv.innerHTML='<div class="inv-empty">Nothing yet — buy something!</div>';return;}
+  inv.innerHTML=inventory.map(id=>{
+    const item=SHOP_ITEMS.find(i=>i.id===id);if(!item)return'';
+    const equipped=(item.effect&&equippedChatEffect===item.effect)||(item.profileFx&&equippedProfileItems.includes(item.profileFx));
+    return `<div class="inv-chip">${item.icon} ${item.name}${equipped?' <span style="color:#fbbf24;font-size:10px">●</span>':''}</div>`;
+  }).join('');
+}
+
+function renderEquippedProfile(){
+  const el=document.getElementById('equippedEffects');if(!el)return;
+  const tags=[];
+  equippedProfileItems.forEach(fx=>{
+    const item=SHOP_ITEMS.find(i=>i.profileFx===fx);
+    if(item)tags.push(`<span class="equipped-tag">${item.icon} ${item.name}</span>`);
+  });
+  el.innerHTML=tags.join('');
+}
+
+function populateChatEffectDropdown(){
+  const sel=document.getElementById('chatEffectSelect');
+  const owned=SHOP_ITEMS.filter(i=>i.effect&&inventory.includes(i.id));
+  sel.innerHTML='<option value="">None</option>'+owned.map(i=>`<option value="${i.effect}" ${equippedChatEffect===i.effect?'selected':''}>${i.icon} ${i.name}</option>`).join('');
+  updateChatEffect();
+}
+
+function updateChatEffect(){
+  const sel=document.getElementById('chatEffectSelect');
+  equippedChatEffect=sel.value;localStorage.setItem('vs_equippedFx',equippedChatEffect);
+  const item=SHOP_ITEMS.find(i=>i.effect===equippedChatEffect);
+  document.getElementById('effectPreviewLabel').textContent=equippedChatEffect?`Preview: ${item?item.name:''}`:' ';
+}
+
+async function syncPtsServer(){
+  try{await fetch(`${API}/api/me/points/set`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({points:userPoints})});}catch{}
+}
+
+function updatePtsUI(){
+  document.getElementById('pointsDisplay').textContent=userPoints;
+  document.getElementById('statPoints').textContent=userPoints;
+  document.getElementById('shopBalDisplay').textContent=userPoints;
 }
 
 // ── MEMBERS ──
 async function loadMembers(){
-  const list=document.getElementById('membersList');
-  list.innerHTML='<div class="members-loading">Loading members...</div>';
-  try{
-    const res=await fetch(`${API}/api/users`,{headers:{Authorization:'Bearer '+token()}});
-    allMembers=await res.json();
-    renderMembers(allMembers);
-  }catch{list.innerHTML='<div class="members-empty">Could not load members.</div>';}
+  const list=document.getElementById('membersList');list.innerHTML='<div class="members-loading">Loading members...</div>';
+  try{const res=await fetch(`${API}/api/users`,{headers:{Authorization:'Bearer '+token()}});allMembers=await res.json();renderMembers(allMembers);}
+  catch{list.innerHTML='<div class="members-empty">Could not load members.</div>';}
 }
-
-function filterMembers(){
-  const q=document.getElementById('memberSearch').value.toLowerCase();
-  renderMembers(allMembers.filter(m=>m.username.toLowerCase().includes(q)));
-}
-
+function filterMembers(){const q=document.getElementById('memberSearch').value.toLowerCase();renderMembers(allMembers.filter(m=>m.username.toLowerCase().includes(q)));}
 function rankOrder(r){return r==='owner'?0:r==='admin'?1:2;}
-
 function renderMembers(members){
-  const list=document.getElementById('membersList');
-  document.getElementById('memberCount').textContent=`${members.length} member${members.length!==1?'s':''}`;
+  const list=document.getElementById('membersList');document.getElementById('memberCount').textContent=`${members.length} member${members.length!==1?'s':''}`;
   if(!members.length){list.innerHTML='<div class="members-empty">No members found.</div>';return;}
   const sorted=[...members].sort((a,b)=>rankOrder(a.role||a.rank)-rankOrder(b.role||b.rank)||a.username.localeCompare(b.username));
   list.innerHTML=sorted.map(m=>{
-    const r=(m.role||m.rank||'user').toLowerCase();
-    const isMe=m.username===currentUsername;
-    const isBanned=m.banned;
-    const warns=m.warnings||0;
-    const canAct=isAdmin()&&!isMe&&r!=='owner';
-    const metaParts=[];
-    if(m.vrchat)metaParts.push(m.vrchat);
-    if(warns>0)metaParts.push(`<span class="warn-count">⚠ ${warns} warn${warns!==1?'s':''}</span>`);
-    if(isBanned)metaParts.push(`<span class="banned-tag">🚫 BANNED</span>`);
-    if(m.pro)metaParts.push(`<span style="color:#fbbf24">⭐ PRO</span>`);
-    let actions='';
-    if(canAct){
-      if(isBanned) actions=`<button class="action-btn unban-btn" onclick="doUnban('${m._id}','${m.username}')">✓ Unban</button>`;
-      else actions=`<button class="action-btn warn-btn" onclick="openWarn('${m._id}','${m.username}')">⚠ Warn</button><button class="action-btn ban-btn" onclick="openBan('${m._id}','${m.username}')">🚫 Ban</button>`;
-    }
-    // ── FIX: use per-member avatar from server, not global userAvatar ──
-    const avatarHtml = m.avatar
-      ? `<img src="${m.avatar}" alt="${m.username}" style="width:100%;height:100%;object-fit:cover;border-radius:50%" />`
-      : initials(m.username);
-    return `<div class="member-row ${isBanned?'banned-row':''}">
-      <div class="member-avatar">${avatarHtml}</div>
-      <div class="member-info">
-        <div class="member-name">${escHtml(m.username)}${isMe?' <span style="font-size:11px;color:var(--muted)">(you)</span>':''}</div>
-        <div class="member-meta"><span class="role-badge ${roleClass(r)}" style="font-size:10px;padding:2px 8px">${r.toUpperCase()}</span>${metaParts.join(' · ')}</div>
-      </div>
-      <div class="member-actions">${actions}</div>
-    </div>`;
+    const r=(m.role||m.rank||'user').toLowerCase();const isMe=m.username===currentUsername;const isBanned=m.banned;const warns=m.warnings||0;const canAct=isAdmin()&&!isMe&&r!=='owner';
+    const metaParts=[];if(m.vrchat)metaParts.push(m.vrchat);if(warns>0)metaParts.push(`<span class="warn-count">⚠ ${warns} warn${warns!==1?'s':''}</span>`);if(isBanned)metaParts.push(`<span class="banned-tag">🚫 BANNED</span>`);if(m.pro)metaParts.push(`<span style="color:#fbbf24">⭐ PRO</span>`);
+    let actions='';if(canAct){if(isBanned)actions=`<button class="action-btn unban-btn" onclick="doUnban('${m._id}','${m.username}')">✓ Unban</button>`;else actions=`<button class="action-btn warn-btn" onclick="openWarn('${m._id}','${m.username}')">⚠ Warn</button><button class="action-btn ban-btn" onclick="openBan('${m._id}','${m.username}')">🚫 Ban</button>`;}
+    const avatarHtml=m.avatar?`<img src="${m.avatar}" alt="${m.username}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`:initials(m.username);
+    return `<div class="member-row ${isBanned?'banned-row':''}"><div class="member-avatar">${avatarHtml}</div><div class="member-info"><div class="member-name">${escHtml(m.username)}${isMe?' <span style="font-size:11px;color:var(--muted)">(you)</span>':''}</div><div class="member-meta"><span class="role-badge ${roleClass(r)}" style="font-size:10px;padding:2px 8px">${r.toUpperCase()}</span>${metaParts.join(' · ')}</div></div><div class="member-actions">${actions}</div></div>`;
   }).join('');
 }
-
 function openWarn(id,username){pendingAction={type:'warn',userId:id,username};document.getElementById('warnModalSub').textContent=`Warning: ${username}`;document.getElementById('warnReason').value='';document.getElementById('warnModal').classList.add('show');document.getElementById('warnConfirmBtn').onclick=confirmWarn;}
 function openBan(id,username){pendingAction={type:'ban',userId:id,username};document.getElementById('banModalSub').textContent=`Banning: ${username}`;document.getElementById('banModal').classList.add('show');document.getElementById('banConfirmBtn').onclick=confirmBan;}
 function closeModal(id){document.getElementById(id).classList.remove('show');pendingAction=null;pendingReport=null;}
@@ -888,307 +1144,243 @@ async function confirmBan(){if(!pendingAction)return;const{userId,username}=pend
 async function doUnban(userId,username){try{const res=await fetch(`${API}/api/users/${userId}/unban`,{method:'POST',headers:{Authorization:'Bearer '+token()}});const d=await res.json();res.ok?toast(`✓ ${username} unbanned`,'success'):toast(d.error||'Failed','error');loadMembers();}catch{toast('Server error','error');}}
 
 // ── ADMIN KEYS ──
-async function loadAdminKeys(){
-  try{
-    const res=await fetch(`${API}/api/admin/keys`,{headers:{Authorization:'Bearer '+token()}});
-    if(res.ok){generatedKeys=await res.json();renderKeys();}
-  }catch{}
-}
-
+async function loadAdminKeys(){try{const res=await fetch(`${API}/api/admin/keys`,{headers:{Authorization:'Bearer '+token()}});if(res.ok){generatedKeys=await res.json();renderKeys();}}catch{}}
 async function generateKey(){
-  const tier=document.getElementById('keyTier').value;
-  const uses=parseInt(document.getElementById('keyUses').value);
-  const btn=document.getElementById('genBtn');
-  btn.disabled=true;btn.innerHTML='<i class="ti ti-loader" style="animation:spin 0.7s linear infinite;display:inline-block"></i> Generating...';
-  try{
-    const res=await fetch(`${API}/api/admin/keys/generate`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({tier,uses})});
-    const data=await res.json();
-    btn.disabled=false;btn.innerHTML='<i class="ti ti-key"></i> Generate Key';
-    if(!res.ok){toast(data.error||'Failed','error');return;}
-    generatedKeys.unshift(data);
-    document.getElementById('statKeys').textContent=generatedKeys.length;
-    renderKeys();toast('Key generated: '+data.code,'success');
-  }catch{btn.disabled=false;btn.innerHTML='<i class="ti ti-key"></i> Generate Key';toast('Could not reach server','error');}
+  const tier=document.getElementById('keyTier').value;const uses=parseInt(document.getElementById('keyUses').value);
+  const btn=document.getElementById('genBtn');btn.disabled=true;btn.innerHTML='<i class="ti ti-loader" style="animation:spin 0.7s linear infinite;display:inline-block"></i> Generating...';
+  try{const res=await fetch(`${API}/api/admin/keys/generate`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({tier,uses})});const data=await res.json();btn.disabled=false;btn.innerHTML='<i class="ti ti-key"></i> Generate Key';if(!res.ok){toast(data.error||'Failed','error');return;}generatedKeys.unshift(data);renderKeys();toast('Key generated: '+data.code,'success');}
+  catch{btn.disabled=false;btn.innerHTML='<i class="ti ti-key"></i> Generate Key';toast('Could not reach server','error');}
 }
-
-function renderKeys(){
-  const list=document.getElementById('keyList');
-  if(!generatedKeys.length){list.innerHTML='<div class="empty-keys">No keys generated yet.</div>';return;}
-  list.innerHTML=generatedKeys.map((k)=>{
-    const usesDisplay=k.uses===-1?'∞':String(k.uses);
-    return `<div class="key-row">
-      <span class="key-code">${k.code}</span>
-      <span class="key-tier tier-${k.tier}">${k.tier.toUpperCase()}</span>
-      <span class="key-uses">${usesDisplay} use${usesDisplay==='1'?'':'s'}</span>
-      <span class="key-status">● ACTIVE</span>
-      <button class="key-copy" onclick="copyKey('${k.code}')" title="Copy"><i class="ti ti-copy"></i></button>
-      <button class="key-del" onclick="revokeKey('${k._id}')" title="Revoke"><i class="ti ti-trash"></i></button>
-    </div>`;
-  }).join('');
-}
-
+function renderKeys(){const list=document.getElementById('keyList');if(!generatedKeys.length){list.innerHTML='<div class="empty-keys">No keys generated yet.</div>';return;}list.innerHTML=generatedKeys.map(k=>{const usesDisplay=k.uses===-1?'∞':String(k.uses);return`<div class="key-row"><span class="key-code">${k.code}</span><span class="key-tier tier-${k.tier}">${k.tier.toUpperCase()}</span><span class="key-uses">${usesDisplay} use${usesDisplay==='1'?'':'s'}</span><span class="key-status">● ACTIVE</span><button class="key-copy" onclick="copyKey('${k.code}')" title="Copy"><i class="ti ti-copy"></i></button><button class="key-del" onclick="revokeKey('${k._id}')" title="Revoke"><i class="ti ti-trash"></i></button></div>`;}).join('');}
 function copyKey(code){navigator.clipboard.writeText(code).then(()=>toast('Copied: '+code,'success'));}
-async function revokeKey(id){
-  try{
-    await fetch(`${API}/api/admin/keys/${id}/revoke`,{method:'POST',headers:{Authorization:'Bearer '+token()}});
-    generatedKeys=generatedKeys.filter(k=>k._id!==id);
-    document.getElementById('statKeys').textContent=generatedKeys.length;
-    renderKeys();toast('Key revoked','');
-  }catch{toast('Server error','error');}
-}
+async function revokeKey(id){try{await fetch(`${API}/api/admin/keys/${id}/revoke`,{method:'POST',headers:{Authorization:'Bearer '+token()}});generatedKeys=generatedKeys.filter(k=>k._id!==id);renderKeys();toast('Key revoked','');}catch{toast('Server error','error');}}
 
 // ── ADMIN GIVE ──
-async function adminGivePro(){
-  const username=document.getElementById('giveUsername').value.trim();
-  if(!username){toast('Enter a username','error');return;}
-  try{
-    const res=await fetch(`${API}/api/admin/give/pro`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({username})});
-    const d=await res.json();
-    res.ok?toast(`⭐ PRO given to ${username}`,'pro'):toast(d.error||'Failed','error');
-    if(res.ok)showGiveConfirm();
-  }catch{toast('Server error','error');}
-}
-
-async function adminGivePoints(){
-  const username=document.getElementById('giveUsername').value.trim();
-  const pts=parseInt(document.getElementById('givePoints').value)||0;
-  if(!username||pts<=0){toast('Enter username and points','error');return;}
-  try{
-    const res=await fetch(`${API}/api/admin/give/points`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({username,points:pts})});
-    const d=await res.json();
-    if(res.ok){
-      toast(`+${pts} points given to ${username}`,'success');
-      // If giving to self, update display
-      if(username===currentUsername){userPoints=d.points;document.getElementById('pointsDisplay').textContent=userPoints;document.getElementById('statPoints').textContent=userPoints;}
-      showGiveConfirm();
-    }else{toast(d.error||'Failed','error');}
-  }catch{toast('Server error','error');}
-}
-
+async function adminGivePro(){const username=document.getElementById('giveUsername').value.trim();if(!username){toast('Enter a username','error');return;}try{const res=await fetch(`${API}/api/admin/give/pro`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({username})});const d=await res.json();res.ok?toast(`⭐ PRO given to ${username}`,'pro'):toast(d.error||'Failed','error');if(res.ok)showGiveConfirm();}catch{toast('Server error','error');}}
+async function adminGivePoints(){const username=document.getElementById('giveUsername').value.trim();const pts=parseInt(document.getElementById('givePoints').value)||0;if(!username||pts<=0){toast('Enter username and points','error');return;}try{const res=await fetch(`${API}/api/admin/give/points`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({username,points:pts})});const d=await res.json();if(res.ok){toast(`+${pts} pts given to ${username}`,'success');if(username===currentUsername){userPoints=d.points;updatePtsUI();}showGiveConfirm();}else{toast(d.error||'Failed','error');}}catch{toast('Server error','error');}}
 function showGiveConfirm(){const c=document.getElementById('giveConfirm');c.classList.add('show');setTimeout(()=>c.classList.remove('show'),2000);}
 
 // ── EVENTS ──
-async function loadEvents(){
-  try{
-    const res=await fetch(`${API}/api/events`,{headers:{Authorization:'Bearer '+token()}});
-    serverEvents=await res.json();
-    renderEvents();
-  }catch{renderEvents();}
-}
-
+async function loadEvents(){try{const res=await fetch(`${API}/api/events`,{headers:{Authorization:'Bearer '+token()}});serverEvents=await res.json();renderEvents();}catch{renderEvents();}}
 function renderEvents(){
-  const list=document.getElementById('eventsList');
-  if(!serverEvents.length){list.innerHTML='<div class="ev-empty">No events scheduled yet.</div>';return;}
-  list.innerHTML=serverEvents.map(ev=>{
-    const d=new Date(ev.date+'T12:00:00');
-    const mon=months[d.getMonth()];const day=d.getDate();
-    const going=ev.rsvps&&ev.rsvps.includes(currentUsername);
-    const pips=(ev.rsvps||[]).slice(0,3).map((r,i)=>`<div class="pip" style="background:${pipColors[i%pipColors.length]}">${r.slice(0,2).toUpperCase()}</div>`).join('');
-    const extra=(ev.rsvps||[]).length>3?`<div class="pip" style="background:var(--panel2);color:var(--muted);border:1px solid var(--border2);font-size:9px">+${ev.rsvps.length-3}</div>`:'';
-    return `<div class="event-card">
-      <div class="ev-date"><span class="ev-month">${mon}</span><span class="ev-day">${day}</span></div>
-      <div><div class="ev-title">${escHtml(ev.title)}</div><div class="ev-meta"><span><i class="ti ti-user"></i>${escHtml(ev.host)}</span><span><i class="ti ti-clock"></i>${ev.time} UTC</span></div><div class="ev-desc">${escHtml(ev.desc)}</div></div>
-      <div class="ev-right"><button class="rsvp-btn ${going?'going':''}" onclick="toggleRsvp('${ev._id}')">${going?'<i class="ti ti-check"></i> Going':'RSVP'}</button><div class="attendee-pips">${pips}${extra}</div></div>
-    </div>`;
-  }).join('');
+  const list=document.getElementById('eventsList');if(!serverEvents.length){list.innerHTML='<div class="ev-empty">No events scheduled yet.</div>';return;}
+  list.innerHTML=serverEvents.map(ev=>{const d=new Date(ev.date+'T12:00:00');const mon=months[d.getMonth()];const day=d.getDate();const going=ev.rsvps&&ev.rsvps.includes(currentUsername);const pips=(ev.rsvps||[]).slice(0,3).map((r,i)=>`<div class="pip" style="background:${pipColors[i%pipColors.length]}">${r.slice(0,2).toUpperCase()}</div>`).join('');const extra=(ev.rsvps||[]).length>3?`<div class="pip" style="background:var(--panel2);color:var(--muted);border:1px solid var(--border2);font-size:9px">+${ev.rsvps.length-3}</div>`:'';return`<div class="event-card"><div class="ev-date"><span class="ev-month">${mon}</span><span class="ev-day">${day}</span></div><div><div class="ev-title">${escHtml(ev.title)}</div><div class="ev-meta"><span><i class="ti ti-user"></i>${escHtml(ev.host)}</span><span><i class="ti ti-clock"></i>${ev.time} UTC</span></div><div class="ev-desc">${escHtml(ev.desc)}</div></div><div class="ev-right"><button class="rsvp-btn ${going?'going':''}" onclick="toggleRsvp('${ev._id}')">${going?'<i class="ti ti-check"></i> Going':'RSVP'}</button><div class="attendee-pips">${pips}${extra}</div></div></div>`;}).join('');
 }
+async function toggleRsvp(id){try{const res=await fetch(`${API}/api/events/${id}/rsvp`,{method:'POST',headers:{Authorization:'Bearer '+token()}});const d=await res.json();if(res.ok){const ev=serverEvents.find(e=>e._id===id);if(ev)ev.rsvps=d.rsvps;renderEvents();}}catch{toast('Server error','error');}}
+async function addEvent(){const title=document.getElementById('newEvTitle').value.trim();const host=document.getElementById('newEvHost').value.trim();const date=document.getElementById('newEvDate').value;const time=document.getElementById('newEvTime').value;const desc=document.getElementById('newEvDesc').value.trim();if(!title||!host||!date||!time){toast('Fill all fields','error');return;}try{const res=await fetch(`${API}/api/events`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({title,host,date,time,desc:desc||'No description.'})});const d=await res.json();if(!res.ok){toast(d.error||'Failed','error');return;}serverEvents.push(d);['newEvTitle','newEvHost','newEvDate','newEvTime','newEvDesc'].forEach(id=>document.getElementById(id).value='');const chip=document.getElementById('evConfirm');chip.classList.add('show');setTimeout(()=>chip.classList.remove('show'),2000);renderAdminEvents();toast('Event added!','success');}catch{toast('Server error','error');}}
+async function deleteEvent(id){try{await fetch(`${API}/api/events/${id}`,{method:'DELETE',headers:{Authorization:'Bearer '+token()}});serverEvents=serverEvents.filter(e=>e._id!==id);renderAdminEvents();toast('Event removed.','');}catch{toast('Server error','error');}}
+function renderAdminEvents(){const el=document.getElementById('adminEvList');if(!serverEvents.length){el.innerHTML='<div style="font-size:13px;color:var(--muted);font-family:\'DM Mono\',monospace">No events yet.</div>';return;}el.innerHTML=serverEvents.map(ev=>`<div class="admin-ev-row"><div><div class="admin-ev-name">${escHtml(ev.title)}</div><div class="admin-ev-date">${ev.date} · ${ev.time} UTC · ${escHtml(ev.host)}</div></div><button class="del-ev-btn" onclick="deleteEvent('${ev._id}')"><i class="ti ti-trash"></i> Remove</button></div>`).join('');}
 
-async function toggleRsvp(id){
-  try{
-    const res=await fetch(`${API}/api/events/${id}/rsvp`,{method:'POST',headers:{Authorization:'Bearer '+token()}});
-    const d=await res.json();
-    if(res.ok){
-      const ev=serverEvents.find(e=>e._id===id);
-      if(ev)ev.rsvps=d.rsvps;
-      renderEvents();
-    }
-  }catch{toast('Server error','error');}
-}
-
-async function addEvent(){
-  const title=document.getElementById('newEvTitle').value.trim();
-  const host=document.getElementById('newEvHost').value.trim();
-  const date=document.getElementById('newEvDate').value;
-  const time=document.getElementById('newEvTime').value;
-  const desc=document.getElementById('newEvDesc').value.trim();
-  if(!title||!host||!date||!time){toast('Fill all fields','error');return;}
-  try{
-    const res=await fetch(`${API}/api/events`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({title,host,date,time,desc:desc||'No description.'})});
-    const d=await res.json();
-    if(!res.ok){toast(d.error||'Failed','error');return;}
-    serverEvents.push(d);
-    document.getElementById('newEvTitle').value='';document.getElementById('newEvHost').value='';
-    document.getElementById('newEvDate').value='';document.getElementById('newEvTime').value='';document.getElementById('newEvDesc').value='';
-    const chip=document.getElementById('evConfirm');chip.classList.add('show');setTimeout(()=>chip.classList.remove('show'),2000);
-    renderAdminEvents();toast('Event added!','success');
-  }catch{toast('Server error','error');}
-}
-
-async function deleteEvent(id){
-  try{
-    await fetch(`${API}/api/events/${id}`,{method:'DELETE',headers:{Authorization:'Bearer '+token()}});
-    serverEvents=serverEvents.filter(e=>e._id!==id);
-    renderAdminEvents();toast('Event removed.','');
-  }catch{toast('Server error','error');}
-}
-
-function renderAdminEvents(){
-  const el=document.getElementById('adminEvList');
-  if(!serverEvents.length){el.innerHTML='<div style="font-size:13px;color:var(--muted);font-family:\'DM Mono\',monospace">No events yet.</div>';return;}
-  el.innerHTML=serverEvents.map(ev=>`<div class="admin-ev-row"><div><div class="admin-ev-name">${escHtml(ev.title)}</div><div class="admin-ev-date">${ev.date} · ${ev.time} UTC · ${escHtml(ev.host)}</div></div><button class="del-ev-btn" onclick="deleteEvent('${ev._id}')"><i class="ti ti-trash"></i> Remove</button></div>`).join('');
-}
-
-// ── MEMORY GAME ──
-function startGame(){
-  if(gameActive)return;
-  gameActive=true;flipped=[];matched=0;moves=0;gameSeconds=0;canFlip=true;
-  document.getElementById('winBanner').style.display='none';
-  document.getElementById('moveCount').textContent='0';
-  document.getElementById('gameTimer').textContent='0s';
-  document.getElementById('startBtn').disabled=true;
-  clearInterval(timerInterval);
-  timerInterval=setInterval(()=>{gameSeconds++;document.getElementById('gameTimer').textContent=gameSeconds+'s';},1000);
+// ══════════════════════════════════════
+// ── GAME: MEMORY ──
+// ══════════════════════════════════════
+function startMemory(){
+  if(memActive)return;memActive=true;memFlipped=[];memMatched=0;memMoves=0;memSeconds=0;memCanFlip=true;
+  document.getElementById('memWinBanner').style.display='none';document.getElementById('moveCount').textContent='0';document.getElementById('gameTimer').textContent='0s';document.getElementById('startBtn').disabled=true;
+  clearInterval(memTimer);memTimer=setInterval(()=>{memSeconds++;document.getElementById('gameTimer').textContent=memSeconds+'s';},1000);
   const emojis=[...PRO_EMOJIS].sort(()=>Math.random()-0.5).slice(0,8);
-  gameCards=[...emojis,...emojis].sort(()=>Math.random()-0.5);
-  renderBoard();
+  memCards=[...emojis,...emojis].sort(()=>Math.random()-0.5);
+  renderMemBoard();
 }
-
-function renderBoard(){
+function renderMemBoard(){
   const board=document.getElementById('gameBoard');
-  if(!gameActive){board.innerHTML=`<div class="game-idle"><i class="ti ti-cards"></i>Press Start to play — match all pairs to earn 100 points!</div>`;return;}
-  board.innerHTML=`<div class="memory-grid">${gameCards.map((emoji,i)=>`
-    <button class="mem-card" id="mc-${i}" onclick="flipCard(${i})">
-      <div class="card-front"></div>
-      <div class="card-back">${emoji}</div>
-    </button>`).join('')}</div>`;
+  if(!memActive){board.innerHTML=`<div class="game-idle"><i class="ti ti-cards"></i>Press Start — match all pairs to earn 100 pts!</div>`;return;}
+  board.innerHTML=`<div class="memory-grid">${memCards.map((emoji,i)=>`<button class="mem-card" id="mc-${i}" onclick="flipCard(${i})"><div class="card-front"></div><div class="card-back">${emoji}</div></button>`).join('')}</div>`;
 }
-
 function flipCard(i){
-  if(!canFlip||!gameActive)return;
-  const card=document.getElementById('mc-'+i);
-  if(card.classList.contains('flipped')||card.classList.contains('matched'))return;
-  card.classList.add('flipped');flipped.push(i);
-  if(flipped.length===2){
-    moves++;document.getElementById('moveCount').textContent=moves;canFlip=false;
-    const[a,b]=flipped;
-    if(gameCards[a]===gameCards[b]){
-      setTimeout(()=>{document.getElementById('mc-'+a).classList.add('matched');document.getElementById('mc-'+b).classList.add('matched');flipped=[];matched++;canFlip=true;if(matched===8)winGame();},400);
-    }else{
-      setTimeout(()=>{document.getElementById('mc-'+a).classList.remove('flipped');document.getElementById('mc-'+b).classList.remove('flipped');flipped=[];canFlip=true;},800);
-    }
+  if(!memCanFlip||!memActive)return;const card=document.getElementById('mc-'+i);if(card.classList.contains('flipped')||card.classList.contains('matched'))return;
+  card.classList.add('flipped');memFlipped.push(i);
+  if(memFlipped.length===2){memMoves++;document.getElementById('moveCount').textContent=memMoves;memCanFlip=false;const[a,b]=memFlipped;
+    if(memCards[a]===memCards[b]){setTimeout(()=>{document.getElementById('mc-'+a).classList.add('matched');document.getElementById('mc-'+b).classList.add('matched');memFlipped=[];memMatched++;memCanFlip=true;if(memMatched===8)winMemory();},400);}
+    else{setTimeout(()=>{document.getElementById('mc-'+a).classList.remove('flipped');document.getElementById('mc-'+b).classList.remove('flipped');memFlipped=[];memCanFlip=true;},800);}
   }
 }
-
-async function winGame(){
-  clearInterval(timerInterval);gameActive=false;
-  document.getElementById('startBtn').disabled=false;
-  // Award points via server
-  try{
-    const res=await fetch(`${API}/api/me/points/add`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({amount:100})});
-    const d=await res.json();
-    if(res.ok){userPoints=d.points;document.getElementById('pointsDisplay').textContent=userPoints;document.getElementById('statPoints').textContent=userPoints;}
-  }catch{}
-  document.getElementById('winPts').textContent=`+100 points — total: ${userPoints}`;
-  document.getElementById('winBanner').style.display='flex';
-  toast('🎉 You won! +100 points','success');
+async function winMemory(){
+  clearInterval(memTimer);memActive=false;document.getElementById('startBtn').disabled=false;
+  try{const res=await fetch(`${API}/api/me/points/add`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({amount:100})});const d=await res.json();if(res.ok){userPoints=d.points;updatePtsUI();}}catch{}
+  document.getElementById('memWinPts').textContent=`+100 pts — total: ${userPoints}`;document.getElementById('memWinBanner').style.display='flex';
+  toast('🎉 Memory complete! +100 pts','success');
 }
 
-// ── CHAT (from server) ──
-async function loadChat(){
-  try{
-    const res=await fetch(`${API}/api/chat`,{headers:{Authorization:'Bearer '+token()}});
-    serverMessages=await res.json();
-    renderChat();scrollChatBottom();
-  }catch{renderChat();}
+// ══════════════════════════════════════
+// ── GAME: SNAKE ──
+// ══════════════════════════════════════
+function renderSnakeIdle(){
+  const canvas=document.getElementById('snakeCanvas');const ctx=canvas.getContext('2d');ctx.clearRect(0,0,400,400);
+  ctx.fillStyle='rgba(255,255,255,0.04)';ctx.fillRect(0,0,400,400);ctx.fillStyle='rgba(255,255,255,0.15)';ctx.font='24px Rajdhani';ctx.textAlign='center';ctx.fillText('Press Start to play',200,200);
+}
+function placeFood(){
+  let fx,fy,tries=0;do{fx=Math.floor(Math.random()*SNAKE_COLS);fy=Math.floor(Math.random()*SNAKE_ROWS);tries++;}while(snake.some(s=>s.x===fx&&s.y===fy)&&tries<100);snakeFood={x:fx,y:fy};}
+function startSnake(){
+  if(snakeActive)return;snakeActive=true;snakeScore=0;document.getElementById('snakeScore').textContent=0;
+  snake=[{x:10,y:10},{x:9,y:10},{x:8,y:10}];snakeDir={x:1,y:0};snakeNextDir={x:1,y:0};placeFood();
+  document.getElementById('snakeStartBtn').disabled=true;
+  clearInterval(snakeLoop);snakeLoop=setInterval(snakeTick,130);
+}
+function snakeTick(){
+  snakeDir=snakeNextDir;const head={x:snake[0].x+snakeDir.x,y:snake[0].y+snakeDir.y};
+  if(head.x<0||head.x>=SNAKE_COLS||head.y<0||head.y>=SNAKE_ROWS||snake.some(s=>s.x===head.x&&s.y===head.y)){gameOverSnake();return;}
+  snake.unshift(head);
+  if(head.x===snakeFood.x&&head.y===snakeFood.y){snakeScore+=5;document.getElementById('snakeScore').textContent=snakeScore;placeFood();}
+  else snake.pop();
+  drawSnake();
+}
+function drawSnake(){
+  const canvas=document.getElementById('snakeCanvas');const ctx=canvas.getContext('2d');const C=SNAKE_CELL;ctx.clearRect(0,0,400,400);
+  // grid
+  ctx.strokeStyle='rgba(255,255,255,0.03)';for(let i=0;i<SNAKE_COLS;i++){ctx.beginPath();ctx.moveTo(i*C,0);ctx.lineTo(i*C,400);ctx.stroke();}
+  for(let j=0;j<SNAKE_ROWS;j++){ctx.beginPath();ctx.moveTo(0,j*C);ctx.lineTo(400,j*C);ctx.stroke();}
+  // food
+  ctx.fillStyle='#ef4444';ctx.beginPath();ctx.arc(snakeFood.x*C+C/2,snakeFood.y*C+C/2,C/2-2,0,Math.PI*2);ctx.fill();
+  // snake
+  snake.forEach((s,i)=>{const alpha=1-i/(snake.length+4);ctx.fillStyle=i===0?'#22c55e':`rgba(34,197,94,${Math.max(0.2,alpha)})`;ctx.beginPath();ctx.roundRect(s.x*C+2,s.y*C+2,C-4,C-4,3);ctx.fill();});
+}
+async function gameOverSnake(){
+  clearInterval(snakeLoop);snakeActive=false;document.getElementById('snakeStartBtn').disabled=false;
+  if(snakeScore>snakeHi){snakeHi=snakeScore;localStorage.setItem('vs_snakeHi',snakeHi);document.getElementById('snakeHi').textContent=snakeHi;}
+  const ptsEarned=snakeScore;
+  if(ptsEarned>0){
+    try{const res=await fetch(`${API}/api/me/points/add`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({amount:ptsEarned})});const d=await res.json();if(res.ok){userPoints=d.points;updatePtsUI();}}catch{}
+  }
+  document.getElementById('snakeWinText').textContent=`Game over! Score: ${snakeScore}`;
+  document.getElementById('snakeWinPts').textContent=`+${ptsEarned} pts — total: ${userPoints}`;
+  document.getElementById('snakeWinBanner').style.display='flex';
+  // draw game over
+  const canvas=document.getElementById('snakeCanvas');const ctx=canvas.getContext('2d');ctx.fillStyle='rgba(0,0,0,0.55)';ctx.fillRect(0,0,400,400);ctx.fillStyle='#fff';ctx.font='bold 28px Rajdhani';ctx.textAlign='center';ctx.fillText('GAME OVER',200,185);ctx.font='18px Rajdhani';ctx.fillStyle='rgba(255,255,255,0.6)';ctx.fillText(`Score: ${snakeScore}`,200,220);
+  toast(`🐍 Game Over — +${ptsEarned} pts`,'success');
+}
+// Snake keyboard controls
+document.addEventListener('keydown',e=>{
+  if(!snakeActive)return;
+  const map={ArrowUp:{x:0,y:-1},ArrowDown:{x:0,y:1},ArrowLeft:{x:-1,y:0},ArrowRight:{x:1,y:0},w:{x:0,y:-1},s:{x:0,y:1},a:{x:-1,y:0},d:{x:1,y:0},W:{x:0,y:-1},S:{x:0,y:1},A:{x:-1,y:0},D:{x:1,y:0}};
+  const nd=map[e.key];if(!nd)return;if(nd.x===-snakeDir.x||nd.y===-snakeDir.y)return;snakeNextDir=nd;e.preventDefault();
+});
+
+// ══════════════════════════════════════
+// ── GAME: REACTION ──
+// ══════════════════════════════════════
+function resetReactionUI(){
+  const arena=document.getElementById('reactionArena');arena.className='reaction-arena idle';
+  document.getElementById('rtDisplay').textContent='🖱';document.getElementById('rtSub').textContent='Click Start to play';
+  document.getElementById('rtRound').textContent='-';document.getElementById('rtBest').textContent='-';
+  document.getElementById('rtResults').innerHTML='';document.getElementById('rtWinBanner').style.display='none';
+  document.getElementById('rtStartBtn').style.display='';
+}
+function startReaction(){
+  rtActive=true;rtRound=0;rtResults=[];document.getElementById('rtStartBtn').style.display='none';document.getElementById('rtWinBanner').style.display='none';document.getElementById('rtResults').innerHTML='';
+  nextReactionRound();
+}
+function nextReactionRound(){
+  if(rtRound>=RT_ROUNDS){endReaction();return;}rtRound++;document.getElementById('rtRound').textContent=`${rtRound}/${RT_ROUNDS}`;
+  const arena=document.getElementById('reactionArena');arena.className='reaction-arena wait';
+  document.getElementById('rtDisplay').textContent='⏳';document.getElementById('rtSub').textContent='Wait for green...';
+  rtWaiting=true;rtGo=false;
+  const delay=1000+Math.random()*4000;rtTimeout=setTimeout(()=>{arena.className='reaction-arena go';document.getElementById('rtDisplay').textContent='🟢';document.getElementById('rtSub').textContent='CLICK NOW!';rtStart=performance.now();rtGo=true;},delay);
+}
+function reactionClick(){
+  if(!rtActive)return;
+  if(rtWaiting&&!rtGo){clearTimeout(rtTimeout);rtWaiting=false;const arena=document.getElementById('reactionArena');arena.className='reaction-arena idle';document.getElementById('rtDisplay').textContent='😅';document.getElementById('rtSub').textContent='Too early! Wait for green...';setTimeout(nextReactionRound,1200);return;}
+  if(rtGo){const ms=Math.round(performance.now()-rtStart);rtGo=false;rtWaiting=false;rtResults.push(ms);
+    const best=Math.min(...rtResults);document.getElementById('rtBest').textContent=best+'ms';
+    const arena=document.getElementById('reactionArena');arena.className='reaction-arena result';document.getElementById('rtDisplay').textContent=ms+'ms';document.getElementById('rtSub').textContent=ms<200?'⚡ Lightning!':ms<350?'Great!':ms<500?'Not bad':'Slow...';
+    renderRtResults();setTimeout(nextReactionRound,1000);
+  }
+}
+function renderRtResults(){
+  const el=document.getElementById('rtResults');
+  el.innerHTML=rtResults.map((ms,i)=>`<div class="rt-result"><div class="rt-result-val" style="color:${ms<200?'#22c55e':ms<400?'#fbbf24':'#ef4444'}">${ms}ms</div><div class="rt-result-lbl">Round ${i+1}</div></div>`).join('');
+}
+async function endReaction(){
+  rtActive=false;const avg=Math.round(rtResults.reduce((a,b)=>a+b,0)/rtResults.length);const best=Math.min(...rtResults);
+  let pts=avg<200?150:avg<300?100:avg<400?60:avg<500?30:10;
+  try{const res=await fetch(`${API}/api/me/points/add`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({amount:pts})});const d=await res.json();if(res.ok){userPoints=d.points;updatePtsUI();}}catch{}
+  document.getElementById('rtWinText').textContent=`Avg: ${avg}ms · Best: ${best}ms`;document.getElementById('rtWinPts').textContent=`+${pts} pts — total: ${userPoints}`;
+  document.getElementById('rtWinBanner').style.display='flex';document.getElementById('rtStartBtn').style.display='';
+  document.getElementById('reactionArena').className='reaction-arena idle';document.getElementById('rtDisplay').textContent='🏆';document.getElementById('rtSub').textContent='Done! Press Start to play again.';
+  toast(`⚡ Reaction done! Avg ${avg}ms · +${pts} pts`,'success');
 }
 
+// ══════════════════════════════════════
+// ── GAME: TYPING ──
+// ══════════════════════════════════════
+let typingText='';let typingUserInput='';let typingLiveTimer=null;
+function resetTypingUI(){
+  clearInterval(typingLiveTimer);typingActive=false;typingUserInput='';typingStart=0;
+  document.getElementById('typingDisplay').innerHTML='<span style="color:var(--muted);font-size:14px">Press Start to begin the typing test...</span>';
+  document.getElementById('typingInput').value='';document.getElementById('typingInput').disabled=true;
+  document.getElementById('liveWpm').textContent='0';document.getElementById('liveAcc').textContent='-';
+  document.getElementById('typingWinBanner').style.display='none';document.getElementById('typingStartBtn').style.display='';
+}
+function startTyping(){
+  typingText=TYPING_TEXTS[Math.floor(Math.random()*TYPING_TEXTS.length)];
+  typingUserInput='';typingErrors=0;typingActive=true;typingStart=0;
+  document.getElementById('typingWinBanner').style.display='none';document.getElementById('typingStartBtn').style.display='none';
+  renderTypingDisplay();
+  const inp=document.getElementById('typingInput');inp.disabled=false;inp.value='';inp.focus();
+  clearInterval(typingLiveTimer);typingLiveTimer=setInterval(updateTypingStats,500);
+}
+function renderTypingDisplay(){
+  const el=document.getElementById('typingDisplay');const chars=typingText.split('');const input=typingUserInput.split('');
+  let html='';chars.forEach((ch,i)=>{if(i<input.length){if(input[i]===ch)html+=`<span class="t-correct">${escHtml(ch)}</span>`;else html+=`<span class="t-wrong">${escHtml(ch)}</span>`;}else if(i===input.length){html+=`<span class="t-cursor">${escHtml(ch)}</span>`;}else{html+=`<span style="color:var(--muted)">${escHtml(ch)}</span>}`;}});
+  el.innerHTML=html;
+}
+document.getElementById('typingInput').addEventListener('input',function(){
+  if(!typingActive)return;if(!typingStart)typingStart=performance.now();
+  const val=this.value;if(val.length>typingText.length){this.value=typingUserInput;return;}
+  typingUserInput=val;renderTypingDisplay();updateTypingStats();
+  if(typingUserInput.length===typingText.length){clearInterval(typingLiveTimer);finishTyping();}
+});
+function updateTypingStats(){
+  if(!typingStart||!typingActive)return;const elapsed=(performance.now()-typingStart)/1000/60;const wordCount=typingUserInput.trim().split(/\s+/).length;const wpm=elapsed>0?Math.round(wordCount/elapsed):0;document.getElementById('liveWpm').textContent=wpm;
+  const correct=typingUserInput.split('').filter((c,i)=>c===typingText[i]).length;const acc=typingUserInput.length?Math.round((correct/typingUserInput.length)*100):100;document.getElementById('liveAcc').textContent=acc+'%';
+}
+async function finishTyping(){
+  typingActive=false;const elapsed=(performance.now()-typingStart)/1000/60;const words=typingText.trim().split(/\s+/).length;const wpm=Math.round(words/elapsed);const correct=typingUserInput.split('').filter((c,i)=>c===typingText[i]).length;const acc=Math.round((correct/typingText.length)*100);
+  const pts=wpm>80?200:wpm>60?150:wpm>40?100:wpm>20?60:30;
+  try{const res=await fetch(`${API}/api/me/points/add`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({amount:pts})});const d=await res.json();if(res.ok){userPoints=d.points;updatePtsUI();}}catch{}
+  document.getElementById('typingWinText').textContent=`${wpm} WPM · ${acc}% accuracy`;document.getElementById('typingWinPts').textContent=`+${pts} pts — total: ${userPoints}`;document.getElementById('typingWinBanner').style.display='flex';document.getElementById('typingStartBtn').style.display='';document.getElementById('typingInput').disabled=true;
+  toast(`⌨ Typing done! ${wpm} WPM · +${pts} pts`,'success');
+}
+
+// ══════════════════════════════════════
+// ── CHAT ──
+// ══════════════════════════════════════
+async function loadChat(){try{const res=await fetch(`${API}/api/chat`,{headers:{Authorization:'Bearer '+token()}});serverMessages=await res.json();renderChat();scrollChatBottom();}catch{renderChat();}}
 function fmtDate(ts){return new Date(ts).toLocaleDateString('en-GB',{weekday:'long',year:'numeric',month:'long',day:'numeric'});}
 function fmtTime(ts){return new Date(ts).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});}
-
-function chatRankLabel(r,isPro){
-  if(r==='owner')return`<span class="msg-rank rank-owner">OWNER</span>`;
-  if(r==='admin')return`<span class="msg-rank rank-admin">ADMIN</span>`;
-  if(isPro)return`<span class="msg-rank rank-pro">⭐ PRO</span>`;
-  return`<span class="msg-rank rank-member">MEMBER</span>`;
-}
-
+function chatRankLabel(r,isPro){if(r==='owner')return`<span class="msg-rank rank-owner">OWNER</span>`;if(r==='admin')return`<span class="msg-rank rank-admin">ADMIN</span>`;if(isPro)return`<span class="msg-rank rank-pro">⭐ PRO</span>`;return`<span class="msg-rank rank-member">MEMBER</span>`;}
 function renderChat(){
-  const el=document.getElementById('chatMessages');
-  if(!serverMessages.length){el.innerHTML='<div class="chat-empty-state"><i class="ti ti-message-circle"></i>No messages yet — say something!</div>';return;}
+  const el=document.getElementById('chatMessages');if(!serverMessages.length){el.innerHTML='<div class="chat-empty-state"><i class="ti ti-message-circle"></i>No messages yet — say something!</div>';return;}
   let html='',lastDate='';
   serverMessages.forEach((msg,idx)=>{
-    if(msg.deleted)return;
-    const dateStr=fmtDate(msg.timestamp);
-    if(dateStr!==lastDate){html+=`<div class="chat-date-divider">${dateStr}</div>`;lastDate=dateStr;}
-    const rank=(msg.rank||'user').toLowerCase();
-    const mine=msg.author===currentUsername;
-    const isPro=msg.isPro||false;
-    const nameColor=isPro?'color:#fbbf24':'';
-    let acts='';
-    if(isAdmin())acts+=`<button class="msg-act-btn delete-btn" onclick="deleteMessage('${msg._id}')" title="Delete"><i class="ti ti-trash"></i></button>`;
-    if(!mine)acts+=`<button class="msg-act-btn report-btn" onclick="openReport('${msg._id}','${escHtml(msg.author)}')" title="Report"><i class="ti ti-flag"></i></button>`;
-    // ── FIX: each message uses its OWN stored avatar, not the current user's ──
-    const avatarHtml=msg.avatar?`<img src="${msg.avatar}" alt="avatar" />`:(initials(msg.author));
-    html+=`<div class="chat-msg" id="cmsg-${idx}">
-      <div class="msg-avatar">${avatarHtml}</div>
-      <div class="msg-body">
-        <div class="msg-header"><span class="msg-author" style="${nameColor}">${escHtml(msg.author)}</span>${chatRankLabel(rank,isPro)}<span class="msg-time">${fmtTime(msg.timestamp)}</span></div>
-        <div class="msg-text">${escHtml(msg.content)}</div>
-      </div>
-      ${acts?`<div class="msg-actions">${acts}</div>`:''}
-    </div>`;
+    if(msg.deleted)return;const dateStr=fmtDate(msg.timestamp);if(dateStr!==lastDate){html+=`<div class="chat-date-divider">${dateStr}</div>`;lastDate=dateStr;}
+    const rank=(msg.rank||'user').toLowerCase();const mine=msg.author===currentUsername;const isPro=msg.isPro||false;const nameColor=isPro?'color:#fbbf24':'';
+    const fx=msg.chatEffect||'';const fxClass=fx?`effect-${fx}`:'';
+    let acts='';if(isAdmin())acts+=`<button class="msg-act-btn delete-btn" onclick="deleteMessage('${msg._id}')" title="Delete"><i class="ti ti-trash"></i></button>`;if(!mine)acts+=`<button class="msg-act-btn report-btn" onclick="openReport('${msg._id}','${escHtml(msg.author)}')" title="Report"><i class="ti ti-flag"></i></button>`;
+    const avatarHtml=msg.avatar?`<img src="${msg.avatar}" alt="avatar"/>`:initials(msg.author);
+    html+=`<div class="chat-msg ${fxClass}" id="cmsg-${idx}"><div class="msg-avatar">${avatarHtml}</div><div class="msg-body"><div class="msg-header"><span class="msg-author" style="${nameColor}">${escHtml(msg.author)}</span>${chatRankLabel(rank,isPro)}<span class="msg-time">${fmtTime(msg.timestamp)}</span></div><div class="msg-text">${escHtml(msg.content)}</div></div>${acts?`<div class="msg-actions">${acts}</div>`:''}</div>`;
   });
   el.innerHTML=html;
 }
-
 function scrollChatBottom(){const el=document.getElementById('chatMessages');if(el)el.scrollTop=el.scrollHeight;}
-
 async function sendChatMessage(){
-  const inp=document.getElementById('chatInput');
-  const content=inp.value.trim();if(!content)return;
-  inp.value='';
-  try{
-    const res=await fetch(`${API}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({content})});
-    const d=await res.json();
-    if(res.ok){serverMessages.push(d);renderChat();scrollChatBottom();}
-    else toast(d.error||'Failed to send','error');
-  }catch{toast('Server offline','error');}
+  const inp=document.getElementById('chatInput');const content=inp.value.trim();if(!content)return;inp.value='';
+  try{const res=await fetch(`${API}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({content,chatEffect:equippedChatEffect||''})});const d=await res.json();if(res.ok){serverMessages.push(d);renderChat();scrollChatBottom();}else toast(d.error||'Failed to send','error');}catch{toast('Server offline','error');}
 }
-
-async function deleteMessage(id){
-  try{
-    const res=await fetch(`${API}/api/chat/${id}`,{method:'DELETE',headers:{Authorization:'Bearer '+token()}});
-    if(res.ok){serverMessages=serverMessages.filter(m=>m._id!==id);renderChat();toast('Message deleted','');}
-  }catch{toast('Server error','error');}
-}
-
-function openReport(id,author){
-  pendingReport={id};
-  document.getElementById('reportModalSub').textContent=`Reporting message from: ${author}`;
-  document.getElementById('reportReason').value='Spam';
-  document.getElementById('reportDetails').value='';
-  document.getElementById('reportModal').classList.add('show');
-  document.getElementById('reportConfirmBtn').onclick=confirmReport;
-}
-
-async function confirmReport(){
-  if(!pendingReport)return;
-  const reason=document.getElementById('reportReason').value;
-  const details=document.getElementById('reportDetails').value.trim();
-  closeModal('reportModal');
-  try{
-    const res=await fetch(`${API}/api/chat/${pendingReport.id}/report`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({reason,details})});
-    (res.ok||res.status===204)?toast('Report sent','warn'):toast('Failed','error');
-  }catch{toast('Could not reach server','error');}
-}
+async function deleteMessage(id){try{const res=await fetch(`${API}/api/chat/${id}`,{method:'DELETE',headers:{Authorization:'Bearer '+token()}});if(res.ok){serverMessages=serverMessages.filter(m=>m._id!==id);renderChat();toast('Message deleted','');}}catch{toast('Server error','error');}}
+function openReport(id,author){pendingReport={id};document.getElementById('reportModalSub').textContent=`Reporting message from: ${author}`;document.getElementById('reportReason').value='Spam';document.getElementById('reportDetails').value='';document.getElementById('reportModal').classList.add('show');document.getElementById('reportConfirmBtn').onclick=confirmReport;}
+async function confirmReport(){if(!pendingReport)return;const reason=document.getElementById('reportReason').value;const details=document.getElementById('reportDetails').value.trim();closeModal('reportModal');try{const res=await fetch(`${API}/api/chat/${pendingReport.id}/report`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({reason,details})});(res.ok||res.status===204)?toast('Report sent','warn'):toast('Failed','error');}catch{toast('Could not reach server','error');}}
 
 function logout(){localStorage.removeItem('token');localStorage.removeItem('username');localStorage.removeItem('rank');window.location.href='index.html';}
-
 document.getElementById('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChatMessage();}});
 
 // Init
 applyColor(selectedColor,selectedColor2);
-renderBoard();
+renderMemBoard();
+renderSnakeIdle();
+resetReactionUI();
+resetTypingUI();
+populateChatEffectDropdown();
 load();
 </script>
 </body>
