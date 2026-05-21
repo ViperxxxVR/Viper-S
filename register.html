@@ -1043,7 +1043,14 @@ function switchTab(id,btn){
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(b=>b.classList.remove('active'));
   if(btn)btn.classList.add('active');
-  if(id==='chat'){contentScroll.style.display='none';chatWrap.style.display='flex';loadChat();setTimeout(scrollChatBottom,100);}
+if(id==='chat'){
+  contentScroll.style.display='none';
+  chatWrap.style.display='flex';
+  chatWrap.style.height='100%';
+  chatWrap.style.width='100%';
+  loadChat();
+  setTimeout(scrollChatBottom,100);
+}
   else{contentScroll.style.display='';chatWrap.style.display='none';document.getElementById('tab-'+id).classList.add('active');
     if(id==='world')loadEvents();
     if(id==='users')loadMembers();
