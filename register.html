@@ -1664,7 +1664,7 @@ function toggleEarnBy(btn){
   if(btn.classList.contains('selected'))activeEarnByTags.push(val);
   else activeEarnByTags=activeEarnByTags.filter(v=>v!==val);
 }
-function createBadge(){
+async function createBadge(){
   const emoji=document.getElementById('badgeEmoji').value.trim();
   const name=document.getElementById('badgeName').value.trim();
   const desc=document.getElementById('badgeDesc').value.trim();
@@ -1728,7 +1728,17 @@ async function adminGiveBadge(){
   const c=document.getElementById('badgeGiveConfirm');c.classList.add('show');setTimeout(()=>c.classList.remove('show'),2000);
   toast(`🏅 "${badge.name}" given to ${username}`,'success');
 }
-function loadAdminBadges(){renderAdminBadgeList();populateGiveBadgeSelect();}
+async function loadAdminBadges(){
+  try{
+    const res=await fetch(`${API}/api/badges`,{headers:{Authorization:'Bearer '+token()}});
+    if(res.ok){
+      const serverBadges=await res.json();
+      createdBadges=serverBadges.map(b=>({...b,recipients:[]}));
+      localStorage.setItem('vs_badges',JSON.stringify(createdBadges));
+    }
+  }catch{}
+  renderAdminBadgeList();populateGiveBadgeSelect();
+}
 
 // ══════════════════════════════════════
 // ── GAME: MEMORY ──
