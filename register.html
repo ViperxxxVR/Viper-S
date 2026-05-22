@@ -921,6 +921,81 @@ let allMembers = [];
 let serverMessages = [];
 let pendingAction = null;
 let pendingReport = null;
+
+  // ── PROFILE MODAL ──
+let profileModalOpen = false;
+
+function openProfileModal(username) {
+  const member = allMembers.find(m => m.username === username);
+  if (!member) { toast('Could not find user', 'error'); return; }
+
+  const r = (member.role || member.rank || 'user').toLowerCase();
+  const isPro = member.pro || false;
+  const warns = member.warnings || 0;
+  const isBanned = member.banned || false;
+
+  const avatarHtml = member.avatar
+    ? `<img src="${member.avatar}" alt="${member.username}" style="width:100%;height:100%;object-fit:cover"/>`
+    : initials(member.username);
+
+  const roleBadge = `<span class="role-badge ${roleClass(r)}" style="font-size:12px">${r.toUpperCase()}</span>`;
+  const proBadgeHtml = isPro ? `<span class="pro-badge">⭐ PRO</span>` : '';
+
+  const bgStyle = member.background
+    ? `background-image:url(${member.background});opacity:0.12;`
+    : '';
+
+  const metaChips = [];
+  if (warns > 0) metaChips.push(`<span style="color:var(--amber);font-size:12px;font-family:'DM Mono',monospace">⚠ ${warns} warning${warns !== 1 ? 's' : ''}</span>`);
+  if (isBanned) metaChips.push(`<span style="color:var(--red);font-size:12px;font-family:'DM Mono',monospace">🚫 Banned</span>`);
+
+  const overlay = document.createElement('div');
+  overlay.className = 'modal-overlay show';
+  overlay.id = 'profileViewModal';
+  overlay.innerHTML = `
+    <div class="modal" style="width:420px;max-width:95vw;padding:0;overflow:hidden;border-radius:16px">
+      <div style="height:3px;background:linear-gradient(90deg,${isPro ? '#f59e0b,#f97316,#fbbf24' : 'var(--accent),#8b5cf6,#06b6d4'})"></div>
+      <div style="position:relative;overflow:hidden">
+        ${member.background ? `<div style="position:absolute;inset:0;background-image:url(${member.background});background-size:cover;background-position:center;opacity:0.1;pointer-events:none"></div>` : ''}
+        <div style="padding:24px;position:relative;z-index:1">
+          <div style="display:flex;gap:16px;align-items:flex-start;margin-bottom:16px">
+            <div class="avatar-lg" style="${isPro ? 'border-color:rgba(245,158,11,0.5)' : ''}">${avatarHtml}</div>
+            <div style="flex:1;min-width:0">
+              <div class="profile-name" style="font-size:18px;margin-bottom:4px">
+                ${escHtml(member.username)} ${proBadgeHtml}
+              </div>
+              <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--green);font-family:'DM Mono',monospace;margin-bottom:8px">
+                <span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span> Online
+              </div>
+              ${roleBadge}
+              ${metaChips.length ? `<div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">${metaChips.join('')}</div>` : ''}
+            </div>
+          </div>
+          ${member.vrchat ? `<div class="vrchat-tag" style="margin-bottom:10px"><i class="ti ti-cube" style="font-size:14px"></i> VRChat: ${escHtml(member.vrchat)}</div>` : ''}
+          <div style="font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:12px">${escHtml(member.bio || 'No bio set yet.')}</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;font-family:'DM Mono',monospace">
+            <i class="ti ti-coin" style="color:#fbbf24;font-size:15px"></i>
+            <span style="color:#fbbf24;font-weight:700">${member.points || 0}</span>
+            <span style="color:var(--muted)">points</span>
+          </div>
+        </div>
+      </div>
+      <div style="padding:14px 24px;border-top:1px solid var(--border);display:flex;justify-content:flex-end">
+        <button class="modal-cancel" onclick="closeProfileModal()" style="max-width:100px">Close</button>
+      </div>
+    </div>
+  `;
+
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeProfileModal(); });
+  document.body.appendChild(overlay);
+  profileModalOpen = true;
+}
+
+function closeProfileModal() {
+  const el = document.getElementById('profileViewModal');
+  if (el) el.remove();
+  profileModalOpen = false;
+}
 let serverEvents = [];
 let generatedKeys = [];
 
@@ -1303,7 +1378,7 @@ function renderMembers(members){
       else actions=`<button class="action-btn warn-btn" onclick="openWarn('${m._id}','${m.username}')">⚠ Warn</button><button class="action-btn ban-btn" onclick="openBan('${m._id}','${m.username}')">🚫 Ban</button>`;
     }
     const avatarHtml=m.avatar?`<img src="${m.avatar}" alt="${m.username}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`:initials(m.username);
-    return `<div class="member-row ${isBanned?'banned-row':''}"><div class="member-avatar">${avatarHtml}</div><div class="member-info"><div class="member-name">${escHtml(m.username)}${isMe?' <span style="font-size:11px;color:var(--muted)">(you)</span>':''}</div><div class="member-meta"><span class="role-badge ${roleClass(r)}" style="font-size:10px;padding:2px 8px">${r.toUpperCase()}</span>${metaParts.join(' · ')}</div></div><div class="member-actions">${actions}</div></div>`;
+    return `<div class="member-row ${isBanned?'banned-row':''}" style="cursor:pointer" onclick="openProfileModal('${m.username}')"><div class="member-avatar">${avatarHtml}</div><div class="member-info"><div class="member-name">${escHtml(m.username)}${isMe?' <span style="font-size:11px;color:var(--muted)">(you)</span>':''}</div><div class="member-meta"><span class="role-badge ${roleClass(r)}" style="font-size:10px;padding:2px 8px">${r.toUpperCase()}</span>${metaParts.join(' · ')}</div></div><div class="member-actions">${actions}</div></div>`;
   }).join('');
 }
 function openWarn(id,username){pendingAction={type:'warn',userId:id,username};document.getElementById('warnModalSub').textContent=`Warning: ${username}`;document.getElementById('warnReason').value='';document.getElementById('warnModal').classList.add('show');document.getElementById('warnConfirmBtn').onclick=confirmWarn;}
@@ -1755,7 +1830,7 @@ function renderChat(){
     if(isAdmin())acts+=`<button class="msg-act-btn delete-btn" onclick="deleteMessage('${msg._id}')" title="Delete"><i class="ti ti-trash"></i></button>`;
     if(!mine)acts+=`<button class="msg-act-btn report-btn" onclick="openReport('${msg._id}','${escHtml(msg.author)}')" title="Report"><i class="ti ti-flag"></i></button>`;
     const avatarHtml=msg.avatar?`<img src="${msg.avatar}" alt="avatar"/>`:initials(msg.author);
-    html+=`<div class="chat-msg ${fxClass}" id="cmsg-${idx}"><div class="msg-avatar">${avatarHtml}</div><div class="msg-body"><div class="msg-header"><span class="msg-author" style="${nameColor}">${escHtml(msg.author)}</span>${chatRankLabel(rank,isPro)}<span class="msg-time">${fmtTime(msg.timestamp)}</span></div><div class="msg-text">${escHtml(msg.content)}</div></div>${acts?`<div class="msg-actions">${acts}</div>`:''}</div>`;
+    html+=`<div class="chat-msg ${fxClass}" id="cmsg-${idx}"><div class="msg-avatar" style="cursor:pointer" onclick="openProfileModal('${escHtml(msg.author)}')" title="View profile">${avatarHtml}</div><div class="msg-body"><div class="msg-header"><span class="msg-author" style="${nameColor}">${escHtml(msg.author)}</span>${chatRankLabel(rank,isPro)}<span class="msg-time">${fmtTime(msg.timestamp)}</span></div><div class="msg-text">${escHtml(msg.content)}</div></div>${acts?`<div class="msg-actions">${acts}</div>`:''}</div>`;
   });
   el.innerHTML=html;
 }
