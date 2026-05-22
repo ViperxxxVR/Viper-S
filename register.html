@@ -1189,18 +1189,33 @@ function switchTab(id,btn){
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(b=>b.classList.remove('active'));
   if(btn)btn.classList.add('active');
-   }else {
+  if(id==='chat'){
+    contentScroll.style.display='none';
+    chatWrap.style.display='flex';
+    chatWrap.style.height='100%';
+    chatWrap.style.width='100%';
+    const dmW=document.getElementById('dmWrap');if(dmW)dmW.style.display='none';
+    loadChat().then(()=>setTimeout(scrollChatBottom,80));
+  } else if(id==='dms'){
+    contentScroll.style.display='none';
+    chatWrap.style.display='none';
+    const dmW=document.getElementById('dmWrap');
+    if(dmW){dmW.style.display='flex';dmW.style.height='100%';dmW.style.width='100%';}
+    if(!allMembers.length)loadMembers().then(()=>renderDmList());else renderDmList();
+  } else {
     contentScroll.style.display='';
     chatWrap.style.display='none';
+    const dmW=document.getElementById('dmWrap');if(dmW)dmW.style.display='none';
     document.getElementById('tab-'+id).classList.add('active');
     if(id==='world')loadEvents();
     if(id==='users')loadMembers();
     if(id==='admin'){loadAdminKeys();renderAdminEvents();loadAdminBadges();}
     if(id==='shop'){renderShop();document.getElementById('shopBalDisplay').textContent=userPoints;}
-    if(id==='dms'){if(!allMembers.length)loadMembers().then(renderDmList);else renderDmList();}
   }
-const labels={home:'Dashboard',chat:'Chat',dms:'Direct Messages',world:'World',games:'Games',shop:'Points Shop',settings:'Settings',users:'Members',admin:'Admin Panel'};
-const codes={home:'HOME',chat:'CHAT',dms:'DMS',world:'WORLD',games:'GAMES',shop:'SHOP',settings:'SETTINGS',users:'MEMBERS',admin:'ADMIN'};
+  const labels={home:'Dashboard',chat:'Chat',dms:'Direct Messages',world:'World',games:'Games',shop:'Points Shop',settings:'Settings',users:'Members',admin:'Admin Panel'};
+  const codes={home:'HOME',chat:'CHAT',dms:'DMS',world:'WORLD',games:'GAMES',shop:'SHOP',settings:'SETTINGS',users:'MEMBERS',admin:'ADMIN'};
+  document.getElementById('topbarTitle').textContent=labels[id]||id;
+  document.getElementById('topbarBadge').textContent=codes[id]||id.toUpperCase();
 }
 
 // ── GAME TABS ──
