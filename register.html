@@ -1714,7 +1714,11 @@ async function adminGiveBadge(){
   if(!badge.recipients.includes(username))badge.recipients.push(username);
   localStorage.setItem('vs_badges',JSON.stringify(createdBadges));
   renderAdminBadgeList();
-  try{await fetch(`${API}/api/admin/give/badge`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({username,badge:{id:badge.id,emoji:badge.emoji,name:badge.name,color:badge.color,textColor:badge.textColor,desc:badge.desc,earnBy:badge.earnBy}})});}catch{}
+  try{
+  const res=await fetch(`${API}/api/admin/badges/give`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({username,badgeId:badge.id})});
+  const d=await res.json();
+  if(!res.ok){toast(d.error||'Failed to give badge','error');return;}
+}catch{toast('Server error','error');return;}
   const c=document.getElementById('badgeGiveConfirm');c.classList.add('show');setTimeout(()=>c.classList.remove('show'),2000);
   toast(`🏅 "${badge.name}" given to ${username}`,'success');
 }
