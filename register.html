@@ -948,10 +948,9 @@ select option{background:#0d1018}
           <button class="chat-send-btn" onclick="sendChatMessage()"><i class="ti ti-send"></i> Send</button>
         </div>
       </div>
-    </div>
   </div>
-</div>
-<!-- DMs panel -->
+
+    <!-- DMs panel -->
     <div class="dm-wrap" id="dmWrap">
       <div class="dm-layout">
         <div class="dm-sidebar">
@@ -1079,7 +1078,8 @@ function openProfileModal(username) {
           </div>
         </div>
       </div>
-      <div style="padding:14px 24px;border-top:1px solid var(--border);display:flex;justify-content:flex-end">
+<div style="padding:14px 24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:10px">
+        <button id="profileDmBtn" style="background:rgba(59,130,246,0.12);border:1px solid rgba(59,130,246,0.25);border-radius:7px;color:var(--accent2);padding:8px 16px;cursor:pointer;font-size:13px;font-family:'DM Mono',monospace;font-weight:600;display:flex;align-items:center;gap:6px"><i class="ti ti-mail" style="font-size:15px"></i> Send DM</button>
         <button class="modal-cancel" onclick="closeProfileModal()" style="max-width:100px">Close</button>
       </div>
     </div>
@@ -1087,6 +1087,12 @@ function openProfileModal(username) {
 
   overlay.addEventListener('click', e => { if (e.target === overlay) closeProfileModal(); });
   document.body.appendChild(overlay);
+  document.getElementById('profileDmBtn').addEventListener('click', () => {
+    closeProfileModal();
+    const dmNav = document.querySelector('.nav-item[onclick*="dms"]');
+    switchTab('dms', dmNav);
+    startDmWith(member.username);
+  });
   profileModalOpen = true;
 }
 
