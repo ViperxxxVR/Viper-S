@@ -7,10 +7,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
 <style>
+/* ── Reset & Variables ── */
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#07090f;--panel:#0d1018;--panel2:#111520;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);--accent:#3b82f6;--accent2:#60a5fa;--text:#e8eaf0;--muted:#6b7280;--green:#22c55e;--red:#ef4444;--amber:#f59e0b;--pro:#f59e0b}
 body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;font-size:15px;height:100vh;overflow:hidden}
 .shell{display:flex;height:100vh}
+
+/* ── Sidebar ── */
 .sidebar{width:220px;background:var(--panel);border-right:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0}
 .logo{padding:22px 20px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
 .logo-icon{width:32px;height:32px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;font-weight:700}
@@ -33,6 +36,8 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .avatar-sm img{width:100%;height:100%;object-fit:cover}
 .user-chip-name{font-size:13px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .user-chip-role{font-size:11px;color:var(--accent2);font-family:'DM Mono',monospace}
+
+/* ── Main ── */
 .main{flex:1;display:flex;flex-direction:column;overflow:hidden;background:var(--bg)}
 .topbar{height:56px;border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 28px;gap:16px;background:var(--panel);flex-shrink:0;z-index:10}
 .topbar-title{font-size:18px;font-weight:700;color:#fff}
@@ -66,11 +71,10 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .vrchat-tag{margin-top:8px;font-size:13px;color:var(--muted);font-family:'DM Mono',monospace;display:flex;align-items:center;gap:6px}
 .points-row{margin-top:10px;display:flex;align-items:center;gap:8px;font-size:13px;font-family:'DM Mono',monospace}
 .points-val{color:#fbbf24;font-weight:700;font-size:16px}
-
-/* equipped badge shown on profile */
 .equipped-effects{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
 .equipped-tag{font-size:11px;font-family:'DM Mono',monospace;padding:3px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.12);color:var(--muted)}
 
+/* ── Stats ── */
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px;max-width:580px}
 .stat-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px 18px}
 .stat-label{font-size:12px;color:var(--muted);letter-spacing:1px;font-family:'DM Mono',monospace;margin-bottom:6px}
@@ -101,6 +105,8 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .upload-btn:hover{color:var(--text);border-color:var(--text)}
 .upload-btn input{display:none}
 .img-preview{width:60px;height:60px;border-radius:8px;object-fit:cover;border:1px solid var(--border2);margin-bottom:10px;display:none}
+
+/* ── PRO Plan ── */
 .pro-plan-card{background:var(--panel);border:1px solid rgba(245,158,11,0.3);border-radius:14px;padding:22px;margin-bottom:16px;max-width:580px;position:relative;overflow:hidden}
 .pro-plan-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#f59e0b,#f97316,#fbbf24)}
 .pro-plan-title{font-size:18px;font-weight:700;color:#fbbf24;margin-bottom:4px;display:flex;align-items:center;gap:8px}
@@ -180,146 +186,39 @@ select option{background:#0d1018}
 .give-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(245,158,11,0.12);color:#fbbf24;border:1px solid rgba(245,158,11,0.3);border-radius:8px;padding:10px 22px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s}
 .give-btn:hover{background:rgba(245,158,11,0.22)}
 
-  <!-- Preview -->
-  <div class="badge-preview">
-    <div class="badge-preview-label">PREVIEW:</div>
-    <span class="custom-badge-tag" id="badgeLivePreview" style="background:rgba(59,130,246,0.15);border-color:rgba(59,130,246,0.35);color:#fff">🏅 Badge Name</span>
-  </div>
+/* ── Custom Badges ── */
+.custom-badge-tag{font-size:11px;font-family:'DM Mono',monospace;padding:3px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);color:var(--text);background:rgba(255,255,255,0.06);display:inline-flex;align-items:center;gap:5px}
 
-  <!-- BADGE MAKER CARD -->
-<div class="badge-maker-card">
-  <h4>🏅 BADGE MAKER & GIVER</h4>
-  <div class="form-2col" style="margin-bottom:12px">
-    <div class="form-group">
-      <div class="field-label">BADGE EMOJI</div>
-      <input class="field-input" id="badgeEmoji" placeholder="e.g. 🏆" maxlength="4" style="margin-bottom:0;font-size:20px" />
-    </div>
-    <div class="form-group">
-      <div class="field-label">BADGE NAME</div>
-      <input class="field-input" id="badgeName" placeholder="e.g. Champion" style="margin-bottom:0" />
-    </div>
-  </div>
-  <div class="field-label">BADGE COLOR</div>
-  <div class="badge-color-row" id="badgeColorRow">
-    <div class="badge-color-btn selected" style="background:#3b82f6" data-color="#3b82f6" data-text="#fff" onclick="selectBadgeColor(this)"></div>
-    <div class="badge-color-btn" style="background:#ef4444" data-color="#ef4444" data-text="#fff" onclick="selectBadgeColor(this)"></div>
-    <div class="badge-color-btn" style="background:#22c55e" data-color="#22c55e" data-text="#fff" onclick="selectBadgeColor(this)"></div>
-    <div class="badge-color-btn" style="background:#f59e0b" data-color="#f59e0b" data-text="#000" onclick="selectBadgeColor(this)"></div>
-    <div class="badge-color-btn" style="background:#8b5cf6" data-color="#8b5cf6" data-text="#fff" onclick="selectBadgeColor(this)"></div>
-    <div class="badge-color-btn" style="background:#06b6d4" data-color="#06b6d4" data-text="#000" onclick="selectBadgeColor(this)"></div>
-    <div class="badge-color-btn" style="background:#ec4899" data-color="#ec4899" data-text="#fff" onclick="selectBadgeColor(this)"></div>
-    <div class="badge-color-btn" style="background:#f97316" data-color="#f97316" data-text="#000" onclick="selectBadgeColor(this)"></div>
-    <div class="badge-color-btn" style="background:#a3e635" data-color="#a3e635" data-text="#000" onclick="selectBadgeColor(this)"></div>
-    <div class="badge-color-btn" style="background:#e11d48" data-color="#e11d48" data-text="#fff" onclick="selectBadgeColor(this)"></div>
-    <div class="badge-color-btn" style="background:#fbbf24" data-color="#fbbf24" data-text="#000" onclick="selectBadgeColor(this)"></div>
-    <div class="badge-color-btn" style="background:#6366f1" data-color="#6366f1" data-text="#fff" onclick="selectBadgeColor(this)"></div>
-  </div>
-  <div class="badge-preview">
-    <div class="badge-preview-label">PREVIEW:</div>
-    <span class="custom-badge-tag" id="badgeLivePreview" style="background:rgba(59,130,246,0.15);border-color:rgba(59,130,246,0.35);color:#fff">🏅 Badge Name</span>
-  </div>
-  <div class="field-label">DESCRIPTION / "EARN BY" TEXT</div>
-  <input class="field-input" id="badgeDesc" placeholder="e.g. Awarded to top players" style="margin-bottom:10px" />
-  <div class="claim-settings">
-    <div class="claim-toggle-row">
-      <label class="toggle-switch"><input type="checkbox" id="badgeClaimable" onchange="toggleClaimSettings()" /><span class="toggle-slider"></span></label>
-      <span style="font-size:13px;color:var(--text);font-family:'DM Mono',monospace">CLAIMABLE BY EVERYONE</span>
-    </div>
-    <div id="claimSettingsFields" style="display:none">
-      <div class="field-label" style="margin-bottom:6px">CLAIM EXPIRES (UTC)</div>
-      <input class="field-input" type="datetime-local" id="badgeExpiry" style="margin-bottom:10px" />
-      <div class="field-label" style="margin-bottom:6px">EARN BY</div>
-      <div class="earn-by-wrap" id="earnByWrap">
-        <button class="earn-by-tag" onclick="toggleEarnBy(this)" data-val="Playing a minigame">🎮 Playing a minigame</button>
-        <button class="earn-by-tag" onclick="toggleEarnBy(this)" data-val="Attending an event">📅 Attending an event</button>
-        <button class="earn-by-tag" onclick="toggleEarnBy(this)" data-val="Being active in chat">💬 Being active in chat</button>
-        <button class="earn-by-tag" onclick="toggleEarnBy(this)" data-val="Reaching 500 points">⭐ Reaching 500 points</button>
-        <button class="earn-by-tag" onclick="toggleEarnBy(this)" data-val="Visiting the world">🌍 Visiting the world</button>
-        <button class="earn-by-tag" onclick="toggleEarnBy(this)" data-val="Admin discretion">🛡️ Admin discretion</button>
-        <input class="field-input" id="earnByCustom" placeholder="Custom earn by text..." style="margin-bottom:0;margin-top:4px;font-size:13px" />
-      </div>
-    </div>
-  </div>
-  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">
-    <button class="create-badge-btn" onclick="createBadge()"><i class="ti ti-badge" style="font-size:15px"></i> Create Badge</button>
-    <span class="confirm-chip" id="badgeCreateConfirm"><i class="ti ti-check"></i> Created!</span>
-  </div>
-  <div style="border-top:1px solid var(--border);padding-top:16px;margin-top:4px">
-    <div class="field-label" style="margin-bottom:12px">GIVE BADGE TO USER</div>
-    <div class="form-2col" style="margin-bottom:12px">
-      <div class="form-group">
-        <div class="field-label">USERNAME</div>
-        <input class="field-input" id="giveBadgeUsername" placeholder="exact username" style="margin-bottom:0" />
-      </div>
-      <div class="form-group">
-        <div class="field-label">SELECT BADGE</div>
-        <select class="select-field" id="giveBadgeSelect"><option value="">— No badges created yet —</option></select>
-      </div>
-    </div>
-    <button class="give-badge-btn" onclick="adminGiveBadge()"><i class="ti ti-send" style="font-size:15px"></i> Give Badge</button>
-    <span class="confirm-chip" id="badgeGiveConfirm" style="margin-left:12px"><i class="ti ti-check"></i> Given!</span>
-  </div>
-  <div style="border-top:1px solid var(--border);padding-top:16px;margin-top:16px">
-    <div class="field-label" style="margin-bottom:12px">CREATED BADGES</div>
-    <div id="adminBadgeList"><div style="font-size:13px;color:var(--muted);font-family:'DM Mono',monospace">No badges created yet.</div></div>
-  </div>
-</div>
-
-  <!-- Claim Settings -->
-  <div class="field-label">DESCRIPTION / "EARN BY" TEXT</div>
-  <input class="field-input" id="badgeDesc" placeholder="e.g. Awarded to top players" style="margin-bottom:10px" />
-
-  <div class="claim-settings">
-    <div class="claim-toggle-row">
-      <label class="toggle-switch"><input type="checkbox" id="badgeClaimable" onchange="toggleClaimSettings()" /><span class="toggle-slider"></span></label>
-      <span style="font-size:13px;color:var(--text);font-family:'DM Mono',monospace">CLAIMABLE BY EVERYONE</span>
-    </div>
-
-    <div id="claimSettingsFields" style="display:none">
-      <div class="field-label" style="margin-bottom:6px">CLAIM EXPIRES (UTC)</div>
-      <input class="field-input" type="datetime-local" id="badgeExpiry" style="margin-bottom:10px" />
-
-      <div class="field-label" style="margin-bottom:6px">EARN BY</div>
-      <div class="earn-by-wrap" id="earnByWrap">
-        <button class="earn-by-tag" onclick="toggleEarnBy(this)" data-val="Playing a minigame">🎮 Playing a minigame</button>
-        <button class="earn-by-tag" onclick="toggleEarnBy(this)" data-val="Attending an event">📅 Attending an event</button>
-        <button class="earn-by-tag" onclick="toggleEarnBy(this)" data-val="Being active in chat">💬 Being active in chat</button>
-        <button class="earn-by-tag" onclick="toggleEarnBy(this)" data-val="Reaching 500 points">⭐ Reaching 500 points</button>
-        <button class="earn-by-tag" onclick="toggleEarnBy(this)" data-val="Visiting the world">🌍 Visiting the world</button>
-        <button class="earn-by-tag" onclick="toggleEarnBy(this)" data-val="Admin discretion">🛡️ Admin discretion</button>
-        <input class="field-input" id="earnByCustom" placeholder="Custom earn by text..." style="margin-bottom:0;margin-top:4px;font-size:13px" />
-      </div>
-    </div>
-  </div>
-
-  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">
-    <button class="create-badge-btn" onclick="createBadge()"><i class="ti ti-badge" style="font-size:15px"></i> Create Badge</button>
-    <span class="confirm-chip" id="badgeCreateConfirm"><i class="ti ti-check"></i> Created!</span>
-  </div>
-
-  <!-- Give Badge to user -->
-  <div style="border-top:1px solid var(--border);padding-top:16px;margin-top:4px">
-    <div class="field-label" style="margin-bottom:12px">GIVE BADGE TO USER</div>
-    <div class="form-2col" style="margin-bottom:12px">
-      <div class="form-group">
-        <div class="field-label">USERNAME</div>
-        <input class="field-input" id="giveBadgeUsername" placeholder="exact username" style="margin-bottom:0" />
-      </div>
-      <div class="form-group">
-        <div class="field-label">SELECT BADGE</div>
-        <select class="select-field" id="giveBadgeSelect"><option value="">— No badges created yet —</option></select>
-      </div>
-    </div>
-    <button class="give-badge-btn" onclick="adminGiveBadge()"><i class="ti ti-send" style="font-size:15px"></i> Give Badge</button>
-    <span class="confirm-chip" id="badgeGiveConfirm" style="margin-left:12px"><i class="ti ti-check"></i> Given!</span>
-  </div>
-
-  <!-- Badge List -->
-  <div style="border-top:1px solid var(--border);padding-top:16px;margin-top:16px">
-    <div class="field-label" style="margin-bottom:12px">CREATED BADGES</div>
-    <div id="adminBadgeList"><div style="font-size:13px;color:var(--muted);font-family:'DM Mono',monospace">No badges created yet.</div></div>
-  </div>
-</div>
+/* ── Badge Maker Admin Card ── */
+.badge-maker-card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:16px;max-width:640px;position:relative;overflow:hidden}
+.badge-maker-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#8b5cf6,#06b6d4)}
+.badge-maker-card h4{font-size:14px;font-weight:700;color:var(--muted);letter-spacing:2px;margin-bottom:18px;font-family:'DM Mono',monospace}
+.badge-preview{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.badge-preview-label{font-size:12px;color:var(--muted);font-family:'DM Mono',monospace}
+.badge-color-row{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.badge-color-btn{width:28px;height:28px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:all 0.15s;flex-shrink:0}
+.badge-color-btn.selected{border-color:#fff;transform:scale(1.15)}
+.create-badge-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(139,92,246,0.12);color:#a78bfa;border:1px solid rgba(139,92,246,0.3);border-radius:8px;padding:10px 22px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s}
+.create-badge-btn:hover{background:rgba(139,92,246,0.22)}
+.give-badge-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(6,182,212,0.12);color:#22d3ee;border:1px solid rgba(6,182,212,0.3);border-radius:8px;padding:10px 22px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s}
+.give-badge-btn:hover{background:rgba(6,182,212,0.22)}
+.badge-list-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.badge-list-row:last-child{border-bottom:none}
+.badge-list-actions{display:flex;gap:6px;margin-left:auto}
+.del-badge-btn{background:none;border:1px solid var(--border2);border-radius:7px;color:var(--muted);padding:4px 8px;cursor:pointer;font-size:12px;font-family:'DM Mono',monospace;transition:all 0.15s;display:flex;align-items:center;gap:4px}
+.del-badge-btn:hover{color:var(--red);border-color:rgba(239,68,68,0.4)}
+.claim-settings{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-top:12px;margin-bottom:14px}
+.claim-toggle-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.toggle-switch{position:relative;width:36px;height:20px;flex-shrink:0}
+.toggle-switch input{opacity:0;width:0;height:0;position:absolute}
+.toggle-slider{position:absolute;inset:0;background:rgba(255,255,255,0.1);border-radius:999px;cursor:pointer;transition:background 0.2s}
+.toggle-switch input:checked+.toggle-slider{background:var(--accent)}
+.toggle-slider::before{content:'';position:absolute;height:14px;width:14px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:transform 0.2s}
+.toggle-switch input:checked+.toggle-slider::before{transform:translateX(16px)}
+.earn-by-wrap{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.earn-by-tag{font-size:12px;font-family:'DM Mono',monospace;padding:4px 12px;border-radius:999px;border:1px solid var(--border2);color:var(--muted);cursor:pointer;transition:all 0.15s;display:flex;align-items:center;gap:5px;background:none}
+.earn-by-tag.selected{background:rgba(59,130,246,0.12);color:var(--accent2);border-color:rgba(59,130,246,0.3)}
+.earn-by-tag:hover:not(.selected){color:var(--text);border-color:var(--text)}
 
 /* ── Chat ── */
 .chat-wrap{display:none;flex-direction:column;flex:1;overflow:hidden;height:100%;width:100%}
@@ -343,7 +242,6 @@ select option{background:#0d1018}
 .rank-pro{background:linear-gradient(135deg,rgba(245,158,11,0.2),rgba(249,115,22,0.2));color:#fbbf24;border:1px solid rgba(245,158,11,0.35)}
 .msg-time{font-size:11px;color:var(--muted);font-family:'DM Mono',monospace}
 .msg-text{font-size:15px;color:var(--text);line-height:1.5;word-break:break-word}
-/* Chat effects */
 .effect-rainbow .msg-text{background:linear-gradient(90deg,#f87171,#fb923c,#fbbf24,#4ade80,#60a5fa,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700}
 .effect-glow .msg-text{text-shadow:0 0 8px var(--accent),0 0 20px var(--accent2);color:var(--accent2)}
 .effect-fire .msg-text{background:linear-gradient(180deg,#fbbf24,#f97316,#ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700}
@@ -366,76 +264,6 @@ select option{background:#0d1018}
 .chat-input::placeholder{color:var(--muted)}
 .chat-send-btn{background:var(--accent);border:none;border-radius:7px;color:#fff;padding:9px 16px;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;transition:opacity 0.15s;flex-shrink:0}
 .chat-send-btn:hover{opacity:0.85}
-
-  <style>
-
-  /* ── Custom Badges ── */
-.custom-badge-tag{font-size:11px;font-family:'DM Mono',monospace;padding:3px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);color:var(--text);background:rgba(255,255,255,0.06);display:inline-flex;align-items:center;gap:5px}
-.badge-maker-card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:16px;max-width:640px;position:relative;overflow:hidden}
-.badge-maker-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#8b5cf6,#06b6d4)}
-.badge-maker-card h4{font-size:14px;font-weight:700;color:var(--muted);letter-spacing:2px;margin-bottom:18px;font-family:'DM Mono',monospace}
-.badge-preview{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
-.badge-preview-label{font-size:12px;color:var(--muted);font-family:'DM Mono',monospace}
-.badge-color-row{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
-.badge-color-btn{width:28px;height:28px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:all 0.15s;flex-shrink:0}
-.badge-color-btn.selected{border-color:#fff;transform:scale(1.15)}
-.create-badge-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(139,92,246,0.12);color:#a78bfa;border:1px solid rgba(139,92,246,0.3);border-radius:8px;padding:10px 22px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s}
-.create-badge-btn:hover{background:rgba(139,92,246,0.22)}
-.give-badge-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(6,182,212,0.12);color:#22d3ee;border:1px solid rgba(6,182,212,0.3);border-radius:8px;padding:10px 22px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s}
-.give-badge-btn:hover{background:rgba(6,182,212,0.22)}
-.badge-list-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);flex-wrap:wrap}
-.badge-list-row:last-child{border-bottom:none}
-.badge-list-actions{display:flex;gap:6px;margin-left:auto}
-.del-badge-btn{background:none;border:1px solid var(--border2);border-radius:7px;color:var(--muted);padding:4px 8px;cursor:pointer;font-size:12px;font-family:'DM Mono',monospace;transition:all 0.15s;display:flex;align-items:center;gap:4px}
-.del-badge-btn:hover{color:var(--red);border-color:rgba(239,68,68,0.4)}
-.claim-settings{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-top:12px;margin-bottom:14px}
-.claim-toggle-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.toggle-switch{position:relative;width:36px;height:20px;flex-shrink:0}
-.toggle-switch input{opacity:0;width:0;height:0;position:absolute}
-.toggle-slider{position:absolute;inset:0;background:rgba(255,255,255,0.1);border-radius:999px;cursor:pointer;transition:background 0.2s}
-.toggle-switch input:checked+.toggle-slider{background:var(--accent)}
-.toggle-slider::before{content:'';position:absolute;height:14px;width:14px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:transform 0.2s}
-.toggle-switch input:checked+.toggle-slider::before{transform:translateX(16px)}
-.earn-by-wrap{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
-.earn-by-tag{font-size:12px;font-family:'DM Mono',monospace;padding:4px 12px;border-radius:999px;border:1px solid var(--border2);color:var(--muted);cursor:pointer;transition:all 0.15s;display:flex;align-items:center;gap:5px;background:none}
-.earn-by-tag.selected{background:rgba(59,130,246,0.12);color:var(--accent2);border-color:rgba(59,130,246,0.3)}
-.earn-by-tag:hover:not(.selected){color:var(--text);border-color:var(--text)}
-/* ── Custom Badges (admin-issued) ── */
-.custom-badge-tag{font-size:11px;font-family:'DM Mono',monospace;padding:3px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);color:var(--text);background:rgba(255,255,255,0.06);display:inline-flex;align-items:center;gap:5px}
-
-/* ── Badge Maker Admin Card ── */
-.badge-maker-card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:16px;max-width:640px;position:relative;overflow:hidden}
-.badge-maker-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#8b5cf6,#06b6d4)}
-.badge-maker-card h4{font-size:14px;font-weight:700;color:var(--muted);letter-spacing:2px;margin-bottom:18px;font-family:'DM Mono',monospace}
-.badge-preview{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
-.badge-preview-label{font-size:12px;color:var(--muted);font-family:'DM Mono',monospace}
-.badge-color-row{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
-.badge-color-btn{width:28px;height:28px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:all 0.15s;flex-shrink:0}
-.badge-color-btn.selected{border-color:#fff;transform:scale(1.15)}
-.create-badge-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(139,92,246,0.12);color:#a78bfa;border:1px solid rgba(139,92,246,0.3);border-radius:8px;padding:10px 22px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s}
-.create-badge-btn:hover{background:rgba(139,92,246,0.22)}
-.give-badge-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(6,182,212,0.12);color:#22d3ee;border:1px solid rgba(6,182,212,0.3);border-radius:8px;padding:10px 22px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s}
-.give-badge-btn:hover{background:rgba(6,182,212,0.22)}
-.badge-list-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);flex-wrap:wrap}
-.badge-list-row:last-child{border-bottom:none}
-.badge-list-actions{display:flex;gap:6px;margin-left:auto}
-.del-badge-btn{background:none;border:1px solid var(--border2);border-radius:7px;color:var(--muted);padding:4px 8px;cursor:pointer;font-size:12px;font-family:'DM Mono',monospace;transition:all 0.15s;display:flex;align-items:center;gap:4px}
-.del-badge-btn:hover{color:var(--red);border-color:rgba(239,68,68,0.4)}
-
-/* Claimable badge settings */
-.claim-settings{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-top:12px;margin-bottom:14px}
-.claim-toggle-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.toggle-switch{position:relative;width:36px;height:20px;flex-shrink:0}
-.toggle-switch input{opacity:0;width:0;height:0;position:absolute}
-.toggle-slider{position:absolute;inset:0;background:rgba(255,255,255,0.1);border-radius:999px;cursor:pointer;transition:background 0.2s}
-.toggle-switch input:checked+.toggle-slider{background:var(--accent)}
-.toggle-slider::before{content:'';position:absolute;height:14px;width:14px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:transform 0.2s}
-.toggle-switch input:checked+.toggle-slider::before{transform:translateX(16px)}
-.earn-by-wrap{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
-.earn-by-tag{font-size:12px;font-family:'DM Mono',monospace;padding:4px 12px;border-radius:999px;border:1px solid var(--border2);color:var(--muted);cursor:pointer;transition:all 0.15s;display:flex;align-items:center;gap:5px;background:none}
-.earn-by-tag.selected{background:rgba(59,130,246,0.12);color:var(--accent2);border-color:rgba(59,130,246,0.3)}
-.earn-by-tag:hover:not(.selected){color:var(--text);border-color:var(--text)}
-
 
 /* ── World/Events ── */
 .world-wrap{max-width:720px}
@@ -475,7 +303,7 @@ select option{background:#0d1018}
 .confirm-chip{font-size:12px;font-family:'DM Mono',monospace;color:var(--green);opacity:0;transition:opacity 0.3s}
 .confirm-chip.show{opacity:1}
 
-/* ── GAMES ── */
+/* ── Games ── */
 .game-wrap{max-width:600px}
 .game-tabs{display:flex;gap:8px;margin-bottom:20px;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:6px}
 .game-tab{flex:1;text-align:center;padding:8px 12px;border-radius:7px;cursor:pointer;font-size:13px;font-weight:700;color:var(--muted);border:none;background:none;font-family:'Rajdhani',sans-serif;letter-spacing:0.5px;transition:all 0.15s}
@@ -496,8 +324,6 @@ select option{background:#0d1018}
 .win-banner i{font-size:24px;color:var(--green)}
 .win-text{font-size:14px;color:var(--green)}
 .win-pts{font-size:18px;font-weight:700;color:#fbbf24}
-
-/* Memory game */
 .memory-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
 .mem-card{height:80px;border-radius:10px;cursor:pointer;position:relative;transform-style:preserve-3d;transition:transform 0.35s;border:none;background:none;padding:0}
 .mem-card.flipped,.mem-card.matched{transform:rotateY(180deg)}
@@ -506,13 +332,8 @@ select option{background:#0d1018}
 .card-front{background:var(--panel2);border:1px solid var(--border2)}
 .card-front::after{content:'?';font-size:20px;font-weight:700;color:var(--muted);font-family:'DM Mono',monospace}
 .card-back{background:var(--panel);border:1px solid rgba(59,130,246,0.3);transform:rotateY(180deg)}
-
-/* Snake */
 #snakeCanvas{border:1px solid var(--border2);border-radius:10px;display:block;background:#07090f}
-.snake-hud{display:flex;gap:12px;margin-bottom:12px;align-items:center}
 .snake-hint{font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:8px}
-
-/* Reaction Test */
 .reaction-arena{height:220px;border-radius:12px;border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:background 0.15s;user-select:none;margin-bottom:16px;font-family:'DM Mono',monospace}
 .reaction-arena.wait{background:rgba(239,68,68,0.08);border-color:rgba(239,68,68,0.2)}
 .reaction-arena.go{background:rgba(34,197,94,0.12);border-color:rgba(34,197,94,0.4)}
@@ -520,13 +341,10 @@ select option{background:#0d1018}
 .reaction-arena.result{background:rgba(59,130,246,0.08);border-color:rgba(59,130,246,0.2)}
 .reaction-big{font-size:48px;font-weight:700;color:#fff;margin-bottom:8px}
 .reaction-sub{font-size:14px;color:var(--muted)}
-.reaction-best{font-size:12px;font-family:'DM Mono',monospace;color:var(--amber);margin-top:4px}
 .rt-results{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
 .rt-result{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;font-family:'DM Mono',monospace}
 .rt-result-val{font-size:20px;font-weight:700;color:#fff}
 .rt-result-lbl{font-size:11px;color:var(--muted);margin-top:3px}
-
-/* Typing Test */
 .typing-display{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:20px 24px;font-size:18px;line-height:2;margin-bottom:12px;min-height:110px;letter-spacing:0.5px;font-family:'DM Mono',monospace;position:relative}
 .t-correct{color:var(--green)}
 .t-wrong{color:var(--red);background:rgba(239,68,68,0.1);border-radius:2px}
@@ -535,10 +353,8 @@ select option{background:#0d1018}
 .typing-input{width:100%;background:var(--bg);border:1px solid var(--border2);border-radius:8px;padding:12px 16px;color:var(--text);font-family:'DM Mono',monospace;font-size:15px;outline:none;margin-bottom:14px;transition:border 0.15s}
 .typing-input:focus{border-color:var(--accent)}
 .typing-input:disabled{opacity:0.4;cursor:not-allowed}
-.wpm-display{font-size:28px;font-weight:700;color:#fbbf24;font-family:'DM Mono',monospace}
-.typing-meta{font-size:13px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:4px}
 
-/* ── POINTS SHOP ── */
+/* ── Points Shop ── */
 .shop-wrap{max-width:760px}
 .shop-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px}
 .shop-bal{display:flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:10px 18px}
@@ -573,7 +389,7 @@ select option{background:#0d1018}
 .inv-chip{background:var(--panel);border:1px solid var(--border2);border-radius:8px;padding:7px 14px;font-size:12px;font-family:'DM Mono',monospace;color:var(--text);display:flex;align-items:center;gap:6px}
 .inv-empty{font-size:13px;color:var(--muted);font-family:'DM Mono',monospace}
 
-/* ── Modals ── */
+/* ── Modals & Toasts ── */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:100;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.2s}
 .modal-overlay.show{opacity:1;pointer-events:all}
 .modal{background:var(--panel);border:1px solid var(--border2);border-radius:16px;padding:28px;width:360px;position:relative;transform:translateY(10px);transition:transform 0.2s}
@@ -703,7 +519,7 @@ select option{background:#0d1018}
           </div>
         </div>
 
-        <!-- CHAT placeholder -->
+        <!-- CHAT placeholder (chat lives in chatWrap below) -->
         <div class="tab-panel" id="tab-chat"></div>
 
         <!-- WORLD -->
@@ -723,7 +539,6 @@ select option{background:#0d1018}
               <button class="game-tab" onclick="switchGame('reaction',this)">⚡ Reaction</button>
               <button class="game-tab" onclick="switchGame('typing',this)">⌨ Typing</button>
             </div>
-
             <!-- Memory -->
             <div class="game-panel active" id="game-memory">
               <div class="game-header">
@@ -742,7 +557,6 @@ select option{background:#0d1018}
               <div id="memWinBanner" style="display:none" class="win-banner"><i class="ti ti-trophy"></i><div><div class="win-text">You matched all pairs!</div><div class="win-pts" id="memWinPts">+100 pts</div></div></div>
               <div id="gameBoard"></div>
             </div>
-
             <!-- Snake -->
             <div class="game-panel" id="game-snake">
               <div class="game-header">
@@ -762,7 +576,6 @@ select option{background:#0d1018}
               <canvas id="snakeCanvas" width="400" height="400"></canvas>
               <div class="snake-hint">Tip: Use Arrow Keys or WASD · Earn 5 pts per food eaten</div>
             </div>
-
             <!-- Reaction -->
             <div class="game-panel" id="game-reaction">
               <div class="game-header">
@@ -783,7 +596,6 @@ select option{background:#0d1018}
               <div class="rt-results" id="rtResults"></div>
               <button class="game-start-btn" id="rtStartBtn" onclick="startReaction()"><i class="ti ti-player-play"></i> Start</button>
             </div>
-
             <!-- Typing -->
             <div class="game-panel" id="game-typing">
               <div class="game-header">
@@ -875,7 +687,7 @@ select option{background:#0d1018}
             <div class="pro-plan-title"><i class="ti ti-star" style="font-size:20px"></i> PRO PLAN</div>
             <div class="pro-plan-sub">Unlock the full Viper Studios experience</div>
             <div class="pro-perks">
-              <div class="pro-perk"><i class="ti ti-check"></i> ⭐ PRO badge on profile & chat</div>
+              <div class="pro-perk"><i class="ti ti-check"></i> ⭐ PRO badge on profile &amp; chat</div>
               <div class="pro-perk"><i class="ti ti-check"></i> Custom avatar image</div>
               <div class="pro-perk"><i class="ti ti-check"></i> Custom profile background</div>
               <div class="pro-perk"><i class="ti ti-check"></i> 4 exclusive accent colors</div>
@@ -920,6 +732,8 @@ select option{background:#0d1018}
               <div style="margin-top:6px"><span class="admin-badge">🔒 RESTRICTED ACCESS</span></div>
             </div>
           </div>
+
+          <!-- Key Generator -->
           <div class="keygen-card">
             <h4>KEY GENERATOR</h4>
             <div class="keygen-form">
@@ -945,8 +759,10 @@ select option{background:#0d1018}
             <button class="gen-btn" id="genBtn" onclick="generateKey()"><i class="ti ti-key"></i> Generate Key</button>
             <div class="key-list" id="keyList"><div class="empty-keys">No keys generated yet.</div></div>
           </div>
+
+          <!-- Give PRO & Points -->
           <div class="admin-give-card">
-            <h4>GIVE PRO & POINTS</h4>
+            <h4>GIVE PRO &amp; POINTS</h4>
             <div class="form-2col" style="margin-bottom:12px">
               <div class="form-group"><div class="field-label">USERNAME</div><input class="field-input" id="giveUsername" placeholder="exact username" style="margin-bottom:0" /></div>
               <div class="form-group"><div class="field-label">POINTS TO ADD</div><input class="field-input" id="givePoints" type="number" placeholder="e.g. 500" style="margin-bottom:0" min="0" /></div>
@@ -957,6 +773,89 @@ select option{background:#0d1018}
             </div>
             <div class="confirm-chip" id="giveConfirm" style="margin-top:10px"><i class="ti ti-check"></i> Done!</div>
           </div>
+
+          <!-- Badge Maker -->
+          <div class="badge-maker-card">
+            <h4>🏅 BADGE MAKER &amp; GIVER</h4>
+            <div class="form-2col" style="margin-bottom:12px">
+              <div class="form-group">
+                <div class="field-label">BADGE EMOJI</div>
+                <input class="field-input" id="badgeEmoji" placeholder="e.g. 🏆" maxlength="4" style="margin-bottom:0;font-size:20px" oninput="updateBadgePreview()" />
+              </div>
+              <div class="form-group">
+                <div class="field-label">BADGE NAME</div>
+                <input class="field-input" id="badgeName" placeholder="e.g. Champion" style="margin-bottom:0" oninput="updateBadgePreview()" />
+              </div>
+            </div>
+            <div class="field-label">BADGE COLOR</div>
+            <div class="badge-color-row">
+              <div class="badge-color-btn selected" style="background:#3b82f6" data-color="#3b82f6" data-text="#fff" onclick="selectBadgeColor(this)"></div>
+              <div class="badge-color-btn" style="background:#ef4444" data-color="#ef4444" data-text="#fff" onclick="selectBadgeColor(this)"></div>
+              <div class="badge-color-btn" style="background:#22c55e" data-color="#22c55e" data-text="#fff" onclick="selectBadgeColor(this)"></div>
+              <div class="badge-color-btn" style="background:#f59e0b" data-color="#f59e0b" data-text="#000" onclick="selectBadgeColor(this)"></div>
+              <div class="badge-color-btn" style="background:#8b5cf6" data-color="#8b5cf6" data-text="#fff" onclick="selectBadgeColor(this)"></div>
+              <div class="badge-color-btn" style="background:#06b6d4" data-color="#06b6d4" data-text="#000" onclick="selectBadgeColor(this)"></div>
+              <div class="badge-color-btn" style="background:#ec4899" data-color="#ec4899" data-text="#fff" onclick="selectBadgeColor(this)"></div>
+              <div class="badge-color-btn" style="background:#f97316" data-color="#f97316" data-text="#000" onclick="selectBadgeColor(this)"></div>
+              <div class="badge-color-btn" style="background:#a3e635" data-color="#a3e635" data-text="#000" onclick="selectBadgeColor(this)"></div>
+              <div class="badge-color-btn" style="background:#fbbf24" data-color="#fbbf24" data-text="#000" onclick="selectBadgeColor(this)"></div>
+              <div class="badge-color-btn" style="background:#6366f1" data-color="#6366f1" data-text="#fff" onclick="selectBadgeColor(this)"></div>
+              <div class="badge-color-btn" style="background:#e11d48" data-color="#e11d48" data-text="#fff" onclick="selectBadgeColor(this)"></div>
+            </div>
+            <div class="badge-preview">
+              <div class="badge-preview-label">PREVIEW:</div>
+              <span class="custom-badge-tag" id="badgeLivePreview">🏅 Badge Name</span>
+            </div>
+            <div class="field-label">DESCRIPTION / "EARN BY" TEXT</div>
+            <input class="field-input" id="badgeDesc" placeholder="e.g. Awarded to top players" style="margin-bottom:10px" />
+            <div class="claim-settings">
+              <div class="claim-toggle-row">
+                <label class="toggle-switch"><input type="checkbox" id="badgeClaimable" onchange="toggleClaimSettings()" /><span class="toggle-slider"></span></label>
+                <span style="font-size:13px;color:var(--text);font-family:'DM Mono',monospace">CLAIMABLE BY EVERYONE</span>
+              </div>
+              <div id="claimSettingsFields" style="display:none">
+                <div class="field-label" style="margin-bottom:6px">CLAIM EXPIRES (UTC)</div>
+                <input class="field-input" type="datetime-local" id="badgeExpiry" style="margin-bottom:10px" />
+                <div class="field-label" style="margin-bottom:6px">EARN BY</div>
+                <div class="earn-by-wrap" id="earnByWrap">
+                  <button class="earn-by-tag" onclick="toggleEarnBy(this)" data-val="Playing a minigame">🎮 Playing a minigame</button>
+                  <button class="earn-by-tag" onclick="toggleEarnBy(this)" data-val="Attending an event">📅 Attending an event</button>
+                  <button class="earn-by-tag" onclick="toggleEarnBy(this)" data-val="Being active in chat">💬 Being active in chat</button>
+                  <button class="earn-by-tag" onclick="toggleEarnBy(this)" data-val="Reaching 500 points">⭐ Reaching 500 points</button>
+                  <button class="earn-by-tag" onclick="toggleEarnBy(this)" data-val="Visiting the world">🌍 Visiting the world</button>
+                  <button class="earn-by-tag" onclick="toggleEarnBy(this)" data-val="Admin discretion">🛡️ Admin discretion</button>
+                  <input class="field-input" id="earnByCustom" placeholder="Custom earn by text..." style="margin-bottom:0;margin-top:4px;font-size:13px" />
+                </div>
+              </div>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">
+              <button class="create-badge-btn" onclick="createBadge()"><i class="ti ti-badge" style="font-size:15px"></i> Create Badge</button>
+              <span class="confirm-chip" id="badgeCreateConfirm"><i class="ti ti-check"></i> Created!</span>
+            </div>
+            <!-- Give Badge -->
+            <div style="border-top:1px solid var(--border);padding-top:16px">
+              <div class="field-label" style="margin-bottom:12px">GIVE BADGE TO USER</div>
+              <div class="form-2col" style="margin-bottom:12px">
+                <div class="form-group">
+                  <div class="field-label">USERNAME</div>
+                  <input class="field-input" id="giveBadgeUsername" placeholder="exact username" style="margin-bottom:0" />
+                </div>
+                <div class="form-group">
+                  <div class="field-label">SELECT BADGE</div>
+                  <select class="select-field" id="giveBadgeSelect"><option value="">— No badges created yet —</option></select>
+                </div>
+              </div>
+              <button class="give-badge-btn" onclick="adminGiveBadge()"><i class="ti ti-send" style="font-size:15px"></i> Give Badge</button>
+              <span class="confirm-chip" id="badgeGiveConfirm" style="margin-left:12px"><i class="ti ti-check"></i> Given!</span>
+            </div>
+            <!-- Badge List -->
+            <div style="border-top:1px solid var(--border);padding-top:16px;margin-top:16px">
+              <div class="field-label" style="margin-bottom:12px">CREATED BADGES</div>
+              <div id="adminBadgeList"><div style="font-size:13px;color:var(--muted);font-family:'DM Mono',monospace">No badges created yet.</div></div>
+            </div>
+          </div>
+
+          <!-- Event Manager -->
           <div class="admin-event-card">
             <h4>EVENT MANAGER</h4>
             <div class="form-2col">
@@ -985,7 +884,7 @@ select option{background:#0d1018}
       </div>
     </div>
 
-    <!-- Chat panel -->
+    <!-- Chat panel (lives outside content-scroll) -->
     <div class="chat-wrap" id="chatWrap">
       <div class="chat-messages" id="chatMessages"></div>
       <div class="chat-bar">
@@ -1027,7 +926,6 @@ let generatedKeys = [];
 
 // ── SHOP STATE ──
 const SHOP_ITEMS = [
-  // Chat Effects
   {id:'fx_rainbow',name:'Rainbow Text',desc:'Your messages shimmer in all colors of the spectrum.',icon:'🌈',cat:'chat',price:200,effect:'rainbow'},
   {id:'fx_glow',name:'Glow Text',desc:'Messages glow with your accent color.',icon:'✨',cat:'chat',price:150,effect:'glow'},
   {id:'fx_fire',name:'Fire Text',desc:'Hot orange-red gradient on all your messages.',icon:'🔥',cat:'chat',price:150,effect:'fire'},
@@ -1035,54 +933,43 @@ const SHOP_ITEMS = [
   {id:'fx_matrix',name:'Matrix Text',desc:'Green monospace — feel like a hacker.',icon:'💚',cat:'chat',price:120,effect:'matrix'},
   {id:'fx_bold',name:'BIG Text',desc:'Your messages appear extra large and bold.',icon:'🔡',cat:'chat',price:80,effect:'bold'},
   {id:'fx_shake',name:'Shaky Text',desc:'Your messages physically shake. Unsettling.',icon:'💥',cat:'chat',price:180,effect:'shake'},
-  // Profile
   {id:'pr_border_gold',name:'Gold Border',desc:'A shimmering gold ring around your avatar.',icon:'🥇',cat:'profile',price:300,profileFx:'gold_border'},
   {id:'pr_border_neon',name:'Neon Border',desc:'Electric cyan neon ring around your avatar.',icon:'💠',cat:'profile',price:280,profileFx:'neon_border'},
   {id:'pr_title_vet',name:'"Veteran" Title',desc:'Show a special Veteran title on your profile.',icon:'🎖️',cat:'profile',price:400,profileFx:'title_vet'},
   {id:'pr_title_elite',name:'"Elite" Title',desc:'Exclusive Elite title displayed below your name.',icon:'🌟',cat:'profile',price:500,profileFx:'title_elite'},
   {id:'pr_title_shadow',name:'"Shadow" Title',desc:'For those who lurk in the darkness.',icon:'🕶️',cat:'profile',price:350,profileFx:'title_shadow'},
-  // Badges
   {id:'bg_skull',name:'💀 Skull Badge',desc:'A cool skull next to your name everywhere.',icon:'💀',cat:'badge',price:120,profileFx:'badge_skull'},
   {id:'bg_viper',name:'🐍 Viper Badge',desc:'The classic Viper Studios mascot badge.',icon:'🐍',cat:'badge',price:200,profileFx:'badge_viper'},
   {id:'bg_crown',name:'👑 Crown Badge',desc:'Wear a crown — you earned it.',icon:'👑',cat:'badge',price:350,profileFx:'badge_crown'},
   {id:'bg_bolt',name:'⚡ Bolt Badge',desc:'High-energy bolt badge for active members.',icon:'⚡',cat:'badge',price:150,profileFx:'badge_bolt'},
-
-  // Titles (PRO-style exclusives)
   {id:'pr_title_goat',name:'"GOAT" Title',desc:'Greatest of all time. Enough said.',icon:'🐐',cat:'profile',price:600,profileFx:'title_goat'},
   {id:'pr_title_ghost',name:'"Ghost" Title',desc:'Silent but deadly presence.',icon:'👻',cat:'profile',price:320,profileFx:'title_ghost'},
   {id:'pr_title_neon',name:'"Neon" Title',desc:'Electric vibes only.',icon:'💡',cat:'profile',price:280,profileFx:'title_neon'},
-  // Extra chat effects
   {id:'fx_glitch',name:'Glitch Text',desc:'Your messages appear corrupted and glitchy.',icon:'📡',cat:'chat',price:250,effect:'glitch'},
   {id:'fx_wave',name:'Wave Text',desc:'Letters rise and fall in a smooth wave.',icon:'〰️',cat:'chat',price:220,effect:'wave'},
-  // Extra badges
   {id:'bg_fire',name:'🔥 Fire Badge',desc:'For the hottest members.',icon:'🔥',cat:'badge',price:130,profileFx:'badge_fire'},
   {id:'bg_star',name:'⭐ Star Badge',desc:'A shining star in the community.',icon:'⭐',cat:'badge',price:180,profileFx:'badge_star'},
   {id:'bg_alien',name:'👽 Alien Badge',desc:'Out of this world.',icon:'👽',cat:'badge',price:160,profileFx:'badge_alien'},
   {id:'bg_robot',name:'🤖 Robot Badge',desc:'Machine precision.',icon:'🤖',cat:'badge',price:140,profileFx:'badge_robot'},
-  // Backgrounds (PRO unlock)
   {id:'pr_bg_dark',name:'Dark Aura BG',desc:'A shifting dark animated profile background.',icon:'🌑',cat:'profile',price:500,profileFx:'bg_dark'},
   {id:'pr_bg_galaxy',name:'Galaxy BG',desc:'Starfield background on your profile.',icon:'🌌',cat:'profile',price:600,profileFx:'bg_galaxy'},
-  
 ];
 
-// Loaded from localStorage (simulate persistence; would be server-side in prod)
 let inventory = JSON.parse(localStorage.getItem('vs_inventory')||'[]');
 let equippedChatEffect = localStorage.getItem('vs_equippedFx')||'';
 let equippedProfileItems = JSON.parse(localStorage.getItem('vs_equippedProfile')||'[]');
 let currentShopFilter = 'all';
 
 // ── GAME STATE ──
-// Memory
 let memActive=false,memCards=[],memFlipped=[],memMatched=0,memMoves=0;
 let memTimer=null,memSeconds=0,memCanFlip=true;
-// Snake
-let snakeActive=false,snakeLoop=null,snake=[],snakeDir={x:1,y:0},snakeNextDir={x:1,y:0},snakeFood={x:0,y:0},snakeScore=0,snakeHi=parseInt(localStorage.getItem('vs_snakeHi')||'0');
+let snakeActive=false,snakeLoop=null,snake=[],snakeDir={x:1,y:0},snakeNextDir={x:1,y:0},snakeFood={x:0,y:0},snakeScore=0;
+let snakeHi=parseInt(localStorage.getItem('vs_snakeHi')||'0');
 const SNAKE_CELL=20,SNAKE_COLS=20,SNAKE_ROWS=20;
-// Reaction
 let rtActive=false,rtRound=0,rtResults=[],rtTimeout=null,rtStart=0,rtWaiting=false,rtGo=false;
 const RT_ROUNDS=5;
-// Typing
-let typingActive=false,typingStart=0,typingTimer=null,typingWords=[],typingIdx=0,typingErrors=0;
+let typingActive=false,typingStart=0,typingTimer=null,typingErrors=0;
+let typingText='',typingUserInput='',typingLiveTimer=null;
 const TYPING_TEXTS=[
   'The quick brown fox jumps over the lazy dog near the riverbank.',
   'Coding at night with a warm coffee and lo-fi music is peak focus.',
@@ -1090,6 +977,12 @@ const TYPING_TEXTS=[
   'Speed is nothing without accuracy — type smart not just fast.',
   'Every keystroke counts when the clock is ticking and points are on the line.',
 ];
+
+// ── BADGE STATE ──
+let createdBadges = JSON.parse(localStorage.getItem('vs_badges')||'[]');
+let selectedBadgeColor = '#3b82f6';
+let selectedBadgeTextColor = '#fff';
+let activeEarnByTags = [];
 
 const PRO_EMOJIS=['🦇','🕷️','🌲','💀','🔦','🌙','🐺','🪦','🕯️','🌕','🗝️','🩸','🌿','👁️','🎃','🪓'];
 const pipColors=['#3b82f6','#22c55e','#f59e0b','#ef4444','#8b5cf6','#06b6d4'];
@@ -1122,14 +1015,16 @@ function switchTab(id,btn){
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(b=>b.classList.remove('active'));
   if(btn)btn.classList.add('active');
-if(id==='chat'){
-  contentScroll.style.display='none';
-  chatWrap.style.display='flex';
-  chatWrap.style.height='100%';
-  chatWrap.style.width='100%';
-  loadChat().then(()=>setTimeout(scrollChatBottom,80));
-}
-  else{contentScroll.style.display='';chatWrap.style.display='none';document.getElementById('tab-'+id).classList.add('active');
+  if(id==='chat'){
+    contentScroll.style.display='none';
+    chatWrap.style.display='flex';
+    chatWrap.style.height='100%';
+    chatWrap.style.width='100%';
+    loadChat().then(()=>setTimeout(scrollChatBottom,80));
+  } else {
+    contentScroll.style.display='';
+    chatWrap.style.display='none';
+    document.getElementById('tab-'+id).classList.add('active');
     if(id==='world')loadEvents();
     if(id==='users')loadMembers();
     if(id==='admin'){loadAdminKeys();renderAdminEvents();loadAdminBadges();}
@@ -1159,7 +1054,8 @@ async function load(){
     const res=await fetch(`${API}/api/me`,{headers:{Authorization:'Bearer '+token()}});
     if(res.status===401||res.status===403){logout();return;}
     const d=await res.json();
-    currentUsername=d.username;currentUserRank=(d.role||d.rank||'user').trim().toLowerCase();
+    currentUsername=d.username;
+    currentUserRank=(d.role||d.rank||'user').trim().toLowerCase();
     userPro=d.pro||false;userPoints=d.points||0;userAvatar=d.avatar||'';userBg=d.background||'';
     selectedColor=d.accentColor||localStorage.getItem('vs_color')||'#3b82f6';
     selectedColor2=d.accentColor2||localStorage.getItem('vs_color2')||'#60a5fa';
@@ -1207,30 +1103,82 @@ function refreshMyAvatars(){
 
 // ── PROFILE ──
 async function saveProfile(){
-  const v=document.getElementById('vrchatInput').value.trim();const b=document.getElementById('bioInput').value.trim();
-  try{const res=await fetch(`${API}/api/me/profile`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({vrchat:v,bio:b})});if(!res.ok){toast('Failed to save','error');return;}}catch{toast('Server offline','error');return;}
+  const v=document.getElementById('vrchatInput').value.trim();
+  const b=document.getElementById('bioInput').value.trim();
+  try{
+    const res=await fetch(`${API}/api/me/profile`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({vrchat:v,bio:b})});
+    if(!res.ok){toast('Failed to save','error');return;}
+  }catch{toast('Server offline','error');return;}
   document.getElementById('vrchatTag').innerHTML=`<i class="ti ti-cube" style="font-size:14px"></i> VRChat: ${v||'Not connected'}`;
   document.getElementById('bioDisplay').textContent=b||'No bio set yet.';
-  const btn=document.getElementById('profileSaveBtn');btn.textContent='Saved!';btn.classList.add('saved');setTimeout(()=>{btn.textContent='Save Changes';btn.classList.remove('saved');},2000);
+  const btn=document.getElementById('profileSaveBtn');btn.textContent='Saved!';btn.classList.add('saved');
+  setTimeout(()=>{btn.textContent='Save Changes';btn.classList.remove('saved');},2000);
 }
 function loadProfileFields(v,b){
-  document.getElementById('vrchatInput').value=v||'';document.getElementById('bioInput').value=b||'';
+  document.getElementById('vrchatInput').value=v||'';
+  document.getElementById('bioInput').value=b||'';
   document.getElementById('vrchatTag').innerHTML=`<i class="ti ti-cube" style="font-size:14px"></i> VRChat: ${v||'Not connected'}`;
   document.getElementById('bioDisplay').textContent=b||'No bio set yet.';
 }
 
 // ── AVATAR/BG ──
-function uploadAvatar(input){const file=input.files[0];if(!file)return;const reader=new FileReader();reader.onload=async e=>{userAvatar=e.target.result;document.getElementById('avatarPreview').src=userAvatar;document.getElementById('avatarPreview').style.display='block';refreshMyAvatars();try{const res=await fetch(`${API}/api/me/avatar`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({avatar:userAvatar})});res.ok?toast('Avatar updated!','success'):toast('Failed to save avatar','error');}catch{toast('Server offline','error');}};reader.readAsDataURL(file);}
-function uploadBg(input){const file=input.files[0];if(!file)return;const reader=new FileReader();reader.onload=async e=>{userBg=e.target.result;document.getElementById('bgPreview').src=userBg;document.getElementById('bgPreview').style.display='block';document.getElementById('profileBgEl').style.backgroundImage=`url(${userBg})`;try{const res=await fetch(`${API}/api/me/background`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({background:userBg})});res.ok?toast('Background updated!','success'):toast('Failed','error');}catch{toast('Server offline','error');}};reader.readAsDataURL(file);}
+function uploadAvatar(input){
+  const file=input.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=async e=>{
+    userAvatar=e.target.result;
+    document.getElementById('avatarPreview').src=userAvatar;
+    document.getElementById('avatarPreview').style.display='block';
+    refreshMyAvatars();
+    try{
+      const res=await fetch(`${API}/api/me/avatar`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({avatar:userAvatar})});
+      res.ok?toast('Avatar updated!','success'):toast('Failed to save avatar','error');
+    }catch{toast('Server offline','error');}
+  };
+  reader.readAsDataURL(file);
+}
+function uploadBg(input){
+  const file=input.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=async e=>{
+    userBg=e.target.result;
+    document.getElementById('bgPreview').src=userBg;
+    document.getElementById('bgPreview').style.display='block';
+    document.getElementById('profileBgEl').style.backgroundImage=`url(${userBg})`;
+    try{
+      const res=await fetch(`${API}/api/me/background`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({background:userBg})});
+      res.ok?toast('Background updated!','success'):toast('Failed','error');
+    }catch{toast('Server offline','error');}
+  };
+  reader.readAsDataURL(file);
+}
 
 // ── PRO ──
 async function purchasePro(){
   if(userPro){toast('You already have PRO!','pro');return;}
   if(userPoints<1000){toast(`Need 1000 points — you have ${userPoints}`,'error');return;}
-  try{const res=await fetch(`${API}/api/me/pro/purchase`,{method:'POST',headers:{Authorization:'Bearer '+token()}});const d=await res.json();if(!res.ok){toast(d.error||'Failed','error');return;}userPoints=d.points;updatePtsUI();userPro=true;applyProUI();toast('⭐ PRO Plan activated!','pro');}catch{toast('Server offline','error');}
+  try{
+    const res=await fetch(`${API}/api/me/pro/purchase`,{method:'POST',headers:{Authorization:'Bearer '+token()}});
+    const d=await res.json();
+    if(!res.ok){toast(d.error||'Failed','error');return;}
+    userPoints=d.points;updatePtsUI();userPro=true;applyProUI();toast('⭐ PRO Plan activated!','pro');
+  }catch{toast('Server offline','error');}
 }
-function fmtProKey(input){let v=input.value.replace(/[^A-Za-z0-9]/g,'').toUpperCase().slice(0,15);let out='';for(let i=0;i<v.length;i++){if(i===5||i===10)out+='-';out+=v[i];}input.value=out;}
-async function redeemProKey(){const key=document.getElementById('proKeyInput').value.trim().toUpperCase();if(key.length!==17){toast('Enter a valid key','error');return;}try{const res=await fetch(`${API}/api/me/pro/redeem`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({code:key})});const d=await res.json();if(!res.ok){toast(d.error||'Invalid key','error');return;}userPro=true;applyProUI();toast('⭐ PRO activated via key!','pro');}catch{toast('Server offline','error');}}
+function fmtProKey(input){
+  let v=input.value.replace(/[^A-Za-z0-9]/g,'').toUpperCase().slice(0,15);
+  let out='';for(let i=0;i<v.length;i++){if(i===5||i===10)out+='-';out+=v[i];}
+  input.value=out;
+}
+async function redeemProKey(){
+  const key=document.getElementById('proKeyInput').value.trim().toUpperCase();
+  if(key.length!==17){toast('Enter a valid key','error');return;}
+  try{
+    const res=await fetch(`${API}/api/me/pro/redeem`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({code:key})});
+    const d=await res.json();
+    if(!res.ok){toast(d.error||'Invalid key','error');return;}
+    userPro=true;applyProUI();toast('⭐ PRO activated via key!','pro');
+  }catch{toast('Server offline','error');}
+}
 
 // ── POINTS SHOP ──
 function renderShop(){
@@ -1242,9 +1190,9 @@ function renderShop(){
     const isEquipped=isEquippedChat||isEquippedProf;
     const canAfford=userPoints>=item.price;
     let btnHtml='';
-    if(isEquipped) btnHtml=`<button class="shop-buy-btn unequip-btn" onclick="unequipItem('${item.id}')">Unequip</button>`;
-    else if(owned) btnHtml=`<button class="shop-buy-btn equip-btn" onclick="equipItem('${item.id}')">Equip</button>`;
-    else if(canAfford) btnHtml=`<button class="shop-buy-btn can-buy" onclick="buyItem('${item.id}')">Buy</button>`;
+    if(isEquipped)btnHtml=`<button class="shop-buy-btn unequip-btn" onclick="unequipItem('${item.id}')">Unequip</button>`;
+    else if(owned)btnHtml=`<button class="shop-buy-btn equip-btn" onclick="equipItem('${item.id}')">Equip</button>`;
+    else if(canAfford)btnHtml=`<button class="shop-buy-btn can-buy" onclick="buyItem('${item.id}')">Buy</button>`;
     else btnHtml=`<button class="shop-buy-btn cant-buy" disabled>${item.price} pts</button>`;
     return `<div class="shop-item ${isEquipped?'equipped':owned?'owned':''}">
       <div class="shop-item-icon">${item.icon}</div>
@@ -1258,53 +1206,38 @@ function renderShop(){
   }).join('');
   renderInventory();
 }
-
 function filterShop(cat,btn){
   currentShopFilter=cat;
   document.querySelectorAll('.shop-cat').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   renderShop();
 }
-
 function buyItem(id){
   const item=SHOP_ITEMS.find(i=>i.id===id);if(!item)return;
   if(userPoints<item.price){toast(`Need ${item.price} pts — you have ${userPoints}`,'error');return;}
-  userPoints-=item.price;
-  updatePtsUI();
-  inventory.push(id);
-  localStorage.setItem('vs_inventory',JSON.stringify(inventory));
+  userPoints-=item.price;updatePtsUI();
+  inventory.push(id);localStorage.setItem('vs_inventory',JSON.stringify(inventory));
   document.getElementById('statItems').textContent=inventory.length;
-  // Try to sync points to server
-  syncPtsServer();
-  toast(`✅ Bought: ${item.name}`,'success');
-  renderShop();
+  syncPtsServer();toast(`✅ Bought: ${item.name}`,'success');renderShop();
 }
-
 function equipItem(id){
   const item=SHOP_ITEMS.find(i=>i.id===id);if(!item)return;
-  if(item.effect){
-    equippedChatEffect=item.effect;localStorage.setItem('vs_equippedFx',equippedChatEffect);
-    populateChatEffectDropdown();
-  }
+  if(item.effect){equippedChatEffect=item.effect;localStorage.setItem('vs_equippedFx',equippedChatEffect);populateChatEffectDropdown();}
   if(item.profileFx){
-    // Only one of each type at a time — unequip others in same group
     const prefix=item.profileFx.split('_')[0];
     equippedProfileItems=equippedProfileItems.filter(p=>!p.startsWith(prefix));
     equippedProfileItems.push(item.profileFx);
     localStorage.setItem('vs_equippedProfile',JSON.stringify(equippedProfileItems));
     renderEquippedProfile();
   }
-  toast(`🎮 Equipped: ${item.name}`,'success');
-  renderShop();
+  toast(`🎮 Equipped: ${item.name}`,'success');renderShop();
 }
-
 function unequipItem(id){
   const item=SHOP_ITEMS.find(i=>i.id===id);if(!item)return;
   if(item.effect&&equippedChatEffect===item.effect){equippedChatEffect='';localStorage.setItem('vs_equippedFx','');populateChatEffectDropdown();}
   if(item.profileFx){equippedProfileItems=equippedProfileItems.filter(p=>p!==item.profileFx);localStorage.setItem('vs_equippedProfile',JSON.stringify(equippedProfileItems));renderEquippedProfile();}
   toast('Item unequipped','');renderShop();
 }
-
 function renderInventory(){
   const inv=document.getElementById('invGrid');
   if(!inventory.length){inv.innerHTML='<div class="inv-empty">Nothing yet — buy something!</div>';return;}
@@ -1314,7 +1247,6 @@ function renderInventory(){
     return `<div class="inv-chip">${item.icon} ${item.name}${equipped?' <span style="color:#fbbf24;font-size:10px">●</span>':''}</div>`;
   }).join('');
 }
-
 function renderEquippedProfile(){
   const el=document.getElementById('equippedEffects');if(!el)return;
   const tags=[];
@@ -1324,25 +1256,21 @@ function renderEquippedProfile(){
   });
   el.innerHTML=tags.join('');
 }
-
 function populateChatEffectDropdown(){
   const sel=document.getElementById('chatEffectSelect');
   const owned=SHOP_ITEMS.filter(i=>i.effect&&inventory.includes(i.id));
   sel.innerHTML='<option value="">None</option>'+owned.map(i=>`<option value="${i.effect}" ${equippedChatEffect===i.effect?'selected':''}>${i.icon} ${i.name}</option>`).join('');
   updateChatEffect();
 }
-
 function updateChatEffect(){
   const sel=document.getElementById('chatEffectSelect');
   equippedChatEffect=sel.value;localStorage.setItem('vs_equippedFx',equippedChatEffect);
   const item=SHOP_ITEMS.find(i=>i.effect===equippedChatEffect);
   document.getElementById('effectPreviewLabel').textContent=equippedChatEffect?`Preview: ${item?item.name:''}`:' ';
 }
-
 async function syncPtsServer(){
   try{await fetch(`${API}/api/me/points/set`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({points:userPoints})});}catch{}
 }
-
 function updatePtsUI(){
   document.getElementById('pointsDisplay').textContent=userPoints;
   document.getElementById('statPoints').textContent=userPoints;
@@ -1358,13 +1286,22 @@ async function loadMembers(){
 function filterMembers(){const q=document.getElementById('memberSearch').value.toLowerCase();renderMembers(allMembers.filter(m=>m.username.toLowerCase().includes(q)));}
 function rankOrder(r){return r==='owner'?0:r==='admin'?1:2;}
 function renderMembers(members){
-  const list=document.getElementById('membersList');document.getElementById('memberCount').textContent=`${members.length} member${members.length!==1?'s':''}`;
+  const list=document.getElementById('membersList');
+  document.getElementById('memberCount').textContent=`${members.length} member${members.length!==1?'s':''}`;
   if(!members.length){list.innerHTML='<div class="members-empty">No members found.</div>';return;}
   const sorted=[...members].sort((a,b)=>rankOrder(a.role||a.rank)-rankOrder(b.role||b.rank)||a.username.localeCompare(b.username));
   list.innerHTML=sorted.map(m=>{
     const r=(m.role||m.rank||'user').toLowerCase();const isMe=m.username===currentUsername;const isBanned=m.banned;const warns=m.warnings||0;const canAct=isAdmin()&&!isMe&&r!=='owner';
-    const metaParts=[];if(m.vrchat)metaParts.push(m.vrchat);if(warns>0)metaParts.push(`<span class="warn-count">⚠ ${warns} warn${warns!==1?'s':''}</span>`);if(isBanned)metaParts.push(`<span class="banned-tag">🚫 BANNED</span>`);if(m.pro)metaParts.push(`<span style="color:#fbbf24">⭐ PRO</span>`);
-    let actions='';if(canAct){if(isBanned)actions=`<button class="action-btn unban-btn" onclick="doUnban('${m._id}','${m.username}')">✓ Unban</button>`;else actions=`<button class="action-btn warn-btn" onclick="openWarn('${m._id}','${m.username}')">⚠ Warn</button><button class="action-btn ban-btn" onclick="openBan('${m._id}','${m.username}')">🚫 Ban</button>`;}
+    const metaParts=[];
+    if(m.vrchat)metaParts.push(m.vrchat);
+    if(warns>0)metaParts.push(`<span class="warn-count">⚠ ${warns} warn${warns!==1?'s':''}</span>`);
+    if(isBanned)metaParts.push(`<span class="banned-tag">🚫 BANNED</span>`);
+    if(m.pro)metaParts.push(`<span style="color:#fbbf24">⭐ PRO</span>`);
+    let actions='';
+    if(canAct){
+      if(isBanned)actions=`<button class="action-btn unban-btn" onclick="doUnban('${m._id}','${m.username}')">✓ Unban</button>`;
+      else actions=`<button class="action-btn warn-btn" onclick="openWarn('${m._id}','${m.username}')">⚠ Warn</button><button class="action-btn ban-btn" onclick="openBan('${m._id}','${m.username}')">🚫 Ban</button>`;
+    }
     const avatarHtml=m.avatar?`<img src="${m.avatar}" alt="${m.username}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`:initials(m.username);
     return `<div class="member-row ${isBanned?'banned-row':''}"><div class="member-avatar">${avatarHtml}</div><div class="member-info"><div class="member-name">${escHtml(m.username)}${isMe?' <span style="font-size:11px;color:var(--muted)">(you)</span>':''}</div><div class="member-meta"><span class="role-badge ${roleClass(r)}" style="font-size:10px;padding:2px 8px">${r.toUpperCase()}</span>${metaParts.join(' · ')}</div></div><div class="member-actions">${actions}</div></div>`;
   }).join('');
@@ -1373,37 +1310,216 @@ function openWarn(id,username){pendingAction={type:'warn',userId:id,username};do
 function openBan(id,username){pendingAction={type:'ban',userId:id,username};document.getElementById('banModalSub').textContent=`Banning: ${username}`;document.getElementById('banModal').classList.add('show');document.getElementById('banConfirmBtn').onclick=confirmBan;}
 function closeModal(id){document.getElementById(id).classList.remove('show');pendingAction=null;pendingReport=null;}
 document.querySelectorAll('.modal-overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('show');}));
-async function confirmWarn(){if(!pendingAction)return;const reason=document.getElementById('warnReason').value.trim()||'No reason given';closeModal('warnModal');try{const res=await fetch(`${API}/api/users/${pendingAction.userId}/warn`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({reason})});const d=await res.json();res.ok?toast(`⚠ ${pendingAction.username} warned`,'warn'):toast(d.error||'Failed','error');loadMembers();}catch{toast('Server error','error');}}
-async function confirmBan(){if(!pendingAction)return;const{userId,username}=pendingAction;closeModal('banModal');try{const res=await fetch(`${API}/api/users/${userId}/ban`,{method:'POST',headers:{Authorization:'Bearer '+token()}});const d=await res.json();res.ok?toast(`🚫 ${username} banned`,'error'):toast(d.error||'Failed','error');loadMembers();}catch{toast('Server error','error');}}
-async function doUnban(userId,username){try{const res=await fetch(`${API}/api/users/${userId}/unban`,{method:'POST',headers:{Authorization:'Bearer '+token()}});const d=await res.json();res.ok?toast(`✓ ${username} unbanned`,'success'):toast(d.error||'Failed','error');loadMembers();}catch{toast('Server error','error');}}
+async function confirmWarn(){
+  if(!pendingAction)return;
+  const reason=document.getElementById('warnReason').value.trim()||'No reason given';
+  closeModal('warnModal');
+  try{
+    const res=await fetch(`${API}/api/users/${pendingAction.userId}/warn`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({reason})});
+    const d=await res.json();
+    res.ok?toast(`⚠ ${pendingAction.username} warned`,'warn'):toast(d.error||'Failed','error');
+    loadMembers();
+  }catch{toast('Server error','error');}
+}
+async function confirmBan(){
+  if(!pendingAction)return;
+  const{userId,username}=pendingAction;closeModal('banModal');
+  try{
+    const res=await fetch(`${API}/api/users/${userId}/ban`,{method:'POST',headers:{Authorization:'Bearer '+token()}});
+    const d=await res.json();
+    res.ok?toast(`🚫 ${username} banned`,'error'):toast(d.error||'Failed','error');
+    loadMembers();
+  }catch{toast('Server error','error');}
+}
+async function doUnban(userId,username){
+  try{
+    const res=await fetch(`${API}/api/users/${userId}/unban`,{method:'POST',headers:{Authorization:'Bearer '+token()}});
+    const d=await res.json();
+    res.ok?toast(`✓ ${username} unbanned`,'success'):toast(d.error||'Failed','error');
+    loadMembers();
+  }catch{toast('Server error','error');}
+}
 
 // ── ADMIN KEYS ──
-async function loadAdminKeys(){try{const res=await fetch(`${API}/api/admin/keys`,{headers:{Authorization:'Bearer '+token()}});if(res.ok){generatedKeys=await res.json();renderKeys();}}catch{}}
+async function loadAdminKeys(){
+  try{const res=await fetch(`${API}/api/admin/keys`,{headers:{Authorization:'Bearer '+token()}});if(res.ok){generatedKeys=await res.json();renderKeys();}}catch{}
+}
 async function generateKey(){
   const tier=document.getElementById('keyTier').value;const uses=parseInt(document.getElementById('keyUses').value);
   const btn=document.getElementById('genBtn');btn.disabled=true;btn.innerHTML='<i class="ti ti-loader" style="animation:spin 0.7s linear infinite;display:inline-block"></i> Generating...';
-  try{const res=await fetch(`${API}/api/admin/keys/generate`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({tier,uses})});const data=await res.json();btn.disabled=false;btn.innerHTML='<i class="ti ti-key"></i> Generate Key';if(!res.ok){toast(data.error||'Failed','error');return;}generatedKeys.unshift(data);renderKeys();toast('Key generated: '+data.code,'success');}
-  catch{btn.disabled=false;btn.innerHTML='<i class="ti ti-key"></i> Generate Key';toast('Could not reach server','error');}
+  try{
+    const res=await fetch(`${API}/api/admin/keys/generate`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({tier,uses})});
+    const data=await res.json();btn.disabled=false;btn.innerHTML='<i class="ti ti-key"></i> Generate Key';
+    if(!res.ok){toast(data.error||'Failed','error');return;}
+    generatedKeys.unshift(data);renderKeys();toast('Key generated: '+data.code,'success');
+  }catch{btn.disabled=false;btn.innerHTML='<i class="ti ti-key"></i> Generate Key';toast('Could not reach server','error');}
 }
-function renderKeys(){const list=document.getElementById('keyList');if(!generatedKeys.length){list.innerHTML='<div class="empty-keys">No keys generated yet.</div>';return;}list.innerHTML=generatedKeys.map(k=>{const usesDisplay=k.uses===-1?'∞':String(k.uses);return`<div class="key-row"><span class="key-code">${k.code}</span><span class="key-tier tier-${k.tier}">${k.tier.toUpperCase()}</span><span class="key-uses">${usesDisplay} use${usesDisplay==='1'?'':'s'}</span><span class="key-status">● ACTIVE</span><button class="key-copy" onclick="copyKey('${k.code}')" title="Copy"><i class="ti ti-copy"></i></button><button class="key-del" onclick="revokeKey('${k._id}')" title="Revoke"><i class="ti ti-trash"></i></button></div>`;}).join('');}
+function renderKeys(){
+  const list=document.getElementById('keyList');
+  if(!generatedKeys.length){list.innerHTML='<div class="empty-keys">No keys generated yet.</div>';return;}
+  list.innerHTML=generatedKeys.map(k=>{
+    const usesDisplay=k.uses===-1?'∞':String(k.uses);
+    return`<div class="key-row"><span class="key-code">${k.code}</span><span class="key-tier tier-${k.tier}">${k.tier.toUpperCase()}</span><span class="key-uses">${usesDisplay} use${usesDisplay==='1'?'':'s'}</span><span class="key-status">● ACTIVE</span><button class="key-copy" onclick="copyKey('${k.code}')" title="Copy"><i class="ti ti-copy"></i></button><button class="key-del" onclick="revokeKey('${k._id}')" title="Revoke"><i class="ti ti-trash"></i></button></div>`;
+  }).join('');
+}
 function copyKey(code){navigator.clipboard.writeText(code).then(()=>toast('Copied: '+code,'success'));}
-async function revokeKey(id){try{await fetch(`${API}/api/admin/keys/${id}/revoke`,{method:'POST',headers:{Authorization:'Bearer '+token()}});generatedKeys=generatedKeys.filter(k=>k._id!==id);renderKeys();toast('Key revoked','');}catch{toast('Server error','error');}}
+async function revokeKey(id){
+  try{await fetch(`${API}/api/admin/keys/${id}/revoke`,{method:'POST',headers:{Authorization:'Bearer '+token()}});generatedKeys=generatedKeys.filter(k=>k._id!==id);renderKeys();toast('Key revoked','');}
+  catch{toast('Server error','error');}
+}
 
 // ── ADMIN GIVE ──
-async function adminGivePro(){const username=document.getElementById('giveUsername').value.trim();if(!username){toast('Enter a username','error');return;}try{const res=await fetch(`${API}/api/admin/give/pro`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({username})});const d=await res.json();res.ok?toast(`⭐ PRO given to ${username}`,'pro'):toast(d.error||'Failed','error');if(res.ok)showGiveConfirm();}catch{toast('Server error','error');}}
-async function adminGivePoints(){const username=document.getElementById('giveUsername').value.trim();const pts=parseInt(document.getElementById('givePoints').value)||0;if(!username||pts<=0){toast('Enter username and points','error');return;}try{const res=await fetch(`${API}/api/admin/give/points`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({username,points:pts})});const d=await res.json();if(res.ok){toast(`+${pts} pts given to ${username}`,'success');if(username===currentUsername){userPoints=d.points;updatePtsUI();}showGiveConfirm();}else{toast(d.error||'Failed','error');}}catch{toast('Server error','error');}}
+async function adminGivePro(){
+  const username=document.getElementById('giveUsername').value.trim();
+  if(!username){toast('Enter a username','error');return;}
+  try{
+    const res=await fetch(`${API}/api/admin/give/pro`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({username})});
+    const d=await res.json();
+    res.ok?toast(`⭐ PRO given to ${username}`,'pro'):toast(d.error||'Failed','error');
+    if(res.ok)showGiveConfirm();
+  }catch{toast('Server error','error');}
+}
+async function adminGivePoints(){
+  const username=document.getElementById('giveUsername').value.trim();const pts=parseInt(document.getElementById('givePoints').value)||0;
+  if(!username||pts<=0){toast('Enter username and points','error');return;}
+  try{
+    const res=await fetch(`${API}/api/admin/give/points`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({username,points:pts})});
+    const d=await res.json();
+    if(res.ok){toast(`+${pts} pts given to ${username}`,'success');if(username===currentUsername){userPoints=d.points;updatePtsUI();}showGiveConfirm();}
+    else{toast(d.error||'Failed','error');}
+  }catch{toast('Server error','error');}
+}
 function showGiveConfirm(){const c=document.getElementById('giveConfirm');c.classList.add('show');setTimeout(()=>c.classList.remove('show'),2000);}
 
 // ── EVENTS ──
-async function loadEvents(){try{const res=await fetch(`${API}/api/events`,{headers:{Authorization:'Bearer '+token()}});serverEvents=await res.json();renderEvents();}catch{renderEvents();}}
-function renderEvents(){
-  const list=document.getElementById('eventsList');if(!serverEvents.length){list.innerHTML='<div class="ev-empty">No events scheduled yet.</div>';return;}
-  list.innerHTML=serverEvents.map(ev=>{const d=new Date(ev.date+'T12:00:00');const mon=months[d.getMonth()];const day=d.getDate();const going=ev.rsvps&&ev.rsvps.includes(currentUsername);const pips=(ev.rsvps||[]).slice(0,3).map((r,i)=>`<div class="pip" style="background:${pipColors[i%pipColors.length]}">${r.slice(0,2).toUpperCase()}</div>`).join('');const extra=(ev.rsvps||[]).length>3?`<div class="pip" style="background:var(--panel2);color:var(--muted);border:1px solid var(--border2);font-size:9px">+${ev.rsvps.length-3}</div>`:'';return`<div class="event-card"><div class="ev-date"><span class="ev-month">${mon}</span><span class="ev-day">${day}</span></div><div><div class="ev-title">${escHtml(ev.title)}</div><div class="ev-meta"><span><i class="ti ti-user"></i>${escHtml(ev.host)}</span><span><i class="ti ti-clock"></i>${ev.time} UTC</span></div><div class="ev-desc">${escHtml(ev.desc)}</div></div><div class="ev-right"><button class="rsvp-btn ${going?'going':''}" onclick="toggleRsvp('${ev._id}')">${going?'<i class="ti ti-check"></i> Going':'RSVP'}</button><div class="attendee-pips">${pips}${extra}</div></div></div>`;}).join('');
+async function loadEvents(){
+  try{const res=await fetch(`${API}/api/events`,{headers:{Authorization:'Bearer '+token()}});serverEvents=await res.json();renderEvents();}
+  catch{renderEvents();}
 }
-async function toggleRsvp(id){try{const res=await fetch(`${API}/api/events/${id}/rsvp`,{method:'POST',headers:{Authorization:'Bearer '+token()}});const d=await res.json();if(res.ok){const ev=serverEvents.find(e=>e._id===id);if(ev)ev.rsvps=d.rsvps;renderEvents();}}catch{toast('Server error','error');}}
-async function addEvent(){const title=document.getElementById('newEvTitle').value.trim();const host=document.getElementById('newEvHost').value.trim();const date=document.getElementById('newEvDate').value;const time=document.getElementById('newEvTime').value;const desc=document.getElementById('newEvDesc').value.trim();if(!title||!host||!date||!time){toast('Fill all fields','error');return;}try{const res=await fetch(`${API}/api/events`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({title,host,date,time,desc:desc||'No description.'})});const d=await res.json();if(!res.ok){toast(d.error||'Failed','error');return;}serverEvents.push(d);['newEvTitle','newEvHost','newEvDate','newEvTime','newEvDesc'].forEach(id=>document.getElementById(id).value='');const chip=document.getElementById('evConfirm');chip.classList.add('show');setTimeout(()=>chip.classList.remove('show'),2000);renderAdminEvents();toast('Event added!','success');}catch{toast('Server error','error');}}
-async function deleteEvent(id){try{await fetch(`${API}/api/events/${id}`,{method:'DELETE',headers:{Authorization:'Bearer '+token()}});serverEvents=serverEvents.filter(e=>e._id!==id);renderAdminEvents();toast('Event removed.','');}catch{toast('Server error','error');}}
-function renderAdminEvents(){const el=document.getElementById('adminEvList');if(!serverEvents.length){el.innerHTML='<div style="font-size:13px;color:var(--muted);font-family:\'DM Mono\',monospace">No events yet.</div>';return;}el.innerHTML=serverEvents.map(ev=>`<div class="admin-ev-row"><div><div class="admin-ev-name">${escHtml(ev.title)}</div><div class="admin-ev-date">${ev.date} · ${ev.time} UTC · ${escHtml(ev.host)}</div></div><button class="del-ev-btn" onclick="deleteEvent('${ev._id}')"><i class="ti ti-trash"></i> Remove</button></div>`).join('');}
+function renderEvents(){
+  const list=document.getElementById('eventsList');
+  if(!serverEvents.length){list.innerHTML='<div class="ev-empty">No events scheduled yet.</div>';return;}
+  list.innerHTML=serverEvents.map(ev=>{
+    const d=new Date(ev.date+'T12:00:00');const mon=months[d.getMonth()];const day=d.getDate();
+    const going=ev.rsvps&&ev.rsvps.includes(currentUsername);
+    const pips=(ev.rsvps||[]).slice(0,3).map((r,i)=>`<div class="pip" style="background:${pipColors[i%pipColors.length]}">${r.slice(0,2).toUpperCase()}</div>`).join('');
+    const extra=(ev.rsvps||[]).length>3?`<div class="pip" style="background:var(--panel2);color:var(--muted);border:1px solid var(--border2);font-size:9px">+${ev.rsvps.length-3}</div>`:'';
+    return`<div class="event-card"><div class="ev-date"><span class="ev-month">${mon}</span><span class="ev-day">${day}</span></div><div><div class="ev-title">${escHtml(ev.title)}</div><div class="ev-meta"><span><i class="ti ti-user"></i>${escHtml(ev.host)}</span><span><i class="ti ti-clock"></i>${ev.time} UTC</span></div><div class="ev-desc">${escHtml(ev.desc)}</div></div><div class="ev-right"><button class="rsvp-btn ${going?'going':''}" onclick="toggleRsvp('${ev._id}')">${going?'<i class="ti ti-check"></i> Going':'RSVP'}</button><div class="attendee-pips">${pips}${extra}</div></div></div>`;
+  }).join('');
+}
+async function toggleRsvp(id){
+  try{const res=await fetch(`${API}/api/events/${id}/rsvp`,{method:'POST',headers:{Authorization:'Bearer '+token()}});const d=await res.json();if(res.ok){const ev=serverEvents.find(e=>e._id===id);if(ev)ev.rsvps=d.rsvps;renderEvents();}}
+  catch{toast('Server error','error');}
+}
+async function addEvent(){
+  const title=document.getElementById('newEvTitle').value.trim();const host=document.getElementById('newEvHost').value.trim();
+  const date=document.getElementById('newEvDate').value;const time=document.getElementById('newEvTime').value;const desc=document.getElementById('newEvDesc').value.trim();
+  if(!title||!host||!date||!time){toast('Fill all fields','error');return;}
+  try{
+    const res=await fetch(`${API}/api/events`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({title,host,date,time,desc:desc||'No description.'})});
+    const d=await res.json();
+    if(!res.ok){toast(d.error||'Failed','error');return;}
+    serverEvents.push(d);
+    ['newEvTitle','newEvHost','newEvDate','newEvTime','newEvDesc'].forEach(id=>document.getElementById(id).value='');
+    const chip=document.getElementById('evConfirm');chip.classList.add('show');setTimeout(()=>chip.classList.remove('show'),2000);
+    renderAdminEvents();toast('Event added!','success');
+  }catch{toast('Server error','error');}
+}
+async function deleteEvent(id){
+  try{
+    await fetch(`${API}/api/events/${id}`,{method:'DELETE',headers:{Authorization:'Bearer '+token()}});
+    serverEvents=serverEvents.filter(e=>e._id!==id);renderAdminEvents();toast('Event removed.','');
+  }catch{toast('Server error','error');}
+}
+function renderAdminEvents(){
+  const el=document.getElementById('adminEvList');
+  if(!serverEvents.length){el.innerHTML='<div style="font-size:13px;color:var(--muted);font-family:\'DM Mono\',monospace">No events yet.</div>';return;}
+  el.innerHTML=serverEvents.map(ev=>`<div class="admin-ev-row"><div><div class="admin-ev-name">${escHtml(ev.title)}</div><div class="admin-ev-date">${ev.date} · ${ev.time} UTC · ${escHtml(ev.host)}</div></div><button class="del-ev-btn" onclick="deleteEvent('${ev._id}')"><i class="ti ti-trash"></i> Remove</button></div>`).join('');
+}
+
+// ── BADGE SYSTEM ──
+function selectBadgeColor(el){
+  document.querySelectorAll('.badge-color-btn').forEach(b=>b.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedBadgeColor=el.dataset.color;selectedBadgeTextColor=el.dataset.text;
+  updateBadgePreview();
+}
+function updateBadgePreview(){
+  const emoji=document.getElementById('badgeEmoji').value||'🏅';
+  const name=document.getElementById('badgeName').value||'Badge Name';
+  const prev=document.getElementById('badgeLivePreview');
+  const hex=selectedBadgeColor;
+  const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);
+  prev.style.background=`rgba(${r},${g},${b},0.18)`;
+  prev.style.borderColor=`rgba(${r},${g},${b},0.45)`;
+  prev.style.color=selectedBadgeTextColor==='#000'?hex:'var(--text)';
+  prev.textContent=`${emoji} ${name}`;
+}
+function toggleClaimSettings(){
+  const on=document.getElementById('badgeClaimable').checked;
+  document.getElementById('claimSettingsFields').style.display=on?'':'none';
+}
+function toggleEarnBy(btn){
+  btn.classList.toggle('selected');
+  const val=btn.dataset.val;
+  if(btn.classList.contains('selected'))activeEarnByTags.push(val);
+  else activeEarnByTags=activeEarnByTags.filter(v=>v!==val);
+}
+function createBadge(){
+  const emoji=document.getElementById('badgeEmoji').value.trim();
+  const name=document.getElementById('badgeName').value.trim();
+  const desc=document.getElementById('badgeDesc').value.trim();
+  if(!emoji||!name){toast('Enter emoji and name','error');return;}
+  const claimable=document.getElementById('badgeClaimable').checked;
+  const expiry=document.getElementById('badgeExpiry').value||null;
+  const earnByCustom=document.getElementById('earnByCustom').value.trim();
+  const earnBy=[...activeEarnByTags,...(earnByCustom?[earnByCustom]:[])];
+  const badge={id:'badge_'+Date.now(),emoji,name,desc,color:selectedBadgeColor,textColor:selectedBadgeTextColor,claimable,expiry,earnBy,createdAt:new Date().toISOString(),recipients:[]};
+  createdBadges.unshift(badge);localStorage.setItem('vs_badges',JSON.stringify(createdBadges));
+  renderAdminBadgeList();populateGiveBadgeSelect();
+  document.getElementById('badgeEmoji').value='';document.getElementById('badgeName').value='';document.getElementById('badgeDesc').value='';
+  document.getElementById('badgeClaimable').checked=false;document.getElementById('badgeExpiry').value='';document.getElementById('earnByCustom').value='';
+  activeEarnByTags=[];document.querySelectorAll('.earn-by-tag').forEach(t=>t.classList.remove('selected'));
+  document.getElementById('claimSettingsFields').style.display='none';updateBadgePreview();
+  const c=document.getElementById('badgeCreateConfirm');c.classList.add('show');setTimeout(()=>c.classList.remove('show'),2000);
+  toast(`🏅 Badge "${name}" created!`,'success');
+}
+function renderAdminBadgeList(){
+  const el=document.getElementById('adminBadgeList');
+  if(!createdBadges.length){el.innerHTML='<div style="font-size:13px;color:var(--muted);font-family:\'DM Mono\',monospace">No badges created yet.</div>';return;}
+  el.innerHTML=createdBadges.map(b=>{
+    const r=parseInt(b.color.slice(1,3),16),g=parseInt(b.color.slice(3,5),16),bv=parseInt(b.color.slice(5,7),16);
+    const bgStyle=`background:rgba(${r},${g},${bv},0.18);border-color:rgba(${r},${g},${bv},0.45);color:var(--text)`;
+    const claimInfo=b.claimable?`<span style="font-size:10px;font-family:'DM Mono',monospace;color:var(--green)">● CLAIMABLE${b.expiry?' until '+new Date(b.expiry).toLocaleString():''}</span>`:'';
+    const earnInfo=b.earnBy&&b.earnBy.length?`<span style="font-size:11px;font-family:'DM Mono',monospace;color:var(--muted)">Earn by: ${b.earnBy.join(', ')}</span>`:'';
+    const given=b.recipients&&b.recipients.length?`<span style="font-size:10px;font-family:'DM Mono',monospace;color:var(--muted)">${b.recipients.length} given</span>`:'';
+    return `<div class="badge-list-row"><span class="custom-badge-tag" style="${bgStyle}">${b.emoji} ${b.name}</span><div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">${claimInfo}${earnInfo?'<div>'+earnInfo+'</div>':''}${given}</div><div class="badge-list-actions"><button class="del-badge-btn" onclick="deleteBadge('${b.id}')"><i class="ti ti-trash"></i> Remove</button></div></div>`;
+  }).join('');
+}
+function deleteBadge(id){
+  createdBadges=createdBadges.filter(b=>b.id!==id);
+  localStorage.setItem('vs_badges',JSON.stringify(createdBadges));
+  renderAdminBadgeList();populateGiveBadgeSelect();toast('Badge removed','');
+}
+function populateGiveBadgeSelect(){
+  const sel=document.getElementById('giveBadgeSelect');
+  if(!createdBadges.length){sel.innerHTML='<option value="">— No badges created yet —</option>';return;}
+  sel.innerHTML=createdBadges.map(b=>`<option value="${b.id}">${b.emoji} ${b.name}</option>`).join('');
+}
+async function adminGiveBadge(){
+  const username=document.getElementById('giveBadgeUsername').value.trim();
+  const badgeId=document.getElementById('giveBadgeSelect').value;
+  if(!username||!badgeId){toast('Select a user and badge','error');return;}
+  const badge=createdBadges.find(b=>b.id===badgeId);if(!badge){toast('Badge not found','error');return;}
+  if(!badge.recipients)badge.recipients=[];
+  if(!badge.recipients.includes(username))badge.recipients.push(username);
+  localStorage.setItem('vs_badges',JSON.stringify(createdBadges));
+  renderAdminBadgeList();
+  try{await fetch(`${API}/api/admin/give/badge`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({username,badge:{id:badge.id,emoji:badge.emoji,name:badge.name,color:badge.color,textColor:badge.textColor,desc:badge.desc,earnBy:badge.earnBy}})});}catch{}
+  const c=document.getElementById('badgeGiveConfirm');c.classList.add('show');setTimeout(()=>c.classList.remove('show'),2000);
+  toast(`🏅 "${badge.name}" given to ${username}`,'success');
+}
+function loadAdminBadges(){renderAdminBadgeList();populateGiveBadgeSelect();}
 
 // ══════════════════════════════════════
 // ── GAME: MEMORY ──
@@ -1424,15 +1540,21 @@ function renderMemBoard(){
 function flipCard(i){
   if(!memCanFlip||!memActive)return;const card=document.getElementById('mc-'+i);if(card.classList.contains('flipped')||card.classList.contains('matched'))return;
   card.classList.add('flipped');memFlipped.push(i);
-  if(memFlipped.length===2){memMoves++;document.getElementById('moveCount').textContent=memMoves;memCanFlip=false;const[a,b]=memFlipped;
-    if(memCards[a]===memCards[b]){setTimeout(()=>{document.getElementById('mc-'+a).classList.add('matched');document.getElementById('mc-'+b).classList.add('matched');memFlipped=[];memMatched++;memCanFlip=true;if(memMatched===8)winMemory();},400);}
-    else{setTimeout(()=>{document.getElementById('mc-'+a).classList.remove('flipped');document.getElementById('mc-'+b).classList.remove('flipped');memFlipped=[];memCanFlip=true;},800);}
+  if(memFlipped.length===2){
+    memMoves++;document.getElementById('moveCount').textContent=memMoves;memCanFlip=false;
+    const[a,b]=memFlipped;
+    if(memCards[a]===memCards[b]){
+      setTimeout(()=>{document.getElementById('mc-'+a).classList.add('matched');document.getElementById('mc-'+b).classList.add('matched');memFlipped=[];memMatched++;memCanFlip=true;if(memMatched===8)winMemory();},400);
+    } else {
+      setTimeout(()=>{document.getElementById('mc-'+a).classList.remove('flipped');document.getElementById('mc-'+b).classList.remove('flipped');memFlipped=[];memCanFlip=true;},800);
+    }
   }
 }
 async function winMemory(){
   clearInterval(memTimer);memActive=false;document.getElementById('startBtn').disabled=false;
   try{const res=await fetch(`${API}/api/me/points/add`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({amount:100})});const d=await res.json();if(res.ok){userPoints=d.points;updatePtsUI();}}catch{}
-  document.getElementById('memWinPts').textContent=`+100 pts — total: ${userPoints}`;document.getElementById('memWinBanner').style.display='flex';
+  document.getElementById('memWinPts').textContent=`+100 pts — total: ${userPoints}`;
+  document.getElementById('memWinBanner').style.display='flex';
   toast('🎉 Memory complete! +100 pts','success');
 }
 
@@ -1443,8 +1565,7 @@ function renderSnakeIdle(){
   const canvas=document.getElementById('snakeCanvas');const ctx=canvas.getContext('2d');ctx.clearRect(0,0,400,400);
   ctx.fillStyle='rgba(255,255,255,0.04)';ctx.fillRect(0,0,400,400);ctx.fillStyle='rgba(255,255,255,0.15)';ctx.font='24px Rajdhani';ctx.textAlign='center';ctx.fillText('Press Start to play',200,200);
 }
-function placeFood(){
-  let fx,fy,tries=0;do{fx=Math.floor(Math.random()*SNAKE_COLS);fy=Math.floor(Math.random()*SNAKE_ROWS);tries++;}while(snake.some(s=>s.x===fx&&s.y===fy)&&tries<100);snakeFood={x:fx,y:fy};}
+function placeFood(){let fx,fy,tries=0;do{fx=Math.floor(Math.random()*SNAKE_COLS);fy=Math.floor(Math.random()*SNAKE_ROWS);tries++;}while(snake.some(s=>s.x===fx&&s.y===fy)&&tries<100);snakeFood={x:fx,y:fy};}
 function startSnake(){
   if(snakeActive)return;snakeActive=true;snakeScore=0;document.getElementById('snakeScore').textContent=0;
   snake=[{x:10,y:10},{x:9,y:10},{x:8,y:10}];snakeDir={x:1,y:0};snakeNextDir={x:1,y:0};placeFood();
@@ -1461,29 +1582,24 @@ function snakeTick(){
 }
 function drawSnake(){
   const canvas=document.getElementById('snakeCanvas');const ctx=canvas.getContext('2d');const C=SNAKE_CELL;ctx.clearRect(0,0,400,400);
-  // grid
-  ctx.strokeStyle='rgba(255,255,255,0.03)';for(let i=0;i<SNAKE_COLS;i++){ctx.beginPath();ctx.moveTo(i*C,0);ctx.lineTo(i*C,400);ctx.stroke();}
+  ctx.strokeStyle='rgba(255,255,255,0.03)';
+  for(let i=0;i<SNAKE_COLS;i++){ctx.beginPath();ctx.moveTo(i*C,0);ctx.lineTo(i*C,400);ctx.stroke();}
   for(let j=0;j<SNAKE_ROWS;j++){ctx.beginPath();ctx.moveTo(0,j*C);ctx.lineTo(400,j*C);ctx.stroke();}
-  // food
   ctx.fillStyle='#ef4444';ctx.beginPath();ctx.arc(snakeFood.x*C+C/2,snakeFood.y*C+C/2,C/2-2,0,Math.PI*2);ctx.fill();
-  // snake
   snake.forEach((s,i)=>{const alpha=1-i/(snake.length+4);ctx.fillStyle=i===0?'#22c55e':`rgba(34,197,94,${Math.max(0.2,alpha)})`;ctx.beginPath();ctx.roundRect(s.x*C+2,s.y*C+2,C-4,C-4,3);ctx.fill();});
 }
 async function gameOverSnake(){
   clearInterval(snakeLoop);snakeActive=false;document.getElementById('snakeStartBtn').disabled=false;
   if(snakeScore>snakeHi){snakeHi=snakeScore;localStorage.setItem('vs_snakeHi',snakeHi);document.getElementById('snakeHi').textContent=snakeHi;}
   const ptsEarned=snakeScore;
-  if(ptsEarned>0){
-    try{const res=await fetch(`${API}/api/me/points/add`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({amount:ptsEarned})});const d=await res.json();if(res.ok){userPoints=d.points;updatePtsUI();}}catch{}
-  }
+  if(ptsEarned>0){try{const res=await fetch(`${API}/api/me/points/add`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({amount:ptsEarned})});const d=await res.json();if(res.ok){userPoints=d.points;updatePtsUI();}}catch{}}
   document.getElementById('snakeWinText').textContent=`Game over! Score: ${snakeScore}`;
   document.getElementById('snakeWinPts').textContent=`+${ptsEarned} pts — total: ${userPoints}`;
   document.getElementById('snakeWinBanner').style.display='flex';
-  // draw game over
-  const canvas=document.getElementById('snakeCanvas');const ctx=canvas.getContext('2d');ctx.fillStyle='rgba(0,0,0,0.55)';ctx.fillRect(0,0,400,400);ctx.fillStyle='#fff';ctx.font='bold 28px Rajdhani';ctx.textAlign='center';ctx.fillText('GAME OVER',200,185);ctx.font='18px Rajdhani';ctx.fillStyle='rgba(255,255,255,0.6)';ctx.fillText(`Score: ${snakeScore}`,200,220);
+  const canvas=document.getElementById('snakeCanvas');const ctx=canvas.getContext('2d');
+  ctx.fillStyle='rgba(0,0,0,0.55)';ctx.fillRect(0,0,400,400);ctx.fillStyle='#fff';ctx.font='bold 28px Rajdhani';ctx.textAlign='center';ctx.fillText('GAME OVER',200,185);ctx.font='18px Rajdhani';ctx.fillStyle='rgba(255,255,255,0.6)';ctx.fillText(`Score: ${snakeScore}`,200,220);
   toast(`🐍 Game Over — +${ptsEarned} pts`,'success');
 }
-// Snake keyboard controls
 document.addEventListener('keydown',e=>{
   if(!snakeActive)return;
   const map={ArrowUp:{x:0,y:-1},ArrowDown:{x:0,y:1},ArrowLeft:{x:-1,y:0},ArrowRight:{x:1,y:0},w:{x:0,y:-1},s:{x:0,y:1},a:{x:-1,y:0},d:{x:1,y:0},W:{x:0,y:-1},S:{x:0,y:1},A:{x:-1,y:0},D:{x:1,y:0}};
@@ -1501,22 +1617,32 @@ function resetReactionUI(){
   document.getElementById('rtStartBtn').style.display='';
 }
 function startReaction(){
-  rtActive=true;rtRound=0;rtResults=[];document.getElementById('rtStartBtn').style.display='none';document.getElementById('rtWinBanner').style.display='none';document.getElementById('rtResults').innerHTML='';
+  rtActive=true;rtRound=0;rtResults=[];
+  document.getElementById('rtStartBtn').style.display='none';document.getElementById('rtWinBanner').style.display='none';document.getElementById('rtResults').innerHTML='';
   nextReactionRound();
 }
 function nextReactionRound(){
-  if(rtRound>=RT_ROUNDS){endReaction();return;}rtRound++;document.getElementById('rtRound').textContent=`${rtRound}/${RT_ROUNDS}`;
+  if(rtRound>=RT_ROUNDS){endReaction();return;}
+  rtRound++;document.getElementById('rtRound').textContent=`${rtRound}/${RT_ROUNDS}`;
   const arena=document.getElementById('reactionArena');arena.className='reaction-arena wait';
   document.getElementById('rtDisplay').textContent='⏳';document.getElementById('rtSub').textContent='Wait for green...';
   rtWaiting=true;rtGo=false;
-  const delay=1000+Math.random()*4000;rtTimeout=setTimeout(()=>{arena.className='reaction-arena go';document.getElementById('rtDisplay').textContent='🟢';document.getElementById('rtSub').textContent='CLICK NOW!';rtStart=performance.now();rtGo=true;},delay);
+  const delay=1000+Math.random()*4000;
+  rtTimeout=setTimeout(()=>{arena.className='reaction-arena go';document.getElementById('rtDisplay').textContent='🟢';document.getElementById('rtSub').textContent='CLICK NOW!';rtStart=performance.now();rtGo=true;},delay);
 }
 function reactionClick(){
   if(!rtActive)return;
-  if(rtWaiting&&!rtGo){clearTimeout(rtTimeout);rtWaiting=false;const arena=document.getElementById('reactionArena');arena.className='reaction-arena idle';document.getElementById('rtDisplay').textContent='😅';document.getElementById('rtSub').textContent='Too early! Wait for green...';setTimeout(nextReactionRound,1200);return;}
-  if(rtGo){const ms=Math.round(performance.now()-rtStart);rtGo=false;rtWaiting=false;rtResults.push(ms);
+  if(rtWaiting&&!rtGo){
+    clearTimeout(rtTimeout);rtWaiting=false;
+    const arena=document.getElementById('reactionArena');arena.className='reaction-arena idle';
+    document.getElementById('rtDisplay').textContent='😅';document.getElementById('rtSub').textContent='Too early! Wait for green...';
+    setTimeout(nextReactionRound,1200);return;
+  }
+  if(rtGo){
+    const ms=Math.round(performance.now()-rtStart);rtGo=false;rtWaiting=false;rtResults.push(ms);
     const best=Math.min(...rtResults);document.getElementById('rtBest').textContent=best+'ms';
-    const arena=document.getElementById('reactionArena');arena.className='reaction-arena result';document.getElementById('rtDisplay').textContent=ms+'ms';document.getElementById('rtSub').textContent=ms<200?'⚡ Lightning!':ms<350?'Great!':ms<500?'Not bad':'Slow...';
+    const arena=document.getElementById('reactionArena');arena.className='reaction-arena result';
+    document.getElementById('rtDisplay').textContent=ms+'ms';document.getElementById('rtSub').textContent=ms<200?'⚡ Lightning!':ms<350?'Great!':ms<500?'Not bad':'Slow...';
     renderRtResults();setTimeout(nextReactionRound,1000);
   }
 }
@@ -1528,16 +1654,17 @@ async function endReaction(){
   rtActive=false;const avg=Math.round(rtResults.reduce((a,b)=>a+b,0)/rtResults.length);const best=Math.min(...rtResults);
   let pts=avg<200?150:avg<300?100:avg<400?60:avg<500?30:10;
   try{const res=await fetch(`${API}/api/me/points/add`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({amount:pts})});const d=await res.json();if(res.ok){userPoints=d.points;updatePtsUI();}}catch{}
-  document.getElementById('rtWinText').textContent=`Avg: ${avg}ms · Best: ${best}ms`;document.getElementById('rtWinPts').textContent=`+${pts} pts — total: ${userPoints}`;
+  document.getElementById('rtWinText').textContent=`Avg: ${avg}ms · Best: ${best}ms`;
+  document.getElementById('rtWinPts').textContent=`+${pts} pts — total: ${userPoints}`;
   document.getElementById('rtWinBanner').style.display='flex';document.getElementById('rtStartBtn').style.display='';
-  document.getElementById('reactionArena').className='reaction-arena idle';document.getElementById('rtDisplay').textContent='🏆';document.getElementById('rtSub').textContent='Done! Press Start to play again.';
+  document.getElementById('reactionArena').className='reaction-arena idle';
+  document.getElementById('rtDisplay').textContent='🏆';document.getElementById('rtSub').textContent='Done! Press Start to play again.';
   toast(`⚡ Reaction done! Avg ${avg}ms · +${pts} pts`,'success');
 }
 
 // ══════════════════════════════════════
 // ── GAME: TYPING ──
 // ══════════════════════════════════════
-let typingText='';let typingUserInput='';let typingLiveTimer=null;
 function resetTypingUI(){
   clearInterval(typingLiveTimer);typingActive=false;typingUserInput='';typingStart=0;
   document.getElementById('typingDisplay').innerHTML='<span style="color:var(--muted);font-size:14px">Press Start to begin the typing test...</span>';
@@ -1554,25 +1681,54 @@ function startTyping(){
   clearInterval(typingLiveTimer);typingLiveTimer=setInterval(updateTypingStats,500);
 }
 function renderTypingDisplay(){
-  const el=document.getElementById('typingDisplay');const chars=typingText.split('');const input=typingUserInput.split('');
-  let html='';chars.forEach((ch,i)=>{if(i<input.length){if(input[i]===ch)html+=`<span class="t-correct">${escHtml(ch)}</span>`;else html+=`<span class="t-wrong">${escHtml(ch)}</span>`;}else if(i===input.length){html+=`<span class="t-cursor">${escHtml(ch)}</span>`;}else{html+=`<span style="color:var(--muted)">${escHtml(ch)}</span>}`;}});
+  const el=document.getElementById('typingDisplay');
+  const chars=typingText.split('');
+  const input=typingUserInput.split('');
+  let html='';
+  chars.forEach((ch,i)=>{
+    if(i<input.length){
+      if(input[i]===ch)html+=`<span class="t-correct">${escHtml(ch)}</span>`;
+      else html+=`<span class="t-wrong">${escHtml(ch)}</span>`;
+    } else if(i===input.length){
+      html+=`<span class="t-cursor">${escHtml(ch)}</span>`;
+    } else {
+      html+=`<span style="color:var(--muted)">${escHtml(ch)}</span>`;
+    }
+  });
   el.innerHTML=html;
 }
 document.getElementById('typingInput').addEventListener('input',function(){
-  if(!typingActive)return;if(!typingStart)typingStart=performance.now();
-  const val=this.value;if(val.length>typingText.length){this.value=typingUserInput;return;}
+  if(!typingActive)return;
+  if(!typingStart)typingStart=performance.now();
+  const val=this.value;
+  if(val.length>typingText.length){this.value=typingUserInput;return;}
   typingUserInput=val;renderTypingDisplay();updateTypingStats();
   if(typingUserInput.length===typingText.length){clearInterval(typingLiveTimer);finishTyping();}
 });
 function updateTypingStats(){
-  if(!typingStart||!typingActive)return;const elapsed=(performance.now()-typingStart)/1000/60;const wordCount=typingUserInput.trim().split(/\s+/).length;const wpm=elapsed>0?Math.round(wordCount/elapsed):0;document.getElementById('liveWpm').textContent=wpm;
-  const correct=typingUserInput.split('').filter((c,i)=>c===typingText[i]).length;const acc=typingUserInput.length?Math.round((correct/typingUserInput.length)*100):100;document.getElementById('liveAcc').textContent=acc+'%';
+  if(!typingStart||!typingActive)return;
+  const elapsed=(performance.now()-typingStart)/1000/60;
+  const wordCount=typingUserInput.trim().split(/\s+/).length;
+  const wpm=elapsed>0?Math.round(wordCount/elapsed):0;
+  document.getElementById('liveWpm').textContent=wpm;
+  const correct=typingUserInput.split('').filter((c,i)=>c===typingText[i]).length;
+  const acc=typingUserInput.length?Math.round((correct/typingUserInput.length)*100):100;
+  document.getElementById('liveAcc').textContent=acc+'%';
 }
 async function finishTyping(){
-  typingActive=false;const elapsed=(performance.now()-typingStart)/1000/60;const words=typingText.trim().split(/\s+/).length;const wpm=Math.round(words/elapsed);const correct=typingUserInput.split('').filter((c,i)=>c===typingText[i]).length;const acc=Math.round((correct/typingText.length)*100);
+  typingActive=false;
+  const elapsed=(performance.now()-typingStart)/1000/60;
+  const words=typingText.trim().split(/\s+/).length;
+  const wpm=Math.round(words/elapsed);
+  const correct=typingUserInput.split('').filter((c,i)=>c===typingText[i]).length;
+  const acc=Math.round((correct/typingText.length)*100);
   const pts=wpm>80?200:wpm>60?150:wpm>40?100:wpm>20?60:30;
   try{const res=await fetch(`${API}/api/me/points/add`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({amount:pts})});const d=await res.json();if(res.ok){userPoints=d.points;updatePtsUI();}}catch{}
-  document.getElementById('typingWinText').textContent=`${wpm} WPM · ${acc}% accuracy`;document.getElementById('typingWinPts').textContent=`+${pts} pts — total: ${userPoints}`;document.getElementById('typingWinBanner').style.display='flex';document.getElementById('typingStartBtn').style.display='';document.getElementById('typingInput').disabled=true;
+  document.getElementById('typingWinText').textContent=`${wpm} WPM · ${acc}% accuracy`;
+  document.getElementById('typingWinPts').textContent=`+${pts} pts — total: ${userPoints}`;
+  document.getElementById('typingWinBanner').style.display='flex';
+  document.getElementById('typingStartBtn').style.display='';
+  document.getElementById('typingInput').disabled=true;
   toast(`⌨ Typing done! ${wpm} WPM · +${pts} pts`,'success');
 }
 
@@ -1580,24 +1736,24 @@ async function finishTyping(){
 // ── CHAT ──
 // ══════════════════════════════════════
 async function loadChat(){
-  try{
-    const res=await fetch(`${API}/api/chat`,{headers:{Authorization:'Bearer '+token()}});
-    serverMessages=await res.json();
-    renderChat();
-    setTimeout(scrollChatBottom,50);
-  }catch{renderChat();}
+  try{const res=await fetch(`${API}/api/chat`,{headers:{Authorization:'Bearer '+token()}});serverMessages=await res.json();renderChat();setTimeout(scrollChatBottom,50);}
+  catch{renderChat();}
 }
 function fmtDate(ts){return new Date(ts).toLocaleDateString('en-GB',{weekday:'long',year:'numeric',month:'long',day:'numeric'});}
 function fmtTime(ts){return new Date(ts).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});}
 function chatRankLabel(r,isPro){if(r==='owner')return`<span class="msg-rank rank-owner">OWNER</span>`;if(r==='admin')return`<span class="msg-rank rank-admin">ADMIN</span>`;if(isPro)return`<span class="msg-rank rank-pro">⭐ PRO</span>`;return`<span class="msg-rank rank-member">MEMBER</span>`;}
 function renderChat(){
-  const el=document.getElementById('chatMessages');if(!serverMessages.length){el.innerHTML='<div class="chat-empty-state"><i class="ti ti-message-circle"></i>No messages yet — say something!</div>';return;}
+  const el=document.getElementById('chatMessages');
+  if(!serverMessages.length){el.innerHTML='<div class="chat-empty-state"><i class="ti ti-message-circle"></i>No messages yet — say something!</div>';return;}
   let html='',lastDate='';
   serverMessages.forEach((msg,idx)=>{
-    if(msg.deleted)return;const dateStr=fmtDate(msg.timestamp);if(dateStr!==lastDate){html+=`<div class="chat-date-divider">${dateStr}</div>`;lastDate=dateStr;}
+    if(msg.deleted)return;
+    const dateStr=fmtDate(msg.timestamp);if(dateStr!==lastDate){html+=`<div class="chat-date-divider">${dateStr}</div>`;lastDate=dateStr;}
     const rank=(msg.rank||'user').toLowerCase();const mine=msg.author===currentUsername;const isPro=msg.isPro||false;const nameColor=isPro?'color:#fbbf24':'';
     const fx=msg.chatEffect||'';const fxClass=fx?`effect-${fx}`:'';
-    let acts='';if(isAdmin())acts+=`<button class="msg-act-btn delete-btn" onclick="deleteMessage('${msg._id}')" title="Delete"><i class="ti ti-trash"></i></button>`;if(!mine)acts+=`<button class="msg-act-btn report-btn" onclick="openReport('${msg._id}','${escHtml(msg.author)}')" title="Report"><i class="ti ti-flag"></i></button>`;
+    let acts='';
+    if(isAdmin())acts+=`<button class="msg-act-btn delete-btn" onclick="deleteMessage('${msg._id}')" title="Delete"><i class="ti ti-trash"></i></button>`;
+    if(!mine)acts+=`<button class="msg-act-btn report-btn" onclick="openReport('${msg._id}','${escHtml(msg.author)}')" title="Report"><i class="ti ti-flag"></i></button>`;
     const avatarHtml=msg.avatar?`<img src="${msg.avatar}" alt="avatar"/>`:initials(msg.author);
     html+=`<div class="chat-msg ${fxClass}" id="cmsg-${idx}"><div class="msg-avatar">${avatarHtml}</div><div class="msg-body"><div class="msg-header"><span class="msg-author" style="${nameColor}">${escHtml(msg.author)}</span>${chatRankLabel(rank,isPro)}<span class="msg-time">${fmtTime(msg.timestamp)}</span></div><div class="msg-text">${escHtml(msg.content)}</div></div>${acts?`<div class="msg-actions">${acts}</div>`:''}</div>`;
   });
@@ -1606,16 +1762,34 @@ function renderChat(){
 function scrollChatBottom(){const el=document.getElementById('chatMessages');if(el)el.scrollTop=el.scrollHeight;}
 async function sendChatMessage(){
   const inp=document.getElementById('chatInput');const content=inp.value.trim();if(!content)return;inp.value='';
-  try{const res=await fetch(`${API}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({content,chatEffect:equippedChatEffect||''})});const d=await res.json();if(res.ok){serverMessages.push(d);renderChat();scrollChatBottom();}else toast(d.error||'Failed to send','error');}catch{toast('Server offline','error');}
+  try{
+    const res=await fetch(`${API}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({content,chatEffect:equippedChatEffect||''})});
+    const d=await res.json();
+    if(res.ok){serverMessages.push(d);renderChat();scrollChatBottom();}
+    else toast(d.error||'Failed to send','error');
+  }catch{toast('Server offline','error');}
 }
-async function deleteMessage(id){try{const res=await fetch(`${API}/api/chat/${id}`,{method:'DELETE',headers:{Authorization:'Bearer '+token()}});if(res.ok){serverMessages=serverMessages.filter(m=>m._id!==id);renderChat();toast('Message deleted','');}}catch{toast('Server error','error');}}
-function openReport(id,author){pendingReport={id};document.getElementById('reportModalSub').textContent=`Reporting message from: ${author}`;document.getElementById('reportReason').value='Spam';document.getElementById('reportDetails').value='';document.getElementById('reportModal').classList.add('show');document.getElementById('reportConfirmBtn').onclick=confirmReport;}
-async function confirmReport(){if(!pendingReport)return;const reason=document.getElementById('reportReason').value;const details=document.getElementById('reportDetails').value.trim();closeModal('reportModal');try{const res=await fetch(`${API}/api/chat/${pendingReport.id}/report`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({reason,details})});(res.ok||res.status===204)?toast('Report sent','warn'):toast('Failed','error');}catch{toast('Could not reach server','error');}}
+async function deleteMessage(id){
+  try{const res=await fetch(`${API}/api/chat/${id}`,{method:'DELETE',headers:{Authorization:'Bearer '+token()}});if(res.ok){serverMessages=serverMessages.filter(m=>m._id!==id);renderChat();toast('Message deleted','');}}
+  catch{toast('Server error','error');}
+}
+function openReport(id,author){
+  pendingReport={id};document.getElementById('reportModalSub').textContent=`Reporting message from: ${author}`;
+  document.getElementById('reportReason').value='Spam';document.getElementById('reportDetails').value='';
+  document.getElementById('reportModal').classList.add('show');document.getElementById('reportConfirmBtn').onclick=confirmReport;
+}
+async function confirmReport(){
+  if(!pendingReport)return;
+  const reason=document.getElementById('reportReason').value;const details=document.getElementById('reportDetails').value.trim();
+  closeModal('reportModal');
+  try{const res=await fetch(`${API}/api/chat/${pendingReport.id}/report`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({reason,details})});(res.ok||res.status===204)?toast('Report sent','warn'):toast('Failed','error');}
+  catch{toast('Could not reach server','error');}
+}
 
 function logout(){localStorage.removeItem('token');localStorage.removeItem('username');localStorage.removeItem('rank');window.location.href='index.html';}
 document.getElementById('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChatMessage();}});
 
-// Init
+// ── INIT ──
 applyColor(selectedColor,selectedColor2);
 renderMemBoard();
 renderSnakeIdle();
@@ -1623,154 +1797,6 @@ resetReactionUI();
 resetTypingUI();
 populateChatEffectDropdown();
 load();
-  // ══════════════════════════════════════
-// ── BADGE SYSTEM ──
-// ══════════════════════════════════════
-let createdBadges = JSON.parse(localStorage.getItem('vs_badges')||'[]');
-let selectedBadgeColor = '#3b82f6';
-let selectedBadgeTextColor = '#fff';
-let activeEarnByTags = [];
-
-function selectBadgeColor(el){
-  document.querySelectorAll('.badge-color-btn').forEach(b=>b.classList.remove('selected'));
-  el.classList.add('selected');
-  selectedBadgeColor=el.dataset.color;
-  selectedBadgeTextColor=el.dataset.text;
-  updateBadgePreview();
-}
-
-function updateBadgePreview(){
-  const emoji=document.getElementById('badgeEmoji').value||'🏅';
-  const name=document.getElementById('badgeName').value||'Badge Name';
-  const prev=document.getElementById('badgeLivePreview');
-  const hex=selectedBadgeColor;
-  const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);
-  prev.style.background=`rgba(${r},${g},${b},0.18)`;
-  prev.style.borderColor=`rgba(${r},${g},${b},0.45)`;
-  prev.style.color=selectedBadgeTextColor==='#000'?hex:'var(--text)';
-  prev.textContent=`${emoji} ${name}`;
-}
-
-// Live preview on input
-['badgeEmoji','badgeName'].forEach(id=>{
-  const el=document.getElementById(id);
-  if(el)el.addEventListener('input',updateBadgePreview);
-});
-
-function toggleClaimSettings(){
-  const on=document.getElementById('badgeClaimable').checked;
-  document.getElementById('claimSettingsFields').style.display=on?'':'none';
-}
-
-function toggleEarnBy(btn){
-  btn.classList.toggle('selected');
-  const val=btn.dataset.val;
-  if(btn.classList.contains('selected'))activeEarnByTags.push(val);
-  else activeEarnByTags=activeEarnByTags.filter(v=>v!==val);
-}
-
-function createBadge(){
-  const emoji=document.getElementById('badgeEmoji').value.trim();
-  const name=document.getElementById('badgeName').value.trim();
-  const desc=document.getElementById('badgeDesc').value.trim();
-  if(!emoji||!name){toast('Enter emoji and name','error');return;}
-
-  const claimable=document.getElementById('badgeClaimable').checked;
-  const expiry=document.getElementById('badgeExpiry').value||null;
-  const earnByCustom=document.getElementById('earnByCustom').value.trim();
-  const earnBy=[...activeEarnByTags,...(earnByCustom?[earnByCustom]:[])];
-
-  const badge={
-    id:'badge_'+Date.now(),
-    emoji,name,desc,
-    color:selectedBadgeColor,
-    textColor:selectedBadgeTextColor,
-    claimable,
-    expiry,
-    earnBy,
-    createdAt:new Date().toISOString(),
-    recipients:[]
-  };
-
-  createdBadges.unshift(badge);
-  localStorage.setItem('vs_badges',JSON.stringify(createdBadges));
-  renderAdminBadgeList();
-  populateGiveBadgeSelect();
-
-  // Reset
-  document.getElementById('badgeEmoji').value='';
-  document.getElementById('badgeName').value='';
-  document.getElementById('badgeDesc').value='';
-  document.getElementById('badgeClaimable').checked=false;
-  document.getElementById('badgeExpiry').value='';
-  document.getElementById('earnByCustom').value='';
-  activeEarnByTags=[];
-  document.querySelectorAll('.earn-by-tag').forEach(t=>t.classList.remove('selected'));
-  document.getElementById('claimSettingsFields').style.display='none';
-  updateBadgePreview();
-
-  const c=document.getElementById('badgeCreateConfirm');c.classList.add('show');setTimeout(()=>c.classList.remove('show'),2000);
-  toast(`🏅 Badge "${name}" created!`,'success');
-}
-
-function renderAdminBadgeList(){
-  const el=document.getElementById('adminBadgeList');
-  if(!createdBadges.length){el.innerHTML='<div style="font-size:13px;color:var(--muted);font-family:\'DM Mono\',monospace">No badges created yet.</div>';return;}
-  el.innerHTML=createdBadges.map(b=>{
-    const r=parseInt(b.color.slice(1,3),16),g=parseInt(b.color.slice(3,5),16),bv=parseInt(b.color.slice(5,7),16);
-    const bgStyle=`background:rgba(${r},${g},${bv},0.18);border-color:rgba(${r},${g},${bv},0.45);color:var(--text)`;
-    const claimInfo=b.claimable?`<span style="font-size:10px;font-family:'DM Mono',monospace;color:var(--green)">● CLAIMABLE${b.expiry?' until '+new Date(b.expiry).toLocaleString():''}</span>`:'';
-    const earnInfo=b.earnBy&&b.earnBy.length?`<span style="font-size:11px;font-family:'DM Mono',monospace;color:var(--muted)">Earn by: ${b.earnBy.join(', ')}</span>`:'';
-    const given=b.recipients&&b.recipients.length?`<span style="font-size:10px;font-family:'DM Mono',monospace;color:var(--muted)">${b.recipients.length} given</span>`:'';
-    return `<div class="badge-list-row">
-      <span class="custom-badge-tag" style="${bgStyle}">${b.emoji} ${b.name}</span>
-      <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">${claimInfo}${earnInfo?'<div>'+earnInfo+'</div>':''}${given}</div>
-      <div class="badge-list-actions">
-        <button class="del-badge-btn" onclick="deleteBadge('${b.id}')"><i class="ti ti-trash"></i> Remove</button>
-      </div>
-    </div>`;
-  }).join('');
-}
-
-function deleteBadge(id){
-  createdBadges=createdBadges.filter(b=>b.id!==id);
-  localStorage.setItem('vs_badges',JSON.stringify(createdBadges));
-  renderAdminBadgeList();
-  populateGiveBadgeSelect();
-  toast('Badge removed','');
-}
-
-function populateGiveBadgeSelect(){
-  const sel=document.getElementById('giveBadgeSelect');
-  if(!createdBadges.length){sel.innerHTML='<option value="">— No badges created yet —</option>';return;}
-  sel.innerHTML=createdBadges.map(b=>`<option value="${b.id}">${b.emoji} ${b.name}</option>`).join('');
-}
-
-async function adminGiveBadge(){
-  const username=document.getElementById('giveBadgeUsername').value.trim();
-  const badgeId=document.getElementById('giveBadgeSelect').value;
-  if(!username||!badgeId){toast('Select a user and badge','error');return;}
-  const badge=createdBadges.find(b=>b.id===badgeId);
-  if(!badge){toast('Badge not found','error');return;}
-
-  // Track recipient locally
-  if(!badge.recipients)badge.recipients=[];
-  if(!badge.recipients.includes(username)){badge.recipients.push(username);}
-  localStorage.setItem('vs_badges',JSON.stringify(createdBadges));
-  renderAdminBadgeList();
-
-  // Try to push to server
-  try{
-    await fetch(`${API}/api/admin/give/badge`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({username,badge:{id:badge.id,emoji:badge.emoji,name:badge.name,color:badge.color,textColor:badge.textColor,desc:badge.desc,earnBy:badge.earnBy}})});
-  }catch{}
-
-  const c=document.getElementById('badgeGiveConfirm');c.classList.add('show');setTimeout(()=>c.classList.remove('show'),2000);
-  toast(`🏅 "${badge.name}" given to ${username}`,'success');
-}
-
-// Init badge UI when admin tab loads (add to existing loadAdminKeys call)
-const _origLoadAdmin=typeof loadAdminKeys!=='undefined'?loadAdminKeys:null;
-function loadAdminBadges(){renderAdminBadgeList();populateGiveBadgeSelect();}
 </script>
 </body>
 </html>
