@@ -1245,6 +1245,9 @@ async function load(){
     currentUsername=d.username;
     currentUserRank=(d.role||d.rank||'user').trim().toLowerCase();
     userPro=d.pro||false;userPoints=d.points||0;userAvatar=d.avatar||'';userBg=d.background||'';
+    if(d.inventory&&d.inventory.length){inventory=d.inventory;localStorage.setItem('vs_inventory',JSON.stringify(inventory));}
+if(d.equippedChatFx){equippedChatEffect=d.equippedChatFx;localStorage.setItem('vs_equippedFx',equippedChatEffect);}
+if(d.equippedItems&&d.equippedItems.length){equippedProfileItems=d.equippedItems;localStorage.setItem('vs_equippedProfile',JSON.stringify(equippedProfileItems));}
     selectedColor=d.accentColor||localStorage.getItem('vs_color')||'#3b82f6';
     selectedColor2=d.accentColor2||localStorage.getItem('vs_color2')||'#60a5fa';
   }catch{toast('Could not reach server','error');return;}
@@ -1400,13 +1403,18 @@ function filterShop(cat,btn){
   btn.classList.add('active');
   renderShop();
 }
-function buyItem(id){
+async function buyItem(id){
   const item=SHOP_ITEMS.find(i=>i.id===id);if(!item)return;
   if(userPoints<item.price){toast(`Need ${item.price} pts — you have ${userPoints}`,'error');return;}
-  userPoints-=item.price;updatePtsUI();
-  inventory.push(id);localStorage.setItem('vs_inventory',JSON.stringify(inventory));
-  document.getElementById('statItems').textContent=inventory.length;
-  syncPtsServer();toast(`✅ Bought: ${item.name}`,'success');renderShop();
+  try{
+    const res=await fetch(`${API}/api/me/points/buy`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({itemId:id,price:item.price})});
+    const d=await res.json();
+    if(!res.ok){toast(d.error||'Failed','error');return;}
+    userPoints=d.points;inventory=d.inventory;
+    localStorage.setItem('vs_inventory',JSON.stringify(inventory));
+    updatePtsUI();document.getElementById('statItems').textContent=inventory.length;
+    toast(`✅ Bought: ${item.name}`,'success');renderShop();
+  }catch{toast('Server offline','error');}
 }
 function equipItem(id){
   const item=SHOP_ITEMS.find(i=>i.id===id);if(!item)return;
@@ -1418,13 +1426,16 @@ function equipItem(id){
     localStorage.setItem('vs_equippedProfile',JSON.stringify(equippedProfileItems));
     renderEquippedProfile();
   }
-  toast(`🎮 Equipped: ${item.name}`,'success');renderShop();
+  
+toast(`🎮 Equipped: ${item.name}`,'success');renderShop();
+  fetch(`${API}/api/me/inventory`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({inventory,equippedItems:equippedProfileItems,equippedChatFx:equippedChatEffect})}).catch(()=>{});
 }
 function unequipItem(id){
   const item=SHOP_ITEMS.find(i=>i.id===id);if(!item)return;
   if(item.effect&&equippedChatEffect===item.effect){equippedChatEffect='';localStorage.setItem('vs_equippedFx','');populateChatEffectDropdown();}
   if(item.profileFx){equippedProfileItems=equippedProfileItems.filter(p=>p!==item.profileFx);localStorage.setItem('vs_equippedProfile',JSON.stringify(equippedProfileItems));renderEquippedProfile();}
-  toast('Item unequipped','');renderShop();
+toast('Item unequipped','');renderShop();
+  fetch(`${API}/api/me/inventory`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({inventory,equippedItems:equippedProfileItems,equippedChatFx:equippedChatEffect})}).catch(()=>{});
 }
 function renderInventory(){
   const inv=document.getElementById('invGrid');
