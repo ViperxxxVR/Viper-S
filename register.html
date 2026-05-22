@@ -411,6 +411,53 @@ select option{background:#0d1018}
 .toast.warn{border-color:rgba(245,158,11,0.4);color:#fbbf24}
 .toast.pro{border-color:rgba(245,158,11,0.5);color:#fbbf24;background:rgba(245,158,11,0.08)}
 @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* ── DMs ── */
+.dm-wrap{display:none;flex-direction:column;flex:1;overflow:hidden;height:100%;width:100%}
+.dm-layout{display:flex;flex:1;overflow:hidden;height:100%}
+.dm-sidebar{width:220px;border-right:1px solid var(--border);background:var(--panel);display:flex;flex-direction:column;flex-shrink:0}
+.dm-sidebar-header{padding:16px 16px 12px;border-bottom:1px solid var(--border);font-size:11px;font-weight:700;color:var(--muted);letter-spacing:2px;font-family:'DM Mono',monospace;display:flex;align-items:center;justify-content:space-between}
+.dm-list{flex:1;overflow-y:auto;padding:8px}
+.dm-list::-webkit-scrollbar{width:3px}.dm-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.06);border-radius:3px}
+.dm-thread{display:flex;align-items:center;gap:10px;padding:10px;border-radius:9px;cursor:pointer;transition:background 0.15s;border:1px solid transparent}
+.dm-thread:hover{background:rgba(255,255,255,0.05)}
+.dm-thread.active{background:rgba(59,130,246,0.12);border-color:rgba(59,130,246,0.18)}
+.dm-thread-avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:#fff;flex-shrink:0;overflow:hidden}
+.dm-thread-avatar img{width:100%;height:100%;object-fit:cover}
+.dm-thread-info{flex:1;min-width:0}
+.dm-thread-name{font-size:14px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dm-thread-preview{font-size:11px;color:var(--muted);font-family:'DM Mono',monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+.dm-unread-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.dm-main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.dm-topbar{height:50px;border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 20px;gap:12px;background:var(--panel);flex-shrink:0}
+.dm-topbar-name{font-size:15px;font-weight:700;color:#fff}
+.dm-messages{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:2px;scroll-behavior:smooth}
+.dm-messages::-webkit-scrollbar{width:4px}.dm-messages::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:4px}
+.dm-empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--muted);font-family:'DM Mono',monospace;font-size:13px}
+.dm-empty i{font-size:38px;opacity:0.2}
+.dm-no-convo{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--muted);font-family:'DM Mono',monospace;font-size:13px;text-align:center}
+.dm-no-convo i{font-size:44px;opacity:0.15}
+.dm-bar{border-top:1px solid var(--border);background:var(--panel);padding:12px 20px;flex-shrink:0}
+.dm-bar-inner{display:flex;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--border2);border-radius:10px;padding:4px 4px 4px 14px;transition:border 0.15s}
+.dm-bar-inner:focus-within{border-color:var(--accent)}
+.dm-input{flex:1;background:none;border:none;outline:none;color:var(--text);font-family:'Rajdhani',sans-serif;font-size:15px;padding:8px 0}
+.dm-input::placeholder{color:var(--muted)}
+.dm-send-btn{background:var(--accent);border:none;border-radius:7px;color:#fff;padding:9px 14px;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;transition:opacity 0.15s;flex-shrink:0}
+.dm-send-btn:hover{opacity:0.85}
+.dm-new-btn{background:rgba(59,130,246,0.12);border:1px solid rgba(59,130,246,0.25);border-radius:7px;color:var(--accent2);padding:4px 8px;cursor:pointer;font-size:14px;display:flex;align-items:center;transition:all 0.15s}
+.dm-new-btn:hover{background:rgba(59,130,246,0.22)}
+.dm-msg{display:flex;gap:10px;padding:5px 8px;border-radius:8px;transition:background 0.1s}
+.dm-msg:hover{background:rgba(255,255,255,0.03)}
+.dm-msg-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:#fff;flex-shrink:0;overflow:hidden}
+.dm-msg-avatar img{width:100%;height:100%;object-fit:cover}
+.dm-msg-body{flex:1;min-width:0}
+.dm-msg-header{display:flex;align-items:baseline;gap:8px;margin-bottom:2px}
+.dm-msg-author{font-size:14px;font-weight:700;color:#fff}
+.dm-msg-time{font-size:11px;color:var(--muted);font-family:'DM Mono',monospace}
+.dm-msg-text{font-size:14px;color:var(--text);line-height:1.5;word-break:break-word}
+.dm-search-wrap{padding:10px 8px;border-bottom:1px solid var(--border)}
+.dm-search{width:100%;background:var(--bg);border:1px solid var(--border);bo
+           
 </style>
 </head>
 <body>
@@ -467,6 +514,7 @@ select option{background:#0d1018}
     <nav class="nav">
       <button class="nav-item active" onclick="switchTab('home',this)"><i class="ti ti-home"></i> Home</button>
       <button class="nav-item" onclick="switchTab('chat',this)"><i class="ti ti-message-circle"></i> Chat</button>
+      <button class="nav-item" onclick="switchTab('dms',this)"><i class="ti ti-mail"></i> DMs</button>
       <button class="nav-item" onclick="switchTab('world',this)"><i class="ti ti-planet"></i> Events</button>
       <button class="nav-item" onclick="switchTab('games',this)"><i class="ti ti-device-gamepad-2"></i> Games</button>
       <button class="nav-item" onclick="switchTab('shop',this)"><i class="ti ti-shopping-bag"></i> Points Shop</button>
@@ -903,7 +951,58 @@ select option{background:#0d1018}
     </div>
   </div>
 </div>
+<!-- DMs panel -->
+    <div class="dm-wrap" id="dmWrap">
+      <div class="dm-layout">
+        <div class="dm-sidebar">
+          <div class="dm-sidebar-header">
+            DIRECT MESSAGES
+            <button class="dm-new-btn" onclick="openNewDmModal()" title="New DM"><i class="ti ti-edit"></i></button>
+          </div>
+          <div class="dm-search-wrap">
+            <input class="dm-search" id="dmSearch" placeholder="Search DMs..." oninput="filterDmList()" />
+          </div>
+          <div class="dm-list" id="dmList">
+            <div style="padding:20px;text-align:center;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace">No conversations yet</div>
+          </div>
+        </div>
+        <div class="dm-main" id="dmMain">
+          <div class="dm-no-convo" id="dmNoConvo">
+            <i class="ti ti-message-2"></i>
+            <div style="font-weight:700;color:var(--text);font-size:14px">No conversation selected</div>
+            <div>Pick someone or start a new DM</div>
+          </div>
+          <div id="dmConvo" style="display:none;flex-direction:column;flex:1;overflow:hidden">
+            <div class="dm-topbar">
+              <div class="dm-msg-avatar" id="dmConvoAvatar" style="width:28px;height:28px;font-size:11px"></div>
+              <span class="dm-topbar-name" id="dmConvoName">—</span>
+              <span style="flex:1"></span>
+              <button onclick="openProfileModal(currentDmPartner)" style="background:none;border:1px solid var(--border2);border-radius:7px;color:var(--muted);padding:5px 10px;cursor:pointer;font-size:12px;font-family:'DM Mono',monospace;font-weight:600;transition:all 0.15s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">View Profile</button>
+            </div>
+            <div class="dm-messages" id="dmMessages"></div>
+            <div class="dm-bar">
+              <div class="dm-bar-inner">
+                <input class="dm-input" id="dmInput" placeholder="Message..." maxlength="500" />
+                <button class="dm-send-btn" onclick="sendDm()"><i class="ti ti-send"></i> Send</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <!-- New DM modal -->
+    <div class="modal-overlay" id="newDmModal">
+      <div class="modal new-dm-modal">
+        <h3>💬 New Direct Message</h3>
+        <div class="modal-sub">Pick a member to message</div>
+        <input class="field-input" id="newDmSearch" placeholder="Search members..." oninput="filterNewDmList()" style="margin-bottom:12px" />
+        <div id="newDmMemberList" style="max-height:260px;overflow-y:auto;display:flex;flex-direction:column;gap:6px"></div>
+        <div class="modal-actions">
+          <button class="modal-cancel" onclick="closeModal('newDmModal')">Cancel</button>
+        </div>
+      </div>
+    </div>
 <script>
 const API = 'https://viperstudios-production.up.railway.app';
 const token = () => localStorage.getItem('token');
@@ -1090,13 +1189,7 @@ function switchTab(id,btn){
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(b=>b.classList.remove('active'));
   if(btn)btn.classList.add('active');
-  if(id==='chat'){
-    contentScroll.style.display='none';
-    chatWrap.style.display='flex';
-    chatWrap.style.height='100%';
-    chatWrap.style.width='100%';
-    loadChat().then(()=>setTimeout(scrollChatBottom,80));
-  } else {
+   }else {
     contentScroll.style.display='';
     chatWrap.style.display='none';
     document.getElementById('tab-'+id).classList.add('active');
@@ -1104,11 +1197,10 @@ function switchTab(id,btn){
     if(id==='users')loadMembers();
     if(id==='admin'){loadAdminKeys();renderAdminEvents();loadAdminBadges();}
     if(id==='shop'){renderShop();document.getElementById('shopBalDisplay').textContent=userPoints;}
+    if(id==='dms'){if(!allMembers.length)loadMembers().then(renderDmList);else renderDmList();}
   }
-  const labels={home:'Dashboard',chat:'Chat',world:'World',games:'Games',shop:'Points Shop',settings:'Settings',users:'Members',admin:'Admin Panel'};
-  const codes={home:'HOME',chat:'CHAT',world:'WORLD',games:'GAMES',shop:'SHOP',settings:'SETTINGS',users:'MEMBERS',admin:'ADMIN'};
-  document.getElementById('topbarTitle').textContent=labels[id]||id;
-  document.getElementById('topbarBadge').textContent=codes[id]||id.toUpperCase();
+const labels={home:'Dashboard',chat:'Chat',dms:'Direct Messages',world:'World',games:'Games',shop:'Points Shop',settings:'Settings',users:'Members',admin:'Admin Panel'};
+const codes={home:'HOME',chat:'CHAT',dms:'DMS',world:'WORLD',games:'GAMES',shop:'SHOP',settings:'SETTINGS',users:'MEMBERS',admin:'ADMIN'};
 }
 
 // ── GAME TABS ──
@@ -1863,6 +1955,136 @@ async function confirmReport(){
 
 function logout(){localStorage.removeItem('token');localStorage.removeItem('username');localStorage.removeItem('rank');window.location.href='index.html';}
 document.getElementById('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChatMessage();}});
+
+  // ══════════════════════════════════════
+// ── DIRECT MESSAGES ──
+// ══════════════════════════════════════
+let dmThreads = JSON.parse(localStorage.getItem('vs_dms')||'{}');
+let currentDmPartner = '';
+
+function saveDms(){localStorage.setItem('vs_dms',JSON.stringify(dmThreads));}
+
+function openNewDmModal(){
+  if(!allMembers.length){toast('Members not loaded yet','error');return;}
+  document.getElementById('newDmSearch').value='';
+  renderNewDmList(allMembers.filter(m=>m.username!==currentUsername));
+  document.getElementById('newDmModal').classList.add('show');
+}
+function filterNewDmList(){
+  const q=document.getElementById('newDmSearch').value.toLowerCase();
+  renderNewDmList(allMembers.filter(m=>m.username!==currentUsername&&m.username.toLowerCase().includes(q)));
+}
+function renderNewDmList(members){
+  const el=document.getElementById('newDmMemberList');
+  if(!members.length){el.innerHTML='<div style="text-align:center;padding:20px;font-size:12px;color:var(--muted);font-family:\'DM Mono\',monospace">No members found</div>';return;}
+  el.innerHTML=members.map(m=>{
+    const avatarHtml=m.avatar?`<img src="${m.avatar}" alt="${m.username}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`:initials(m.username);
+    const r=(m.role||m.rank||'user').toLowerCase();
+    return `<div class="dm-pick-row" onclick="startDmWith('${m.username}')">
+      <div class="dm-thread-avatar">${avatarHtml}</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:14px;font-weight:700;color:var(--text)">${escHtml(m.username)}</div>
+        <div style="font-size:11px;font-family:'DM Mono',monospace;color:var(--muted)">${r.toUpperCase()}${m.pro?' · ⭐ PRO':''}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function startDmWith(username){
+  closeModal('newDmModal');
+  if(!dmThreads[username])dmThreads[username]=[];
+  currentDmPartner=username;
+  saveDms();
+  renderDmList();
+  openDmConvo(username);
+}
+
+function filterDmList(){
+  const q=document.getElementById('dmSearch').value.toLowerCase();
+  renderDmList(q);
+}
+
+function renderDmList(filter=''){
+  const el=document.getElementById('dmList');
+  const keys=Object.keys(dmThreads).filter(u=>u.toLowerCase().includes(filter));
+  if(!keys.length){el.innerHTML='<div style="padding:20px;text-align:center;font-size:12px;color:var(--muted);font-family:\'DM Mono\',monospace">No conversations yet</div>';return;}
+  el.innerHTML=keys.map(username=>{
+    const msgs=dmThreads[username];
+    const last=msgs.length?msgs[msgs.length-1]:null;
+    const preview=last?(last.from===currentUsername?'You: ':'')+last.text.slice(0,32)+(last.text.length>32?'…':''):'Start a conversation';
+    const member=allMembers.find(m=>m.username===username);
+    const avatarHtml=member&&member.avatar?`<img src="${member.avatar}" alt="${username}"/>`:initials(username);
+    const isActive=username===currentDmPartner;
+    return `<div class="dm-thread${isActive?' active':''}" id="dmt-${username}" onclick="openDmConvo('${username}')">
+      <div class="dm-thread-avatar">${avatarHtml}</div>
+      <div class="dm-thread-info">
+        <div class="dm-thread-name">${escHtml(username)}</div>
+        <div class="dm-thread-preview">${escHtml(preview)}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function openDmConvo(username){
+  if(!dmThreads[username])dmThreads[username]=[];
+  currentDmPartner=username;
+
+  const member=allMembers.find(m=>m.username===username);
+  const avatarEl=document.getElementById('dmConvoAvatar');
+  if(member&&member.avatar){avatarEl.innerHTML=`<img src="${member.avatar}" alt="${username}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`;avatarEl.style.background='none';}
+  else{avatarEl.textContent=initials(username);avatarEl.style.background='';}
+
+  document.getElementById('dmConvoName').textContent=username;
+  document.getElementById('dmNoConvo').style.display='none';
+  const convo=document.getElementById('dmConvo');convo.style.display='flex';
+
+  document.querySelectorAll('.dm-thread').forEach(t=>t.classList.remove('active'));
+  const threadEl=document.getElementById('dmt-'+username);if(threadEl)threadEl.classList.add('active');
+
+  renderDmMessages();
+  setTimeout(()=>{const msgs=document.getElementById('dmMessages');if(msgs)msgs.scrollTop=msgs.scrollHeight;},50);
+}
+
+function renderDmMessages(){
+  const el=document.getElementById('dmMessages');
+  const msgs=dmThreads[currentDmPartner]||[];
+  if(!msgs.length){
+    el.innerHTML='<div class="dm-empty"><i class="ti ti-message-2"></i>No messages yet — say hi!</div>';
+    return;
+  }
+  el.innerHTML=msgs.map(msg=>{
+    const mine=msg.from===currentUsername;
+    const member=mine?null:allMembers.find(m=>m.username===msg.from);
+    const avatarHtml=mine?(userAvatar?`<img src="${userAvatar}" alt="me" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`:initials(currentUsername)):(member&&member.avatar?`<img src="${member.avatar}" alt="${msg.from}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`:initials(msg.from));
+    const timeStr=new Date(msg.ts).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+    return `<div class="dm-msg" style="${mine?'flex-direction:row-reverse':''}">
+      <div class="dm-msg-avatar">${avatarHtml}</div>
+      <div class="dm-msg-body" style="${mine?'align-items:flex-end;display:flex;flex-direction:column':''}">
+        <div class="dm-msg-header">
+          <span class="dm-msg-author" style="${mine?'color:var(--accent2)':''}">${escHtml(msg.from)}</span>
+          <span class="dm-msg-time">${timeStr}</span>
+        </div>
+        <div class="dm-msg-text" style="${mine?'background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.15);border-radius:10px 10px 2px 10px;padding:6px 12px':'background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:10px 10px 10px 2px;padding:6px 12px'}">${escHtml(msg.text)}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function sendDm(){
+  const inp=document.getElementById('dmInput');
+  const text=inp.value.trim();
+  if(!text||!currentDmPartner)return;
+  inp.value='';
+  const msg={from:currentUsername,text,ts:Date.now()};
+  if(!dmThreads[currentDmPartner])dmThreads[currentDmPartner]=[];
+  dmThreads[currentDmPartner].push(msg);
+  saveDms();
+  renderDmMessages();
+  renderDmList();
+  const msgs=document.getElementById('dmMessages');if(msgs)msgs.scrollTop=msgs.scrollHeight;
+}
+
+document.getElementById('dmInput').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendDm();}});
 
 // ── INIT ──
 applyColor(selectedColor,selectedColor2);
