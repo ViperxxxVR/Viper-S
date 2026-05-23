@@ -1135,9 +1135,9 @@ const SHOP_ITEMS = [
   {id:'pr_bg_galaxy',name:'Galaxy BG',desc:'Starfield background on your profile.',icon:'🌌',cat:'profile',price:600,profileFx:'bg_galaxy'},
 ];
 
-let inventory = JSON.parse(localStorage.getItem('vs_inventory')||'[]');
-let equippedChatEffect = localStorage.getItem('vs_equippedFx')||'';
-let equippedProfileItems = JSON.parse(localStorage.getItem('vs_equippedProfile')||'[]');
+let inventory = [];
+let equippedChatEffect = '';
+let equippedProfileItems = [];
 let currentShopFilter = 'all';
 
 // ── GAME STATE ──
@@ -1243,6 +1243,9 @@ async function load(){
     if(res.status===401||res.status===403){logout();return;}
     const d=await res.json();
     currentUsername=d.username;
+localStorage.setItem('vs_inventory_'+currentUsername,
+localStorage.setItem('vs_equippedFx_'+currentUsername,
+localStorage.setItem('vs_equippedProfile_'+currentUsername,
     currentUserRank=(d.role||d.rank||'user').trim().toLowerCase();
     userPro=d.pro||false;userPoints=d.points||0;userAvatar=d.avatar||'';userBg=d.background||'';
     if(d.inventory&&d.inventory.length){inventory=d.inventory;localStorage.setItem('vs_inventory',JSON.stringify(inventory));}
@@ -2014,10 +2017,12 @@ document.getElementById('chatInput').addEventListener('keydown',e=>{if(e.key==='
   // ══════════════════════════════════════
 // ── DIRECT MESSAGES ──
 // ══════════════════════════════════════
-let dmThreads = JSON.parse(localStorage.getItem('vs_dms')||'{}');
+let dmThreads = {};
 let currentDmPartner = '';
-
-function saveDms(){localStorage.setItem('vs_dms',JSON.stringify(dmThreads));}
+  
+dmThreads = JSON.parse(localStorage.getItem('vs_dms_'+d.username)||'{}');
+  
+function saveDms(){localStorage.setItem('vs_dms_'+currentUsername,JSON.stringify(dmThreads));}
 
 function openNewDmModal(){
   if(!allMembers.length){toast('Members not loaded yet','error');return;}
