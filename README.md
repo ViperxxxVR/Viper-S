@@ -34,3 +34,6 @@ https://discord.gg/WHbAB56PpB
 Questions or Concerns? 
 
 Email: viperstudios.support@gmail.com
+
+# DISCLAIMER
+this site DOES contain the use of AI, any discrimination will not be aknowledged and WILL lead to a automatic block and delete if a comment.
