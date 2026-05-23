@@ -456,7 +456,7 @@ select option{background:#0d1018}
 .dm-msg-time{font-size:11px;color:var(--muted);font-family:'DM Mono',monospace}
 .dm-msg-text{font-size:14px;color:var(--text);line-height:1.5;word-break:break-word}
 .dm-search-wrap{padding:10px 8px;border-bottom:1px solid var(--border)}
-.dm-search{width:100%;background:var(--bg);border:1px solid var(--border);bo
+.dm-search{width:100%;background:var(--bg);border:1px solid var(--border)}
            
 </style>
 </head>
@@ -1239,15 +1239,38 @@ function switchGame(id,btn){
 // ── LOAD USER ──
 async function load(){
   try{
-    const res=await fetch(`${API}/api/me`,{headers:{Authorization:'Bearer '+token()}});
-    if(res.status===401||res.status===403){logout();return;}
+    const res=await fetch(`${API}/api/me`,{
+      headers:{Authorization:'Bearer '+token()}
+    });
+
+    if(res.status===401||res.status===403){
+      logout();
+      return;
+    }
+
     const d=await res.json();
+
     currentUsername=d.username;
-localStorage.setItem('vs_inventory_'+currentUsername,
-localStorage.setItem('vs_equippedFx_'+currentUsername,
-localStorage.setItem('vs_equippedProfile_'+currentUsername,
-    currentUserRank=(d.role||d.rank||'user').trim().toLowerCase();
-    userPro=d.pro||false;userPoints=d.points||0;userAvatar=d.avatar||'';userBg=d.background||'';
+
+    localStorage.setItem(
+      'vs_inventory_'+currentUsername,
+      JSON.stringify(d.inventory || [])
+    );
+
+    localStorage.setItem(
+      'vs_equippedFx_'+currentUsername,
+      d.equippedChatFx || ''
+    );
+
+    localStorage.setItem(
+      'vs_equippedProfile_'+currentUsername,
+      JSON.stringify(d.equippedItems || [])
+    );
+
+    currentUserRank=(d.role||d.rank||'user')
+      .trim()
+      .toLowerCase();
+    userPro=d.pro||false,userPoints=d.points||0;userAvatar=d.avatar||'';userBg=d.background||'';
     if(d.inventory&&d.inventory.length){inventory=d.inventory;localStorage.setItem('vs_inventory',JSON.stringify(inventory));}
 if(d.equippedChatFx){equippedChatEffect=d.equippedChatFx;localStorage.setItem('vs_equippedFx',equippedChatEffect);}
 if(d.equippedItems&&d.equippedItems.length){equippedProfileItems=d.equippedItems;localStorage.setItem('vs_equippedProfile',JSON.stringify(equippedProfileItems));}
@@ -2020,7 +2043,7 @@ document.getElementById('chatInput').addEventListener('keydown',e=>{if(e.key==='
 let dmThreads = {};
 let currentDmPartner = '';
   
-dmThreads = JSON.parse(localStorage.getItem('vs_dms_'+d.username)||'{}');
+dmThreads = JSON.parse(localStorage.getItem('vs_dms_'+currentUsername)||'{}');
   
 function saveDms(){localStorage.setItem('vs_dms_'+currentUsername,JSON.stringify(dmThreads));}
 
