@@ -188,8 +188,6 @@ select option{background:#0d1018}
 
 /* ── Custom Badges ── */
 .custom-badge-tag{font-size:11px;font-family:'DM Mono',monospace;padding:3px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);color:var(--text);background:rgba(255,255,255,0.06);display:inline-flex;align-items:center;gap:5px}
-
-/* ── Badge Maker Admin Card ── */
 .badge-maker-card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:16px;max-width:640px;position:relative;overflow:hidden}
 .badge-maker-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#8b5cf6,#06b6d4)}
 .badge-maker-card h4{font-size:14px;font-weight:700;color:var(--muted);letter-spacing:2px;margin-bottom:18px;font-family:'DM Mono',monospace}
@@ -346,8 +344,7 @@ select option{background:#0d1018}
 .rt-result-val{font-size:20px;font-weight:700;color:#fff}
 .rt-result-lbl{font-size:11px;color:var(--muted);margin-top:3px}
 .typing-display{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:20px 24px;font-size:18px;line-height:2;margin-bottom:12px;min-height:110px;letter-spacing:0.5px;font-family:'DM Mono',monospace;position:relative}
-.t-correct{color:var(--green)}
-.t-wrong{color:var(--red);background:rgba(239,68,68,0.1);border-radius:2px}
+.t-correct{color:var(--green)}.t-wrong{color:var(--red);background:rgba(239,68,68,0.1);border-radius:2px}
 .t-cursor{border-right:2px solid var(--accent2);animation:blink 1s step-end infinite}
 @keyframes blink{0%,100%{border-color:var(--accent2)}50%{border-color:transparent}}
 .typing-input{width:100%;background:var(--bg);border:1px solid var(--border2);border-radius:8px;padding:12px 16px;color:var(--text);font-family:'DM Mono',monospace;font-size:15px;outline:none;margin-bottom:14px;transition:border 0.15s}
@@ -389,30 +386,7 @@ select option{background:#0d1018}
 .inv-chip{background:var(--panel);border:1px solid var(--border2);border-radius:8px;padding:7px 14px;font-size:12px;font-family:'DM Mono',monospace;color:var(--text);display:flex;align-items:center;gap:6px}
 .inv-empty{font-size:13px;color:var(--muted);font-family:'DM Mono',monospace}
 
-/* ── Modals & Toasts ── */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:100;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.2s}
-.modal-overlay.show{opacity:1;pointer-events:all}
-.modal{background:var(--panel);border:1px solid var(--border2);border-radius:16px;padding:28px;width:360px;position:relative;transform:translateY(10px);transition:transform 0.2s}
-.modal-overlay.show .modal{transform:translateY(0)}
-.modal::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;background:linear-gradient(90deg,var(--amber),#f97316)}
-.modal h3{font-size:17px;font-weight:700;color:#fff;margin-bottom:6px}
-.modal-sub{font-size:13px;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:20px}
-.modal-actions{display:flex;gap:10px;margin-top:20px}
-.modal-cancel{flex:1;background:none;border:1px solid var(--border2);border-radius:8px;padding:10px;color:var(--muted);font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s}
-.modal-cancel:hover{color:var(--text);border-color:var(--text)}
-.modal-confirm{flex:1;background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.3);border-radius:8px;padding:10px;color:#fbbf24;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s}
-.modal-confirm:hover{background:rgba(245,158,11,0.25)}
-.modal-confirm.danger{background:rgba(239,68,68,0.15);border-color:rgba(239,68,68,0.3);color:#f87171}
-.modal-confirm.danger:hover{background:rgba(239,68,68,0.25)}
-.toast{position:fixed;bottom:24px;right:24px;background:var(--panel2);border:1px solid var(--border2);border-radius:10px;padding:12px 18px;font-size:13px;font-family:'DM Mono',monospace;color:var(--text);z-index:999;opacity:0;transform:translateY(8px);transition:all 0.2s;pointer-events:none}
-.toast.show{opacity:1;transform:translateY(0)}
-.toast.success{border-color:rgba(34,197,94,0.4);color:var(--green)}
-.toast.error{border-color:rgba(239,68,68,0.4);color:var(--red)}
-.toast.warn{border-color:rgba(245,158,11,0.4);color:#fbbf24}
-.toast.pro{border-color:rgba(245,158,11,0.5);color:#fbbf24;background:rgba(245,158,11,0.08)}
-@keyframes spin{to{transform:rotate(360deg)}}
-
-  /* ── DMs ── */
+/* ── DMs ── */
 .dm-wrap{display:none;flex-direction:column;flex:1;overflow:hidden;height:100%;width:100%}
 .dm-layout{display:flex;flex:1;overflow:hidden;height:100%}
 .dm-sidebar{width:220px;border-right:1px solid var(--border);background:var(--panel);display:flex;flex-direction:column;flex-shrink:0}
@@ -427,7 +401,6 @@ select option{background:#0d1018}
 .dm-thread-info{flex:1;min-width:0}
 .dm-thread-name{font-size:14px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .dm-thread-preview{font-size:11px;color:var(--muted);font-family:'DM Mono',monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
-.dm-unread-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0}
 .dm-main{flex:1;display:flex;flex-direction:column;overflow:hidden}
 .dm-topbar{height:50px;border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 20px;gap:12px;background:var(--panel);flex-shrink:0}
 .dm-topbar-name{font-size:15px;font-weight:700;color:#fff}
@@ -456,17 +429,57 @@ select option{background:#0d1018}
 .dm-msg-time{font-size:11px;color:var(--muted);font-family:'DM Mono',monospace}
 .dm-msg-text{font-size:14px;color:var(--text);line-height:1.5;word-break:break-word}
 .dm-search-wrap{padding:10px 8px;border-bottom:1px solid var(--border)}
-.dm-search{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:8px 10px;color:var(--text);font-family:'DM Mono',monospace;font-size:12px;outline:none;box-sizing:border-box;}
+.dm-search{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:8px 10px;color:var(--text);font-family:'DM Mono',monospace;font-size:12px;outline:none;box-sizing:border-box}
 .dm-pick-row{display:flex;align-items:center;gap:10px;padding:10px;border-radius:9px;cursor:pointer;transition:background 0.15s;border:1px solid transparent}
 .dm-pick-row:hover{background:rgba(255,255,255,0.05);border-color:var(--border2)}
 .dm-unread-badge{background:var(--accent);color:#fff;font-size:10px;font-family:'DM Mono',monospace;font-weight:700;padding:2px 7px;border-radius:999px;min-width:18px;text-align:center;flex-shrink:0}
 .nav-item .dm-nav-badge{background:var(--accent);color:#fff;font-size:9px;font-family:'DM Mono',monospace;font-weight:700;padding:1px 6px;border-radius:999px;min-width:16px;text-align:center;margin-left:auto}
-</style>
-           
+
+/* ── Discord-style DM toast notification ── */
+.dm-notif-stack{position:fixed;top:18px;right:18px;z-index:9999;display:flex;flex-direction:column;gap:8px;pointer-events:none}
+.dm-notif{background:var(--panel2);border:1px solid var(--border2);border-radius:12px;padding:12px 16px;display:flex;align-items:flex-start;gap:12px;min-width:280px;max-width:340px;pointer-events:all;cursor:pointer;transform:translateX(360px);opacity:0;transition:transform 0.28s cubic-bezier(0.34,1.3,0.64,1),opacity 0.2s;box-shadow:0 8px 32px rgba(0,0,0,0.5)}
+.dm-notif.show{transform:translateX(0);opacity:1}
+.dm-notif.hide{transform:translateX(360px);opacity:0}
+.dm-notif-bar{position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);border-radius:12px 0 0 12px}
+.dm-notif-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#fff;flex-shrink:0;overflow:hidden}
+.dm-notif-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.dm-notif-body{flex:1;min-width:0}
+.dm-notif-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:3px}
+.dm-notif-name{font-size:13px;font-weight:700;color:#fff}
+.dm-notif-app{font-size:10px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:0.5px}
+.dm-notif-msg{font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:'DM Mono',monospace}
+.dm-notif-close{position:absolute;top:8px;right:10px;background:none;border:none;color:var(--muted);cursor:pointer;font-size:14px;line-height:1;padding:2px 4px;border-radius:4px;transition:color 0.15s}
+.dm-notif-close:hover{color:var(--text)}
+
+/* ── Modals & Toasts ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:100;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.2s}
+.modal-overlay.show{opacity:1;pointer-events:all}
+.modal{background:var(--panel);border:1px solid var(--border2);border-radius:16px;padding:28px;width:360px;position:relative;transform:translateY(10px);transition:transform 0.2s}
+.modal-overlay.show .modal{transform:translateY(0)}
+.modal::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;background:linear-gradient(90deg,var(--amber),#f97316)}
+.modal h3{font-size:17px;font-weight:700;color:#fff;margin-bottom:6px}
+.modal-sub{font-size:13px;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:20px}
+.modal-actions{display:flex;gap:10px;margin-top:20px}
+.modal-cancel{flex:1;background:none;border:1px solid var(--border2);border-radius:8px;padding:10px;color:var(--muted);font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s}
+.modal-cancel:hover{color:var(--text);border-color:var(--text)}
+.modal-confirm{flex:1;background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.3);border-radius:8px;padding:10px;color:#fbbf24;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s}
+.modal-confirm:hover{background:rgba(245,158,11,0.25)}
+.modal-confirm.danger{background:rgba(239,68,68,0.15);border-color:rgba(239,68,68,0.3);color:#f87171}
+.modal-confirm.danger:hover{background:rgba(239,68,68,0.25)}
+.toast{position:fixed;bottom:24px;right:24px;background:var(--panel2);border:1px solid var(--border2);border-radius:10px;padding:12px 18px;font-size:13px;font-family:'DM Mono',monospace;color:var(--text);z-index:999;opacity:0;transform:translateY(8px);transition:all 0.2s;pointer-events:none}
+.toast.show{opacity:1;transform:translateY(0)}
+.toast.success{border-color:rgba(34,197,94,0.4);color:var(--green)}
+.toast.error{border-color:rgba(239,68,68,0.4);color:var(--red)}
+.toast.warn{border-color:rgba(245,158,11,0.4);color:#fbbf24}
+.toast.pro{border-color:rgba(245,158,11,0.5);color:#fbbf24;background:rgba(245,158,11,0.08)}
+@keyframes spin{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
 <script>if(!localStorage.getItem('token'))window.location.href='index.html';</script>
+
+<!-- Discord-style DM notification stack -->
+<div class="dm-notif-stack" id="dmNotifStack"></div>
 
 <!-- MODALS -->
 <div class="modal-overlay" id="warnModal">
@@ -508,6 +521,20 @@ select option{background:#0d1018}
     </div>
   </div>
 </div>
+
+<!-- New DM modal -->
+<div class="modal-overlay" id="newDmModal">
+  <div class="modal" style="width:400px">
+    <h3>💬 New Direct Message</h3>
+    <div class="modal-sub">Pick a member to message</div>
+    <input class="field-input" id="newDmSearch" placeholder="Search members..." oninput="filterNewDmList()" style="margin-bottom:12px" />
+    <div id="newDmMemberList" style="max-height:260px;overflow-y:auto;display:flex;flex-direction:column;gap:6px"></div>
+    <div class="modal-actions">
+      <button class="modal-cancel" onclick="closeModal('newDmModal')">Cancel</button>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <div class="shell">
@@ -572,7 +599,7 @@ select option{background:#0d1018}
           </div>
         </div>
 
-        <!-- CHAT placeholder (chat lives in chatWrap below) -->
+        <!-- CHAT placeholder -->
         <div class="tab-panel" id="tab-chat"></div>
 
         <!-- WORLD -->
@@ -592,7 +619,6 @@ select option{background:#0d1018}
               <button class="game-tab" onclick="switchGame('reaction',this)">⚡ Reaction</button>
               <button class="game-tab" onclick="switchGame('typing',this)">⌨ Typing</button>
             </div>
-            <!-- Memory -->
             <div class="game-panel active" id="game-memory">
               <div class="game-header">
                 <div>
@@ -610,7 +636,6 @@ select option{background:#0d1018}
               <div id="memWinBanner" style="display:none" class="win-banner"><i class="ti ti-trophy"></i><div><div class="win-text">You matched all pairs!</div><div class="win-pts" id="memWinPts">+100 pts</div></div></div>
               <div id="gameBoard"></div>
             </div>
-            <!-- Snake -->
             <div class="game-panel" id="game-snake">
               <div class="game-header">
                 <div>
@@ -629,7 +654,6 @@ select option{background:#0d1018}
               <canvas id="snakeCanvas" width="400" height="400"></canvas>
               <div class="snake-hint">Tip: Use Arrow Keys or WASD · Earn 5 pts per food eaten</div>
             </div>
-            <!-- Reaction -->
             <div class="game-panel" id="game-reaction">
               <div class="game-header">
                 <div>
@@ -649,7 +673,6 @@ select option{background:#0d1018}
               <div class="rt-results" id="rtResults"></div>
               <button class="game-start-btn" id="rtStartBtn" onclick="startReaction()"><i class="ti ti-player-play"></i> Start</button>
             </div>
-            <!-- Typing -->
             <div class="game-panel" id="game-typing">
               <div class="game-header">
                 <div>
@@ -785,8 +808,6 @@ select option{background:#0d1018}
               <div style="margin-top:6px"><span class="admin-badge">🔒 RESTRICTED ACCESS</span></div>
             </div>
           </div>
-
-          <!-- Key Generator -->
           <div class="keygen-card">
             <h4>KEY GENERATOR</h4>
             <div class="keygen-form">
@@ -812,8 +833,6 @@ select option{background:#0d1018}
             <button class="gen-btn" id="genBtn" onclick="generateKey()"><i class="ti ti-key"></i> Generate Key</button>
             <div class="key-list" id="keyList"><div class="empty-keys">No keys generated yet.</div></div>
           </div>
-
-          <!-- Give PRO & Points -->
           <div class="admin-give-card">
             <h4>GIVE PRO &amp; POINTS</h4>
             <div class="form-2col" style="margin-bottom:12px">
@@ -826,8 +845,6 @@ select option{background:#0d1018}
             </div>
             <div class="confirm-chip" id="giveConfirm" style="margin-top:10px"><i class="ti ti-check"></i> Done!</div>
           </div>
-
-          <!-- Badge Maker -->
           <div class="badge-maker-card">
             <h4>🏅 BADGE MAKER &amp; GIVER</h4>
             <div class="form-2col" style="margin-bottom:12px">
@@ -885,7 +902,6 @@ select option{background:#0d1018}
               <button class="create-badge-btn" onclick="createBadge()"><i class="ti ti-badge" style="font-size:15px"></i> Create Badge</button>
               <span class="confirm-chip" id="badgeCreateConfirm"><i class="ti ti-check"></i> Created!</span>
             </div>
-            <!-- Give Badge -->
             <div style="border-top:1px solid var(--border);padding-top:16px">
               <div class="field-label" style="margin-bottom:12px">GIVE BADGE TO USER</div>
               <div class="form-2col" style="margin-bottom:12px">
@@ -901,14 +917,11 @@ select option{background:#0d1018}
               <button class="give-badge-btn" onclick="adminGiveBadge()"><i class="ti ti-send" style="font-size:15px"></i> Give Badge</button>
               <span class="confirm-chip" id="badgeGiveConfirm" style="margin-left:12px"><i class="ti ti-check"></i> Given!</span>
             </div>
-            <!-- Badge List -->
             <div style="border-top:1px solid var(--border);padding-top:16px;margin-top:16px">
               <div class="field-label" style="margin-bottom:12px">CREATED BADGES</div>
               <div id="adminBadgeList"><div style="font-size:13px;color:var(--muted);font-family:'DM Mono',monospace">No badges created yet.</div></div>
             </div>
           </div>
-
-          <!-- Event Manager -->
           <div class="admin-event-card">
             <h4>EVENT MANAGER</h4>
             <div class="form-2col">
@@ -937,7 +950,7 @@ select option{background:#0d1018}
       </div>
     </div>
 
-    <!-- Chat panel (lives outside content-scroll) -->
+    <!-- Chat panel -->
     <div class="chat-wrap" id="chatWrap">
       <div class="chat-messages" id="chatMessages"></div>
       <div class="chat-bar">
@@ -953,7 +966,7 @@ select option{background:#0d1018}
           <button class="chat-send-btn" onclick="sendChatMessage()"><i class="ti ti-send"></i> Send</button>
         </div>
       </div>
-  </div>
+    </div>
 
     <!-- DMs panel -->
     <div class="dm-wrap" id="dmWrap">
@@ -995,18 +1008,9 @@ select option{background:#0d1018}
       </div>
     </div>
 
-    <!-- New DM modal -->
-    <div class="modal-overlay" id="newDmModal">
-      <div class="modal new-dm-modal">
-        <h3>💬 New Direct Message</h3>
-        <div class="modal-sub">Pick a member to message</div>
-        <input class="field-input" id="newDmSearch" placeholder="Search members..." oninput="filterNewDmList()" style="margin-bottom:12px" />
-        <div id="newDmMemberList" style="max-height:260px;overflow-y:auto;display:flex;flex-direction:column;gap:6px"></div>
-        <div class="modal-actions">
-          <button class="modal-cancel" onclick="closeModal('newDmModal')">Cancel</button>
-        </div>
-      </div>
-    </div>
+  </div>
+</div>
+
 <script>
 const API = 'https://viper-studios.onrender.com';
 const token = () => localStorage.getItem('token');
@@ -1024,88 +1028,6 @@ let allMembers = [];
 let serverMessages = [];
 let pendingAction = null;
 let pendingReport = null;
-
-  // ── PROFILE MODAL ──
-let profileModalOpen = false;
-
-function openProfileModal(username) {
-  const member = allMembers.find(m => m.username === username);
-  if (!member) { toast('Could not find user', 'error'); return; }
-
-  const r = (member.role || member.rank || 'user').toLowerCase();
-  const isPro = member.pro || false;
-  const warns = member.warnings || 0;
-  const isBanned = member.banned || false;
-
-  const avatarHtml = member.avatar
-    ? `<img src="${member.avatar}" alt="${member.username}" style="width:100%;height:100%;object-fit:cover"/>`
-    : initials(member.username);
-
-  const roleBadge = `<span class="role-badge ${roleClass(r)}" style="font-size:12px">${r.toUpperCase()}</span>`;
-  const proBadgeHtml = isPro ? `<span class="pro-badge">⭐ PRO</span>` : '';
-
-  const bgStyle = member.background
-    ? `background-image:url(${member.background});opacity:0.12;`
-    : '';
-
-  const metaChips = [];
-  if (warns > 0) metaChips.push(`<span style="color:var(--amber);font-size:12px;font-family:'DM Mono',monospace">⚠ ${warns} warning${warns !== 1 ? 's' : ''}</span>`);
-  if (isBanned) metaChips.push(`<span style="color:var(--red);font-size:12px;font-family:'DM Mono',monospace">🚫 Banned</span>`);
-
-  const overlay = document.createElement('div');
-  overlay.className = 'modal-overlay show';
-  overlay.id = 'profileViewModal';
-  overlay.innerHTML = `
-    <div class="modal" style="width:420px;max-width:95vw;padding:0;overflow:hidden;border-radius:16px">
-      <div style="height:3px;background:linear-gradient(90deg,${isPro ? '#f59e0b,#f97316,#fbbf24' : 'var(--accent),#8b5cf6,#06b6d4'})"></div>
-      <div style="position:relative;overflow:hidden">
-        ${member.background ? `<div style="position:absolute;inset:0;background-image:url(${member.background});background-size:cover;background-position:center;opacity:0.1;pointer-events:none"></div>` : ''}
-        <div style="padding:24px;position:relative;z-index:1">
-          <div style="display:flex;gap:16px;align-items:flex-start;margin-bottom:16px">
-            <div class="avatar-lg" style="${isPro ? 'border-color:rgba(245,158,11,0.5)' : ''}">${avatarHtml}</div>
-            <div style="flex:1;min-width:0">
-              <div class="profile-name" style="font-size:18px;margin-bottom:4px">
-                ${escHtml(member.username)} ${proBadgeHtml}
-              </div>
-              <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--green);font-family:'DM Mono',monospace;margin-bottom:8px">
-                <span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span> Online
-              </div>
-              ${roleBadge}
-              ${metaChips.length ? `<div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">${metaChips.join('')}</div>` : ''}
-            </div>
-          </div>
-          ${member.vrchat ? `<div class="vrchat-tag" style="margin-bottom:10px"><i class="ti ti-cube" style="font-size:14px"></i> VRChat: ${escHtml(member.vrchat)}</div>` : ''}
-          <div style="font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:12px">${escHtml(member.bio || 'No bio set yet.')}</div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:13px;font-family:'DM Mono',monospace">
-            <i class="ti ti-coin" style="color:#fbbf24;font-size:15px"></i>
-            <span style="color:#fbbf24;font-weight:700">${member.points || 0}</span>
-            <span style="color:var(--muted)">points</span>
-          </div>
-        </div>
-      </div>
-<div style="padding:14px 24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:10px">
-        <button id="profileDmBtn" style="background:rgba(59,130,246,0.12);border:1px solid rgba(59,130,246,0.25);border-radius:7px;color:var(--accent2);padding:8px 16px;cursor:pointer;font-size:13px;font-family:'DM Mono',monospace;font-weight:600;display:flex;align-items:center;gap:6px"><i class="ti ti-mail" style="font-size:15px"></i> Send DM</button>
-        <button class="modal-cancel" onclick="closeProfileModal()" style="max-width:100px">Close</button>
-      </div>
-    </div>
-  `;
-
-  overlay.addEventListener('click', e => { if (e.target === overlay) closeProfileModal(); });
-  document.body.appendChild(overlay);
-  document.getElementById('profileDmBtn').addEventListener('click', () => {
-    closeProfileModal();
-    const dmNav = document.querySelector('.nav-item[onclick*="dms"]');
-    switchTab('dms', dmNav);
-    startDmWith(member.username);
-  });
-  profileModalOpen = true;
-}
-
-function closeProfileModal() {
-  const el = document.getElementById('profileViewModal');
-  if (el) el.remove();
-  profileModalOpen = false;
-}
 let serverEvents = [];
 let generatedKeys = [];
 
@@ -1127,7 +1049,7 @@ const SHOP_ITEMS = [
   {id:'bg_viper',name:'🐍 Viper Badge',desc:'The classic Viper Studios mascot badge.',icon:'🐍',cat:'badge',price:200,profileFx:'badge_viper'},
   {id:'bg_crown',name:'👑 Crown Badge',desc:'Wear a crown — you earned it.',icon:'👑',cat:'badge',price:350,profileFx:'badge_crown'},
   {id:'bg_bolt',name:'⚡ Bolt Badge',desc:'High-energy bolt badge for active members.',icon:'⚡',cat:'badge',price:150,profileFx:'badge_bolt'},
-  {id:'pr_title_goat',name:'"GOAT" Title',desc:'Greatest of all time. Enough said.',icon:'🐐',cat:'profile',price:600,profileFx:'title_goat'},
+  {id:'pr_title_goat',name:'"GOAT" Title',desc:'Greatest of all time.',icon:'🐐',cat:'profile',price:600,profileFx:'title_goat'},
   {id:'pr_title_ghost',name:'"Ghost" Title',desc:'Silent but deadly presence.',icon:'👻',cat:'profile',price:320,profileFx:'title_ghost'},
   {id:'pr_title_neon',name:'"Neon" Title',desc:'Electric vibes only.',icon:'💡',cat:'profile',price:280,profileFx:'title_neon'},
   {id:'fx_glitch',name:'Glitch Text',desc:'Your messages appear corrupted and glitchy.',icon:'📡',cat:'chat',price:250,effect:'glitch'},
@@ -1139,7 +1061,6 @@ const SHOP_ITEMS = [
   {id:'pr_bg_dark',name:'Dark Aura BG',desc:'A shifting dark animated profile background.',icon:'🌑',cat:'profile',price:500,profileFx:'bg_dark'},
   {id:'pr_bg_galaxy',name:'Galaxy BG',desc:'Starfield background on your profile.',icon:'🌌',cat:'profile',price:600,profileFx:'bg_galaxy'},
 ];
-
 let inventory = [];
 let equippedChatEffect = '';
 let equippedProfileItems = [];
@@ -1173,898 +1094,1354 @@ const PRO_EMOJIS=['🦇','🕷️','🌲','💀','🔦','🌙','🐺','🪦','�
 const pipColors=['#3b82f6','#22c55e','#f59e0b','#ef4444','#8b5cf6','#06b6d4'];
 const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
+// ── DM STATE ──
+let dmThreads = {};
+let currentDmPartner = '';
+let dmPollInterval = null;
+let unreadCounts = {};
+// Track the last message timestamp we've seen per partner so we know what's actually new
+let dmLastSeen = JSON.parse(localStorage.getItem('vs_dmLastSeen') || '{}');
+
 // ── HELPERS ──
 function roleClass(r){return r==='owner'?'role-owner':r==='admin'?'role-admin':'role-member';}
 function initials(n){return(n||'VS').slice(0,2).toUpperCase();}
 function isAdmin(){return currentUserRank==='admin'||currentUserRank==='owner';}
 function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-function toast(msg,type){const t=document.getElementById('toast');t.textContent=msg;t.className='toast show'+(type?' '+type:'');setTimeout(()=>t.classList.remove('show'),2800);}
-function applyColor(c,c2){document.documentElement.style.setProperty('--accent',c);document.documentElement.style.setProperty('--accent2',c2);}
+
+function toast(msg, type) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show' + (type ? ' ' + type : '');
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+function applyColor(c, c2) {
+  document.documentElement.style.setProperty('--accent', c);
+  document.documentElement.style.setProperty('--accent2', c2);
+}
+
+// ── DISCORD-STYLE DM NOTIFICATION ──
+function showDmNotification(fromUsername, messageText) {
+  const member = allMembers.find(m => m.username === fromUsername);
+  const avatarHtml = member && member.avatar
+    ? `<img src="${member.avatar}" alt="${fromUsername}" />`
+    : `<span style="font-size:13px;font-weight:700">${initials(fromUsername)}</span>`;
+
+  const stack = document.getElementById('dmNotifStack');
+  const notif = document.createElement('div');
+  notif.className = 'dm-notif';
+  notif.innerHTML = `
+    <div class="dm-notif-bar"></div>
+    <div class="dm-notif-avatar">${avatarHtml}</div>
+    <div class="dm-notif-body">
+      <div class="dm-notif-header">
+        <span class="dm-notif-name">${escHtml(fromUsername)}</span>
+        <span class="dm-notif-app">VIPER DMS</span>
+      </div>
+      <div class="dm-notif-msg">${escHtml(messageText)}</div>
+    </div>
+    <button class="dm-notif-close" onclick="dismissDmNotif(this.parentElement,event)">✕</button>
+  `;
+
+  // clicking the body opens the DM
+  notif.addEventListener('click', (e) => {
+    if (e.target.classList.contains('dm-notif-close')) return;
+    dismissDmNotif(notif, e);
+    const dmNav = document.querySelector('#dmsNavBtn');
+    switchTab('dms', dmNav);
+    startDmWith(fromUsername);
+  });
+
+  stack.appendChild(notif);
+  // small delay so the element is painted before we add the class
+  requestAnimationFrame(() => requestAnimationFrame(() => notif.classList.add('show')));
+
+  // auto-dismiss after 5 seconds
+  const timer = setTimeout(() => dismissDmNotif(notif, null), 5000);
+  notif._dismissTimer = timer;
+}
+
+function dismissDmNotif(el, e) {
+  if (e) e.stopPropagation();
+  clearTimeout(el._dismissTimer);
+  el.classList.remove('show');
+  el.classList.add('hide');
+  setTimeout(() => el.remove(), 300);
+}
 
 // ── COLOR ──
-function setColor(el){
-  if(el.dataset.pro&&!userPro){toast('⭐ PRO required for this color','pro');return;}
-  document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('selected'));
-  el.classList.add('selected');selectedColor=el.dataset.color;selectedColor2=el.dataset.color2;applyColor(selectedColor,selectedColor2);
+function setColor(el) {
+  if (el.dataset.pro && !userPro) { toast('⭐ PRO required for this color', 'pro'); return; }
+  document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedColor = el.dataset.color;
+  selectedColor2 = el.dataset.color2;
+  applyColor(selectedColor, selectedColor2);
 }
-async function saveColor(){
-  localStorage.setItem('vs_color',selectedColor);localStorage.setItem('vs_color2',selectedColor2);
-  try{await fetch(`${API}/api/me/accent`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({accentColor:selectedColor,accentColor2:selectedColor2})});}catch{}
-  toast('Accent color saved!','success');
+
+async function saveColor() {
+  localStorage.setItem('vs_color', selectedColor);
+  localStorage.setItem('vs_color2', selectedColor2);
+  try {
+    await fetch(`${API}/api/me/accent`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token() },
+      body: JSON.stringify({ accentColor: selectedColor, accentColor2: selectedColor2 })
+    });
+  } catch {}
+  toast('Accent color saved!', 'success');
 }
 
 // ── TAB ──
-const contentScroll=document.getElementById('contentScroll');
-const chatWrap=document.getElementById('chatWrap');
-function switchTab(id,btn){
-  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(b=>b.classList.remove('active'));
-  if(btn)btn.classList.add('active');
-  if(id==='chat'){
-    contentScroll.style.display='none';
-    chatWrap.style.display='flex';
-    chatWrap.style.height='100%';
-    chatWrap.style.width='100%';
-    const dmW=document.getElementById('dmWrap');if(dmW)dmW.style.display='none';
-    loadChat().then(()=>setTimeout(scrollChatBottom,80));
-  } else if(id==='dms'){
-    contentScroll.style.display='none';
-    chatWrap.style.display='none';
-    const dmW=document.getElementById('dmWrap');
-    if(dmW){dmW.style.display='flex';dmW.style.height='100%';dmW.style.width='100%';}
-    if(!allMembers.length)loadMembers().then(()=>renderDmList());else renderDmList();
+const contentScroll = document.getElementById('contentScroll');
+const chatWrap = document.getElementById('chatWrap');
+
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  const dmW = document.getElementById('dmWrap');
+
+  if (id === 'chat') {
+    contentScroll.style.display = 'none';
+    chatWrap.style.display = 'flex';
+    if (dmW) dmW.style.display = 'none';
+    loadChat().then(() => setTimeout(scrollChatBottom, 80));
+  } else if (id === 'dms') {
+    contentScroll.style.display = 'none';
+    chatWrap.style.display = 'none';
+    if (dmW) { dmW.style.display = 'flex'; }
+    if (!allMembers.length) loadMembers().then(() => renderDmList());
+    else renderDmList();
   } else {
-    contentScroll.style.display='';
-    chatWrap.style.display='none';
-    const dmW=document.getElementById('dmWrap');if(dmW)dmW.style.display='none';
-    document.getElementById('tab-'+id).classList.add('active');
-    if(id==='world')loadEvents();
-    if(id==='users')loadMembers();
-    if(id==='admin'){loadAdminKeys();renderAdminEvents();loadAdminBadges();}
-    if(id==='shop'){renderShop();document.getElementById('shopBalDisplay').textContent=userPoints;}
+    contentScroll.style.display = '';
+    chatWrap.style.display = 'none';
+    if (dmW) dmW.style.display = 'none';
+    document.getElementById('tab-' + id).classList.add('active');
+    if (id === 'world') loadEvents();
+    if (id === 'users') loadMembers();
+    if (id === 'admin') { loadAdminKeys(); renderAdminEvents(); loadAdminBadges(); }
+    if (id === 'shop') { renderShop(); document.getElementById('shopBalDisplay').textContent = userPoints; }
   }
-  const labels={home:'Dashboard',chat:'Chat',dms:'Direct Messages',world:'World',games:'Games',shop:'Points Shop',settings:'Settings',users:'Members',admin:'Admin Panel'};
-  const codes={home:'HOME',chat:'CHAT',dms:'DMS',world:'WORLD',games:'GAMES',shop:'SHOP',settings:'SETTINGS',users:'MEMBERS',admin:'ADMIN'};
-  document.getElementById('topbarTitle').textContent=labels[id]||id;
-  document.getElementById('topbarBadge').textContent=codes[id]||id.toUpperCase();
+
+  const labels = { home:'Dashboard', chat:'Chat', dms:'Direct Messages', world:'World', games:'Games', shop:'Points Shop', settings:'Settings', users:'Members', admin:'Admin Panel' };
+  const codes  = { home:'HOME', chat:'CHAT', dms:'DMS', world:'WORLD', games:'GAMES', shop:'SHOP', settings:'SETTINGS', users:'MEMBERS', admin:'ADMIN' };
+  document.getElementById('topbarTitle').textContent = labels[id] || id;
+  document.getElementById('topbarBadge').textContent = codes[id] || id.toUpperCase();
 }
 
 // ── GAME TABS ──
-function switchGame(id,btn){
-  document.querySelectorAll('.game-tab').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.game-panel').forEach(p=>p.classList.remove('active'));
+function switchGame(id, btn) {
+  document.querySelectorAll('.game-tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.game-panel').forEach(p => p.classList.remove('active'));
   btn.classList.add('active');
-  document.getElementById('game-'+id).classList.add('active');
-  if(id==='memory')renderMemBoard();
-  if(id==='snake')renderSnakeIdle();
-  if(id==='reaction'){rtActive=false;resetReactionUI();}
-  if(id==='typing'){typingActive=false;resetTypingUI();}
+  document.getElementById('game-' + id).classList.add('active');
+  if (id === 'memory') renderMemBoard();
+  if (id === 'snake') renderSnakeIdle();
+  if (id === 'reaction') { rtActive = false; resetReactionUI(); }
+  if (id === 'typing') { typingActive = false; resetTypingUI(); }
 }
 
 // ── LOAD USER ──
-async function load(){
-  try{
-    const res=await fetch(`${API}/api/me`,{
-      headers:{Authorization:'Bearer '+token()}
-    });
+async function load() {
+  let d;
+  try {
+    const res = await fetch(`${API}/api/me`, { headers: { Authorization: 'Bearer ' + token() } });
+    // Only hard-logout on 401 — not on network errors or 5xx
+    if (res.status === 401) { logout(); return; }
+    if (!res.ok) { toast('Server error, try refreshing', 'error'); return; }
+    d = await res.json();
+  } catch {
+    toast('Could not reach server — working offline', 'warn');
+    // Try to at least show cached username so the user isn't left on a blank screen
+    const cached = localStorage.getItem('vs_username');
+    if (cached) currentUsername = cached;
+    return;
+  }
 
-    if(res.status===401||res.status===403){
-      logout();
-      return;
-    }
+  currentUsername = d.username;
+  localStorage.setItem('vs_username', currentUsername);
 
-    const d=await res.json();
+  currentUserRank = (d.role || d.rank || 'member').trim().toLowerCase();
+  userPro = d.pro || false;
+  userPoints = d.points || 0;
+  userAvatar = d.avatar || '';
+  userBg = d.background || '';
 
-    currentUsername=d.username;
+  if (d.inventory && d.inventory.length) {
+    inventory = d.inventory;
+    localStorage.setItem('vs_inventory', JSON.stringify(inventory));
+  } else {
+    inventory = JSON.parse(localStorage.getItem('vs_inventory') || '[]');
+  }
 
-    localStorage.setItem(
-      'vs_inventory_'+currentUsername,
-      JSON.stringify(d.inventory || [])
-    );
+  if (d.equippedChatFx) {
+    equippedChatEffect = d.equippedChatFx;
+    localStorage.setItem('vs_equippedFx', equippedChatEffect);
+  } else {
+    equippedChatEffect = localStorage.getItem('vs_equippedFx') || '';
+  }
 
-    localStorage.setItem(
-      'vs_equippedFx_'+currentUsername,
-      d.equippedChatFx || ''
-    );
+  if (d.equippedItems && d.equippedItems.length) {
+    equippedProfileItems = d.equippedItems;
+    localStorage.setItem('vs_equippedProfile', JSON.stringify(equippedProfileItems));
+  } else {
+    equippedProfileItems = JSON.parse(localStorage.getItem('vs_equippedProfile') || '[]');
+  }
 
-    localStorage.setItem(
-      'vs_equippedProfile_'+currentUsername,
-      JSON.stringify(d.equippedItems || [])
-    );
+  selectedColor  = d.accentColor  || localStorage.getItem('vs_color')  || '#3b82f6';
+  selectedColor2 = d.accentColor2 || localStorage.getItem('vs_color2') || '#60a5fa';
 
-    currentUserRank=(d.role||d.rank||'user')
-      .trim()
-      .toLowerCase();
-    userPro=d.pro||false,userPoints=d.points||0;userAvatar=d.avatar||'';userBg=d.background||'';
-    if(d.inventory&&d.inventory.length){inventory=d.inventory;localStorage.setItem('vs_inventory',JSON.stringify(inventory));}
-if(d.equippedChatFx){equippedChatEffect=d.equippedChatFx;localStorage.setItem('vs_equippedFx',equippedChatEffect);}
-if(d.equippedItems&&d.equippedItems.length){equippedProfileItems=d.equippedItems;localStorage.setItem('vs_equippedProfile',JSON.stringify(equippedProfileItems));}
-    selectedColor=d.accentColor||localStorage.getItem('vs_color')||'#3b82f6';
-    selectedColor2=d.accentColor2||localStorage.getItem('vs_color2')||'#60a5fa';
-  }catch{toast('Could not reach server','error');return;}
-  document.getElementById('chipName').textContent=currentUsername;
-  document.getElementById('chipRole').textContent=currentUserRank;
-  document.getElementById('profileName').childNodes[0].textContent=currentUsername+' ';
-  document.getElementById('profileRole').textContent=currentUserRank.toUpperCase();
-  document.getElementById('profileRole').className='role-badge '+roleClass(currentUserRank);
-  document.getElementById('statRole').textContent=currentUserRank.toUpperCase();
-  document.getElementById('pointsDisplay').textContent=userPoints;
-  document.getElementById('statPoints').textContent=userPoints;
-  document.getElementById('statItems').textContent=inventory.length;
-  document.getElementById('snakeHi').textContent=snakeHi;
-  if(isAdmin())document.getElementById('adminNav').style.display='flex';
-  if(userPro)applyProUI();
+  // ── UI ──
+  document.getElementById('chipName').textContent = currentUsername;
+  document.getElementById('chipRole').textContent = currentUserRank;
+  document.getElementById('profileName').childNodes[0].textContent = currentUsername + ' ';
+  document.getElementById('profileRole').textContent = currentUserRank.toUpperCase();
+  document.getElementById('profileRole').className = 'role-badge ' + roleClass(currentUserRank);
+  document.getElementById('statRole').textContent = currentUserRank.toUpperCase();
+  document.getElementById('pointsDisplay').textContent = userPoints;
+  document.getElementById('statPoints').textContent = userPoints;
+  document.getElementById('statItems').textContent = inventory.length;
+  document.getElementById('snakeHi').textContent = snakeHi;
+
+  if (isAdmin()) document.getElementById('adminNav').style.display = 'flex';
+  if (userPro) applyProUI();
+
   refreshMyAvatars();
-  if(userBg){document.getElementById('profileBgEl').style.backgroundImage=`url(${userBg})`;document.getElementById('bgPreview').src=userBg;document.getElementById('bgPreview').style.display='block';}
-  if(userAvatar){document.getElementById('avatarPreview').src=userAvatar;document.getElementById('avatarPreview').style.display='block';}
-  applyColor(selectedColor,selectedColor2);
-  const sw=document.querySelector(`.color-swatch[data-color="${selectedColor}"]`);
-  if(sw){document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('selected'));sw.classList.add('selected');}
-  try{const r2=await fetch(`${API}/api/me`,{headers:{Authorization:'Bearer '+token()}});const d2=await r2.json();loadProfileFields(d2.vrchat||'',d2.bio||'');}catch{}
-renderMemBoard();
+
+  if (userBg) {
+    document.getElementById('profileBgEl').style.backgroundImage = `url(${userBg})`;
+    document.getElementById('bgPreview').src = userBg;
+    document.getElementById('bgPreview').style.display = 'block';
+  }
+  if (userAvatar) {
+    document.getElementById('avatarPreview').src = userAvatar;
+    document.getElementById('avatarPreview').style.display = 'block';
+  }
+
+  applyColor(selectedColor, selectedColor2);
+  const sw = document.querySelector(`.color-swatch[data-color="${selectedColor}"]`);
+  if (sw) {
+    document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('selected'));
+    sw.classList.add('selected');
+  }
+
+  // load profile fields
+  try {
+    const r2 = await fetch(`${API}/api/me`, { headers: { Authorization: 'Bearer ' + token() } });
+    const d2 = await r2.json();
+    loadProfileFields(d2.vrchat || '', d2.bio || '');
+  } catch {}
+
+  renderMemBoard();
   renderEquippedProfile();
   populateChatEffectDropdown();
+
+  // DMs — load from server first, then start polling
   await loadDmsFromServer();
   startDmPolling();
 }
 
-function applyProUI(){
-  document.getElementById('proBadge').style.display='';
+function applyProUI() {
+  document.getElementById('proBadge').style.display = '';
   document.getElementById('profileCard').classList.add('pro-card');
-  document.getElementById('proOwnedBanner').style.display='flex';
-  document.getElementById('proBuySection').style.display='none';
-  document.getElementById('proCustomSection').style.display='';
-  document.querySelectorAll('.color-swatch.pro-locked').forEach(s=>s.classList.remove('pro-locked'));
+  document.getElementById('proOwnedBanner').style.display = 'flex';
+  document.getElementById('proBuySection').style.display = 'none';
+  document.getElementById('proCustomSection').style.display = '';
+  document.querySelectorAll('.color-swatch.pro-locked').forEach(s => s.classList.remove('pro-locked'));
 }
 
-function refreshMyAvatars(){
-  [document.getElementById('avatarLg'),document.getElementById('avatarSm')].forEach(el=>{
-    if(!el)return;
-    if(userAvatar){el.innerHTML=`<img src="${userAvatar}" alt="avatar"/>`;el.style.background='none';}
-    else{el.textContent=initials(currentUsername);el.style.background='';}
+function refreshMyAvatars() {
+  [document.getElementById('avatarLg'), document.getElementById('avatarSm')].forEach(el => {
+    if (!el) return;
+    if (userAvatar) {
+      el.innerHTML = `<img src="${userAvatar}" alt="avatar"/>`;
+      el.style.background = 'none';
+    } else {
+      el.textContent = initials(currentUsername);
+      el.style.background = '';
+    }
   });
 }
 
 // ── PROFILE ──
-async function saveProfile(){
-  const v=document.getElementById('vrchatInput').value.trim();
-  const b=document.getElementById('bioInput').value.trim();
-  try{
-    const res=await fetch(`${API}/api/me/profile`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({vrchat:v,bio:b})});
-    if(!res.ok){toast('Failed to save','error');return;}
-  }catch{toast('Server offline','error');return;}
-  document.getElementById('vrchatTag').innerHTML=`<i class="ti ti-cube" style="font-size:14px"></i> VRChat: ${v||'Not connected'}`;
-  document.getElementById('bioDisplay').textContent=b||'No bio set yet.';
-  const btn=document.getElementById('profileSaveBtn');btn.textContent='Saved!';btn.classList.add('saved');
-  setTimeout(()=>{btn.textContent='Save Changes';btn.classList.remove('saved');},2000);
-}
-function loadProfileFields(v,b){
-  document.getElementById('vrchatInput').value=v||'';
-  document.getElementById('bioInput').value=b||'';
-  document.getElementById('vrchatTag').innerHTML=`<i class="ti ti-cube" style="font-size:14px"></i> VRChat: ${v||'Not connected'}`;
-  document.getElementById('bioDisplay').textContent=b||'No bio set yet.';
+async function saveProfile() {
+  const v = document.getElementById('vrchatInput').value.trim();
+  const b = document.getElementById('bioInput').value.trim();
+  try {
+    const res = await fetch(`${API}/api/me/profile`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token() },
+      body: JSON.stringify({ vrchat: v, bio: b })
+    });
+    if (!res.ok) { toast('Failed to save', 'error'); return; }
+  } catch { toast('Server offline', 'error'); return; }
+
+  document.getElementById('vrchatTag').innerHTML = `<i class="ti ti-cube" style="font-size:14px"></i> VRChat: ${v || 'Not connected'}`;
+  document.getElementById('bioDisplay').textContent = b || 'No bio set yet.';
+  const btn = document.getElementById('profileSaveBtn');
+  btn.textContent = 'Saved!';
+  btn.classList.add('saved');
+  setTimeout(() => { btn.textContent = 'Save Changes'; btn.classList.remove('saved'); }, 2000);
 }
 
-// ── AVATAR/BG ──
-function uploadAvatar(input){
-  const file=input.files[0];if(!file)return;
-  const reader=new FileReader();
-  reader.onload=async e=>{
-    userAvatar=e.target.result;
-    document.getElementById('avatarPreview').src=userAvatar;
-    document.getElementById('avatarPreview').style.display='block';
+function loadProfileFields(v, b) {
+  document.getElementById('vrchatInput').value = v || '';
+  document.getElementById('bioInput').value = b || '';
+  document.getElementById('vrchatTag').innerHTML = `<i class="ti ti-cube" style="font-size:14px"></i> VRChat: ${v || 'Not connected'}`;
+  document.getElementById('bioDisplay').textContent = b || 'No bio set yet.';
+}
+
+// ── AVATAR / BG ──
+function uploadAvatar(input) {
+  const file = input.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = async e => {
+    userAvatar = e.target.result;
+    document.getElementById('avatarPreview').src = userAvatar;
+    document.getElementById('avatarPreview').style.display = 'block';
     refreshMyAvatars();
-    try{
-      const res=await fetch(`${API}/api/me/avatar`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({avatar:userAvatar})});
-      res.ok?toast('Avatar updated!','success'):toast('Failed to save avatar','error');
-    }catch{toast('Server offline','error');}
+    try {
+      const res = await fetch(`${API}/api/me/avatar`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token() },
+        body: JSON.stringify({ avatar: userAvatar })
+      });
+      res.ok ? toast('Avatar updated!', 'success') : toast('Failed to save avatar', 'error');
+    } catch { toast('Server offline', 'error'); }
   };
   reader.readAsDataURL(file);
 }
-function uploadBg(input){
-  const file=input.files[0];if(!file)return;
-  const reader=new FileReader();
-  reader.onload=async e=>{
-    userBg=e.target.result;
-    document.getElementById('bgPreview').src=userBg;
-    document.getElementById('bgPreview').style.display='block';
-    document.getElementById('profileBgEl').style.backgroundImage=`url(${userBg})`;
-    try{
-      const res=await fetch(`${API}/api/me/background`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({background:userBg})});
-      res.ok?toast('Background updated!','success'):toast('Failed','error');
-    }catch{toast('Server offline','error');}
+
+function uploadBg(input) {
+  const file = input.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = async e => {
+    userBg = e.target.result;
+    document.getElementById('bgPreview').src = userBg;
+    document.getElementById('bgPreview').style.display = 'block';
+    document.getElementById('profileBgEl').style.backgroundImage = `url(${userBg})`;
+    try {
+      const res = await fetch(`${API}/api/me/background`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token() },
+        body: JSON.stringify({ background: userBg })
+      });
+      res.ok ? toast('Background updated!', 'success') : toast('Failed', 'error');
+    } catch { toast('Server offline', 'error'); }
   };
   reader.readAsDataURL(file);
 }
 
 // ── PRO ──
-async function purchasePro(){
-  if(userPro){toast('You already have PRO!','pro');return;}
-  if(userPoints<1000){toast(`Need 1000 points — you have ${userPoints}`,'error');return;}
-  try{
-    const res=await fetch(`${API}/api/me/pro/purchase`,{method:'POST',headers:{Authorization:'Bearer '+token()}});
-    const d=await res.json();
-    if(!res.ok){toast(d.error||'Failed','error');return;}
-    userPoints=d.points;updatePtsUI();userPro=true;applyProUI();toast('⭐ PRO Plan activated!','pro');
-  }catch{toast('Server offline','error');}
+async function purchasePro() {
+  if (userPro) { toast('You already have PRO!', 'pro'); return; }
+  if (userPoints < 1000) { toast(`Need 1000 points — you have ${userPoints}`, 'error'); return; }
+  try {
+    const res = await fetch(`${API}/api/me/pro/purchase`, { method: 'POST', headers: { Authorization: 'Bearer ' + token() } });
+    const d = await res.json();
+    if (!res.ok) { toast(d.error || 'Failed', 'error'); return; }
+    userPoints = d.points; updatePtsUI(); userPro = true; applyProUI();
+    toast('⭐ PRO Plan activated!', 'pro');
+  } catch { toast('Server offline', 'error'); }
 }
-function fmtProKey(input){
-  let v=input.value.replace(/[^A-Za-z0-9]/g,'').toUpperCase().slice(0,15);
-  let out='';for(let i=0;i<v.length;i++){if(i===5||i===10)out+='-';out+=v[i];}
-  input.value=out;
+
+function fmtProKey(input) {
+  let v = input.value.replace(/[^A-Za-z0-9]/g, '').toUpperCase().slice(0, 15);
+  let out = '';
+  for (let i = 0; i < v.length; i++) { if (i === 5 || i === 10) out += '-'; out += v[i]; }
+  input.value = out;
 }
-async function redeemProKey(){
-  const key=document.getElementById('proKeyInput').value.trim().toUpperCase();
-  if(key.length!==17){toast('Enter a valid key','error');return;}
-  try{
-    const res=await fetch(`${API}/api/me/pro/redeem`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({code:key})});
-    const d=await res.json();
-    if(!res.ok){toast(d.error||'Invalid key','error');return;}
-    userPro=true;applyProUI();toast('⭐ PRO activated via key!','pro');
-  }catch{toast('Server offline','error');}
+
+async function redeemProKey() {
+  const key = document.getElementById('proKeyInput').value.trim().toUpperCase();
+  if (key.length !== 17) { toast('Enter a valid key', 'error'); return; }
+  try {
+    const res = await fetch(`${API}/api/me/pro/redeem`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token() },
+      body: JSON.stringify({ code: key })
+    });
+    const d = await res.json();
+    if (!res.ok) { toast(d.error || 'Invalid key', 'error'); return; }
+    userPro = true; applyProUI(); toast('⭐ PRO activated via key!', 'pro');
+  } catch { toast('Server offline', 'error'); }
 }
 
 // ── POINTS SHOP ──
-function renderShop(){
-  const filtered=SHOP_ITEMS.filter(i=>currentShopFilter==='all'||i.cat===currentShopFilter);
-  document.getElementById('shopGrid').innerHTML=filtered.map(item=>{
-    const owned=inventory.includes(item.id);
-    const isEquippedChat=item.effect&&equippedChatEffect===item.effect;
-    const isEquippedProf=item.profileFx&&equippedProfileItems.includes(item.profileFx);
-    const isEquipped=isEquippedChat||isEquippedProf;
-    const canAfford=userPoints>=item.price;
-    let btnHtml='';
-    if(isEquipped)btnHtml=`<button class="shop-buy-btn unequip-btn" onclick="unequipItem('${item.id}')">Unequip</button>`;
-    else if(owned)btnHtml=`<button class="shop-buy-btn equip-btn" onclick="equipItem('${item.id}')">Equip</button>`;
-    else if(canAfford)btnHtml=`<button class="shop-buy-btn can-buy" onclick="buyItem('${item.id}')">Buy</button>`;
-    else btnHtml=`<button class="shop-buy-btn cant-buy" disabled>${item.price} pts</button>`;
-    return `<div class="shop-item ${isEquipped?'equipped':owned?'owned':''}">
+function renderShop() {
+  const filtered = SHOP_ITEMS.filter(i => currentShopFilter === 'all' || i.cat === currentShopFilter);
+  document.getElementById('shopGrid').innerHTML = filtered.map(item => {
+    const owned = inventory.includes(item.id);
+    const isEquippedChat = item.effect && equippedChatEffect === item.effect;
+    const isEquippedProf = item.profileFx && equippedProfileItems.includes(item.profileFx);
+    const isEquipped = isEquippedChat || isEquippedProf;
+    const canAfford = userPoints >= item.price;
+    let btnHtml = '';
+    if (isEquipped) btnHtml = `<button class="shop-buy-btn unequip-btn" onclick="unequipItem('${item.id}')">Unequip</button>`;
+    else if (owned) btnHtml = `<button class="shop-buy-btn equip-btn" onclick="equipItem('${item.id}')">Equip</button>`;
+    else if (canAfford) btnHtml = `<button class="shop-buy-btn can-buy" onclick="buyItem('${item.id}')">Buy</button>`;
+    else btnHtml = `<button class="shop-buy-btn cant-buy" disabled>${item.price} pts</button>`;
+    return `<div class="shop-item ${isEquipped ? 'equipped' : owned ? 'owned' : ''}">
       <div class="shop-item-icon">${item.icon}</div>
       <div class="shop-item-name">${item.name}</div>
       <div class="shop-item-desc">${item.desc}</div>
       <div class="shop-item-footer">
-        <div class="shop-price"><i class="ti ti-coin" style="font-size:14px"></i>${owned?'Owned':`${item.price} pts`}</div>
+        <div class="shop-price"><i class="ti ti-coin" style="font-size:14px"></i>${owned ? 'Owned' : `${item.price} pts`}</div>
         ${btnHtml}
       </div>
     </div>`;
   }).join('');
   renderInventory();
 }
-function filterShop(cat,btn){
-  currentShopFilter=cat;
-  document.querySelectorAll('.shop-cat').forEach(b=>b.classList.remove('active'));
+
+function filterShop(cat, btn) {
+  currentShopFilter = cat;
+  document.querySelectorAll('.shop-cat').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   renderShop();
 }
-async function buyItem(id){
-  const item=SHOP_ITEMS.find(i=>i.id===id);if(!item)return;
-  if(userPoints<item.price){toast(`Need ${item.price} pts — you have ${userPoints}`,'error');return;}
-  try{
-    const res=await fetch(`${API}/api/me/points/buy`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({itemId:id,price:item.price})});
-    const d=await res.json();
-    if(!res.ok){toast(d.error||'Failed','error');return;}
-    userPoints=d.points;inventory=d.inventory;
-    localStorage.setItem('vs_inventory',JSON.stringify(inventory));
-    updatePtsUI();document.getElementById('statItems').textContent=inventory.length;
-    toast(`✅ Bought: ${item.name}`,'success');renderShop();
-  }catch{toast('Server offline','error');}
+
+async function buyItem(id) {
+  const item = SHOP_ITEMS.find(i => i.id === id); if (!item) return;
+  if (userPoints < item.price) { toast(`Need ${item.price} pts — you have ${userPoints}`, 'error'); return; }
+  try {
+    const res = await fetch(`${API}/api/me/points/buy`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token() },
+      body: JSON.stringify({ itemId: id, price: item.price })
+    });
+    const d = await res.json();
+    if (!res.ok) { toast(d.error || 'Failed', 'error'); return; }
+    userPoints = d.points; inventory = d.inventory;
+    localStorage.setItem('vs_inventory', JSON.stringify(inventory));
+    updatePtsUI(); document.getElementById('statItems').textContent = inventory.length;
+    toast(`✅ Bought: ${item.name}`, 'success'); renderShop();
+  } catch { toast('Server offline', 'error'); }
 }
-function equipItem(id){
-  const item=SHOP_ITEMS.find(i=>i.id===id);if(!item)return;
-  if(item.effect){equippedChatEffect=item.effect;localStorage.setItem('vs_equippedFx',equippedChatEffect);populateChatEffectDropdown();}
-  if(item.profileFx){
-    const prefix=item.profileFx.split('_')[0];
-    equippedProfileItems=equippedProfileItems.filter(p=>!p.startsWith(prefix));
+
+function equipItem(id) {
+  const item = SHOP_ITEMS.find(i => i.id === id); if (!item) return;
+  if (item.effect) { equippedChatEffect = item.effect; localStorage.setItem('vs_equippedFx', equippedChatEffect); populateChatEffectDropdown(); }
+  if (item.profileFx) {
+    const prefix = item.profileFx.split('_')[0];
+    equippedProfileItems = equippedProfileItems.filter(p => !p.startsWith(prefix));
     equippedProfileItems.push(item.profileFx);
-    localStorage.setItem('vs_equippedProfile',JSON.stringify(equippedProfileItems));
+    localStorage.setItem('vs_equippedProfile', JSON.stringify(equippedProfileItems));
     renderEquippedProfile();
   }
-  
-toast(`🎮 Equipped: ${item.name}`,'success');renderShop();
-  fetch(`${API}/api/me/inventory`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({inventory,equippedItems:equippedProfileItems,equippedChatFx:equippedChatEffect})}).catch(()=>{});
+  toast(`🎮 Equipped: ${item.name}`, 'success'); renderShop();
+  fetch(`${API}/api/me/inventory`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token() },
+    body: JSON.stringify({ inventory, equippedItems: equippedProfileItems, equippedChatFx: equippedChatEffect })
+  }).catch(() => {});
 }
-function unequipItem(id){
-  const item=SHOP_ITEMS.find(i=>i.id===id);if(!item)return;
-  if(item.effect&&equippedChatEffect===item.effect){equippedChatEffect='';localStorage.setItem('vs_equippedFx','');populateChatEffectDropdown();}
-  if(item.profileFx){equippedProfileItems=equippedProfileItems.filter(p=>p!==item.profileFx);localStorage.setItem('vs_equippedProfile',JSON.stringify(equippedProfileItems));renderEquippedProfile();}
-toast('Item unequipped','');renderShop();
-  fetch(`${API}/api/me/inventory`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({inventory,equippedItems:equippedProfileItems,equippedChatFx:equippedChatEffect})}).catch(()=>{});
+
+function unequipItem(id) {
+  const item = SHOP_ITEMS.find(i => i.id === id); if (!item) return;
+  if (item.effect && equippedChatEffect === item.effect) { equippedChatEffect = ''; localStorage.setItem('vs_equippedFx', ''); populateChatEffectDropdown(); }
+  if (item.profileFx) { equippedProfileItems = equippedProfileItems.filter(p => p !== item.profileFx); localStorage.setItem('vs_equippedProfile', JSON.stringify(equippedProfileItems)); renderEquippedProfile(); }
+  toast('Item unequipped', ''); renderShop();
+  fetch(`${API}/api/me/inventory`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token() },
+    body: JSON.stringify({ inventory, equippedItems: equippedProfileItems, equippedChatFx: equippedChatEffect })
+  }).catch(() => {});
 }
-function renderInventory(){
-  const inv=document.getElementById('invGrid');
-  if(!inventory.length){inv.innerHTML='<div class="inv-empty">Nothing yet — buy something!</div>';return;}
-  inv.innerHTML=inventory.map(id=>{
-    const item=SHOP_ITEMS.find(i=>i.id===id);if(!item)return'';
-    const equipped=(item.effect&&equippedChatEffect===item.effect)||(item.profileFx&&equippedProfileItems.includes(item.profileFx));
-    return `<div class="inv-chip">${item.icon} ${item.name}${equipped?' <span style="color:#fbbf24;font-size:10px">●</span>':''}</div>`;
+
+function renderInventory() {
+  const inv = document.getElementById('invGrid');
+  if (!inventory.length) { inv.innerHTML = '<div class="inv-empty">Nothing yet — buy something!</div>'; return; }
+  inv.innerHTML = inventory.map(id => {
+    const item = SHOP_ITEMS.find(i => i.id === id); if (!item) return '';
+    const equipped = (item.effect && equippedChatEffect === item.effect) || (item.profileFx && equippedProfileItems.includes(item.profileFx));
+    return `<div class="inv-chip">${item.icon} ${item.name}${equipped ? ' <span style="color:#fbbf24;font-size:10px">●</span>' : ''}</div>`;
   }).join('');
 }
-function renderEquippedProfile(){
-  const el=document.getElementById('equippedEffects');if(!el)return;
-  const tags=[];
-  equippedProfileItems.forEach(fx=>{
-    const item=SHOP_ITEMS.find(i=>i.profileFx===fx);
-    if(item)tags.push(`<span class="equipped-tag">${item.icon} ${item.name}</span>`);
+
+function renderEquippedProfile() {
+  const el = document.getElementById('equippedEffects'); if (!el) return;
+  const tags = [];
+  equippedProfileItems.forEach(fx => {
+    const item = SHOP_ITEMS.find(i => i.profileFx === fx);
+    if (item) tags.push(`<span class="equipped-tag">${item.icon} ${item.name}</span>`);
   });
-  el.innerHTML=tags.join('');
+  el.innerHTML = tags.join('');
 }
-function populateChatEffectDropdown(){
-  const sel=document.getElementById('chatEffectSelect');
-  const owned=SHOP_ITEMS.filter(i=>i.effect&&inventory.includes(i.id));
-  sel.innerHTML='<option value="">None</option>'+owned.map(i=>`<option value="${i.effect}" ${equippedChatEffect===i.effect?'selected':''}>${i.icon} ${i.name}</option>`).join('');
+
+function populateChatEffectDropdown() {
+  const sel = document.getElementById('chatEffectSelect');
+  const owned = SHOP_ITEMS.filter(i => i.effect && inventory.includes(i.id));
+  sel.innerHTML = '<option value="">None</option>' + owned.map(i => `<option value="${i.effect}" ${equippedChatEffect === i.effect ? 'selected' : ''}>${i.icon} ${i.name}</option>`).join('');
   updateChatEffect();
 }
-function updateChatEffect(){
-  const sel=document.getElementById('chatEffectSelect');
-  equippedChatEffect=sel.value;localStorage.setItem('vs_equippedFx',equippedChatEffect);
-  const item=SHOP_ITEMS.find(i=>i.effect===equippedChatEffect);
-  document.getElementById('effectPreviewLabel').textContent=equippedChatEffect?`Preview: ${item?item.name:''}`:' ';
+
+function updateChatEffect() {
+  const sel = document.getElementById('chatEffectSelect');
+  equippedChatEffect = sel.value;
+  localStorage.setItem('vs_equippedFx', equippedChatEffect);
+  const item = SHOP_ITEMS.find(i => i.effect === equippedChatEffect);
+  document.getElementById('effectPreviewLabel').textContent = equippedChatEffect ? `Preview: ${item ? item.name : ''}` : ' ';
 }
-async function syncPtsServer(){
-  try{await fetch(`${API}/api/me/points/set`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({points:userPoints})});}catch{}
-}
-function updatePtsUI(){
-  document.getElementById('pointsDisplay').textContent=userPoints;
-  document.getElementById('statPoints').textContent=userPoints;
-  document.getElementById('shopBalDisplay').textContent=userPoints;
+
+function updatePtsUI() {
+  document.getElementById('pointsDisplay').textContent = userPoints;
+  document.getElementById('statPoints').textContent = userPoints;
+  document.getElementById('shopBalDisplay').textContent = userPoints;
 }
 
 // ── MEMBERS ──
-async function loadMembers(){
-  const list=document.getElementById('membersList');list.innerHTML='<div class="members-loading">Loading members...</div>';
-  try{const res=await fetch(`${API}/api/users`,{headers:{Authorization:'Bearer '+token()}});allMembers=await res.json();renderMembers(allMembers);}
-  catch{list.innerHTML='<div class="members-empty">Could not load members.</div>';}
+async function loadMembers() {
+  const list = document.getElementById('membersList');
+  list.innerHTML = '<div class="members-loading">Loading members...</div>';
+  try {
+    const res = await fetch(`${API}/api/users`, { headers: { Authorization: 'Bearer ' + token() } });
+    allMembers = await res.json();
+    renderMembers(allMembers);
+  } catch { list.innerHTML = '<div class="members-empty">Could not load members.</div>'; }
 }
-function filterMembers(){const q=document.getElementById('memberSearch').value.toLowerCase();renderMembers(allMembers.filter(m=>m.username.toLowerCase().includes(q)));}
-function rankOrder(r){return r==='owner'?0:r==='admin'?1:2;}
-function renderMembers(members){
-  const list=document.getElementById('membersList');
-  document.getElementById('memberCount').textContent=`${members.length} member${members.length!==1?'s':''}`;
-  if(!members.length){list.innerHTML='<div class="members-empty">No members found.</div>';return;}
-  const sorted=[...members].sort((a,b)=>rankOrder(a.role||a.rank)-rankOrder(b.role||b.rank)||a.username.localeCompare(b.username));
-  list.innerHTML=sorted.map(m=>{
-    const r=(m.role||m.rank||'user').toLowerCase();const isMe=m.username===currentUsername;const isBanned=m.banned;const warns=m.warnings||0;const canAct=isAdmin()&&!isMe&&r!=='owner';
-    const metaParts=[];
-    if(m.vrchat)metaParts.push(m.vrchat);
-    if(warns>0)metaParts.push(`<span class="warn-count">⚠ ${warns} warn${warns!==1?'s':''}</span>`);
-    if(isBanned)metaParts.push(`<span class="banned-tag">🚫 BANNED</span>`);
-    if(m.pro)metaParts.push(`<span style="color:#fbbf24">⭐ PRO</span>`);
-    let actions='';
-    if(canAct){
-      if(isBanned)actions=`<button class="action-btn unban-btn" onclick="doUnban('${m._id}','${m.username}')">✓ Unban</button>`;
-      else actions=`<button class="action-btn warn-btn" onclick="openWarn('${m._id}','${m.username}')">⚠ Warn</button><button class="action-btn ban-btn" onclick="openBan('${m._id}','${m.username}')">🚫 Ban</button>`;
+
+function filterMembers() {
+  const q = document.getElementById('memberSearch').value.toLowerCase();
+  renderMembers(allMembers.filter(m => m.username.toLowerCase().includes(q)));
+}
+
+function rankOrder(r) { return r === 'owner' ? 0 : r === 'admin' ? 1 : 2; }
+
+function renderMembers(members) {
+  const list = document.getElementById('membersList');
+  document.getElementById('memberCount').textContent = `${members.length} member${members.length !== 1 ? 's' : ''}`;
+  if (!members.length) { list.innerHTML = '<div class="members-empty">No members found.</div>'; return; }
+  const sorted = [...members].sort((a, b) => rankOrder(a.role || a.rank) - rankOrder(b.role || b.rank) || a.username.localeCompare(b.username));
+  list.innerHTML = sorted.map(m => {
+    const r = (m.role || m.rank || 'user').toLowerCase();
+    const isMe = m.username === currentUsername;
+    const isBanned = m.banned;
+    const warns = m.warnings || 0;
+    const canAct = isAdmin() && !isMe && r !== 'owner';
+    const metaParts = [];
+    if (m.vrchat) metaParts.push(m.vrchat);
+    if (warns > 0) metaParts.push(`<span class="warn-count">⚠ ${warns} warn${warns !== 1 ? 's' : ''}</span>`);
+    if (isBanned) metaParts.push(`<span class="banned-tag">🚫 BANNED</span>`);
+    if (m.pro) metaParts.push(`<span style="color:#fbbf24">⭐ PRO</span>`);
+    let actions = '';
+    if (canAct) {
+      if (isBanned) actions = `<button class="action-btn unban-btn" onclick="doUnban('${m._id}','${m.username}')">✓ Unban</button>`;
+      else actions = `<button class="action-btn warn-btn" onclick="openWarn('${m._id}','${m.username}')">⚠ Warn</button><button class="action-btn ban-btn" onclick="openBan('${m._id}','${m.username}')">🚫 Ban</button>`;
     }
-    const avatarHtml=m.avatar?`<img src="${m.avatar}" alt="${m.username}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`:initials(m.username);
-    return `<div class="member-row ${isBanned?'banned-row':''}" style="cursor:pointer" onclick="openProfileModal('${m.username}')"><div class="member-avatar">${avatarHtml}</div><div class="member-info"><div class="member-name">${escHtml(m.username)}${isMe?' <span style="font-size:11px;color:var(--muted)">(you)</span>':''}</div><div class="member-meta"><span class="role-badge ${roleClass(r)}" style="font-size:10px;padding:2px 8px">${r.toUpperCase()}</span>${metaParts.join(' · ')}</div></div><div class="member-actions">${actions}</div></div>`;
+    const avatarHtml = m.avatar ? `<img src="${m.avatar}" alt="${m.username}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>` : initials(m.username);
+    return `<div class="member-row ${isBanned ? 'banned-row' : ''}" style="cursor:pointer" onclick="openProfileModal('${m.username}')">
+      <div class="member-avatar">${avatarHtml}</div>
+      <div class="member-info">
+        <div class="member-name">${escHtml(m.username)}${isMe ? ' <span style="font-size:11px;color:var(--muted)">(you)</span>' : ''}</div>
+        <div class="member-meta"><span class="role-badge ${roleClass(r)}" style="font-size:10px;padding:2px 8px">${r.toUpperCase()}</span>${metaParts.join(' · ')}</div>
+      </div>
+      <div class="member-actions">${actions}</div>
+    </div>`;
   }).join('');
 }
-function openWarn(id,username){pendingAction={type:'warn',userId:id,username};document.getElementById('warnModalSub').textContent=`Warning: ${username}`;document.getElementById('warnReason').value='';document.getElementById('warnModal').classList.add('show');document.getElementById('warnConfirmBtn').onclick=confirmWarn;}
-function openBan(id,username){pendingAction={type:'ban',userId:id,username};document.getElementById('banModalSub').textContent=`Banning: ${username}`;document.getElementById('banModal').classList.add('show');document.getElementById('banConfirmBtn').onclick=confirmBan;}
-function closeModal(id){document.getElementById(id).classList.remove('show');pendingAction=null;pendingReport=null;}
-document.querySelectorAll('.modal-overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('show');}));
-async function confirmWarn(){
-  if(!pendingAction)return;
-  const reason=document.getElementById('warnReason').value.trim()||'No reason given';
+
+// ── PROFILE MODAL ──
+function openProfileModal(username) {
+  const member = allMembers.find(m => m.username === username);
+  if (!member) { toast('Could not find user', 'error'); return; }
+  const r = (member.role || member.rank || 'user').toLowerCase();
+  const isPro = member.pro || false;
+  const warns = member.warnings || 0;
+  const isBanned = member.banned || false;
+  const avatarHtml = member.avatar
+    ? `<img src="${member.avatar}" alt="${member.username}" style="width:100%;height:100%;object-fit:cover"/>`
+    : initials(member.username);
+  const roleBadge = `<span class="role-badge ${roleClass(r)}" style="font-size:12px">${r.toUpperCase()}</span>`;
+  const proBadgeHtml = isPro ? `<span class="pro-badge">⭐ PRO</span>` : '';
+  const metaChips = [];
+  if (warns > 0) metaChips.push(`<span style="color:var(--amber);font-size:12px;font-family:'DM Mono',monospace">⚠ ${warns} warning${warns !== 1 ? 's' : ''}</span>`);
+  if (isBanned) metaChips.push(`<span style="color:var(--red);font-size:12px;font-family:'DM Mono',monospace">🚫 Banned</span>`);
+  const overlay = document.createElement('div');
+  overlay.className = 'modal-overlay show';
+  overlay.id = 'profileViewModal';
+  overlay.innerHTML = `
+    <div class="modal" style="width:420px;max-width:95vw;padding:0;overflow:hidden;border-radius:16px">
+      <div style="height:3px;background:linear-gradient(90deg,${isPro ? '#f59e0b,#f97316,#fbbf24' : 'var(--accent),#8b5cf6,#06b6d4'})"></div>
+      <div style="position:relative;overflow:hidden">
+        ${member.background ? `<div style="position:absolute;inset:0;background-image:url(${member.background});background-size:cover;background-position:center;opacity:0.1;pointer-events:none"></div>` : ''}
+        <div style="padding:24px;position:relative;z-index:1">
+          <div style="display:flex;gap:16px;align-items:flex-start;margin-bottom:16px">
+            <div class="avatar-lg" style="${isPro ? 'border-color:rgba(245,158,11,0.5)' : ''}">${avatarHtml}</div>
+            <div style="flex:1;min-width:0">
+              <div class="profile-name" style="font-size:18px;margin-bottom:4px">${escHtml(member.username)} ${proBadgeHtml}</div>
+              <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--green);font-family:'DM Mono',monospace;margin-bottom:8px">
+                <span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span> Online
+              </div>
+              ${roleBadge}
+              ${metaChips.length ? `<div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">${metaChips.join('')}</div>` : ''}
+            </div>
+          </div>
+          ${member.vrchat ? `<div class="vrchat-tag" style="margin-bottom:10px"><i class="ti ti-cube" style="font-size:14px"></i> VRChat: ${escHtml(member.vrchat)}</div>` : ''}
+          <div style="font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:12px">${escHtml(member.bio || 'No bio set yet.')}</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;font-family:'DM Mono',monospace">
+            <i class="ti ti-coin" style="color:#fbbf24;font-size:15px"></i>
+            <span style="color:#fbbf24;font-weight:700">${member.points || 0}</span>
+            <span style="color:var(--muted)">points</span>
+          </div>
+        </div>
+      </div>
+      <div style="padding:14px 24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:10px">
+        <button id="profileDmBtn" style="background:rgba(59,130,246,0.12);border:1px solid rgba(59,130,246,0.25);border-radius:7px;color:var(--accent2);padding:8px 16px;cursor:pointer;font-size:13px;font-family:'DM Mono',monospace;font-weight:600;display:flex;align-items:center;gap:6px"><i class="ti ti-mail" style="font-size:15px"></i> Send DM</button>
+        <button class="modal-cancel" onclick="closeProfileModal()" style="max-width:100px">Close</button>
+      </div>
+    </div>
+  `;
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeProfileModal(); });
+  document.body.appendChild(overlay);
+  document.getElementById('profileDmBtn').addEventListener('click', () => {
+    closeProfileModal();
+    const dmNav = document.getElementById('dmsNavBtn');
+    switchTab('dms', dmNav);
+    startDmWith(member.username);
+  });
+}
+
+function closeProfileModal() {
+  const el = document.getElementById('profileViewModal');
+  if (el) el.remove();
+}
+
+function openWarn(id, username) {
+  pendingAction = { type: 'warn', userId: id, username };
+  document.getElementById('warnModalSub').textContent = `Warning: ${username}`;
+  document.getElementById('warnReason').value = '';
+  document.getElementById('warnModal').classList.add('show');
+  document.getElementById('warnConfirmBtn').onclick = confirmWarn;
+}
+
+function openBan(id, username) {
+  pendingAction = { type: 'ban', userId: id, username };
+  document.getElementById('banModalSub').textContent = `Banning: ${username}`;
+  document.getElementById('banModal').classList.add('show');
+  document.getElementById('banConfirmBtn').onclick = confirmBan;
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('show');
+  pendingAction = null; pendingReport = null;
+}
+
+document.querySelectorAll('.modal-overlay').forEach(o => o.addEventListener('click', e => { if (e.target === o) o.classList.remove('show'); }));
+
+async function confirmWarn() {
+  if (!pendingAction) return;
+  const reason = document.getElementById('warnReason').value.trim() || 'No reason given';
   closeModal('warnModal');
-  try{
-    const res=await fetch(`${API}/api/users/${pendingAction.userId}/warn`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({reason})});
-    const d=await res.json();
-    res.ok?toast(`⚠ ${pendingAction.username} warned`,'warn'):toast(d.error||'Failed','error');
+  try {
+    const res = await fetch(`${API}/api/users/${pendingAction.userId}/warn`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token() },
+      body: JSON.stringify({ reason })
+    });
+    const d = await res.json();
+    res.ok ? toast(`⚠ ${pendingAction.username} warned`, 'warn') : toast(d.error || 'Failed', 'error');
     loadMembers();
-  }catch{toast('Server error','error');}
+  } catch { toast('Server error', 'error'); }
 }
-async function confirmBan(){
-  if(!pendingAction)return;
-  const{userId,username}=pendingAction;closeModal('banModal');
-  try{
-    const res=await fetch(`${API}/api/users/${userId}/ban`,{method:'POST',headers:{Authorization:'Bearer '+token()}});
-    const d=await res.json();
-    res.ok?toast(`🚫 ${username} banned`,'error'):toast(d.error||'Failed','error');
+
+async function confirmBan() {
+  if (!pendingAction) return;
+  const { userId, username } = pendingAction; closeModal('banModal');
+  try {
+    const res = await fetch(`${API}/api/users/${userId}/ban`, { method: 'POST', headers: { Authorization: 'Bearer ' + token() } });
+    const d = await res.json();
+    res.ok ? toast(`🚫 ${username} banned`, 'error') : toast(d.error || 'Failed', 'error');
     loadMembers();
-  }catch{toast('Server error','error');}
+  } catch { toast('Server error', 'error'); }
 }
-async function doUnban(userId,username){
-  try{
-    const res=await fetch(`${API}/api/users/${userId}/unban`,{method:'POST',headers:{Authorization:'Bearer '+token()}});
-    const d=await res.json();
-    res.ok?toast(`✓ ${username} unbanned`,'success'):toast(d.error||'Failed','error');
+
+async function doUnban(userId, username) {
+  try {
+    const res = await fetch(`${API}/api/users/${userId}/unban`, { method: 'POST', headers: { Authorization: 'Bearer ' + token() } });
+    const d = await res.json();
+    res.ok ? toast(`✓ ${username} unbanned`, 'success') : toast(d.error || 'Failed', 'error');
     loadMembers();
-  }catch{toast('Server error','error');}
+  } catch { toast('Server error', 'error'); }
 }
 
 // ── ADMIN KEYS ──
-async function loadAdminKeys(){
-  try{const res=await fetch(`${API}/api/admin/keys`,{headers:{Authorization:'Bearer '+token()}});if(res.ok){generatedKeys=await res.json();renderKeys();}}catch{}
+async function loadAdminKeys() {
+  try {
+    const res = await fetch(`${API}/api/admin/keys`, { headers: { Authorization: 'Bearer ' + token() } });
+    if (res.ok) { generatedKeys = await res.json(); renderKeys(); }
+  } catch {}
 }
-async function generateKey(){
-  const tier=document.getElementById('keyTier').value;const uses=parseInt(document.getElementById('keyUses').value);
-  const btn=document.getElementById('genBtn');btn.disabled=true;btn.innerHTML='<i class="ti ti-loader" style="animation:spin 0.7s linear infinite;display:inline-block"></i> Generating...';
-  try{
-    const res=await fetch(`${API}/api/admin/keys/generate`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({tier,uses})});
-    const data=await res.json();btn.disabled=false;btn.innerHTML='<i class="ti ti-key"></i> Generate Key';
-    if(!res.ok){toast(data.error||'Failed','error');return;}
-    generatedKeys.unshift(data);renderKeys();toast('Key generated: '+data.code,'success');
-  }catch{btn.disabled=false;btn.innerHTML='<i class="ti ti-key"></i> Generate Key';toast('Could not reach server','error');}
+
+async function generateKey() {
+  const tier = document.getElementById('keyTier').value;
+  const uses = parseInt(document.getElementById('keyUses').value);
+  const btn = document.getElementById('genBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<i class="ti ti-loader" style="animation:spin 0.7s linear infinite;display:inline-block"></i> Generating...';
+  try {
+    const res = await fetch(`${API}/api/admin/keys/generate`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token() },
+      body: JSON.stringify({ tier, uses })
+    });
+    const data = await res.json();
+    btn.disabled = false; btn.innerHTML = '<i class="ti ti-key"></i> Generate Key';
+    if (!res.ok) { toast(data.error || 'Failed', 'error'); return; }
+    generatedKeys.unshift(data); renderKeys(); toast('Key generated: ' + data.code, 'success');
+  } catch { btn.disabled = false; btn.innerHTML = '<i class="ti ti-key"></i> Generate Key'; toast('Could not reach server', 'error'); }
 }
-function renderKeys(){
-  const list=document.getElementById('keyList');
-  if(!generatedKeys.length){list.innerHTML='<div class="empty-keys">No keys generated yet.</div>';return;}
-  list.innerHTML=generatedKeys.map(k=>{
-    const usesDisplay=k.uses===-1?'∞':String(k.uses);
-    return`<div class="key-row"><span class="key-code">${k.code}</span><span class="key-tier tier-${k.tier}">${k.tier.toUpperCase()}</span><span class="key-uses">${usesDisplay} use${usesDisplay==='1'?'':'s'}</span><span class="key-status">● ACTIVE</span><button class="key-copy" onclick="copyKey('${k.code}')" title="Copy"><i class="ti ti-copy"></i></button><button class="key-del" onclick="revokeKey('${k._id}')" title="Revoke"><i class="ti ti-trash"></i></button></div>`;
+
+function renderKeys() {
+  const list = document.getElementById('keyList');
+  if (!generatedKeys.length) { list.innerHTML = '<div class="empty-keys">No keys generated yet.</div>'; return; }
+  list.innerHTML = generatedKeys.map(k => {
+    const usesDisplay = k.uses === -1 ? '∞' : String(k.uses);
+    return `<div class="key-row"><span class="key-code">${k.code}</span><span class="key-tier tier-${k.tier}">${k.tier.toUpperCase()}</span><span class="key-uses">${usesDisplay} use${usesDisplay === '1' ? '' : 's'}</span><span class="key-status">● ACTIVE</span><button class="key-copy" onclick="copyKey('${k.code}')" title="Copy"><i class="ti ti-copy"></i></button><button class="key-del" onclick="revokeKey('${k._id}')" title="Revoke"><i class="ti ti-trash"></i></button></div>`;
   }).join('');
 }
-function copyKey(code){navigator.clipboard.writeText(code).then(()=>toast('Copied: '+code,'success'));}
-async function revokeKey(id){
-  try{await fetch(`${API}/api/admin/keys/${id}/revoke`,{method:'POST',headers:{Authorization:'Bearer '+token()}});generatedKeys=generatedKeys.filter(k=>k._id!==id);renderKeys();toast('Key revoked','');}
-  catch{toast('Server error','error');}
+
+function copyKey(code) { navigator.clipboard.writeText(code).then(() => toast('Copied: ' + code, 'success')); }
+
+async function revokeKey(id) {
+  try {
+    await fetch(`${API}/api/admin/keys/${id}/revoke`, { method: 'POST', headers: { Authorization: 'Bearer ' + token() } });
+    generatedKeys = generatedKeys.filter(k => k._id !== id); renderKeys(); toast('Key revoked', '');
+  } catch { toast('Server error', 'error'); }
 }
 
 // ── ADMIN GIVE ──
-async function adminGivePro(){
-  const username=document.getElementById('giveUsername').value.trim();
-  if(!username){toast('Enter a username','error');return;}
-  try{
-    const res=await fetch(`${API}/api/admin/give/pro`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({username})});
-    const d=await res.json();
-    res.ok?toast(`⭐ PRO given to ${username}`,'pro'):toast(d.error||'Failed','error');
-    if(res.ok)showGiveConfirm();
-  }catch{toast('Server error','error');}
+async function adminGivePro() {
+  const username = document.getElementById('giveUsername').value.trim();
+  if (!username) { toast('Enter a username', 'error'); return; }
+  try {
+    const res = await fetch(`${API}/api/admin/give/pro`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token() },
+      body: JSON.stringify({ username })
+    });
+    const d = await res.json();
+    res.ok ? toast(`⭐ PRO given to ${username}`, 'pro') : toast(d.error || 'Failed', 'error');
+    if (res.ok) showGiveConfirm();
+  } catch { toast('Server error', 'error'); }
 }
-async function adminGivePoints(){
-  const username=document.getElementById('giveUsername').value.trim();const pts=parseInt(document.getElementById('givePoints').value)||0;
-  if(!username||pts<=0){toast('Enter username and points','error');return;}
-  try{
-    const res=await fetch(`${API}/api/admin/give/points`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({username,points:pts})});
-    const d=await res.json();
-    if(res.ok){toast(`+${pts} pts given to ${username}`,'success');if(username===currentUsername){userPoints=d.points;updatePtsUI();}showGiveConfirm();}
-    else{toast(d.error||'Failed','error');}
-  }catch{toast('Server error','error');}
+
+async function adminGivePoints() {
+  const username = document.getElementById('giveUsername').value.trim();
+  const pts = parseInt(document.getElementById('givePoints').value) || 0;
+  if (!username || pts <= 0) { toast('Enter username and points', 'error'); return; }
+  try {
+    const res = await fetch(`${API}/api/admin/give/points`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token() },
+      body: JSON.stringify({ username, points: pts })
+    });
+    const d = await res.json();
+    if (res.ok) { toast(`+${pts} pts given to ${username}`, 'success'); if (username === currentUsername) { userPoints = d.points; updatePtsUI(); } showGiveConfirm(); }
+    else toast(d.error || 'Failed', 'error');
+  } catch { toast('Server error', 'error'); }
 }
-function showGiveConfirm(){const c=document.getElementById('giveConfirm');c.classList.add('show');setTimeout(()=>c.classList.remove('show'),2000);}
+
+function showGiveConfirm() { const c = document.getElementById('giveConfirm'); c.classList.add('show'); setTimeout(() => c.classList.remove('show'), 2000); }
 
 // ── EVENTS ──
-async function loadEvents(){
-  try{const res=await fetch(`${API}/api/events`,{headers:{Authorization:'Bearer '+token()}});serverEvents=await res.json();renderEvents();}
-  catch{renderEvents();}
+async function loadEvents() {
+  try {
+    const res = await fetch(`${API}/api/events`, { headers: { Authorization: 'Bearer ' + token() } });
+    serverEvents = await res.json(); renderEvents();
+  } catch { renderEvents(); }
 }
-function renderEvents(){
-  const list=document.getElementById('eventsList');
-  if(!serverEvents.length){list.innerHTML='<div class="ev-empty">No events scheduled yet.</div>';return;}
-  list.innerHTML=serverEvents.map(ev=>{
-    const d=new Date(ev.date+'T12:00:00');const mon=months[d.getMonth()];const day=d.getDate();
-    const going=ev.rsvps&&ev.rsvps.includes(currentUsername);
-    const pips=(ev.rsvps||[]).slice(0,3).map((r,i)=>`<div class="pip" style="background:${pipColors[i%pipColors.length]}">${r.slice(0,2).toUpperCase()}</div>`).join('');
-    const extra=(ev.rsvps||[]).length>3?`<div class="pip" style="background:var(--panel2);color:var(--muted);border:1px solid var(--border2);font-size:9px">+${ev.rsvps.length-3}</div>`:'';
-    return`<div class="event-card"><div class="ev-date"><span class="ev-month">${mon}</span><span class="ev-day">${day}</span></div><div><div class="ev-title">${escHtml(ev.title)}</div><div class="ev-meta"><span><i class="ti ti-user"></i>${escHtml(ev.host)}</span><span><i class="ti ti-clock"></i>${ev.time} UTC</span></div><div class="ev-desc">${escHtml(ev.desc)}</div></div><div class="ev-right"><button class="rsvp-btn ${going?'going':''}" onclick="toggleRsvp('${ev._id}')">${going?'<i class="ti ti-check"></i> Going':'RSVP'}</button><div class="attendee-pips">${pips}${extra}</div></div></div>`;
+
+function renderEvents() {
+  const list = document.getElementById('eventsList');
+  if (!serverEvents.length) { list.innerHTML = '<div class="ev-empty">No events scheduled yet.</div>'; return; }
+  list.innerHTML = serverEvents.map(ev => {
+    const d = new Date(ev.date + 'T12:00:00');
+    const mon = months[d.getMonth()]; const day = d.getDate();
+    const going = ev.rsvps && ev.rsvps.includes(currentUsername);
+    const pips = (ev.rsvps || []).slice(0, 3).map((r, i) => `<div class="pip" style="background:${pipColors[i % pipColors.length]}">${r.slice(0, 2).toUpperCase()}</div>`).join('');
+    const extra = (ev.rsvps || []).length > 3 ? `<div class="pip" style="background:var(--panel2);color:var(--muted);border:1px solid var(--border2);font-size:9px">+${ev.rsvps.length - 3}</div>` : '';
+    return `<div class="event-card"><div class="ev-date"><span class="ev-month">${mon}</span><span class="ev-day">${day}</span></div><div><div class="ev-title">${escHtml(ev.title)}</div><div class="ev-meta"><span><i class="ti ti-user"></i>${escHtml(ev.host)}</span><span><i class="ti ti-clock"></i>${ev.time} UTC</span></div><div class="ev-desc">${escHtml(ev.desc)}</div></div><div class="ev-right"><button class="rsvp-btn ${going ? 'going' : ''}" onclick="toggleRsvp('${ev._id}')">${going ? '<i class="ti ti-check"></i> Going' : 'RSVP'}</button><div class="attendee-pips">${pips}${extra}</div></div></div>`;
   }).join('');
 }
-async function toggleRsvp(id){
-  try{const res=await fetch(`${API}/api/events/${id}/rsvp`,{method:'POST',headers:{Authorization:'Bearer '+token()}});const d=await res.json();if(res.ok){const ev=serverEvents.find(e=>e._id===id);if(ev)ev.rsvps=d.rsvps;renderEvents();}}
-  catch{toast('Server error','error');}
+
+async function toggleRsvp(id) {
+  try {
+    const res = await fetch(`${API}/api/events/${id}/rsvp`, { method: 'POST', headers: { Authorization: 'Bearer ' + token() } });
+    const d = await res.json();
+    if (res.ok) { const ev = serverEvents.find(e => e._id === id); if (ev) ev.rsvps = d.rsvps; renderEvents(); }
+  } catch { toast('Server error', 'error'); }
 }
-async function addEvent(){
-  const title=document.getElementById('newEvTitle').value.trim();const host=document.getElementById('newEvHost').value.trim();
-  const date=document.getElementById('newEvDate').value;const time=document.getElementById('newEvTime').value;const desc=document.getElementById('newEvDesc').value.trim();
-  if(!title||!host||!date||!time){toast('Fill all fields','error');return;}
-  try{
-    const res=await fetch(`${API}/api/events`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({title,host,date,time,desc:desc||'No description.'})});
-    const d=await res.json();
-    if(!res.ok){toast(d.error||'Failed','error');return;}
+
+async function addEvent() {
+  const title = document.getElementById('newEvTitle').value.trim();
+  const host = document.getElementById('newEvHost').value.trim();
+  const date = document.getElementById('newEvDate').value;
+  const time = document.getElementById('newEvTime').value;
+  const desc = document.getElementById('newEvDesc').value.trim();
+  if (!title || !host || !date || !time) { toast('Fill all fields', 'error'); return; }
+  try {
+    const res = await fetch(`${API}/api/events`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token() },
+      body: JSON.stringify({ title, host, date, time, desc: desc || 'No description.' })
+    });
+    const d = await res.json();
+    if (!res.ok) { toast(d.error || 'Failed', 'error'); return; }
     serverEvents.push(d);
-    ['newEvTitle','newEvHost','newEvDate','newEvTime','newEvDesc'].forEach(id=>document.getElementById(id).value='');
-    const chip=document.getElementById('evConfirm');chip.classList.add('show');setTimeout(()=>chip.classList.remove('show'),2000);
-    renderAdminEvents();toast('Event added!','success');
-  }catch{toast('Server error','error');}
+    ['newEvTitle', 'newEvHost', 'newEvDate', 'newEvTime', 'newEvDesc'].forEach(id => document.getElementById(id).value = '');
+    const chip = document.getElementById('evConfirm'); chip.classList.add('show'); setTimeout(() => chip.classList.remove('show'), 2000);
+    renderAdminEvents(); toast('Event added!', 'success');
+  } catch { toast('Server error', 'error'); }
 }
-async function deleteEvent(id){
-  try{
-    await fetch(`${API}/api/events/${id}`,{method:'DELETE',headers:{Authorization:'Bearer '+token()}});
-    serverEvents=serverEvents.filter(e=>e._id!==id);renderAdminEvents();toast('Event removed.','');
-  }catch{toast('Server error','error');}
+
+async function deleteEvent(id) {
+  try {
+    await fetch(`${API}/api/events/${id}`, { method: 'DELETE', headers: { Authorization: 'Bearer ' + token() } });
+    serverEvents = serverEvents.filter(e => e._id !== id); renderAdminEvents(); toast('Event removed.', '');
+  } catch { toast('Server error', 'error'); }
 }
-function renderAdminEvents(){
-  const el=document.getElementById('adminEvList');
-  if(!serverEvents.length){el.innerHTML='<div style="font-size:13px;color:var(--muted);font-family:\'DM Mono\',monospace">No events yet.</div>';return;}
-  el.innerHTML=serverEvents.map(ev=>`<div class="admin-ev-row"><div><div class="admin-ev-name">${escHtml(ev.title)}</div><div class="admin-ev-date">${ev.date} · ${ev.time} UTC · ${escHtml(ev.host)}</div></div><button class="del-ev-btn" onclick="deleteEvent('${ev._id}')"><i class="ti ti-trash"></i> Remove</button></div>`).join('');
+
+function renderAdminEvents() {
+  const el = document.getElementById('adminEvList');
+  if (!serverEvents.length) { el.innerHTML = '<div style="font-size:13px;color:var(--muted);font-family:\'DM Mono\',monospace">No events yet.</div>'; return; }
+  el.innerHTML = serverEvents.map(ev => `<div class="admin-ev-row"><div><div class="admin-ev-name">${escHtml(ev.title)}</div><div class="admin-ev-date">${ev.date} · ${ev.time} UTC · ${escHtml(ev.host)}</div></div><button class="del-ev-btn" onclick="deleteEvent('${ev._id}')"><i class="ti ti-trash"></i> Remove</button></div>`).join('');
 }
 
 // ── BADGE SYSTEM ──
-function selectBadgeColor(el){
-  document.querySelectorAll('.badge-color-btn').forEach(b=>b.classList.remove('selected'));
+function selectBadgeColor(el) {
+  document.querySelectorAll('.badge-color-btn').forEach(b => b.classList.remove('selected'));
   el.classList.add('selected');
-  selectedBadgeColor=el.dataset.color;selectedBadgeTextColor=el.dataset.text;
+  selectedBadgeColor = el.dataset.color; selectedBadgeTextColor = el.dataset.text;
   updateBadgePreview();
 }
-function updateBadgePreview(){
-  const emoji=document.getElementById('badgeEmoji').value||'🏅';
-  const name=document.getElementById('badgeName').value||'Badge Name';
-  const prev=document.getElementById('badgeLivePreview');
-  const hex=selectedBadgeColor;
-  const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);
-  prev.style.background=`rgba(${r},${g},${b},0.18)`;
-  prev.style.borderColor=`rgba(${r},${g},${b},0.45)`;
-  prev.style.color=selectedBadgeTextColor==='#000'?hex:'var(--text)';
-  prev.textContent=`${emoji} ${name}`;
+
+function updateBadgePreview() {
+  const emoji = document.getElementById('badgeEmoji').value || '🏅';
+  const name = document.getElementById('badgeName').value || 'Badge Name';
+  const prev = document.getElementById('badgeLivePreview');
+  const hex = selectedBadgeColor;
+  const r = parseInt(hex.slice(1, 3), 16), g = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16);
+  prev.style.background = `rgba(${r},${g},${b},0.18)`;
+  prev.style.borderColor = `rgba(${r},${g},${b},0.45)`;
+  prev.style.color = selectedBadgeTextColor === '#000' ? hex : 'var(--text)';
+  prev.textContent = `${emoji} ${name}`;
 }
-function toggleClaimSettings(){
-  const on=document.getElementById('badgeClaimable').checked;
-  document.getElementById('claimSettingsFields').style.display=on?'':'none';
+
+function toggleClaimSettings() {
+  const on = document.getElementById('badgeClaimable').checked;
+  document.getElementById('claimSettingsFields').style.display = on ? '' : 'none';
 }
-function toggleEarnBy(btn){
+
+function toggleEarnBy(btn) {
   btn.classList.toggle('selected');
-  const val=btn.dataset.val;
-  if(btn.classList.contains('selected'))activeEarnByTags.push(val);
-  else activeEarnByTags=activeEarnByTags.filter(v=>v!==val);
+  const val = btn.dataset.val;
+  if (btn.classList.contains('selected')) activeEarnByTags.push(val);
+  else activeEarnByTags = activeEarnByTags.filter(v => v !== val);
 }
-async function createBadge(){
-  const emoji=document.getElementById('badgeEmoji').value.trim();
-  const name=document.getElementById('badgeName').value.trim();
-  const desc=document.getElementById('badgeDesc').value.trim();
-  if(!emoji||!name){toast('Enter emoji and name','error');return;}
-  const r=parseInt(selectedBadgeColor.slice(1,3),16);
-  const g=parseInt(selectedBadgeColor.slice(3,5),16);
-  const b=parseInt(selectedBadgeColor.slice(5,7),16);
-  const bgColor=`rgba(${r},${g},${b},0.15)`;
-  const claimable=document.getElementById('badgeClaimable').checked;
-  const expiry=document.getElementById('badgeExpiry').value||null;
-  const earnByCustom=document.getElementById('earnByCustom').value.trim();
-  const earnBy=[...activeEarnByTags,...(earnByCustom?[earnByCustom]:[])];
-  try{
-    const res=await fetch(`${API}/api/admin/badges`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({name,emoji,color:selectedBadgeColor,bgColor})});
-    const d=await res.json();
-    if(!res.ok){toast(d.error||'Failed to create badge','error');return;}
-    const badge={id:d.id,emoji,name,desc,color:selectedBadgeColor,textColor:selectedBadgeTextColor,bgColor,claimable,expiry,earnBy,createdAt:new Date().toISOString(),recipients:[]};
-    createdBadges.unshift(badge);localStorage.setItem('vs_badges',JSON.stringify(createdBadges));
-  }catch{toast('Server offline','error');return;}
-  document.getElementById('badgeEmoji').value='';document.getElementById('badgeName').value='';document.getElementById('badgeDesc').value='';
-  document.getElementById('badgeClaimable').checked=false;document.getElementById('badgeExpiry').value='';document.getElementById('earnByCustom').value='';
-  activeEarnByTags=[];document.querySelectorAll('.earn-by-tag').forEach(t=>t.classList.remove('selected'));
-  document.getElementById('claimSettingsFields').style.display='none';updateBadgePreview();
-  renderAdminBadgeList();populateGiveBadgeSelect();
-  const c=document.getElementById('badgeCreateConfirm');c.classList.add('show');setTimeout(()=>c.classList.remove('show'),2000);
-  toast(`🏅 Badge "${name}" created!`,'success');
+
+async function createBadge() {
+  const emoji = document.getElementById('badgeEmoji').value.trim();
+  const name = document.getElementById('badgeName').value.trim();
+  const desc = document.getElementById('badgeDesc').value.trim();
+  if (!emoji || !name) { toast('Enter emoji and name', 'error'); return; }
+  const r = parseInt(selectedBadgeColor.slice(1, 3), 16);
+  const g = parseInt(selectedBadgeColor.slice(3, 5), 16);
+  const b = parseInt(selectedBadgeColor.slice(5, 7), 16);
+  const bgColor = `rgba(${r},${g},${b},0.15)`;
+  const claimable = document.getElementById('badgeClaimable').checked;
+  const expiry = document.getElementById('badgeExpiry').value || null;
+  const earnByCustom = document.getElementById('earnByCustom').value.trim();
+  const earnBy = [...activeEarnByTags, ...(earnByCustom ? [earnByCustom] : [])];
+  try {
+    const res = await fetch(`${API}/api/admin/badges`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token() },
+      body: JSON.stringify({ name, emoji, color: selectedBadgeColor, bgColor })
+    });
+    const d = await res.json();
+    if (!res.ok) { toast(d.error || 'Failed to create badge', 'error'); return; }
+    const badge = { id: d.id, emoji, name, desc, color: selectedBadgeColor, textColor: selectedBadgeTextColor, bgColor, claimable, expiry, earnBy, createdAt: new Date().toISOString(), recipients: [] };
+    createdBadges.unshift(badge);
+    localStorage.setItem('vs_badges', JSON.stringify(createdBadges));
+  } catch { toast('Server offline', 'error'); return; }
+  document.getElementById('badgeEmoji').value = '';
+  document.getElementById('badgeName').value = '';
+  document.getElementById('badgeDesc').value = '';
+  document.getElementById('badgeClaimable').checked = false;
+  document.getElementById('badgeExpiry').value = '';
+  document.getElementById('earnByCustom').value = '';
+  activeEarnByTags = [];
+  document.querySelectorAll('.earn-by-tag').forEach(t => t.classList.remove('selected'));
+  document.getElementById('claimSettingsFields').style.display = 'none';
+  updateBadgePreview();
+  renderAdminBadgeList(); populateGiveBadgeSelect();
+  const c = document.getElementById('badgeCreateConfirm'); c.classList.add('show'); setTimeout(() => c.classList.remove('show'), 2000);
+  toast(`🏅 Badge "${name}" created!`, 'success');
 }
-function renderAdminBadgeList(){
-  const el=document.getElementById('adminBadgeList');
-  if(!createdBadges.length){el.innerHTML='<div style="font-size:13px;color:var(--muted);font-family:\'DM Mono\',monospace">No badges created yet.</div>';return;}
-  el.innerHTML=createdBadges.map(b=>{
-    const r=parseInt(b.color.slice(1,3),16),g=parseInt(b.color.slice(3,5),16),bv=parseInt(b.color.slice(5,7),16);
-    const bgStyle=`background:rgba(${r},${g},${bv},0.18);border-color:rgba(${r},${g},${bv},0.45);color:var(--text)`;
-    const claimInfo=b.claimable?`<span style="font-size:10px;font-family:'DM Mono',monospace;color:var(--green)">● CLAIMABLE${b.expiry?' until '+new Date(b.expiry).toLocaleString():''}</span>`:'';
-    const earnInfo=b.earnBy&&b.earnBy.length?`<span style="font-size:11px;font-family:'DM Mono',monospace;color:var(--muted)">Earn by: ${b.earnBy.join(', ')}</span>`:'';
-    const given=b.recipients&&b.recipients.length?`<span style="font-size:10px;font-family:'DM Mono',monospace;color:var(--muted)">${b.recipients.length} given</span>`:'';
-    return `<div class="badge-list-row"><span class="custom-badge-tag" style="${bgStyle}">${b.emoji} ${b.name}</span><div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">${claimInfo}${earnInfo?'<div>'+earnInfo+'</div>':''}${given}</div><div class="badge-list-actions"><button class="del-badge-btn" onclick="deleteBadge('${b.id}')"><i class="ti ti-trash"></i> Remove</button></div></div>`;
+
+function renderAdminBadgeList() {
+  const el = document.getElementById('adminBadgeList');
+  if (!createdBadges.length) { el.innerHTML = '<div style="font-size:13px;color:var(--muted);font-family:\'DM Mono\',monospace">No badges created yet.</div>'; return; }
+  el.innerHTML = createdBadges.map(b => {
+    const r = parseInt(b.color.slice(1, 3), 16), g = parseInt(b.color.slice(3, 5), 16), bv = parseInt(b.color.slice(5, 7), 16);
+    const bgStyle = `background:rgba(${r},${g},${bv},0.18);border-color:rgba(${r},${g},${bv},0.45);color:var(--text)`;
+    const claimInfo = b.claimable ? `<span style="font-size:10px;font-family:'DM Mono',monospace;color:var(--green)">● CLAIMABLE${b.expiry ? ' until ' + new Date(b.expiry).toLocaleString() : ''}</span>` : '';
+    const earnInfo = b.earnBy && b.earnBy.length ? `<span style="font-size:11px;font-family:'DM Mono',monospace;color:var(--muted)">Earn by: ${b.earnBy.join(', ')}</span>` : '';
+    const given = b.recipients && b.recipients.length ? `<span style="font-size:10px;font-family:'DM Mono',monospace;color:var(--muted)">${b.recipients.length} given</span>` : '';
+    return `<div class="badge-list-row"><span class="custom-badge-tag" style="${bgStyle}">${b.emoji} ${b.name}</span><div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">${claimInfo}${earnInfo ? '<div>' + earnInfo + '</div>' : ''}${given}</div><div class="badge-list-actions"><button class="del-badge-btn" onclick="deleteBadge('${b.id}')"><i class="ti ti-trash"></i> Remove</button></div></div>`;
   }).join('');
 }
-function deleteBadge(id){
-  createdBadges=createdBadges.filter(b=>b.id!==id);
-  localStorage.setItem('vs_badges',JSON.stringify(createdBadges));
-  renderAdminBadgeList();populateGiveBadgeSelect();toast('Badge removed','');
+
+function deleteBadge(id) {
+  createdBadges = createdBadges.filter(b => b.id !== id);
+  localStorage.setItem('vs_badges', JSON.stringify(createdBadges));
+  renderAdminBadgeList(); populateGiveBadgeSelect(); toast('Badge removed', '');
 }
-function populateGiveBadgeSelect(){
-  const sel=document.getElementById('giveBadgeSelect');
-  if(!createdBadges.length){sel.innerHTML='<option value="">— No badges created yet —</option>';return;}
-  sel.innerHTML=createdBadges.map(b=>`<option value="${b.id}">${b.emoji} ${b.name}</option>`).join('');
+
+function populateGiveBadgeSelect() {
+  const sel = document.getElementById('giveBadgeSelect');
+  if (!createdBadges.length) { sel.innerHTML = '<option value="">— No badges created yet —</option>'; return; }
+  sel.innerHTML = createdBadges.map(b => `<option value="${b.id}">${b.emoji} ${b.name}</option>`).join('');
 }
-async function adminGiveBadge(){
-  const username=document.getElementById('giveBadgeUsername').value.trim();
-  const badgeId=document.getElementById('giveBadgeSelect').value;
-  if(!username||!badgeId){toast('Select a user and badge','error');return;}
-  const badge=createdBadges.find(b=>b.id===badgeId);if(!badge){toast('Badge not found','error');return;}
-  if(!badge.recipients)badge.recipients=[];
-  if(!badge.recipients.includes(username))badge.recipients.push(username);
-  localStorage.setItem('vs_badges',JSON.stringify(createdBadges));
+
+async function adminGiveBadge() {
+  const username = document.getElementById('giveBadgeUsername').value.trim();
+  const badgeId = document.getElementById('giveBadgeSelect').value;
+  if (!username || !badgeId) { toast('Select a user and badge', 'error'); return; }
+  const badge = createdBadges.find(b => b.id === badgeId); if (!badge) { toast('Badge not found', 'error'); return; }
+  if (!badge.recipients) badge.recipients = [];
+  if (!badge.recipients.includes(username)) badge.recipients.push(username);
+  localStorage.setItem('vs_badges', JSON.stringify(createdBadges));
   renderAdminBadgeList();
-  try{
-  const res=await fetch(`${API}/api/admin/badges/give`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({username,badgeId:badge.id})});
-  const d=await res.json();
-  if(!res.ok){toast(d.error||'Failed to give badge','error');return;}
-}catch{toast('Server error','error');return;}
-  const c=document.getElementById('badgeGiveConfirm');c.classList.add('show');setTimeout(()=>c.classList.remove('show'),2000);
-  toast(`🏅 "${badge.name}" given to ${username}`,'success');
+  try {
+    const res = await fetch(`${API}/api/admin/badges/give`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token() },
+      body: JSON.stringify({ username, badgeId: badge.id })
+    });
+    const d = await res.json();
+    if (!res.ok) { toast(d.error || 'Failed to give badge', 'error'); return; }
+  } catch { toast('Server error', 'error'); return; }
+  const c = document.getElementById('badgeGiveConfirm'); c.classList.add('show'); setTimeout(() => c.classList.remove('show'), 2000);
+  toast(`🏅 "${badge.name}" given to ${username}`, 'success');
 }
-async function loadAdminBadges(){
-  try{
-    const res=await fetch(`${API}/api/badges`,{headers:{Authorization:'Bearer '+token()}});
-    if(res.ok){
-      const serverBadges=await res.json();
-      createdBadges=serverBadges.map(b=>({...b,recipients:[]}));
-      localStorage.setItem('vs_badges',JSON.stringify(createdBadges));
+
+async function loadAdminBadges() {
+  try {
+    const res = await fetch(`${API}/api/badges`, { headers: { Authorization: 'Bearer ' + token() } });
+    if (res.ok) {
+      const serverBadges = await res.json();
+      createdBadges = serverBadges.map(b => ({ ...b, recipients: [] }));
+      localStorage.setItem('vs_badges', JSON.stringify(createdBadges));
     }
-  }catch{}
-  renderAdminBadgeList();populateGiveBadgeSelect();
+  } catch {}
+  renderAdminBadgeList(); populateGiveBadgeSelect();
 }
 
 // ══════════════════════════════════════
 // ── GAME: MEMORY ──
 // ══════════════════════════════════════
-function startMemory(){
-  if(memActive)return;memActive=true;memFlipped=[];memMatched=0;memMoves=0;memSeconds=0;memCanFlip=true;
-  document.getElementById('memWinBanner').style.display='none';document.getElementById('moveCount').textContent='0';document.getElementById('gameTimer').textContent='0s';document.getElementById('startBtn').disabled=true;
-  clearInterval(memTimer);memTimer=setInterval(()=>{memSeconds++;document.getElementById('gameTimer').textContent=memSeconds+'s';},1000);
-  const emojis=[...PRO_EMOJIS].sort(()=>Math.random()-0.5).slice(0,8);
-  memCards=[...emojis,...emojis].sort(()=>Math.random()-0.5);
+function startMemory() {
+  if (memActive) return; memActive = true; memFlipped = []; memMatched = 0; memMoves = 0; memSeconds = 0; memCanFlip = true;
+  document.getElementById('memWinBanner').style.display = 'none';
+  document.getElementById('moveCount').textContent = '0';
+  document.getElementById('gameTimer').textContent = '0s';
+  document.getElementById('startBtn').disabled = true;
+  clearInterval(memTimer);
+  memTimer = setInterval(() => { memSeconds++; document.getElementById('gameTimer').textContent = memSeconds + 's'; }, 1000);
+  const emojis = [...PRO_EMOJIS].sort(() => Math.random() - 0.5).slice(0, 8);
+  memCards = [...emojis, ...emojis].sort(() => Math.random() - 0.5);
   renderMemBoard();
 }
-function renderMemBoard(){
-  const board=document.getElementById('gameBoard');
-  if(!memActive){board.innerHTML=`<div class="game-idle"><i class="ti ti-cards"></i>Press Start — match all pairs to earn 100 pts!</div>`;return;}
-  board.innerHTML=`<div class="memory-grid">${memCards.map((emoji,i)=>`<button class="mem-card" id="mc-${i}" onclick="flipCard(${i})"><div class="card-front"></div><div class="card-back">${emoji}</div></button>`).join('')}</div>`;
+
+function renderMemBoard() {
+  const board = document.getElementById('gameBoard');
+  if (!memActive) { board.innerHTML = `<div class="game-idle"><i class="ti ti-cards"></i>Press Start — match all pairs to earn 100 pts!</div>`; return; }
+  board.innerHTML = `<div class="memory-grid">${memCards.map((emoji, i) => `<button class="mem-card" id="mc-${i}" onclick="flipCard(${i})"><div class="card-front"></div><div class="card-back">${emoji}</div></button>`).join('')}</div>`;
 }
-function flipCard(i){
-  if(!memCanFlip||!memActive)return;const card=document.getElementById('mc-'+i);if(card.classList.contains('flipped')||card.classList.contains('matched'))return;
-  card.classList.add('flipped');memFlipped.push(i);
-  if(memFlipped.length===2){
-    memMoves++;document.getElementById('moveCount').textContent=memMoves;memCanFlip=false;
-    const[a,b]=memFlipped;
-    if(memCards[a]===memCards[b]){
-      setTimeout(()=>{document.getElementById('mc-'+a).classList.add('matched');document.getElementById('mc-'+b).classList.add('matched');memFlipped=[];memMatched++;memCanFlip=true;if(memMatched===8)winMemory();},400);
+
+function flipCard(i) {
+  if (!memCanFlip || !memActive) return;
+  const card = document.getElementById('mc-' + i);
+  if (card.classList.contains('flipped') || card.classList.contains('matched')) return;
+  card.classList.add('flipped'); memFlipped.push(i);
+  if (memFlipped.length === 2) {
+    memMoves++; document.getElementById('moveCount').textContent = memMoves; memCanFlip = false;
+    const [a, b] = memFlipped;
+    if (memCards[a] === memCards[b]) {
+      setTimeout(() => { document.getElementById('mc-' + a).classList.add('matched'); document.getElementById('mc-' + b).classList.add('matched'); memFlipped = []; memMatched++; memCanFlip = true; if (memMatched === 8) winMemory(); }, 400);
     } else {
-      setTimeout(()=>{document.getElementById('mc-'+a).classList.remove('flipped');document.getElementById('mc-'+b).classList.remove('flipped');memFlipped=[];memCanFlip=true;},800);
+      setTimeout(() => { document.getElementById('mc-' + a).classList.remove('flipped'); document.getElementById('mc-' + b).classList.remove('flipped'); memFlipped = []; memCanFlip = true; }, 800);
     }
   }
 }
-async function winMemory(){
-  clearInterval(memTimer);memActive=false;document.getElementById('startBtn').disabled=false;
-  try{const res=await fetch(`${API}/api/me/points/add`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({amount:100})});const d=await res.json();if(res.ok){userPoints=d.points;updatePtsUI();}}catch{}
-  document.getElementById('memWinPts').textContent=`+100 pts — total: ${userPoints}`;
-  document.getElementById('memWinBanner').style.display='flex';
-  toast('🎉 Memory complete! +100 pts','success');
+
+async function winMemory() {
+  clearInterval(memTimer); memActive = false; document.getElementById('startBtn').disabled = false;
+  try {
+    const res = await fetch(`${API}/api/me/points/add`, { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token() }, body: JSON.stringify({ amount: 100 }) });
+    const d = await res.json(); if (res.ok) { userPoints = d.points; updatePtsUI(); }
+  } catch {}
+  document.getElementById('memWinPts').textContent = `+100 pts — total: ${userPoints}`;
+  document.getElementById('memWinBanner').style.display = 'flex';
+  toast('🎉 Memory complete! +100 pts', 'success');
 }
 
 // ══════════════════════════════════════
 // ── GAME: SNAKE ──
 // ══════════════════════════════════════
-function renderSnakeIdle(){
-  const canvas=document.getElementById('snakeCanvas');const ctx=canvas.getContext('2d');ctx.clearRect(0,0,400,400);
-  ctx.fillStyle='rgba(255,255,255,0.04)';ctx.fillRect(0,0,400,400);ctx.fillStyle='rgba(255,255,255,0.15)';ctx.font='24px Rajdhani';ctx.textAlign='center';ctx.fillText('Press Start to play',200,200);
+function renderSnakeIdle() {
+  const canvas = document.getElementById('snakeCanvas'); const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, 400, 400);
+  ctx.fillStyle = 'rgba(255,255,255,0.04)'; ctx.fillRect(0, 0, 400, 400);
+  ctx.fillStyle = 'rgba(255,255,255,0.15)'; ctx.font = '24px Rajdhani'; ctx.textAlign = 'center'; ctx.fillText('Press Start to play', 200, 200);
 }
-function placeFood(){let fx,fy,tries=0;do{fx=Math.floor(Math.random()*SNAKE_COLS);fy=Math.floor(Math.random()*SNAKE_ROWS);tries++;}while(snake.some(s=>s.x===fx&&s.y===fy)&&tries<100);snakeFood={x:fx,y:fy};}
-function startSnake(){
-  if(snakeActive)return;snakeActive=true;snakeScore=0;document.getElementById('snakeScore').textContent=0;
-  snake=[{x:10,y:10},{x:9,y:10},{x:8,y:10}];snakeDir={x:1,y:0};snakeNextDir={x:1,y:0};placeFood();
-  document.getElementById('snakeStartBtn').disabled=true;
-  clearInterval(snakeLoop);snakeLoop=setInterval(snakeTick,130);
+
+function placeFood() {
+  let fx, fy, tries = 0;
+  do { fx = Math.floor(Math.random() * SNAKE_COLS); fy = Math.floor(Math.random() * SNAKE_ROWS); tries++; }
+  while (snake.some(s => s.x === fx && s.y === fy) && tries < 100);
+  snakeFood = { x: fx, y: fy };
 }
-function snakeTick(){
-  snakeDir=snakeNextDir;const head={x:snake[0].x+snakeDir.x,y:snake[0].y+snakeDir.y};
-  if(head.x<0||head.x>=SNAKE_COLS||head.y<0||head.y>=SNAKE_ROWS||snake.some(s=>s.x===head.x&&s.y===head.y)){gameOverSnake();return;}
+
+function startSnake() {
+  if (snakeActive) return; snakeActive = true; snakeScore = 0;
+  document.getElementById('snakeScore').textContent = 0;
+  snake = [{ x: 10, y: 10 }, { x: 9, y: 10 }, { x: 8, y: 10 }];
+  snakeDir = { x: 1, y: 0 }; snakeNextDir = { x: 1, y: 0 }; placeFood();
+  document.getElementById('snakeStartBtn').disabled = true;
+  clearInterval(snakeLoop); snakeLoop = setInterval(snakeTick, 130);
+}
+
+function snakeTick() {
+  snakeDir = snakeNextDir;
+  const head = { x: snake[0].x + snakeDir.x, y: snake[0].y + snakeDir.y };
+  if (head.x < 0 || head.x >= SNAKE_COLS || head.y < 0 || head.y >= SNAKE_ROWS || snake.some(s => s.x === head.x && s.y === head.y)) { gameOverSnake(); return; }
   snake.unshift(head);
-  if(head.x===snakeFood.x&&head.y===snakeFood.y){snakeScore+=5;document.getElementById('snakeScore').textContent=snakeScore;placeFood();}
+  if (head.x === snakeFood.x && head.y === snakeFood.y) { snakeScore += 5; document.getElementById('snakeScore').textContent = snakeScore; placeFood(); }
   else snake.pop();
   drawSnake();
 }
-function drawSnake(){
-  const canvas=document.getElementById('snakeCanvas');const ctx=canvas.getContext('2d');const C=SNAKE_CELL;ctx.clearRect(0,0,400,400);
-  ctx.strokeStyle='rgba(255,255,255,0.03)';
-  for(let i=0;i<SNAKE_COLS;i++){ctx.beginPath();ctx.moveTo(i*C,0);ctx.lineTo(i*C,400);ctx.stroke();}
-  for(let j=0;j<SNAKE_ROWS;j++){ctx.beginPath();ctx.moveTo(0,j*C);ctx.lineTo(400,j*C);ctx.stroke();}
-  ctx.fillStyle='#ef4444';ctx.beginPath();ctx.arc(snakeFood.x*C+C/2,snakeFood.y*C+C/2,C/2-2,0,Math.PI*2);ctx.fill();
-  snake.forEach((s,i)=>{const alpha=1-i/(snake.length+4);ctx.fillStyle=i===0?'#22c55e':`rgba(34,197,94,${Math.max(0.2,alpha)})`;ctx.beginPath();ctx.roundRect(s.x*C+2,s.y*C+2,C-4,C-4,3);ctx.fill();});
+
+function drawSnake() {
+  const canvas = document.getElementById('snakeCanvas'); const ctx = canvas.getContext('2d'); const C = SNAKE_CELL;
+  ctx.clearRect(0, 0, 400, 400);
+  ctx.strokeStyle = 'rgba(255,255,255,0.03)';
+  for (let i = 0; i < SNAKE_COLS; i++) { ctx.beginPath(); ctx.moveTo(i * C, 0); ctx.lineTo(i * C, 400); ctx.stroke(); }
+  for (let j = 0; j < SNAKE_ROWS; j++) { ctx.beginPath(); ctx.moveTo(0, j * C); ctx.lineTo(400, j * C); ctx.stroke(); }
+  ctx.fillStyle = '#ef4444'; ctx.beginPath(); ctx.arc(snakeFood.x * C + C / 2, snakeFood.y * C + C / 2, C / 2 - 2, 0, Math.PI * 2); ctx.fill();
+  snake.forEach((s, i) => { const alpha = 1 - i / (snake.length + 4); ctx.fillStyle = i === 0 ? '#22c55e' : `rgba(34,197,94,${Math.max(0.2, alpha)})`; ctx.beginPath(); ctx.roundRect(s.x * C + 2, s.y * C + 2, C - 4, C - 4, 3); ctx.fill(); });
 }
-async function gameOverSnake(){
-  clearInterval(snakeLoop);snakeActive=false;document.getElementById('snakeStartBtn').disabled=false;
-  if(snakeScore>snakeHi){snakeHi=snakeScore;localStorage.setItem('vs_snakeHi',snakeHi);document.getElementById('snakeHi').textContent=snakeHi;}
-  const ptsEarned=snakeScore;
-  if(ptsEarned>0){try{const res=await fetch(`${API}/api/me/points/add`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({amount:ptsEarned})});const d=await res.json();if(res.ok){userPoints=d.points;updatePtsUI();}}catch{}}
-  document.getElementById('snakeWinText').textContent=`Game over! Score: ${snakeScore}`;
-  document.getElementById('snakeWinPts').textContent=`+${ptsEarned} pts — total: ${userPoints}`;
-  document.getElementById('snakeWinBanner').style.display='flex';
-  const canvas=document.getElementById('snakeCanvas');const ctx=canvas.getContext('2d');
-  ctx.fillStyle='rgba(0,0,0,0.55)';ctx.fillRect(0,0,400,400);ctx.fillStyle='#fff';ctx.font='bold 28px Rajdhani';ctx.textAlign='center';ctx.fillText('GAME OVER',200,185);ctx.font='18px Rajdhani';ctx.fillStyle='rgba(255,255,255,0.6)';ctx.fillText(`Score: ${snakeScore}`,200,220);
-  toast(`🐍 Game Over — +${ptsEarned} pts`,'success');
+
+async function gameOverSnake() {
+  clearInterval(snakeLoop); snakeActive = false; document.getElementById('snakeStartBtn').disabled = false;
+  if (snakeScore > snakeHi) { snakeHi = snakeScore; localStorage.setItem('vs_snakeHi', snakeHi); document.getElementById('snakeHi').textContent = snakeHi; }
+  const ptsEarned = snakeScore;
+  if (ptsEarned > 0) {
+    try { const res = await fetch(`${API}/api/me/points/add`, { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token() }, body: JSON.stringify({ amount: ptsEarned }) }); const d = await res.json(); if (res.ok) { userPoints = d.points; updatePtsUI(); } } catch {}
+  }
+  document.getElementById('snakeWinText').textContent = `Game over! Score: ${snakeScore}`;
+  document.getElementById('snakeWinPts').textContent = `+${ptsEarned} pts — total: ${userPoints}`;
+  document.getElementById('snakeWinBanner').style.display = 'flex';
+  const canvas = document.getElementById('snakeCanvas'); const ctx = canvas.getContext('2d');
+  ctx.fillStyle = 'rgba(0,0,0,0.55)'; ctx.fillRect(0, 0, 400, 400);
+  ctx.fillStyle = '#fff'; ctx.font = 'bold 28px Rajdhani'; ctx.textAlign = 'center'; ctx.fillText('GAME OVER', 200, 185);
+  ctx.font = '18px Rajdhani'; ctx.fillStyle = 'rgba(255,255,255,0.6)'; ctx.fillText(`Score: ${snakeScore}`, 200, 220);
+  toast(`🐍 Game Over — +${ptsEarned} pts`, 'success');
 }
-document.addEventListener('keydown',e=>{
-  if(!snakeActive)return;
-  const map={ArrowUp:{x:0,y:-1},ArrowDown:{x:0,y:1},ArrowLeft:{x:-1,y:0},ArrowRight:{x:1,y:0},w:{x:0,y:-1},s:{x:0,y:1},a:{x:-1,y:0},d:{x:1,y:0},W:{x:0,y:-1},S:{x:0,y:1},A:{x:-1,y:0},D:{x:1,y:0}};
-  const nd=map[e.key];if(!nd)return;if(nd.x===-snakeDir.x||nd.y===-snakeDir.y)return;snakeNextDir=nd;e.preventDefault();
+
+document.addEventListener('keydown', e => {
+  if (!snakeActive) return;
+  const map = { ArrowUp: { x: 0, y: -1 }, ArrowDown: { x: 0, y: 1 }, ArrowLeft: { x: -1, y: 0 }, ArrowRight: { x: 1, y: 0 }, w: { x: 0, y: -1 }, s: { x: 0, y: 1 }, a: { x: -1, y: 0 }, d: { x: 1, y: 0 }, W: { x: 0, y: -1 }, S: { x: 0, y: 1 }, A: { x: -1, y: 0 }, D: { x: 1, y: 0 } };
+  const nd = map[e.key]; if (!nd) return;
+  if (nd.x === -snakeDir.x || nd.y === -snakeDir.y) return;
+  snakeNextDir = nd; e.preventDefault();
 });
 
 // ══════════════════════════════════════
 // ── GAME: REACTION ──
 // ══════════════════════════════════════
-function resetReactionUI(){
-  const arena=document.getElementById('reactionArena');arena.className='reaction-arena idle';
-  document.getElementById('rtDisplay').textContent='🖱';document.getElementById('rtSub').textContent='Click Start to play';
-  document.getElementById('rtRound').textContent='-';document.getElementById('rtBest').textContent='-';
-  document.getElementById('rtResults').innerHTML='';document.getElementById('rtWinBanner').style.display='none';
-  document.getElementById('rtStartBtn').style.display='';
+function resetReactionUI() {
+  const arena = document.getElementById('reactionArena'); arena.className = 'reaction-arena idle';
+  document.getElementById('rtDisplay').textContent = '🖱'; document.getElementById('rtSub').textContent = 'Click Start to play';
+  document.getElementById('rtRound').textContent = '-'; document.getElementById('rtBest').textContent = '-';
+  document.getElementById('rtResults').innerHTML = ''; document.getElementById('rtWinBanner').style.display = 'none';
+  document.getElementById('rtStartBtn').style.display = '';
 }
-function startReaction(){
-  rtActive=true;rtRound=0;rtResults=[];
-  document.getElementById('rtStartBtn').style.display='none';document.getElementById('rtWinBanner').style.display='none';document.getElementById('rtResults').innerHTML='';
+
+function startReaction() {
+  rtActive = true; rtRound = 0; rtResults = [];
+  document.getElementById('rtStartBtn').style.display = 'none';
+  document.getElementById('rtWinBanner').style.display = 'none';
+  document.getElementById('rtResults').innerHTML = '';
   nextReactionRound();
 }
-function nextReactionRound(){
-  if(rtRound>=RT_ROUNDS){endReaction();return;}
-  rtRound++;document.getElementById('rtRound').textContent=`${rtRound}/${RT_ROUNDS}`;
-  const arena=document.getElementById('reactionArena');arena.className='reaction-arena wait';
-  document.getElementById('rtDisplay').textContent='⏳';document.getElementById('rtSub').textContent='Wait for green...';
-  rtWaiting=true;rtGo=false;
-  const delay=1000+Math.random()*4000;
-  rtTimeout=setTimeout(()=>{arena.className='reaction-arena go';document.getElementById('rtDisplay').textContent='🟢';document.getElementById('rtSub').textContent='CLICK NOW!';rtStart=performance.now();rtGo=true;},delay);
+
+function nextReactionRound() {
+  if (rtRound >= RT_ROUNDS) { endReaction(); return; }
+  rtRound++; document.getElementById('rtRound').textContent = `${rtRound}/${RT_ROUNDS}`;
+  const arena = document.getElementById('reactionArena'); arena.className = 'reaction-arena wait';
+  document.getElementById('rtDisplay').textContent = '⏳'; document.getElementById('rtSub').textContent = 'Wait for green...';
+  rtWaiting = true; rtGo = false;
+  const delay = 1000 + Math.random() * 4000;
+  rtTimeout = setTimeout(() => {
+    arena.className = 'reaction-arena go';
+    document.getElementById('rtDisplay').textContent = '🟢';
+    document.getElementById('rtSub').textContent = 'CLICK NOW!';
+    rtStart = performance.now(); rtGo = true;
+  }, delay);
 }
-function reactionClick(){
-  if(!rtActive)return;
-  if(rtWaiting&&!rtGo){
-    clearTimeout(rtTimeout);rtWaiting=false;
-    const arena=document.getElementById('reactionArena');arena.className='reaction-arena idle';
-    document.getElementById('rtDisplay').textContent='😅';document.getElementById('rtSub').textContent='Too early! Wait for green...';
-    setTimeout(nextReactionRound,1200);return;
+
+function reactionClick() {
+  if (!rtActive) return;
+  if (rtWaiting && !rtGo) {
+    clearTimeout(rtTimeout); rtWaiting = false;
+    const arena = document.getElementById('reactionArena'); arena.className = 'reaction-arena idle';
+    document.getElementById('rtDisplay').textContent = '😅'; document.getElementById('rtSub').textContent = 'Too early! Wait for green...';
+    setTimeout(nextReactionRound, 1200); return;
   }
-  if(rtGo){
-    const ms=Math.round(performance.now()-rtStart);rtGo=false;rtWaiting=false;rtResults.push(ms);
-    const best=Math.min(...rtResults);document.getElementById('rtBest').textContent=best+'ms';
-    const arena=document.getElementById('reactionArena');arena.className='reaction-arena result';
-    document.getElementById('rtDisplay').textContent=ms+'ms';document.getElementById('rtSub').textContent=ms<200?'⚡ Lightning!':ms<350?'Great!':ms<500?'Not bad':'Slow...';
-    renderRtResults();setTimeout(nextReactionRound,1000);
+  if (rtGo) {
+    const ms = Math.round(performance.now() - rtStart); rtGo = false; rtWaiting = false; rtResults.push(ms);
+    const best = Math.min(...rtResults); document.getElementById('rtBest').textContent = best + 'ms';
+    const arena = document.getElementById('reactionArena'); arena.className = 'reaction-arena result';
+    document.getElementById('rtDisplay').textContent = ms + 'ms';
+    document.getElementById('rtSub').textContent = ms < 200 ? '⚡ Lightning!' : ms < 350 ? 'Great!' : ms < 500 ? 'Not bad' : 'Slow...';
+    renderRtResults(); setTimeout(nextReactionRound, 1000);
   }
 }
-function renderRtResults(){
-  const el=document.getElementById('rtResults');
-  el.innerHTML=rtResults.map((ms,i)=>`<div class="rt-result"><div class="rt-result-val" style="color:${ms<200?'#22c55e':ms<400?'#fbbf24':'#ef4444'}">${ms}ms</div><div class="rt-result-lbl">Round ${i+1}</div></div>`).join('');
+
+function renderRtResults() {
+  document.getElementById('rtResults').innerHTML = rtResults.map((ms, i) => `<div class="rt-result"><div class="rt-result-val" style="color:${ms < 200 ? '#22c55e' : ms < 400 ? '#fbbf24' : '#ef4444'}">${ms}ms</div><div class="rt-result-lbl">Round ${i + 1}</div></div>`).join('');
 }
-async function endReaction(){
-  rtActive=false;const avg=Math.round(rtResults.reduce((a,b)=>a+b,0)/rtResults.length);const best=Math.min(...rtResults);
-  let pts=avg<200?150:avg<300?100:avg<400?60:avg<500?30:10;
-  try{const res=await fetch(`${API}/api/me/points/add`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({amount:pts})});const d=await res.json();if(res.ok){userPoints=d.points;updatePtsUI();}}catch{}
-  document.getElementById('rtWinText').textContent=`Avg: ${avg}ms · Best: ${best}ms`;
-  document.getElementById('rtWinPts').textContent=`+${pts} pts — total: ${userPoints}`;
-  document.getElementById('rtWinBanner').style.display='flex';document.getElementById('rtStartBtn').style.display='';
-  document.getElementById('reactionArena').className='reaction-arena idle';
-  document.getElementById('rtDisplay').textContent='🏆';document.getElementById('rtSub').textContent='Done! Press Start to play again.';
-  toast(`⚡ Reaction done! Avg ${avg}ms · +${pts} pts`,'success');
+
+async function endReaction() {
+  rtActive = false;
+  const avg = Math.round(rtResults.reduce((a, b) => a + b, 0) / rtResults.length);
+  const best = Math.min(...rtResults);
+  const pts = avg < 200 ? 150 : avg < 300 ? 100 : avg < 400 ? 60 : avg < 500 ? 30 : 10;
+  try { const res = await fetch(`${API}/api/me/points/add`, { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token() }, body: JSON.stringify({ amount: pts }) }); const d = await res.json(); if (res.ok) { userPoints = d.points; updatePtsUI(); } } catch {}
+  document.getElementById('rtWinText').textContent = `Avg: ${avg}ms · Best: ${best}ms`;
+  document.getElementById('rtWinPts').textContent = `+${pts} pts — total: ${userPoints}`;
+  document.getElementById('rtWinBanner').style.display = 'flex'; document.getElementById('rtStartBtn').style.display = '';
+  document.getElementById('reactionArena').className = 'reaction-arena idle';
+  document.getElementById('rtDisplay').textContent = '🏆'; document.getElementById('rtSub').textContent = 'Done! Press Start to play again.';
+  toast(`⚡ Reaction done! Avg ${avg}ms · +${pts} pts`, 'success');
 }
 
 // ══════════════════════════════════════
 // ── GAME: TYPING ──
 // ══════════════════════════════════════
-function resetTypingUI(){
-  clearInterval(typingLiveTimer);typingActive=false;typingUserInput='';typingStart=0;
-  document.getElementById('typingDisplay').innerHTML='<span style="color:var(--muted);font-size:14px">Press Start to begin the typing test...</span>';
-  document.getElementById('typingInput').value='';document.getElementById('typingInput').disabled=true;
-  document.getElementById('liveWpm').textContent='0';document.getElementById('liveAcc').textContent='-';
-  document.getElementById('typingWinBanner').style.display='none';document.getElementById('typingStartBtn').style.display='';
+function resetTypingUI() {
+  clearInterval(typingLiveTimer); typingActive = false; typingUserInput = ''; typingStart = 0;
+  document.getElementById('typingDisplay').innerHTML = '<span style="color:var(--muted);font-size:14px">Press Start to begin the typing test...</span>';
+  document.getElementById('typingInput').value = ''; document.getElementById('typingInput').disabled = true;
+  document.getElementById('liveWpm').textContent = '0'; document.getElementById('liveAcc').textContent = '-';
+  document.getElementById('typingWinBanner').style.display = 'none'; document.getElementById('typingStartBtn').style.display = '';
 }
-function startTyping(){
-  typingText=TYPING_TEXTS[Math.floor(Math.random()*TYPING_TEXTS.length)];
-  typingUserInput='';typingErrors=0;typingActive=true;typingStart=0;
-  document.getElementById('typingWinBanner').style.display='none';document.getElementById('typingStartBtn').style.display='none';
+
+function startTyping() {
+  typingText = TYPING_TEXTS[Math.floor(Math.random() * TYPING_TEXTS.length)];
+  typingUserInput = ''; typingErrors = 0; typingActive = true; typingStart = 0;
+  document.getElementById('typingWinBanner').style.display = 'none'; document.getElementById('typingStartBtn').style.display = 'none';
   renderTypingDisplay();
-  const inp=document.getElementById('typingInput');inp.disabled=false;inp.value='';inp.focus();
-  clearInterval(typingLiveTimer);typingLiveTimer=setInterval(updateTypingStats,500);
+  const inp = document.getElementById('typingInput'); inp.disabled = false; inp.value = ''; inp.focus();
+  clearInterval(typingLiveTimer); typingLiveTimer = setInterval(updateTypingStats, 500);
 }
-function renderTypingDisplay(){
-  const el=document.getElementById('typingDisplay');
-  const chars=typingText.split('');
-  const input=typingUserInput.split('');
-  let html='';
-  chars.forEach((ch,i)=>{
-    if(i<input.length){
-      if(input[i]===ch)html+=`<span class="t-correct">${escHtml(ch)}</span>`;
-      else html+=`<span class="t-wrong">${escHtml(ch)}</span>`;
-    } else if(i===input.length){
-      html+=`<span class="t-cursor">${escHtml(ch)}</span>`;
-    } else {
-      html+=`<span style="color:var(--muted)">${escHtml(ch)}</span>`;
-    }
+
+function renderTypingDisplay() {
+  const el = document.getElementById('typingDisplay');
+  const chars = typingText.split(''); const input = typingUserInput.split('');
+  let html = '';
+  chars.forEach((ch, i) => {
+    if (i < input.length) { if (input[i] === ch) html += `<span class="t-correct">${escHtml(ch)}</span>`; else html += `<span class="t-wrong">${escHtml(ch)}</span>`; }
+    else if (i === input.length) html += `<span class="t-cursor">${escHtml(ch)}</span>`;
+    else html += `<span style="color:var(--muted)">${escHtml(ch)}</span>`;
   });
-  el.innerHTML=html;
+  el.innerHTML = html;
 }
-document.getElementById('typingInput').addEventListener('input',function(){
-  if(!typingActive)return;
-  if(!typingStart)typingStart=performance.now();
-  const val=this.value;
-  if(val.length>typingText.length){this.value=typingUserInput;return;}
-  typingUserInput=val;renderTypingDisplay();updateTypingStats();
-  if(typingUserInput.length===typingText.length){clearInterval(typingLiveTimer);finishTyping();}
+
+document.getElementById('typingInput').addEventListener('input', function () {
+  if (!typingActive) return;
+  if (!typingStart) typingStart = performance.now();
+  const val = this.value;
+  if (val.length > typingText.length) { this.value = typingUserInput; return; }
+  typingUserInput = val; renderTypingDisplay(); updateTypingStats();
+  if (typingUserInput.length === typingText.length) { clearInterval(typingLiveTimer); finishTyping(); }
 });
-function updateTypingStats(){
-  if(!typingStart||!typingActive)return;
-  const elapsed=(performance.now()-typingStart)/1000/60;
-  const wordCount=typingUserInput.trim().split(/\s+/).length;
-  const wpm=elapsed>0?Math.round(wordCount/elapsed):0;
-  document.getElementById('liveWpm').textContent=wpm;
-  const correct=typingUserInput.split('').filter((c,i)=>c===typingText[i]).length;
-  const acc=typingUserInput.length?Math.round((correct/typingUserInput.length)*100):100;
-  document.getElementById('liveAcc').textContent=acc+'%';
+
+function updateTypingStats() {
+  if (!typingStart || !typingActive) return;
+  const elapsed = (performance.now() - typingStart) / 1000 / 60;
+  const wordCount = typingUserInput.trim().split(/\s+/).length;
+  const wpm = elapsed > 0 ? Math.round(wordCount / elapsed) : 0;
+  document.getElementById('liveWpm').textContent = wpm;
+  const correct = typingUserInput.split('').filter((c, i) => c === typingText[i]).length;
+  const acc = typingUserInput.length ? Math.round((correct / typingUserInput.length) * 100) : 100;
+  document.getElementById('liveAcc').textContent = acc + '%';
 }
-async function finishTyping(){
-  typingActive=false;
-  const elapsed=(performance.now()-typingStart)/1000/60;
-  const words=typingText.trim().split(/\s+/).length;
-  const wpm=Math.round(words/elapsed);
-  const correct=typingUserInput.split('').filter((c,i)=>c===typingText[i]).length;
-  const acc=Math.round((correct/typingText.length)*100);
-  const pts=wpm>80?200:wpm>60?150:wpm>40?100:wpm>20?60:30;
-  try{const res=await fetch(`${API}/api/me/points/add`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({amount:pts})});const d=await res.json();if(res.ok){userPoints=d.points;updatePtsUI();}}catch{}
-  document.getElementById('typingWinText').textContent=`${wpm} WPM · ${acc}% accuracy`;
-  document.getElementById('typingWinPts').textContent=`+${pts} pts — total: ${userPoints}`;
-  document.getElementById('typingWinBanner').style.display='flex';
-  document.getElementById('typingStartBtn').style.display='';
-  document.getElementById('typingInput').disabled=true;
-  toast(`⌨ Typing done! ${wpm} WPM · +${pts} pts`,'success');
+
+async function finishTyping() {
+  typingActive = false;
+  const elapsed = (performance.now() - typingStart) / 1000 / 60;
+  const words = typingText.trim().split(/\s+/).length;
+  const wpm = Math.round(words / elapsed);
+  const correct = typingUserInput.split('').filter((c, i) => c === typingText[i]).length;
+  const acc = Math.round((correct / typingText.length) * 100);
+  const pts = wpm > 80 ? 200 : wpm > 60 ? 150 : wpm > 40 ? 100 : wpm > 20 ? 60 : 30;
+  try { const res = await fetch(`${API}/api/me/points/add`, { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token() }, body: JSON.stringify({ amount: pts }) }); const d = await res.json(); if (res.ok) { userPoints = d.points; updatePtsUI(); } } catch {}
+  document.getElementById('typingWinText').textContent = `${wpm} WPM · ${acc}% accuracy`;
+  document.getElementById('typingWinPts').textContent = `+${pts} pts — total: ${userPoints}`;
+  document.getElementById('typingWinBanner').style.display = 'flex'; document.getElementById('typingStartBtn').style.display = '';
+  document.getElementById('typingInput').disabled = true;
+  toast(`⌨ Typing done! ${wpm} WPM · +${pts} pts`, 'success');
 }
 
 // ══════════════════════════════════════
 // ── CHAT ──
 // ══════════════════════════════════════
-async function loadChat(){
-  try{const res=await fetch(`${API}/api/chat`,{headers:{Authorization:'Bearer '+token()}});serverMessages=await res.json();renderChat();setTimeout(scrollChatBottom,50);}
-  catch{renderChat();}
+async function loadChat() {
+  try { const res = await fetch(`${API}/api/chat`, { headers: { Authorization: 'Bearer ' + token() } }); serverMessages = await res.json(); renderChat(); setTimeout(scrollChatBottom, 50); }
+  catch { renderChat(); }
 }
-function fmtDate(ts){return new Date(ts).toLocaleDateString('en-GB',{weekday:'long',year:'numeric',month:'long',day:'numeric'});}
-function fmtTime(ts){return new Date(ts).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});}
-function chatRankLabel(r,isPro){if(r==='owner')return`<span class="msg-rank rank-owner">OWNER</span>`;if(r==='admin')return`<span class="msg-rank rank-admin">ADMIN</span>`;if(isPro)return`<span class="msg-rank rank-pro">⭐ PRO</span>`;return`<span class="msg-rank rank-member">MEMBER</span>`;}
-function renderChat(){
-  const el=document.getElementById('chatMessages');
-  if(!serverMessages.length){el.innerHTML='<div class="chat-empty-state"><i class="ti ti-message-circle"></i>No messages yet — say something!</div>';return;}
-  let html='',lastDate='';
-  serverMessages.forEach((msg,idx)=>{
-    if(msg.deleted)return;
-    const dateStr=fmtDate(msg.timestamp);if(dateStr!==lastDate){html+=`<div class="chat-date-divider">${dateStr}</div>`;lastDate=dateStr;}
-    const rank=(msg.rank||'user').toLowerCase();const mine=msg.author===currentUsername;const isPro=msg.isPro||false;const nameColor=isPro?'color:#fbbf24':'';
-    const fx=msg.chatEffect||'';const fxClass=fx?`effect-${fx}`:'';
-    let acts='';
-    if(isAdmin())acts+=`<button class="msg-act-btn delete-btn" onclick="deleteMessage('${msg._id}')" title="Delete"><i class="ti ti-trash"></i></button>`;
-    if(!mine)acts+=`<button class="msg-act-btn report-btn" onclick="openReport('${msg._id}','${escHtml(msg.author)}')" title="Report"><i class="ti ti-flag"></i></button>`;
-    const avatarHtml=msg.avatar?`<img src="${msg.avatar}" alt="avatar"/>`:initials(msg.author);
-    html+=`<div class="chat-msg ${fxClass}" id="cmsg-${idx}"><div class="msg-avatar" style="cursor:pointer" onclick="openProfileModal('${escHtml(msg.author)}')" title="View profile">${avatarHtml}</div><div class="msg-body"><div class="msg-header"><span class="msg-author" style="${nameColor}">${escHtml(msg.author)}</span>${chatRankLabel(rank,isPro)}<span class="msg-time">${fmtTime(msg.timestamp)}</span></div><div class="msg-text">${escHtml(msg.content)}</div></div>${acts?`<div class="msg-actions">${acts}</div>`:''}</div>`;
+
+function fmtDate(ts) { return new Date(ts).toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }); }
+function fmtTime(ts) { return new Date(ts).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }); }
+
+function chatRankLabel(r, isPro) {
+  if (r === 'owner') return `<span class="msg-rank rank-owner">OWNER</span>`;
+  if (r === 'admin') return `<span class="msg-rank rank-admin">ADMIN</span>`;
+  if (isPro) return `<span class="msg-rank rank-pro">⭐ PRO</span>`;
+  return `<span class="msg-rank rank-member">MEMBER</span>`;
+}
+
+function renderChat() {
+  const el = document.getElementById('chatMessages');
+  if (!serverMessages.length) { el.innerHTML = '<div class="chat-empty-state"><i class="ti ti-message-circle"></i>No messages yet — say something!</div>'; return; }
+  let html = '', lastDate = '';
+  serverMessages.forEach((msg, idx) => {
+    if (msg.deleted) return;
+    const dateStr = fmtDate(msg.timestamp);
+    if (dateStr !== lastDate) { html += `<div class="chat-date-divider">${dateStr}</div>`; lastDate = dateStr; }
+    const rank = (msg.rank || 'user').toLowerCase(); const mine = msg.author === currentUsername; const isPro = msg.isPro || false;
+    const nameColor = isPro ? 'color:#fbbf24' : '';
+    const fx = msg.chatEffect || ''; const fxClass = fx ? `effect-${fx}` : '';
+    let acts = '';
+    if (isAdmin()) acts += `<button class="msg-act-btn delete-btn" onclick="deleteMessage('${msg._id}')" title="Delete"><i class="ti ti-trash"></i></button>`;
+    if (!mine) acts += `<button class="msg-act-btn report-btn" onclick="openReport('${msg._id}','${escHtml(msg.author)}')" title="Report"><i class="ti ti-flag"></i></button>`;
+    const avatarHtml = msg.avatar ? `<img src="${msg.avatar}" alt="avatar"/>` : initials(msg.author);
+    html += `<div class="chat-msg ${fxClass}" id="cmsg-${idx}"><div class="msg-avatar" style="cursor:pointer" onclick="openProfileModal('${escHtml(msg.author)}')">${avatarHtml}</div><div class="msg-body"><div class="msg-header"><span class="msg-author" style="${nameColor}">${escHtml(msg.author)}</span>${chatRankLabel(rank, isPro)}<span class="msg-time">${fmtTime(msg.timestamp)}</span></div><div class="msg-text">${escHtml(msg.content)}</div></div>${acts ? `<div class="msg-actions">${acts}</div>` : ''}</div>`;
   });
-  el.innerHTML=html;
+  el.innerHTML = html;
 }
-function scrollChatBottom(){const el=document.getElementById('chatMessages');if(el)el.scrollTop=el.scrollHeight;}
-async function sendChatMessage(){
-  const inp=document.getElementById('chatInput');const content=inp.value.trim();if(!content)return;inp.value='';
-  try{
-    const res=await fetch(`${API}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({content,chatEffect:equippedChatEffect||''})});
-    const d=await res.json();
-    if(res.ok){serverMessages.push(d);renderChat();scrollChatBottom();}
-    else toast(d.error||'Failed to send','error');
-  }catch{toast('Server offline','error');}
+
+function scrollChatBottom() { const el = document.getElementById('chatMessages'); if (el) el.scrollTop = el.scrollHeight; }
+
+async function sendChatMessage() {
+  const inp = document.getElementById('chatInput'); const content = inp.value.trim(); if (!content) return; inp.value = '';
+  try {
+    const res = await fetch(`${API}/api/chat`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token() },
+      body: JSON.stringify({ content, chatEffect: equippedChatEffect || '' })
+    });
+    const d = await res.json();
+    if (res.ok) { serverMessages.push(d); renderChat(); scrollChatBottom(); }
+    else toast(d.error || 'Failed to send', 'error');
+  } catch { toast('Server offline', 'error'); }
 }
-async function deleteMessage(id){
-  try{const res=await fetch(`${API}/api/chat/${id}`,{method:'DELETE',headers:{Authorization:'Bearer '+token()}});if(res.ok){serverMessages=serverMessages.filter(m=>m._id!==id);renderChat();toast('Message deleted','');}}
-  catch{toast('Server error','error');}
+
+async function deleteMessage(id) {
+  try {
+    const res = await fetch(`${API}/api/chat/${id}`, { method: 'DELETE', headers: { Authorization: 'Bearer ' + token() } });
+    if (res.ok) { serverMessages = serverMessages.filter(m => m._id !== id); renderChat(); toast('Message deleted', ''); }
+  } catch { toast('Server error', 'error'); }
 }
-function openReport(id,author){
-  pendingReport={id};document.getElementById('reportModalSub').textContent=`Reporting message from: ${author}`;
-  document.getElementById('reportReason').value='Spam';document.getElementById('reportDetails').value='';
-  document.getElementById('reportModal').classList.add('show');document.getElementById('reportConfirmBtn').onclick=confirmReport;
+
+function openReport(id, author) {
+  pendingReport = { id };
+  document.getElementById('reportModalSub').textContent = `Reporting message from: ${author}`;
+  document.getElementById('reportReason').value = 'Spam'; document.getElementById('reportDetails').value = '';
+  document.getElementById('reportModal').classList.add('show');
+  document.getElementById('reportConfirmBtn').onclick = confirmReport;
 }
-async function confirmReport(){
-  if(!pendingReport)return;
-  const reason=document.getElementById('reportReason').value;const details=document.getElementById('reportDetails').value.trim();
+
+async function confirmReport() {
+  if (!pendingReport) return;
+  const reason = document.getElementById('reportReason').value; const details = document.getElementById('reportDetails').value.trim();
   closeModal('reportModal');
-  try{const res=await fetch(`${API}/api/chat/${pendingReport.id}/report`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({reason,details})});(res.ok||res.status===204)?toast('Report sent','warn'):toast('Failed','error');}
-  catch{toast('Could not reach server','error');}
+  try {
+    const res = await fetch(`${API}/api/chat/${pendingReport.id}/report`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token() },
+      body: JSON.stringify({ reason, details })
+    });
+    (res.ok || res.status === 204) ? toast('Report sent', 'warn') : toast('Failed', 'error');
+  } catch { toast('Could not reach server', 'error'); }
 }
 
-function logout(){localStorage.removeItem('token');localStorage.removeItem('username');localStorage.removeItem('rank');window.location.href='index.html';}
-document.getElementById('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChatMessage();}});
+document.getElementById('chatInput').addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChatMessage(); } });
 
 // ══════════════════════════════════════
-// ── DIRECT MESSAGES ──
+// ── DIRECT MESSAGES (with saved state + Discord-style notifications) ──
 // ══════════════════════════════════════
-let dmThreads = {};
-let currentDmPartner = '';
-let dmPollInterval = null;
-let unreadCounts = {};
 
+// Pull all DM threads from the server and figure out what's new
 async function loadDmsFromServer() {
   try {
     const res = await fetch(`${API}/api/dms`, { headers: { Authorization: 'Bearer ' + token() } });
     if (!res.ok) return;
     const data = await res.json();
+
+    const prevThreads = JSON.parse(JSON.stringify(dmThreads));
+
     if (data.threads) dmThreads = data.threads;
     if (data.unread) unreadCounts = data.unread;
-    // Always zero out unread for whoever we're actively looking at
+
+    // If we're looking at someone, mark their messages as read immediately
     if (currentDmPartner && unreadCounts[currentDmPartner]) {
       unreadCounts[currentDmPartner] = 0;
     }
+
+    // Figure out which messages are genuinely new so we can show notifications
+    // We only show notifications when the DM panel is NOT open
+    const isDmPanelOpen = document.getElementById('dmWrap').style.display === 'flex';
+    Object.entries(dmThreads).forEach(([partner, msgs]) => {
+      if (!msgs.length) return;
+      const prevMsgs = prevThreads[partner] || [];
+      const newMsgs = msgs.filter(m => {
+        // Message is from someone else, and wasn't in our previous snapshot
+        if (m.from === currentUsername) return false;
+        const wasPresent = prevMsgs.some(pm => pm.ts === m.ts && pm.from === m.from);
+        // Also check dmLastSeen so we don't re-notify on page load
+        const alreadySeen = dmLastSeen[partner] && m.ts <= dmLastSeen[partner];
+        return !wasPresent && !alreadySeen;
+      });
+
+      if (newMsgs.length > 0) {
+        // Update lastSeen for this partner
+        const latestTs = Math.max(...msgs.map(m => m.ts));
+        dmLastSeen[partner] = latestTs;
+        localStorage.setItem('vs_dmLastSeen', JSON.stringify(dmLastSeen));
+
+        // Show notification only if we're not actively looking at this conversation
+        const watchingThisConvo = isDmPanelOpen && currentDmPartner === partner;
+        if (!watchingThisConvo) {
+          // Show one notification for the latest message (group multiple into one)
+          const last = newMsgs[newMsgs.length - 1];
+          const preview = newMsgs.length > 1 ? `${newMsgs.length} new messages` : last.text;
+          showDmNotification(partner, preview);
+        }
+      }
+    });
+
     updateDmNavBadge();
-    if (document.getElementById('dmWrap').style.display === 'flex') {
+
+    // Re-render if DM panel is visible
+    if (isDmPanelOpen) {
       renderDmList();
       if (currentDmPartner) {
         renderDmMessages();
@@ -2075,8 +2452,15 @@ async function loadDmsFromServer() {
   } catch {}
 }
 
+// Mark a conversation as read both locally and on the server
 async function markDmRead(partner) {
   unreadCounts[partner] = 0;
+  // Update lastSeen to the latest message timestamp for this partner
+  const msgs = dmThreads[partner] || [];
+  if (msgs.length) {
+    dmLastSeen[partner] = Math.max(...msgs.map(m => m.ts));
+    localStorage.setItem('vs_dmLastSeen', JSON.stringify(dmLastSeen));
+  }
   updateDmNavBadge();
   renderDmList();
   try {
@@ -2092,26 +2476,14 @@ function updateDmNavBadge() {
   const total = Object.values(unreadCounts).reduce((a, b) => a + b, 0);
   const badge = document.getElementById('dmNavBadge');
   if (!badge) return;
-  if (total > 0) {
-    badge.textContent = total > 99 ? '99+' : String(total);
-    badge.style.display = '';
-  } else {
-    badge.style.display = 'none';
-  }
+  if (total > 0) { badge.textContent = total > 99 ? '99+' : String(total); badge.style.display = ''; }
+  else badge.style.display = 'none';
 }
 
+// Poll every 3.5 seconds — tight enough to feel realtime, not so tight it hammers the server
 function startDmPolling() {
   if (dmPollInterval) clearInterval(dmPollInterval);
-  dmPollInterval = setInterval(async () => {
-    const prevUnread = JSON.stringify(unreadCounts);
-    await loadDmsFromServer();
-    // Only toast if we gained new unreads and DMs panel isn't open
-    if (document.getElementById('dmWrap').style.display === 'flex') return;
-    const newSenders = Object.entries(unreadCounts)
-      .filter(([u, c]) => c > 0 && (!JSON.parse(prevUnread)[u] || JSON.parse(prevUnread)[u] < c))
-      .map(([u]) => u);
-    if (newSenders.length) toast(`💬 New DM from ${newSenders[0]}`, 'success');
-  }, 4000);
+  dmPollInterval = setInterval(loadDmsFromServer, 3500);
 }
 
 function openNewDmModal() {
@@ -2128,14 +2500,9 @@ function filterNewDmList() {
 
 function renderNewDmList(members) {
   const el = document.getElementById('newDmMemberList');
-  if (!members.length) {
-    el.innerHTML = '<div style="text-align:center;padding:20px;font-size:12px;color:var(--muted);font-family:\'DM Mono\',monospace">No members found</div>';
-    return;
-  }
+  if (!members.length) { el.innerHTML = '<div style="text-align:center;padding:20px;font-size:12px;color:var(--muted);font-family:\'DM Mono\',monospace">No members found</div>'; return; }
   el.innerHTML = members.map(m => {
-    const avatarHtml = m.avatar
-      ? `<img src="${m.avatar}" alt="${m.username}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`
-      : initials(m.username);
+    const avatarHtml = m.avatar ? `<img src="${m.avatar}" alt="${m.username}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>` : initials(m.username);
     const r = (m.role || m.rank || 'user').toLowerCase();
     return `<div class="dm-pick-row" onclick="startDmWith('${m.username}')">
       <div class="dm-thread-avatar">${avatarHtml}</div>
@@ -2163,10 +2530,8 @@ function filterDmList() {
 function renderDmList(filter = '') {
   const el = document.getElementById('dmList');
   const keys = Object.keys(dmThreads).filter(u => !filter || u.toLowerCase().includes(filter));
-  if (!keys.length) {
-    el.innerHTML = '<div style="padding:20px;text-align:center;font-size:12px;color:var(--muted);font-family:\'DM Mono\',monospace">No conversations yet</div>';
-    return;
-  }
+  if (!keys.length) { el.innerHTML = '<div style="padding:20px;text-align:center;font-size:12px;color:var(--muted);font-family:\'DM Mono\',monospace">No conversations yet</div>'; return; }
+  // Sort by most recent message
   keys.sort((a, b) => {
     const ta = dmThreads[a].length ? dmThreads[a][dmThreads[a].length - 1].ts : 0;
     const tb = dmThreads[b].length ? dmThreads[b][dmThreads[b].length - 1].ts : 0;
@@ -2179,9 +2544,7 @@ function renderDmList(filter = '') {
       ? (last.from === currentUsername ? 'You: ' : '') + last.text.slice(0, 32) + (last.text.length > 32 ? '…' : '')
       : 'Start a conversation';
     const member = allMembers.find(m => m.username === username);
-    const avatarHtml = member && member.avatar
-      ? `<img src="${member.avatar}" alt="${username}"/>`
-      : initials(username);
+    const avatarHtml = member && member.avatar ? `<img src="${member.avatar}" alt="${username}"/>` : initials(username);
     const isActive = username === currentDmPartner;
     const unread = unreadCounts[username] || 0;
     return `<div class="dm-thread${isActive ? ' active' : ''}" id="dmt-${username}" onclick="openDmConvo('${username}')">
@@ -2201,38 +2564,25 @@ function openDmConvo(username) {
 
   const member = allMembers.find(m => m.username === username);
   const avatarEl = document.getElementById('dmConvoAvatar');
-  if (member && member.avatar) {
-    avatarEl.innerHTML = `<img src="${member.avatar}" alt="${username}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`;
-    avatarEl.style.background = 'none';
-  } else {
-    avatarEl.textContent = initials(username);
-    avatarEl.style.background = '';
-  }
+  if (member && member.avatar) { avatarEl.innerHTML = `<img src="${member.avatar}" alt="${username}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`; avatarEl.style.background = 'none'; }
+  else { avatarEl.textContent = initials(username); avatarEl.style.background = ''; }
 
   document.getElementById('dmConvoName').textContent = username;
   document.getElementById('dmNoConvo').style.display = 'none';
-  const convo = document.getElementById('dmConvo');
-  convo.style.display = 'flex';
+  const convo = document.getElementById('dmConvo'); convo.style.display = 'flex';
 
   document.querySelectorAll('.dm-thread').forEach(t => t.classList.remove('active'));
-  const threadEl = document.getElementById('dmt-' + username);
-  if (threadEl) threadEl.classList.add('active');
+  const threadEl = document.getElementById('dmt-' + username); if (threadEl) threadEl.classList.add('active');
 
   markDmRead(username);
   renderDmMessages();
-  setTimeout(() => {
-    const msgs = document.getElementById('dmMessages');
-    if (msgs) msgs.scrollTop = msgs.scrollHeight;
-  }, 50);
+  setTimeout(() => { const msgs = document.getElementById('dmMessages'); if (msgs) msgs.scrollTop = msgs.scrollHeight; }, 50);
 }
 
 function renderDmMessages() {
   const el = document.getElementById('dmMessages');
   const msgs = dmThreads[currentDmPartner] || [];
-  if (!msgs.length) {
-    el.innerHTML = '<div class="dm-empty"><i class="ti ti-message-2"></i>No messages yet — say hi!</div>';
-    return;
-  }
+  if (!msgs.length) { el.innerHTML = '<div class="dm-empty"><i class="ti ti-message-2"></i>No messages yet — say hi!</div>'; return; }
   el.innerHTML = msgs.map(msg => {
     const mine = msg.from === currentUsername;
     const member = mine ? null : allMembers.find(m => m.username === msg.from);
@@ -2264,15 +2614,19 @@ async function sendDm() {
 
   const msg = { from: currentUsername, to: currentDmPartner, text, ts: Date.now() };
 
-  // Optimistically add to local state
+  // Optimistic update
   if (!dmThreads[currentDmPartner]) dmThreads[currentDmPartner] = [];
   dmThreads[currentDmPartner].push(msg);
+
+  // Update lastSeen so we don't notify ourselves on our own message
+  dmLastSeen[currentDmPartner] = msg.ts;
+  localStorage.setItem('vs_dmLastSeen', JSON.stringify(dmLastSeen));
+
   renderDmMessages();
   renderDmList();
   const msgEl = document.getElementById('dmMessages');
   if (msgEl) msgEl.scrollTop = msgEl.scrollHeight;
 
-  // Send to server — on success, re-fetch so both sides stay in sync
   try {
     const res = await fetch(`${API}/api/dms/send`, {
       method: 'POST',
@@ -2281,23 +2635,28 @@ async function sendDm() {
     });
     if (!res.ok) {
       toast('Failed to send message', 'error');
-      // Roll back the optimistic update
+      // Roll back
       dmThreads[currentDmPartner] = dmThreads[currentDmPartner].filter(m => m.ts !== msg.ts);
-      renderDmMessages();
-      renderDmList();
+      renderDmMessages(); renderDmList();
     }
-    // Resync from server after a short delay so we get the canonical message
-    setTimeout(loadDmsFromServer, 500);
+    // Re-sync after a short pause so server state matches
+    setTimeout(loadDmsFromServer, 600);
   } catch {
     toast('DM may not have delivered', 'warn');
   }
 }
 
-document.getElementById('dmInput').addEventListener('keydown', e => {
-  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendDm(); }
-});
+document.getElementById('dmInput').addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendDm(); } });
+
+function logout() {
+  localStorage.removeItem('token');
+  localStorage.removeItem('username');
+  localStorage.removeItem('rank');
+  window.location.href = 'index.html';
+}
+
 // ── INIT ──
-applyColor(selectedColor,selectedColor2);
+applyColor(selectedColor, selectedColor2);
 renderMemBoard();
 renderSnakeIdle();
 resetReactionUI();
