@@ -569,10 +569,11 @@ select option{background:#0d1018}
             <div class="profile-bg" id="profileBgEl"></div>
             <div class="avatar-lg" id="avatarLg">VS</div>
             <div class="profile-info">
-              <div class="profile-name" id="profileName">ViperUser <span class="pro-badge" id="proBadge" style="display:none">⭐ PRO</span></div>
+              <div class="profile-name" id="profileName">Not Logged In! <span class="pro-badge" id="proBadge" style="display:none">⭐ PRO</span></div>
               <div class="profile-status"><span class="status-dot"></span>Online</div>
               <span class="role-badge role-member" id="profileRole">MEMBER</span>
-              <div class="bio-text" id="bioDisplay">No bio set yet.</div>
+              <div class="bio-text" id="bioDisplay">This User is having too much fun in Viper Studios.</div>
+              <div class="profile-discord" id="profileDiscord">Discord: Not linked</div>
               <div class="equipped-effects" id="equippedEffects"></div>
               <div class="points-row"><i class="ti ti-coin" style="color:#fbbf24;font-size:16px"></i> <span class="points-val" id="pointsDisplay">0</span> <span style="color:var(--muted)">points</span></div>
             </div>
@@ -1245,6 +1246,11 @@ async function saveProfile(){
 function loadProfileFields(b){
   document.getElementById('bioInput').value = b||'';
   document.getElementById('bioDisplay').textContent = b||'No bio set yet.';
+  const discordText = user.discordId
+  ? `Discord: ${user.discordName}`
+  : `Discord: Not Connected!`;
+
+document.getElementById("profileDiscord").textContent = discordText;
 }
 
 // ── AVATAR/BG ──
@@ -1319,7 +1325,7 @@ function renderLeaderboard(sorted){
   const rankColors = ['rank-1','rank-2','rank-3'];
 
   // Find user position
-  const myIdx = sorted.findIndex(u=>u.username===currentUsername);
+  const myIdx = sorted.findIndex(u => u.discordId === currentDiscordId);
   if(myIdx>=0){
     const pos = myIdx+1;
     document.getElementById('lbYouPos').style.display='flex';
@@ -1338,7 +1344,7 @@ function renderLeaderboard(sorted){
     if(!u) return '';
     const realRank = podiumRealRanks[i];
     const r = (u.role||u.rank||'user').toLowerCase();
-    const avatarHtml = u.avatar ? `<img src="${u.avatar}" alt=""/>` : initials(u.username);
+    const avatarHtml = u.avatar ? `<img src="${u.avatar}" alt=""/>` : initials(u.viperUsername || u.username);
     const isPro = u.pro||false;
     return `<div class="lb-podium-card ${rankColors[realRank]}">
       <div class="lb-medal">${medals[realRank]}</div>
@@ -1361,10 +1367,10 @@ function renderLeaderboard(sorted){
   document.getElementById('lbList').innerHTML = rest.map((u,i)=>{
     const rank = i+4;
     const r = (u.role||u.rank||'user').toLowerCase();
-    const isMe = u.username===currentUsername;
+    const isMe = u.discordId === currentDiscordId;
     const isPro = u.pro||false;
     const avatarHtml = u.avatar ? `<img src="${u.avatar}" alt=""/>` : initials(u.username);
-    return `<div class="lb-row ${isMe?'is-me':''}" onclick="openProfileModal('${escHtml(u.username)}')">
+    return `<div class="lb-row ${isMe?'is-me':''}" onclick="openProfileModal('${escHtml(u.viperUsername || u.username)} (${escHtml(u.username)})')">
       <div class="lb-rank-num">#${rank}</div>
       <div class="lb-row-avatar">${avatarHtml}</div>
       <div class="lb-row-info">
