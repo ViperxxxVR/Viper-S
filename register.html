@@ -1312,7 +1312,8 @@ async function loadLeaderboard(){
     const res = await fetch(`${API}/api/users`,{headers:{Authorization:'Bearer '+token()}});
     if(!res.ok) throw new Error();
     const users = await res.json();
-    const sorted = [...users].filter(u=>!u.banned).sort((a,b)=>(b.points||0)-(a.points||0));
+    const lbBlacklist = ['mr_biggles_worth', 'ViperPhoneAccount', 'Viper', 'callie']; // add usernames here
+    const sorted = [...users].filter(u=>!u.banned && !lbBlacklist.includes(u.username)).sort((a,b)=>(b.points||0)-(a.points||0));
     renderLeaderboard(sorted);
   }catch{
     document.getElementById('lbList').innerHTML='<div class="lb-empty">Could not load leaderboard.</div>';
