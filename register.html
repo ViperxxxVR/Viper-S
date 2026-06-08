@@ -1324,7 +1324,7 @@ function renderLeaderboard(sorted){
   const rankColors = ['rank-1','rank-2','rank-3'];
 
   // Find user position
-  const myIdx = sorted.findIndex(u => u.discordId === currentDiscordId);
+ const myIdx = sorted.findIndex(u => u.username === currentUsername);
   if(myIdx>=0){
     const pos = myIdx+1;
     document.getElementById('lbYouPos').style.display='flex';
@@ -1366,7 +1366,7 @@ function renderLeaderboard(sorted){
   document.getElementById('lbList').innerHTML = rest.map((u,i)=>{
     const rank = i+4;
     const r = (u.role||u.rank||'user').toLowerCase();
-    const isMe = u.discordId === currentDiscordId;
+    const isMe = u.username === currentUsername;
     const isPro = u.pro||false;
     const avatarHtml = u.avatar ? `<img src="${u.avatar}" alt=""/>` : initials(u.username);
     return `<div class="lb-row ${isMe?'is-me':''}" onclick="openProfileModal('${escHtml(u.viperUsername || u.username)} (${escHtml(u.username)})')">
