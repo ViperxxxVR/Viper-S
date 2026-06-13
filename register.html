@@ -1082,8 +1082,8 @@ const TYPING_TEXTS = [
   'The quick brown fox jumps over the lazy dog near the riverbank.',
   'Coding at night with a warm coffee and lo-fi music is peak focus.',
   'Viper Studios is the best community on the planet.',
-  'Speed is nothing without accuracy — type smart not just fast.',
-  'Every keystroke counts when the clock is ticking and points are on the line.',
+  'Tung Tung Tung Sahur mogs everyone',
+  'GhostShift VR is so fire',
 ];
 
 const SHOP_ITEMS = [
@@ -1150,20 +1150,24 @@ function switchTab(id, btn) {
   const dmW = document.getElementById('dmWrap');
 
   if(id === 'chat'){
-    contentScroll.style.display = 'none';
-    chatWrap.style.display = 'flex';
-    if(dmW) dmW.style.display = 'none';
-    loadChat().then(()=>setTimeout(scrollChatBottom,80));
+contentScroll.style.display = 'none';
+chatWrap.style.display = 'flex';
+if(dmW) dmW.style.display = 'none';
+document.getElementById('warningBar').style.display = 'none'; // ADD after line 395
+    
+loadChat().then(()=>setTimeout(scrollChatBottom,80));
   } else if(id === 'dms'){
-    contentScroll.style.display = 'none';
-    chatWrap.style.display = 'none';
-    if(dmW){dmW.style.display='flex';dmW.style.height='100%';dmW.style.width='100%';}
-    if(!allMembers.length) loadMembers().then(()=>renderDmList()); else renderDmList();
+contentScroll.style.display = 'none';
+chatWrap.style.display = 'none';
+if(dmW){dmW.style.display='flex';dmW.style.height='100%';dmW.style.width='100%';}
+document.getElementById('warningBar').style.display = 'flex';
+if(!allMembers.length) loadMembers().then(()=>renderDmList()); else renderDmList();
   } else {
-    contentScroll.style.display = '';
-    chatWrap.style.display = 'none';
-    if(dmW) dmW.style.display = 'none';
-    document.getElementById('tab-'+id).classList.add('active');
+   contentScroll.style.display = '';
+chatWrap.style.display = 'none';
+if(dmW) dmW.style.display = 'none';
+document.getElementById('warningBar').style.display = 'none';
+document.getElementById('tab-'+id).classList.add('active');
     if(id==='world') loadEvents();
     if(id==='users') loadMembers();
     if(id==='leaderboard') loadLeaderboard();
