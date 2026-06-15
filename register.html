@@ -480,6 +480,121 @@ select option{background:#0d1018}
 .warning-bar strong { font-weight: 600; color: #fef3c7; }
 .warning-bar a { color: #fde68a; text-decoration: underline; cursor: pointer; margin-left: 6px; }
 .warning-bar .dismiss { margin-left: auto; cursor: pointer; background: none; border:
+  /* ── Groups ── */
+.groups-wrap{max-width:860px}
+.groups-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px}
+.groups-title-block{display:flex;flex-direction:column;gap:4px}
+.groups-title{font-size:20px;font-weight:700;color:#fff}
+.groups-sub{font-size:13px;color:var(--muted);font-family:'DM Mono',monospace}
+.create-group-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(59,130,246,0.18),rgba(139,92,246,0.18));border:1px solid rgba(59,130,246,0.35);border-radius:10px;color:var(--accent2);padding:11px 20px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s}
+.create-group-btn i{font-size:18px}
+.create-group-btn .pts-cost{font-size:10px;font-family:'DM Mono',monospace;color:#fbbf24;background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.3);padding:2px 7px;border-radius:999px;margin-left:2px}
+.groups-tabs{display:flex;gap:0;margin-bottom:22px;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:5px;width:fit-content}
+.groups-tab{padding:8px 20px;border-radius:7px;cursor:pointer;font-size:13px;font-weight:700;color:var(--muted);border:none;background:none;font-family:'Rajdhani',sans-serif;letter-spacing:0.5px;transition:all 0.15s}
+.groups-tab:hover{color:var(--text);background:rgba(255,255,255,0.04)}
+.groups-tab.active{background:var(--accent);color:#fff}
+.groups-search-bar{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+.groups-search-wrap{position:relative;flex:1;max-width:380px}
+.groups-search-wrap i{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:16px;color:var(--muted);pointer-events:none}
+.groups-search-input{width:100%;background:var(--panel);border:1px solid var(--border);border-radius:9px;padding:9px 14px 9px 36px;color:var(--text);font-family:'Rajdhani',sans-serif;font-size:14px;outline:none;transition:border 0.15s}
+.groups-search-input:focus{border-color:var(--accent)}
+.groups-search-input::placeholder{color:var(--muted)}
+.groups-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.group-card{background:var(--panel);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color 0.2s,transform 0.15s;cursor:pointer;position:relative}
+.group-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.group-card.is-member{border-color:rgba(59,130,246,0.3)}
+.group-card.is-owner{border-color:rgba(245,158,11,0.35)}
+.group-card-banner{height:72px;position:relative;overflow:hidden;flex-shrink:0}
+.group-card-banner-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:32px;opacity:0.35;letter-spacing:4px;font-weight:900;color:#fff;user-select:none}
+.group-card-body{padding:14px 16px}
+.group-icon-row{display:flex;align-items:flex-end;gap:10px;margin-top:-28px;margin-bottom:10px;position:relative;z-index:2}
+.group-icon{width:52px;height:52px;border-radius:12px;border:3px solid var(--panel);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;background:var(--panel2)}
+.group-member-chip{font-size:11px;font-family:'DM Mono',monospace;color:var(--muted);margin-left:auto;margin-bottom:4px}
+.group-name{font-size:16px;font-weight:700;color:#fff;margin-bottom:4px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.group-desc{font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.group-card-footer{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.group-role-chip{font-size:11px;font-family:'DM Mono',monospace;padding:3px 10px;border-radius:999px;font-weight:700}
+.grole-owner{background:rgba(245,158,11,0.15);color:#fbbf24;border:1px solid rgba(245,158,11,0.3)}
+.grole-admin{background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3)}
+.grole-custom{background:rgba(139,92,246,0.15);color:#a78bfa;border:1px solid rgba(139,92,246,0.25)}
+.grole-member{background:rgba(59,130,246,0.15);color:var(--accent2);border:1px solid rgba(59,130,246,0.2)}
+.group-join-btn{font-size:12px;font-family:'DM Mono',monospace;font-weight:700;padding:5px 14px;border-radius:7px;border:1px solid rgba(59,130,246,0.3);background:rgba(59,130,246,0.1);color:var(--accent2);cursor:pointer;transition:all 0.15s;white-space:nowrap}
+.group-join-btn:hover{background:rgba(59,130,246,0.22)}
+.group-join-btn.leave{border-color:rgba(239,68,68,0.3);background:rgba(239,68,68,0.08);color:#f87171}
+.group-join-btn.view{border-color:rgba(255,255,255,0.12);background:rgba(255,255,255,0.05);color:var(--muted)}
+.group-join-btn.view:hover{color:var(--text)}
+.group-empty{text-align:center;padding:60px 20px;color:var(--muted);font-family:'DM Mono',monospace;font-size:13px;background:var(--panel);border:1px solid var(--border);border-radius:14px;grid-column:1/-1}
+.group-empty i{font-size:42px;opacity:0.2;display:block;margin:0 auto 14px}
+.group-empty-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px}
+.group-detail-banner{height:160px;border-radius:14px 14px 0 0;position:relative;overflow:hidden}
+.group-detail-banner-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:72px;opacity:0.18;font-weight:900;color:#fff;letter-spacing:8px;user-select:none}
+.group-detail-card{background:var(--panel);border:1px solid var(--border);border-radius:0 0 14px 14px;padding:0 24px 24px;margin-bottom:20px}
+.group-detail-icon-row{display:flex;align-items:flex-end;gap:14px;margin-top:-36px;margin-bottom:14px}
+.group-detail-icon{width:72px;height:72px;border-radius:16px;border:4px solid var(--panel);display:flex;align-items:center;justify-content:center;font-size:36px;background:var(--panel2);flex-shrink:0}
+.group-detail-meta{flex:1;padding-bottom:4px}
+.group-detail-name{font-size:22px;font-weight:700;color:#fff;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.group-detail-stats{display:flex;gap:16px;font-size:12px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:4px;flex-wrap:wrap}
+.group-detail-stat{display:flex;align-items:center;gap:5px}
+.group-detail-desc{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:16px}
+.group-detail-actions{display:flex;gap:10px;flex-wrap:wrap}
+.gd-btn{display:inline-flex;align-items:center;gap:7px;border-radius:9px;padding:10px 18px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s;border:1px solid}
+.gd-btn-join{background:rgba(59,130,246,0.15);border-color:rgba(59,130,246,0.35);color:var(--accent2)}
+.gd-btn-join:hover{background:rgba(59,130,246,0.28)}
+.gd-btn-leave{background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.3);color:#f87171}
+.gd-btn-leave:hover{background:rgba(239,68,68,0.22)}
+.gd-btn-settings{background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.3);color:#fbbf24}
+.gd-btn-settings:hover{background:rgba(245,158,11,0.2)}
+.gd-btn-back{background:rgba(255,255,255,0.05);border-color:var(--border2);color:var(--muted)}
+.gd-btn-back:hover{color:var(--text);background:rgba(255,255,255,0.08)}
+.gd-btn-danger{background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.3);color:#f87171}
+.gd-btn-danger:hover{background:rgba(239,68,68,0.22)}
+.group-detail-cols{display:grid;grid-template-columns:1fr 280px;gap:16px}
+.gd-section{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:16px}
+.gd-section h4{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:2px;font-family:'DM Mono',monospace;margin-bottom:16px}
+.gd-member-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border)}
+.gd-member-row:last-child{border-bottom:none}
+.gd-member-avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:#fff;flex-shrink:0;overflow:hidden}
+.gd-member-info{flex:1;min-width:0}
+.gd-member-name{font-size:14px;font-weight:700;color:var(--text)}
+.gd-member-role{font-size:11px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:1px}
+.gd-member-actions{display:flex;gap:5px}
+.gd-mem-btn{background:none;border:1px solid var(--border2);border-radius:6px;color:var(--muted);padding:4px 9px;cursor:pointer;font-size:11px;font-family:'DM Mono',monospace;transition:all 0.15s;white-space:nowrap}
+.gd-mem-btn:hover{color:var(--text);border-color:var(--text)}
+.gd-mem-btn.kick:hover{color:var(--red);border-color:rgba(239,68,68,0.4)}
+.gd-mem-btn.promote:hover{color:#fbbf24;border-color:rgba(245,158,11,0.4)}
+.roles-list{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.role-row{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg);border:1px solid var(--border);border-radius:10px}
+.role-row-swatch{width:14px;height:14px;border-radius:50%;flex-shrink:0}
+.role-row-name{font-size:14px;font-weight:700;color:var(--text);flex:1}
+.role-row-cost{font-size:11px;font-family:'DM Mono',monospace;color:#fbbf24}
+.role-del-btn{background:none;border:none;color:var(--muted);cursor:pointer;padding:3px 6px;border-radius:5px;font-size:14px;transition:color 0.15s}
+.role-del-btn:hover{color:var(--red)}
+.add-role-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.add-role-input{flex:1;min-width:100px;background:var(--bg);border:1px solid var(--border2);border-radius:8px;padding:8px 12px;color:var(--text);font-family:'Rajdhani',sans-serif;font-size:13px;outline:none}
+.add-role-input:focus{border-color:var(--accent)}
+.add-role-btn{display:inline-flex;align-items:center;gap:5px;background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.3);border-radius:8px;color:#a78bfa;padding:8px 14px;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all 0.15s;white-space:nowrap}
+.add-role-btn:hover{background:rgba(139,92,246,0.22)}
+.buy-role-btn{display:inline-flex;align-items:center;gap:5px;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);border-radius:7px;color:#fbbf24;padding:4px 12px;font-family:'DM Mono',monospace;font-size:11px;font-weight:700;cursor:pointer;transition:all 0.15s}
+.buy-role-btn:hover{background:rgba(245,158,11,0.2)}
+.buy-role-btn.owned{background:rgba(34,197,94,0.08);border-color:rgba(34,197,94,0.25);color:var(--green)}
+.gd-settings-section{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:12px}
+.gd-settings-section h5{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:2px;font-family:'DM Mono',monospace;margin-bottom:12px}
+.admin-group-panel{background:var(--panel);border:1px solid rgba(239,68,68,0.2);border-radius:14px;padding:20px;margin-bottom:16px;position:relative;overflow:hidden}
+.admin-group-panel::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#ef4444,#f97316)}
+.admin-group-panel h4{font-size:12px;font-weight:700;color:#f87171;letter-spacing:2px;font-family:'DM Mono',monospace;margin-bottom:14px}
+.admin-group-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border)}
+.admin-group-row:last-child{border-bottom:none}
+.admin-group-name{font-size:14px;font-weight:700;color:var(--text)}
+.admin-group-meta{font-size:11px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:2px}
+.admin-group-del{background:none;border:1px solid rgba(239,68,68,0.3);border-radius:7px;color:#f87171;padding:5px 10px;cursor:pointer;font-size:12px;font-family:'DM Mono',monospace;transition:all 0.15s}
+.admin-group-del:hover{background:rgba(239,68,68,0.15)}
+.banner-color-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.banner-color-opt{width:36px;height:36px;border-radius:8px;cursor:pointer;border:2px solid transparent;transition:all 0.15s;flex-shrink:0}
+.banner-color-opt.selected{border-color:#fff;transform:scale(1.1)}
+.icon-picker-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.icon-opt{width:38px;height:38px;border-radius:8px;background:var(--bg);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;transition:all 0.15s}
+.icon-opt:hover{border-color:var(--accent)}
+.icon-opt.selected{border-color:var(--accent);background:rgba(59,130,246,0.15)}
 </style>
 </head>
 <body>
@@ -538,6 +653,31 @@ select option{background:#0d1018}
 </div>
 <div class="toast" id="toast"></div>
 
+  <!-- Create Group Modal -->
+<div class="modal-overlay" id="createGroupModal">
+  <div class="modal" style="width:480px;max-width:95vw">
+    <h3>🏠 Create a Group</h3>
+    <div class="modal-sub">Groups cost <span style="color:#fbbf24;font-weight:700">1,000 points</span> to create</div>
+    <div class="field-label">GROUP NAME</div>
+    <input class="field-input" id="newGroupName" placeholder="e.g. Midnight Coders" maxlength="40" style="margin-bottom:14px" />
+    <div class="field-label">DESCRIPTION</div>
+    <textarea class="field-input field-textarea" id="newGroupDesc" placeholder="What's your group about?" style="min-height:70px;margin-bottom:14px"></textarea>
+    <div class="field-label">GROUP ICON</div>
+    <div class="icon-picker-row" id="iconPickerRow"></div>
+    <div class="field-label">BANNER COLOR</div>
+    <div class="banner-color-row" id="bannerColorRow"></div>
+    <div class="field-label">VISIBILITY</div>
+    <select class="select-field" id="newGroupVisibility" style="margin-bottom:14px">
+      <option value="open">Open — anyone can join</option>
+      <option value="closed">Closed — invite only</option>
+    </select>
+    <div class="modal-actions">
+      <button class="modal-cancel" onclick="closeModal('createGroupModal')">Cancel</button>
+      <button class="modal-confirm" onclick="createGroup()"><i class="ti ti-plus"></i> Create — 1000 pts</button>
+    </div>
+  </div>
+</div>
+  
 <div class="shell">
   <div class="sidebar">
     <div class="logo">
@@ -554,6 +694,7 @@ select option{background:#0d1018}
       <button class="nav-item" onclick="switchTab('shop',this)"><i class="ti ti-shopping-bag"></i> Points Shop</button>
       <button class="nav-item" onclick="switchTab('settings',this)"><i class="ti ti-settings"></i> Settings</button>
       <button class="nav-item" onclick="switchTab('users',this)"><i class="ti ti-users"></i> Members</button>
+      <button class="nav-item" onclick="switchTab('groups',this)"><i class="ti ti-users-group"></i> Groups (NEW!)</button>
       <button class="nav-item admin-nav" id="adminNav" onclick="switchTab('admin',this)" style="display:none"><i class="ti ti-shield"></i> Admin</button>
     </nav>
     <div class="sidebar-bottom">
@@ -609,6 +750,45 @@ select option{background:#0d1018}
             <div class="stat-card"><div class="stat-label">ROLE</div><div class="stat-val" id="statRole" style="font-size:16px;color:var(--accent2)">MEMBER</div></div>
           </div>
         </div>
+
+        <!-- GROUPS -->
+<div class="tab-panel" id="tab-groups">
+  <div class="groups-wrap">
+    <div id="groupsListView">
+      <div class="groups-header">
+        <div class="groups-title-block">
+          <div class="groups-title">🏠 Groups</div>
+          <div class="groups-sub">Join communities or start your own</div>
+        </div>
+        <button class="create-group-btn" onclick="openCreateGroupModal()">
+          <i class="ti ti-plus"></i> Create Group <span class="pts-cost">1000 pts</span>
+        </button>
+      </div>
+      <div class="groups-tabs">
+        <button class="groups-tab active" onclick="switchGroupTab('browse',this)">Browse All</button>
+        <button class="groups-tab" onclick="switchGroupTab('mine',this)">My Groups</button>
+        <button class="groups-tab" id="groupsAdminTab" onclick="switchGroupTab('admin',this)" style="display:none;color:#f87171">Admin</button>
+      </div>
+      <div class="groups-search-bar">
+        <div class="groups-search-wrap">
+          <i class="ti ti-search"></i>
+          <input class="groups-search-input" id="groupsSearchInput" placeholder="Search groups..." oninput="filterGroups()" />
+        </div>
+        <span style="font-size:12px;font-family:'DM Mono',monospace;color:var(--muted)" id="groupsCountLabel"></span>
+      </div>
+      <div class="groups-grid" id="groupsGrid"></div>
+      <div id="groupsAdminPanel" style="display:none">
+        <div class="admin-group-panel">
+          <h4>🔒 ADMIN — ALL GROUPS</h4>
+          <div id="adminGroupList"><div style="font-size:13px;color:var(--muted);font-family:'DM Mono',monospace">No groups yet.</div></div>
+        </div>
+      </div>
+    </div>
+    <div id="groupDetailView" style="display:none">
+      <div id="groupDetailInner"></div>
+    </div>
+  </div>
+</div>
 
         <!-- CHAT placeholder -->
         <div class="tab-panel" id="tab-chat"></div>
@@ -1173,10 +1353,11 @@ document.getElementById('tab-'+id).classList.add('active');
     if(id==='leaderboard') loadLeaderboard();
     if(id==='admin'){loadAdminKeys();renderAdminEvents();loadAdminBadges();}
     if(id==='shop'){renderShop();document.getElementById('shopBalDisplay').textContent=userPoints;}
+    if(id==='groups') loadGroups();
   }
 
-  const labels={home:'Dashboard',chat:'Chat',dms:'Direct Messages',world:'Events',games:'Games',leaderboard:'Leaderboard',shop:'Points Shop',settings:'Settings',users:'Members',admin:'Admin Panel'};
-  const codes={home:'HOME',chat:'CHAT',dms:'DMS',world:'WORLD',games:'GAMES',leaderboard:'LEADERBOARD',shop:'SHOP',settings:'SETTINGS',users:'MEMBERS',admin:'ADMIN'};
+  const labels={home:'Dashboard',chat:'Chat',dms:'Direct Messages',world:'Events',games:'Games',leaderboard:'Leaderboard',shop:'Points Shop',settings:'Settings',users:'Members',groups: 'Groups',admin:'Admin Panel'};
+  const codes={home:'HOME',chat:'CHAT',dms:'DMS',world:'WORLD',games:'GAMES',leaderboard:'LEADERBOARD',shop:'SHOP',settings:'SETTINGS',users:'MEMBERS',groups: 'GROUPS',admin:'ADMIN'};
   document.getElementById('topbarTitle').textContent = labels[id]||id;
   document.getElementById('topbarBadge').textContent = codes[id]||id.toUpperCase();
 }
@@ -2105,6 +2286,317 @@ document.getElementById('chatInput').addEventListener('keydown',e=>{if(e.key==='
 
 function logout(){localStorage.removeItem('token');localStorage.removeItem('username');localStorage.removeItem('rank');window.location.href='index.html';}
 
+  // ── GROUPS ──
+let allGroups=[];let currentGroupTab='browse';let currentGroupId=null;let selectedGroupIcon='🐍';let selectedBannerColor='linear-gradient(135deg,#1d4ed8,#7c3aed)';
+const GROUP_ICONS=['🐍','🔥','🌙','⚡','🎮','💀','🌊','🏆','🎯','💎','🚀','🦋','🐺','🌿','🕷️','🌸'];
+const BANNER_COLORS=[{label:'Blue-Purple',val:'linear-gradient(135deg,#1d4ed8,#7c3aed)'},{label:'Red-Orange',val:'linear-gradient(135deg,#b91c1c,#f97316)'},{label:'Green-Cyan',val:'linear-gradient(135deg,#15803d,#06b6d4)'},{label:'Amber-Red',val:'linear-gradient(135deg,#b45309,#ef4444)'},{label:'Pink-Purple',val:'linear-gradient(135deg,#be185d,#7c3aed)'},{label:'Teal-Blue',val:'linear-gradient(135deg,#0e7490,#1d4ed8)'},{label:'Gray-Dark',val:'linear-gradient(135deg,#374151,#111827)'},{label:'Violet-Pink',val:'linear-gradient(135deg,#5b21b6,#be185d)'}];
+
+function saveGroups(){localStorage.setItem('vs_groups_v2',JSON.stringify(allGroups));}
+function loadGroupsFromStorage(){try{allGroups=JSON.parse(localStorage.getItem('vs_groups_v2')||'[]');}catch{allGroups=[];}}
+
+async function loadGroups(){
+  loadGroupsFromStorage();
+  if(isAdmin())document.getElementById('groupsAdminTab').style.display='';
+  renderGroupsView();
+}
+
+function switchGroupTab(tab,btn){
+  currentGroupTab=tab;
+  document.querySelectorAll('.groups-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('groupsAdminPanel').style.display=tab==='admin'?'':'none';
+  document.getElementById('groupsGrid').style.display=tab==='admin'?'none':'grid';
+  document.getElementById('groupsSearchInput').parentElement.parentElement.style.display=tab==='admin'?'none':'flex';
+  if(tab==='admin')renderAdminGroupPanel();else renderGroupsView();
+}
+
+function filterGroups(){renderGroupsView();}
+
+function renderGroupsView(){
+  const q=document.getElementById('groupsSearchInput').value.toLowerCase();
+  let groups=allGroups;
+  if(currentGroupTab==='mine')groups=groups.filter(g=>g.members&&g.members.some(m=>m.username===currentUsername));
+  if(q)groups=groups.filter(g=>g.name.toLowerCase().includes(q)||g.desc.toLowerCase().includes(q));
+  document.getElementById('groupsCountLabel').textContent=`${groups.length} group${groups.length!==1?'s':''}`;
+  const grid=document.getElementById('groupsGrid');
+  if(!groups.length){grid.innerHTML=`<div class="group-empty"><i class="ti ti-users-group"></i><div class="group-empty-title">${currentGroupTab==='mine'?'You haven\'t joined any groups yet':'No groups found'}</div><div>${currentGroupTab==='mine'?'Browse groups or create your own':'Try a different search or create the first one!'}</div></div>`;return;}
+  grid.innerHTML=groups.map(g=>{
+    const myM=g.members?g.members.find(m=>m.username===currentUsername):null;
+    const isMember=!!myM;const isOwnerG=g.ownedBy===currentUsername;const memberCount=g.members?g.members.length:0;
+    let roleChip='';
+    if(isOwnerG)roleChip=`<span class="group-role-chip grole-owner">OWNER</span>`;
+    else if(myM){const rl=myM.role||'MEMBER';const isCust=rl!=='MEMBER'&&rl!=='ADMIN';roleChip=`<span class="group-role-chip ${isCust?'grole-custom':rl==='ADMIN'?'grole-admin':'grole-member'}">${rl}</span>`;}
+    let btnHtml='';
+    if(isMember||isOwnerG)btnHtml=`<button class="group-join-btn view" onclick="event.stopPropagation();openGroupDetail('${g.id}')">Open</button>`;
+    else if(g.visibility==='closed')btnHtml=`<button class="group-join-btn view" style="cursor:not-allowed;opacity:0.5" disabled>Closed</button>`;
+    else btnHtml=`<button class="group-join-btn" onclick="event.stopPropagation();joinGroup('${g.id}')">Join</button>`;
+    return `<div class="group-card ${isOwnerG?'is-owner':isMember?'is-member':''}" onclick="openGroupDetail('${g.id}')">
+      <div class="group-card-banner" style="background:${escHtml(g.bannerColor||'linear-gradient(135deg,#1d4ed8,#7c3aed)')}">
+        <div class="group-card-banner-inner">${escHtml(g.name.slice(0,3).toUpperCase())}</div>
+      </div>
+      <div class="group-card-body">
+        <div class="group-icon-row"><div class="group-icon">${g.icon||'🐍'}</div><div class="group-member-chip"><i class="ti ti-users" style="font-size:12px"></i> ${memberCount}</div></div>
+        <div class="group-name">${escHtml(g.name)}</div>
+        <div class="group-desc">${escHtml(g.desc||'No description.')}</div>
+        <div class="group-card-footer">${roleChip}${btnHtml}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderAdminGroupPanel(){
+  const el=document.getElementById('adminGroupList');
+  if(!allGroups.length){el.innerHTML='<div style="font-size:13px;color:var(--muted);font-family:\'DM Mono\',monospace">No groups yet.</div>';return;}
+  el.innerHTML=allGroups.map(g=>`<div class="admin-group-row"><div><div class="admin-group-name">${g.icon} ${escHtml(g.name)}</div><div class="admin-group-meta">Owner: ${escHtml(g.ownedBy)} · ${g.members?g.members.length:0} members · ${g.visibility}</div></div><button class="admin-group-del" onclick="adminDeleteGroup('${g.id}')"><i class="ti ti-trash"></i> Delete</button></div>`).join('');
+}
+
+function adminDeleteGroup(id){allGroups=allGroups.filter(g=>g.id!==id);saveGroups();renderAdminGroupPanel();toast('Group deleted','');}
+
+function openGroupDetail(id){
+  currentGroupId=id;const g=allGroups.find(x=>x.id===id);if(!g){toast('Group not found','error');return;}
+  document.getElementById('groupsListView').style.display='none';
+  document.getElementById('groupDetailView').style.display='';
+  renderGroupDetail(g);
+}
+
+function renderGroupDetail(g){
+  const myM=g.members?g.members.find(m=>m.username===currentUsername):null;
+  const isMember=!!myM;const isOwnerG=g.ownedBy===currentUsername;
+  const isGroupAdmin=isOwnerG||(myM&&myM.role==='ADMIN')||isAdmin();
+  const memberCount=g.members?g.members.length:0;
+  const myRoleLabel=isOwnerG?'OWNER':(myM?(myM.role||'MEMBER'):null);
+
+  let actionBtns=`<button class="gd-btn gd-btn-back" onclick="closeGroupDetail()"><i class="ti ti-arrow-left"></i> Back</button>`;
+  if(!isMember&&!isOwnerG){
+    if(g.visibility!=='closed')actionBtns+=`<button class="gd-btn gd-btn-join" onclick="joinGroup('${g.id}')"><i class="ti ti-user-plus"></i> Join Group</button>`;
+    else actionBtns+=`<button class="gd-btn gd-btn-join" style="opacity:0.4;cursor:not-allowed" disabled><i class="ti ti-lock"></i> Closed Group</button>`;
+  }else if(!isOwnerG){actionBtns+=`<button class="gd-btn gd-btn-leave" onclick="leaveGroup('${g.id}')"><i class="ti ti-logout"></i> Leave</button>`;}
+  if(isGroupAdmin)actionBtns+=`<button class="gd-btn gd-btn-settings" onclick="toggleGroupSettings()"><i class="ti ti-settings"></i> Settings</button>`;
+  if(isAdmin()&&!isOwnerG)actionBtns+=`<button class="gd-btn gd-btn-danger" onclick="adminDeleteGroup('${g.id}');closeGroupDetail()"><i class="ti ti-trash"></i> Delete (Admin)</button>`;
+
+  const members=g.members||[];
+  const membersHtml=members.length?members.map(m=>{
+    const canManage=isGroupAdmin&&m.username!==currentUsername&&g.ownedBy!==m.username;
+    const rl=g.ownedBy===m.username?'OWNER':(m.role||'MEMBER');
+    const isCust=rl!=='MEMBER'&&rl!=='ADMIN'&&rl!=='OWNER';
+    const chipClass=rl==='OWNER'?'grole-owner':rl==='ADMIN'?'grole-admin':isCust?'grole-custom':'grole-member';
+    return `<div class="gd-member-row">
+      <div class="gd-member-avatar">${initials(m.username)}</div>
+      <div class="gd-member-info"><div class="gd-member-name">${escHtml(m.username)}</div><div class="gd-member-role"><span class="group-role-chip ${chipClass}" style="font-size:10px;padding:2px 8px">${rl}</span></div></div>
+      <div class="gd-member-actions">${canManage?`<button class="gd-mem-btn promote" onclick="openPromoteMemberModal('${g.id}','${m.username}')">Role</button><button class="gd-mem-btn kick" onclick="kickMember('${g.id}','${m.username}')">Kick</button>`:''}</div>
+    </div>`;
+  }).join(''):'<div style="font-size:13px;color:var(--muted);font-family:\'DM Mono\',monospace;padding:8px 0">No members yet.</div>';
+
+  const roles=g.customRoles||[];
+  const rolesHtml=roles.length?`<div class="roles-list">${roles.map(r=>`
+    <div class="role-row">
+      <div class="role-row-swatch" style="background:${r.color}"></div>
+      <div class="role-row-name">${escHtml(r.name)}</div>
+      <div class="role-row-cost"><i class="ti ti-coin" style="font-size:12px"></i> ${r.cost} pts</div>
+      ${isMember&&!isOwnerG?`<button class="buy-role-btn ${myM&&myM.role===r.name?'owned':''}" onclick="buyGroupRole('${g.id}','${r.name}')">${myM&&myM.role===r.name?'✓ Equipped':`Buy · ${r.cost} pts`}</button>`:''}
+      ${isGroupAdmin?`<button class="role-del-btn" onclick="deleteGroupRole('${g.id}','${r.name}')"><i class="ti ti-trash"></i></button>`:''}
+    </div>`).join('')}</div>`:'<div style="font-size:13px;color:var(--muted);font-family:\'DM Mono\',monospace;padding:4px 0 10px">No custom roles yet.</div>';
+
+  const settingsHtml=isGroupAdmin?`
+    <div class="gd-section" id="groupSettingsPanel" style="display:none">
+      <h4>⚙ GROUP SETTINGS</h4>
+      <div class="gd-settings-section">
+        <h5>DETAILS</h5>
+        <div class="field-label">GROUP NAME</div>
+        <input class="field-input" id="editGroupName" value="${escHtml(g.name)}" style="margin-bottom:10px" />
+        <div class="field-label">DESCRIPTION</div>
+        <textarea class="field-input field-textarea" id="editGroupDesc" style="min-height:60px;margin-bottom:10px">${escHtml(g.desc||'')}</textarea>
+        <div class="field-label">VISIBILITY</div>
+        <select class="select-field" id="editGroupVisibility" style="margin-bottom:12px">
+          <option value="open" ${g.visibility==='open'?'selected':''}>Open — anyone can join</option>
+          <option value="closed" ${g.visibility==='closed'?'selected':''}>Closed — invite only</option>
+        </select>
+        <button class="save-btn" onclick="saveGroupSettings('${g.id}')">Save Changes</button>
+      </div>
+      <div class="gd-settings-section">
+        <h5>ADD CUSTOM ROLE</h5>
+        <div class="add-role-row">
+          <input class="add-role-input" id="newRoleName" placeholder="Role name..." maxlength="20" />
+          <input class="add-role-input" id="newRoleCost" type="number" placeholder="pts cost" min="0" max="9999" style="width:90px;flex:none" />
+          <input type="color" id="newRoleColor" value="#8b5cf6" style="width:38px;height:38px;border:1px solid var(--border2);border-radius:8px;background:none;cursor:pointer;padding:2px" />
+          <button class="add-role-btn" onclick="addGroupRole('${g.id}')"><i class="ti ti-plus"></i> Add</button>
+        </div>
+      </div>
+      ${isOwnerG||isAdmin()?`<div class="gd-settings-section" style="border-color:rgba(239,68,68,0.2)"><h5 style="color:#f87171">DANGER ZONE</h5><button class="gd-btn gd-btn-danger" onclick="confirmDeleteGroup('${g.id}')"><i class="ti ti-trash"></i> Disband Group</button></div>`:''}
+    </div>`:'';
+
+  document.getElementById('groupDetailInner').innerHTML=`
+    <div>
+      <div class="group-detail-banner" style="background:${escHtml(g.bannerColor||'linear-gradient(135deg,#1d4ed8,#7c3aed)')}">
+        <div class="group-detail-banner-inner">${escHtml(g.name.slice(0,4).toUpperCase())}</div>
+      </div>
+      <div class="group-detail-card">
+        <div class="group-detail-icon-row">
+          <div class="group-detail-icon">${g.icon||'🐍'}</div>
+          <div class="group-detail-meta">
+            <div class="group-detail-name">${escHtml(g.name)}${myRoleLabel?`<span class="group-role-chip ${myRoleLabel==='OWNER'?'grole-owner':myRoleLabel==='ADMIN'?'grole-admin':'grole-member'}" style="font-size:11px">${myRoleLabel}</span>`:''}</div>
+            <div class="group-detail-stats">
+              <span class="group-detail-stat"><i class="ti ti-users"></i> ${memberCount} member${memberCount!==1?'s':''}</span>
+              <span class="group-detail-stat"><i class="ti ti-${g.visibility==='open'?'world':'lock'}"></i> ${g.visibility==='open'?'Open':'Closed'}</span>
+              <span class="group-detail-stat"><i class="ti ti-user"></i> ${escHtml(g.ownedBy)}</span>
+            </div>
+          </div>
+        </div>
+        <div class="group-detail-desc">${escHtml(g.desc||'No description set.')}</div>
+        <div class="group-detail-actions">${actionBtns}</div>
+      </div>
+      ${settingsHtml}
+      <div class="group-detail-cols">
+        <div><div class="gd-section"><h4>MEMBERS (${memberCount})</h4>${membersHtml}</div></div>
+        <div><div class="gd-section"><h4>CUSTOM ROLES</h4>${rolesHtml}</div></div>
+      </div>
+    </div>`;
+}
+
+function toggleGroupSettings(){
+  const p=document.getElementById('groupSettingsPanel');if(!p)return;
+  p.style.display=p.style.display==='none'?'':'none';
+}
+
+function closeGroupDetail(){
+  currentGroupId=null;
+  document.getElementById('groupDetailView').style.display='none';
+  document.getElementById('groupsListView').style.display='';
+  renderGroupsView();
+}
+
+function joinGroup(id){
+  const g=allGroups.find(x=>x.id===id);if(!g){toast('Group not found','error');return;}
+  if(!g.members)g.members=[];
+  if(g.members.some(m=>m.username===currentUsername)){toast('Already a member','');return;}
+  g.members.push({username:currentUsername,role:'MEMBER',joinedAt:Date.now()});
+  saveGroups();toast(`Joined ${g.name}! 🎉`,'success');
+  if(currentGroupId===id)renderGroupDetail(g);else renderGroupsView();
+}
+
+function leaveGroup(id){
+  const g=allGroups.find(x=>x.id===id);if(!g)return;
+  if(g.ownedBy===currentUsername){toast('Owners cannot leave — disband the group instead','error');return;}
+  g.members=(g.members||[]).filter(m=>m.username!==currentUsername);
+  saveGroups();toast(`Left ${g.name}`,'');closeGroupDetail();
+}
+
+function kickMember(groupId,username){
+  const g=allGroups.find(x=>x.id===groupId);if(!g)return;
+  g.members=(g.members||[]).filter(m=>m.username!==username);
+  saveGroups();toast(`${username} kicked`,'');renderGroupDetail(g);
+}
+
+function openPromoteMemberModal(groupId,username){
+  const g=allGroups.find(x=>x.id===groupId);if(!g)return;
+  const roles=['MEMBER','ADMIN',...(g.customRoles||[]).map(r=>r.name)];
+  const member=g.members.find(m=>m.username===username);
+  const overlay=document.createElement('div');overlay.className='modal-overlay show';overlay.id='promoteModal';
+  overlay.innerHTML=`<div class="modal"><h3>Set Role for ${escHtml(username)}</h3><div class="modal-sub">Choose a role to assign</div><select class="select-field" id="promoteRoleSelect" style="margin-bottom:14px">${roles.map(r=>`<option value="${r}" ${member&&member.role===r?'selected':''}>${r}</option>`).join('')}</select><div class="modal-actions"><button class="modal-cancel" onclick="document.getElementById('promoteModal').remove()">Cancel</button><button class="modal-confirm" onclick="applyMemberRole('${groupId}','${username}')">Apply</button></div></div>`;
+  overlay.addEventListener('click',e=>{if(e.target===overlay)overlay.remove();});
+  document.body.appendChild(overlay);
+}
+
+function applyMemberRole(groupId,username){
+  const g=allGroups.find(x=>x.id===groupId);if(!g)return;
+  const sel=document.getElementById('promoteRoleSelect');const role=sel?sel.value:'MEMBER';
+  const member=g.members.find(m=>m.username===username);if(member)member.role=role;
+  saveGroups();document.getElementById('promoteModal')?.remove();
+  toast(`${username} set to ${role}`,'success');renderGroupDetail(g);
+}
+
+function saveGroupSettings(id){
+  const g=allGroups.find(x=>x.id===id);if(!g)return;
+  const name=document.getElementById('editGroupName')?.value.trim();
+  const desc=document.getElementById('editGroupDesc')?.value.trim();
+  const vis=document.getElementById('editGroupVisibility')?.value;
+  if(!name){toast('Name required','error');return;}
+  g.name=name;g.desc=desc||'';g.visibility=vis||'open';
+  saveGroups();toast('Group updated!','success');renderGroupDetail(g);
+}
+
+function addGroupRole(groupId){
+  const g=allGroups.find(x=>x.id===groupId);if(!g)return;
+  const name=document.getElementById('newRoleName')?.value.trim();
+  const cost=parseInt(document.getElementById('newRoleCost')?.value)||0;
+  const color=document.getElementById('newRoleColor')?.value||'#8b5cf6';
+  if(!name){toast('Enter a role name','error');return;}
+  if(['MEMBER','ADMIN','OWNER'].includes(name.toUpperCase())){toast('Reserved name','error');return;}
+  if(!g.customRoles)g.customRoles=[];
+  if(g.customRoles.some(r=>r.name.toLowerCase()===name.toLowerCase())){toast('Role already exists','error');return;}
+  g.customRoles.push({name:name.toUpperCase(),cost,color});
+  saveGroups();toast(`Role "${name.toUpperCase()}" added!`,'success');renderGroupDetail(g);
+}
+
+function deleteGroupRole(groupId,roleName){
+  const g=allGroups.find(x=>x.id===groupId);if(!g)return;
+  g.customRoles=(g.customRoles||[]).filter(r=>r.name!==roleName);
+  (g.members||[]).forEach(m=>{if(m.role===roleName)m.role='MEMBER';});
+  saveGroups();toast(`Role "${roleName}" removed`,'');renderGroupDetail(g);
+}
+
+async function buyGroupRole(groupId,roleName){
+  const g=allGroups.find(x=>x.id===groupId);if(!g)return;
+  const role=(g.customRoles||[]).find(r=>r.name===roleName);if(!role)return;
+  const member=(g.members||[]).find(m=>m.username===currentUsername);
+  if(!member){toast('Join the group first','error');return;}
+  if(member.role===roleName){toast('Already equipped','');return;}
+  if(userPoints<role.cost){toast(`Need ${role.cost} pts — you have ${userPoints}`,'error');return;}
+  try{
+    const res=await fetch(`${API}/api/me/points/buy`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({itemId:`grole_${groupId}_${roleName}`,price:role.cost})});
+    const d=await res.json();if(!res.ok){toast(d.error||'Failed','error');return;}
+    userPoints=d.points;updatePtsUI();
+  }catch{userPoints-=role.cost;updatePtsUI();}
+  member.role=roleName;saveGroups();
+  toast(`🎖 Role "${roleName}" equipped! (-${role.cost} pts)`,'success');renderGroupDetail(g);
+}
+
+function confirmDeleteGroup(id){
+  const g=allGroups.find(x=>x.id===id);if(!g)return;
+  const overlay=document.createElement('div');overlay.className='modal-overlay show';overlay.id='confirmDelGroupModal';
+  overlay.innerHTML=`<div class="modal"><h3>Disband "${escHtml(g.name)}"?</h3><div class="modal-sub">This permanently deletes the group. Cannot be undone.</div><div class="modal-actions"><button class="modal-cancel" onclick="document.getElementById('confirmDelGroupModal').remove()">Cancel</button><button class="modal-confirm danger" onclick="disbandGroup('${id}')">Disband</button></div></div>`;
+  overlay.addEventListener('click',e=>{if(e.target===overlay)overlay.remove();});
+  document.body.appendChild(overlay);
+}
+
+function disbandGroup(id){
+  allGroups=allGroups.filter(g=>g.id!==id);saveGroups();
+  document.getElementById('confirmDelGroupModal')?.remove();
+  toast('Group disbanded','');closeGroupDetail();
+}
+
+function openCreateGroupModal(){
+  if(userPoints<1000){toast(`Need 1,000 pts to create a group — you have ${userPoints}`,'error');return;}
+  document.getElementById('iconPickerRow').innerHTML=GROUP_ICONS.map(ic=>`<div class="icon-opt ${ic===selectedGroupIcon?'selected':''}" onclick="selectGroupIcon('${ic}',this)">${ic}</div>`).join('');
+  document.getElementById('bannerColorRow').innerHTML=BANNER_COLORS.map(bc=>`<div class="banner-color-opt ${bc.val===selectedBannerColor?'selected':''}" style="background:${bc.val}" data-val="${escHtml(bc.val)}" onclick="selectBannerColor(this)" title="${bc.label}"></div>`).join('');
+  document.getElementById('newGroupName').value='';
+  document.getElementById('newGroupDesc').value='';
+  document.getElementById('newGroupVisibility').value='open';
+  document.getElementById('createGroupModal').classList.add('show');
+}
+
+function selectGroupIcon(icon,el){selectedGroupIcon=icon;document.querySelectorAll('.icon-opt').forEach(e=>e.classList.remove('selected'));el.classList.add('selected');}
+function selectBannerColor(el){selectedBannerColor=el.dataset.val;document.querySelectorAll('.banner-color-opt').forEach(e=>e.classList.remove('selected'));el.classList.add('selected');}
+
+async function createGroup(){
+  const name=document.getElementById('newGroupName').value.trim();
+  const desc=document.getElementById('newGroupDesc').value.trim();
+  const visibility=document.getElementById('newGroupVisibility').value;
+  if(!name){toast('Enter a group name','error');return;}
+  if(userPoints<1000){toast(`Need 1,000 pts — you have ${userPoints}`,'error');return;}
+  try{
+    const res=await fetch(`${API}/api/me/points/buy`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({itemId:`group_create_${Date.now()}`,price:1000})});
+    const d=await res.json();if(!res.ok){toast(d.error||'Failed','error');return;}
+    userPoints=d.points;updatePtsUI();
+  }catch{userPoints-=1000;updatePtsUI();}
+  const newGroup={id:'g_'+Date.now()+'_'+Math.random().toString(36).slice(2,7),name,desc:desc||'',icon:selectedGroupIcon,bannerColor:selectedBannerColor,visibility,ownedBy:currentUsername,createdAt:Date.now(),members:[{username:currentUsername,role:'OWNER',joinedAt:Date.now()}],customRoles:[]};
+  allGroups.unshift(newGroup);saveGroups();
+  closeModal('createGroupModal');
+  toast(`🏠 "${name}" created! (-1,000 pts)`,'success');
+  renderGroupsView();
+  setTimeout(()=>openGroupDetail(newGroup.id),300);
+}
+  
 // ── INIT ──
 applyColor(selectedColor, selectedColor2);
 renderMemBoard();
