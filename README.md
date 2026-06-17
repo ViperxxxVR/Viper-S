@@ -7,7 +7,7 @@ Welcome to Viper Studios, This website is official by Viper, Heres all about thi
 1. Sign in or Sign up
 2. If signed in skip to number 7!
 3. Create your username and password (Warning: DO NOT give any info to members or staff, Staff should never ask for your password.)
-4. Enter your email and Vrchat username (ex: email: viperisverycool@youremail.com <- gmail, yahoo, etc. viperxxx_real <- vrchat user.)
+4. Enter your email(ex: email: viperisverycool@youremail.com <- gmail, yahoo, etc.)
 5. Get your access code (NOTE: Ask Viper or a admin for a access code (ONLY MANAGER+ HAS ACCESS TO GENERATE CODES!) after that verify your email (check spam or inbox.)
 6. Your all set!
 7. LOGIN: Your information should be set up at the log in screen, if not just re-enter it.
