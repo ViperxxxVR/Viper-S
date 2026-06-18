@@ -2704,7 +2704,6 @@ function renderEggProgress(){
     ?found.map(e=>`<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)">${e.emoji} <span style="color:var(--text);font-weight:600">${e.label}</span><span style="margin-left:auto;color:#fbbf24">+${e.pts} pts</span></div>`).join('')
     :'No eggs found yet — keep exploring!';
 }
-  <span onclick="collectEgg('egg_pizza')" style="position:fixed;bottom:18px;left:18px;font-size:11px;opacity:0.06;cursor:pointer;user-select:none;z-index:50">🍕</span>
 // ── INIT ──
 applyColor(selectedColor, selectedColor2);
 renderMemBoard();
@@ -2714,5 +2713,7 @@ resetTypingUI();
 populateChatEffectDropdown();
 load();
 </script>
+  
+<span onclick="collectEgg('egg_pizza')" style="position:fixed;bottom:18px;left:18px;font-size:11px;opacity:0.06;cursor:pointer;user-select:none;z-index:50">🍕</span>
 </body>
 </html>
