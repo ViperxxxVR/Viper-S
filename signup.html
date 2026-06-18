@@ -294,7 +294,6 @@ async function submitSignup() {
     password: document.getElementById('password').value,
     confirmPassword: document.getElementById('confirmPassword').value,
     email: document.getElementById('email').value.trim() || '',
-    vrchat: document.getElementById('vrchat').value.trim(),
     key,
     skipEmailVerify: skipEmail,
   };
@@ -426,7 +425,6 @@ async function resendCode() {
     password: document.getElementById('password').value,
     confirmPassword: document.getElementById('confirmPassword').value,
     email: document.getElementById('email').value.trim(),
-    vrchat: document.getElementById('vrchat').value.trim(),
     key: document.getElementById('inviteKey').value.trim(),
   };
 
