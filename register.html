@@ -694,8 +694,8 @@ flex-shrink: 0;
 <button class="nav-item" onclick="switchTab('shop',this)"><i class="ti ti-shopping-bag"></i> Points Shop</button>
 <button class="nav-item" onclick="switchTab('settings',this)"><i class="ti ti-settings"></i> Settings</button>
 <button class="nav-item" onclick="switchTab('users',this)"><i class="ti ti-users"></i> Members</button>
-<button class="nav-item" onclick="switchTab('groups',this)"><i class="ti ti-users-group"></i> Groups (NEW!)</button>
-<button class="nav-item" onclick="switchTab('eastereggs',this)"><i class="ti ti-egg"></i> 🥚 Egg Hunt</button>
+<button class="nav-item" onclick="switchTab('groups',this)"><i class="ti ti-users-group"></i> Groups</button>
+<button class="nav-item" onclick="switchTab('eastereggs',this)"><i class="ti ti-egg"></i> Egg Hunt (NEW!)</button>
 <button class="nav-item admin-nav" id="adminNav" onclick="switchTab('admin',this)" style="display:none"><i class="ti ti-shield"></i> Admin</button>
 </nav>
 <div class="sidebar-bottom">
@@ -792,6 +792,34 @@ flex-shrink: 0;
 </div>
 
 <!-- CHAT placeholder -->
+<!-- EASTER EGGS -->
+<div class="tab-panel" id="tab-eastereggs">
+  <div style="max-width:600px">
+    <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:6px">🥚 Easter Egg Hunt</div>
+    <div style="font-size:13px;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:24px">Hidden eggs are scattered around the site. Find them to earn points!</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px" id="eggProgressGrid"></div>
+    <div style="background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px">
+      <div style="font-size:12px;font-weight:700;color:var(--muted);letter-spacing:2px;font-family:'DM Mono',monospace;margin-bottom:12px">YOUR FINDS</div>
+      <div id="eggFoundList" style="font-size:13px;color:var(--muted);font-family:'DM Mono',monospace">No eggs found yet — keep exploring!</div>
+    </div>
+  </div>
+</div>
+
+<!-- CHAT placeholder -->
+<!-- EASTER EGGS -->
+<div class="tab-panel" id="tab-eastereggs">
+  <div style="max-width:600px">
+    <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:6px">🥚 Easter Egg Hunt</div>
+    <div style="font-size:13px;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:24px">Hidden eggs are scattered around the site. Find them to earn points! (Suggested by: blue)</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px" id="eggProgressGrid"></div>
+    <div style="background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px">
+      <div style="font-size:12px;font-weight:700;color:var(--muted);letter-spacing:2px;font-family:'DM Mono',monospace;margin-bottom:12px">YOUR FINDS</div>
+      <div id="eggFoundList" style="font-size:13px;color:var(--muted);font-family:'DM Mono',monospace">No eggs found yet — keep exploring!</div>
+    </div>
+  </div>
+</div>
+
+<!-- CHAT placeholder -->
 <div class="tab-panel" id="tab-chat"></div>
 
 <!-- WORLD/EVENTS -->
@@ -882,12 +910,11 @@ flex-shrink: 0;
 <input class="typing-input" id="typingInput" placeholder="Start typing here..." disabled />
 <button class="game-start-btn" id="typingStartBtn" onclick="startTyping()"><i class="ti ti-player-play"></i> Start</button>
 </div>
-</div>
 <div class="game-panel" id="game-escaperoom">
   <div class="game-header">
     <div>
       <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:4px">🚪 Escape Room</div>
-      <div style="font-size:13px;color:var(--muted);font-family:'DM Mono',monospace">Solve all 4 puzzles · Earn up to 500 pts</div>
+      <div style="font-size:13px;color:var(--muted);font-family:'DM Mono',monospace">Solve all 4 puzzles · Earn up to 500 pts. (Suggested by: Kaden)</div>
     </div>
     <div class="game-stats">
       <div class="game-stat"><div class="game-stat-label">SOLVED</div><div class="game-stat-val" id="erSolved">0/4</div></div>
@@ -2637,6 +2664,47 @@ renderGroupsView();
 setTimeout(()=>openGroupDetail(newGroup.id),300);
 }
 
+  // ── EASTER EGGS ──
+const EGGS = [
+  {id:'egg_home',  label:'Home Base',    emoji:'🏠', hint:'Check the home tab',          pts:25},
+  {id:'egg_shop',  label:'Shop Rat',     emoji:'🛒', hint:'Browse the points shop',       pts:30},
+  {id:'egg_games', label:'Gamer',        emoji:'🎮', hint:'Open the games tab',           pts:20},
+  {id:'egg_viper', label:"Viper's Lair", emoji:'🐍', hint:'Visit the members list',       pts:35},
+  {id:'egg_pro',   label:'Big Spender',  emoji:'💎', hint:'Open settings',                pts:40},
+  {id:'egg_pizza', label:'Pizza Time',   emoji:'🍕', hint:'🍕 Hidden somewhere sneaky...', pts:50},
+];
+let foundEggs = JSON.parse(localStorage.getItem('vs_eggs') || '[]');
+
+function saveEggs(){localStorage.setItem('vs_eggs',JSON.stringify(foundEggs));}
+
+function collectEgg(id){
+  if(foundEggs.includes(id))return;
+  const egg=EGGS.find(e=>e.id===id);if(!egg)return;
+  foundEggs.push(id);saveEggs();
+  renderEggProgress();
+  toast(`🥚 Found: ${egg.emoji} ${egg.label}! +${egg.pts} pts`,'success');
+  fetch(`${API}/api/me/points/add`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token()},body:JSON.stringify({amount:egg.pts})})
+    .then(r=>r.json()).then(d=>{if(d.points){userPoints=d.points;updatePtsUI();}}).catch(()=>{});
+}
+
+function renderEggProgress(){
+  const grid=document.getElementById('eggProgressGrid');
+  const list=document.getElementById('eggFoundList');
+  if(!grid||!list)return;
+  grid.innerHTML=EGGS.map(e=>{
+    const found=foundEggs.includes(e.id);
+    return`<div style="background:var(--panel);border:1px solid ${found?'rgba(34,197,94,0.4)':'var(--border)'};border-radius:12px;padding:16px;text-align:center">
+      <div style="font-size:28px;margin-bottom:6px;${found?'':'filter:grayscale(1) opacity(0.3)'}">${e.emoji}</div>
+      <div style="font-size:13px;font-weight:700;color:${found?'var(--green)':'var(--muted)'}">${found?e.label:'???'}</div>
+      <div style="font-size:11px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:4px">${found?`+${e.pts} pts`:e.hint}</div>
+    </div>`;
+  }).join('');
+  const found=EGGS.filter(e=>foundEggs.includes(e.id));
+  list.innerHTML=found.length
+    ?found.map(e=>`<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)">${e.emoji} <span style="color:var(--text);font-weight:600">${e.label}</span><span style="margin-left:auto;color:#fbbf24">+${e.pts} pts</span></div>`).join('')
+    :'No eggs found yet — keep exploring!';
+}
+  
 // ── INIT ──
 applyColor(selectedColor, selectedColor2);
 renderMemBoard();
