@@ -805,10 +805,11 @@ flex-shrink: 0;
 <div class="tab-panel" id="tab-games">
 <div class="game-wrap">
 <div class="game-tabs">
-<button class="game-tab active" onclick="switchGame('memory',this)">🃏 Memory</button>
-<button class="game-tab" onclick="switchGame('snake',this)">🐍 Snake</button>
-<button class="game-tab" onclick="switchGame('reaction',this)">⚡ Reaction</button>
-<button class="game-tab" onclick="switchGame('typing',this)">⌨ Typing</button>
+  <button class="game-tab active" onclick="switchGame('memory',this)">🃏 Memory</button>
+  <button class="game-tab" onclick="switchGame('snake',this)">🐍 Snake</button>
+  <button class="game-tab" onclick="switchGame('reaction',this)">⚡ Reaction</button>
+  <button class="game-tab" onclick="switchGame('typing',this)">⌨ Typing</button>
+  <button class="game-tab" onclick="switchGame('escaperoom',this)">🚪 Escape</button>
 </div>
 <div class="game-panel active" id="game-memory">
 <div class="game-header">
@@ -879,6 +880,20 @@ flex-shrink: 0;
 <div class="typing-display" id="typingDisplay"><span style="color:var(--muted);font-size:14px">Press Start to begin the typing test...</span></div>
 <input class="typing-input" id="typingInput" placeholder="Start typing here..." disabled />
 <button class="game-start-btn" id="typingStartBtn" onclick="startTyping()"><i class="ti ti-player-play"></i> Start</button>
+</div>
+</div>
+<div class="game-panel" id="game-escaperoom">
+  <div class="game-header">
+    <div>
+      <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:4px">🚪 Escape Room</div>
+      <div style="font-size:13px;color:var(--muted);font-family:'DM Mono',monospace">Solve all 4 puzzles · Earn up to 500 pts</div>
+    </div>
+    <div class="game-stats">
+      <div class="game-stat"><div class="game-stat-label">SOLVED</div><div class="game-stat-val" id="erSolved">0/4</div></div>
+      <div class="game-stat"><div class="game-stat-label">EARNED</div><div class="game-stat-val" id="erPtsWon">0</div></div>
+    </div>
+  </div>
+  <div id="escapeRoomContent"></div>
 </div>
 </div>
 </div>
@@ -1354,10 +1369,16 @@ if(id==='leaderboard') loadLeaderboard();
 if(id==='admin'){loadAdminKeys();renderAdminEvents();loadAdminBadges();}
 if(id==='shop'){renderShop();document.getElementById('shopBalDisplay').textContent=userPoints;}
 if(id==='groups') loadGroups();
+if(id==='home')       setTimeout(()=>collectEgg('egg_home'),  800);
+if(id==='shop')       setTimeout(()=>collectEgg('egg_shop'),  800);
+if(id==='games')      setTimeout(()=>collectEgg('egg_games'), 800);
+if(id==='users')      setTimeout(()=>collectEgg('egg_viper'), 800);
+if(id==='settings')   setTimeout(()=>collectEgg('egg_pro'),   800);
+if(id==='eastereggs') renderEggProgress();
 }
 
-const labels={home:'Dashboard',chat:'Chat',dms:'Direct Messages',world:'Events',games:'Games',leaderboard:'Leaderboard',shop:'Points Shop',settings:'Settings',users:'Members',groups: 'Groups',admin:'Admin Panel'};
-const codes={home:'HOME',chat:'CHAT',dms:'DMS',world:'WORLD',games:'GAMES',leaderboard:'LEADERBOARD',shop:'SHOP',settings:'SETTINGS',users:'MEMBERS',groups: 'GROUPS',admin:'ADMIN'};
+const labels={home:'Dashboard',chat:'Chat',dms:'Direct Messages',world:'Events',games:'Games',leaderboard:'Leaderboard',shop:'Points Shop',settings:'Settings',users:'Members',groups:'Groups',eastereggs:'Egg Hunt',admin:'Admin Panel'};
+const codes={home:'HOME',chat:'CHAT',dms:'DMS',world:'WORLD',games:'GAMES',leaderboard:'LEADERBOARD',shop:'SHOP',settings:'SETTINGS',users:'MEMBERS',groups:'GROUPS',eastereggs:'HUNT',admin:'ADMIN'};
 document.getElementById('topbarTitle').textContent = labels[id]||id;
 document.getElementById('topbarBadge').textContent = codes[id]||id.toUpperCase();
 }
@@ -1371,6 +1392,7 @@ if(id==='memory') renderMemBoard();
 if(id==='snake') renderSnakeIdle();
 if(id==='reaction'){rtActive=false;resetReactionUI();}
 if(id==='typing'){typingActive=false;resetTypingUI();}
+if(id==='escaperoom') renderEscapeRoom();
 }
 
 // ── LOAD USER ──
