@@ -595,6 +595,55 @@ flex-shrink: 0;
 .icon-opt{width:38px;height:38px;border-radius:8px;background:var(--bg);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;transition:all 0.15s}
 .icon-opt:hover{border-color:var(--accent)}
 .icon-opt.selected{border-color:var(--accent);background:rgba(59,130,246,0.15)}
+
+  /* ── MOBILE ── */
+.mobile-topbar-btn{display:none;background:none;border:none;color:var(--text);font-size:22px;cursor:pointer;padding:4px;flex-shrink:0}
+.sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:199}
+.sidebar-overlay.show{display:block}
+@media(max-width:768px){
+  body{overflow:auto}
+  .shell{flex-direction:column;height:auto;min-height:100vh}
+  .sidebar{position:fixed;top:0;left:-240px;width:220px;height:100vh;z-index:200;transition:left 0.25s;overflow-y:auto}
+  .sidebar.open{left:0}
+  .mobile-topbar-btn{display:flex;align-items:center;justify-content:center}
+  .main{flex:1;min-height:100vh;width:100%}
+  .topbar{padding:0 14px;gap:10px}
+  .content{padding:16px}
+  .content-scroll{height:calc(100vh - 56px);overflow-y:auto}
+  .chat-wrap{height:calc(100vh - 56px)}
+  .dm-wrap{height:calc(100vh - 56px)}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .profile-card{flex-direction:column;align-items:center;text-align:center}
+  .profile-card .profile-info{width:100%}
+  .profile-name{justify-content:center}
+  .profile-status{justify-content:center}
+  .equipped-effects{justify-content:center}
+  .points-row{justify-content:center}
+  .lb-podium{grid-template-columns:1fr 1fr 1fr;gap:6px}
+  .lb-podium-card{padding:12px 8px}
+  .lb-pod-name{font-size:12px}
+  .lb-pod-pts{font-size:16px}
+  .shop-grid{grid-template-columns:repeat(2,1fr)}
+  .keygen-form{grid-template-columns:1fr}
+  .form-2col{grid-template-columns:1fr}
+  .pro-perks{grid-template-columns:1fr}
+  .color-grid{grid-template-columns:repeat(3,1fr)}
+  .redeem-wrap{flex-direction:column;align-items:stretch}
+  .redeem-input{width:100%}
+  .memory-grid{grid-template-columns:repeat(4,1fr);gap:6px}
+  .mem-card{height:64px}
+  #snakeCanvas{width:100%;height:auto;max-width:400px}
+  .game-header{flex-direction:column;align-items:flex-start}
+  .rt-results{grid-template-columns:repeat(3,1fr)}
+  .event-card{grid-template-columns:44px 1fr;gap:10px}
+  .ev-right{display:none}
+  .group-detail-cols{grid-template-columns:1fr}
+  .groups-grid{grid-template-columns:1fr}
+  .dm-layout{flex-direction:column}
+  .dm-sidebar{width:100%;height:auto;border-right:none;border-bottom:1px solid var(--border);max-height:200px}
+  .modal{width:95vw!important;max-width:95vw!important}
+  .warning-bar{font-size:12px;padding:8px 12px}
+}
 </style>
 </head>
 <body>
@@ -679,6 +728,7 @@ flex-shrink: 0;
 </div>
 
 <div class="shell">
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
 <div class="sidebar">
 <div class="logo">
 <div class="logo-icon">V</div>
@@ -712,6 +762,7 @@ flex-shrink: 0;
 
 <div class="main">
 <div class="topbar">
+<button class="mobile-topbar-btn" onclick="toggleSidebar()" id="menuBtn"><i class="ti ti-menu-2"></i></button>
 <span class="topbar-title" id="topbarTitle">Dashboard</span>
 <span class="topbar-badge" id="topbarBadge">HOME</span>
 <span class="dot-live"></span>
@@ -1366,6 +1417,8 @@ const contentScroll = document.getElementById('contentScroll');
 const chatWrap = document.getElementById('chatWrap');
 
 function switchTab(id, btn) {
+document.querySelector('.sidebar').classList.remove('open');
+document.getElementById('sidebarOverlay').classList.remove('show');
 document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
 document.querySelectorAll('.nav-item').forEach(b=>b.classList.remove('active'));
 if(btn) btn.classList.add('active');
@@ -2699,10 +2752,15 @@ function renderEggProgress(){
       <div style="font-size:11px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:4px">${found?`+${e.pts} pts`:e.hint}</div>
     </div>`;
   }).join('');
-  const found=EGGS.filter(e=>foundEggs.includes(e.id));
+ const found=EGGS.filter(e=>foundEggs.includes(e.id));
   list.innerHTML=found.length
     ?found.map(e=>`<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)">${e.emoji} <span style="color:var(--text);font-weight:600">${e.label}</span><span style="margin-left:auto;color:#fbbf24">+${e.pts} pts</span></div>`).join('')
     :'No eggs found yet — keep exploring!';
+}
+
+function toggleSidebar(){
+  document.querySelector('.sidebar').classList.toggle('open');
+  document.getElementById('sidebarOverlay').classList.toggle('show');
 }
 // ── INIT ──
 applyColor(selectedColor, selectedColor2);
