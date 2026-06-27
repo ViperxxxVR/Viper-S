@@ -739,6 +739,7 @@ flex-shrink: 0;
 <button class="nav-item" onclick="switchTab('chat',this)"><i class="ti ti-message-circle"></i> Chat</button>
 <button class="nav-item" id="dmsNavBtn" onclick="switchTab('dms',this)"><i class="ti ti-mail"></i> DMs <span class="dm-nav-badge" id="dmNavBadge" style="display:none"></span></button>
 <button class="nav-item" onclick="switchTab('world',this)"><i class="ti ti-planet"></i> Events</button>
+<button class="nav-item" onclick="switchTab('applications',this)"><i class="ti ti-file-text"></i> Applications</button>
 <button class="nav-item" onclick="switchTab('games',this)"><i class="ti ti-device-gamepad-2"></i> Games</button>
 <button class="nav-item" onclick="switchTab('leaderboard',this)"><i class="ti ti-trophy"></i> Leaderboard</button>
 <button class="nav-item" onclick="switchTab('shop',this)"><i class="ti ti-shopping-bag"></i> Points Shop</button>
@@ -746,6 +747,7 @@ flex-shrink: 0;
 <button class="nav-item" onclick="switchTab('users',this)"><i class="ti ti-users"></i> Members</button>
 <button class="nav-item" onclick="switchTab('groups',this)"><i class="ti ti-users-group"></i> Groups</button>
 <button class="nav-item" onclick="switchTab('eastereggs',this)"><i class="ti ti-egg"></i> Egg Hunt (NEW!)</button>
+<button class="nav-item" onclick="switchTab('applications',this)"><i class="ti ti-file-text"></i> Applications</button>
 <button class="nav-item admin-nav" id="adminNav" onclick="switchTab('admin',this)" style="display:none"><i class="ti ti-shield"></i> Admin</button>
 </nav>
 <div class="sidebar-bottom">
@@ -841,8 +843,6 @@ flex-shrink: 0;
 </div>
 </div>
 </div>
-
-<!-- CHAT placeholder -->
 <!-- EASTER EGGS -->
 <div class="tab-panel" id="tab-eastereggs">
   <div style="max-width:600px">
@@ -857,21 +857,22 @@ flex-shrink: 0;
 </div>
 
 <!-- CHAT placeholder -->
-<!-- EASTER EGGS -->
-<div class="tab-panel" id="tab-eastereggs">
-  <div style="max-width:600px">
-    <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:6px">🥚 Easter Egg Hunt</div>
-    <div style="font-size:13px;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:24px">Hidden eggs are scattered around the site. Find them to earn points! (Suggested by: blue)</div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px" id="eggProgressGrid"></div>
-    <div style="background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px">
-      <div style="font-size:12px;font-weight:700;color:var(--muted);letter-spacing:2px;font-family:'DM Mono',monospace;margin-bottom:12px">YOUR FINDS</div>
-      <div id="eggFoundList" style="font-size:13px;color:var(--muted);font-family:'DM Mono',monospace">No eggs found yet — keep exploring!</div>
-    </div>
+<div class="tab-panel" id="tab-chat"></div>
+  
+  <!-- APPLICATIONS -->
+<div class="tab-panel" id="tab-applications">
+  <div style="max-width:700px" id="applicationsListView">
+    <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:6px">📋 Applications</div>
+    <div style="font-size:13px;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:24px">Apply for a role. Accepted applications will DM you on Discord (if linked).</div>
+    <div id="appTypesGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-bottom:32px"></div>
+    <div style="font-size:12px;font-weight:700;color:var(--muted);letter-spacing:2px;font-family:'DM Mono',monospace;margin-bottom:14px">YOUR SUBMISSIONS</div>
+    <div id="mySubmissionsList"><div style="font-size:13px;color:var(--muted);font-family:'DM Mono',monospace">You haven't applied to anything yet.</div></div>
+  </div>
+  <div style="max-width:600px;display:none" id="applicationFormView">
+    <button onclick="closeAppForm()" style="background:rgba(255,255,255,0.05);border:1px solid var(--border2);border-radius:8px;color:var(--muted);padding:8px 14px;cursor:pointer;font-size:13px;font-family:'DM Mono',monospace;font-weight:600;margin-bottom:20px;display:flex;align-items:center;gap:6px"><i class="ti ti-arrow-left"></i> Back</button>
+    <div id="appFormContent"></div>
   </div>
 </div>
-
-<!-- CHAT placeholder -->
-<div class="tab-panel" id="tab-chat"></div>
 
 <!-- WORLD/EVENTS -->
 <div class="tab-panel" id="tab-world">
@@ -1232,6 +1233,34 @@ flex-shrink: 0;
 <div id="adminBadgeList"><div style="font-size:13px;color:var(--muted);font-family:'DM Mono',monospace">No badges created yet.</div></div>
 </div>
 </div>
+  <div class="admin-give-card" style="border-color:rgba(139,92,246,0.2)">
+  <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#8b5cf6,#06b6d4)"></div>
+  <h4>📋 APPLICATION TYPES</h4>
+  <div class="form-2col" style="margin-bottom:12px">
+    <div class="form-group"><div class="field-label">APPLICATION NAME</div><input class="field-input" id="newAppTypeName" placeholder="e.g. Moderator Application" style="margin-bottom:0" /></div>
+    <div class="form-group"><div class="field-label">ICON EMOJI</div><input class="field-input" id="newAppTypeIcon" placeholder="e.g. 🛡️" maxlength="4" style="margin-bottom:0" /></div>
+  </div>
+  <div class="field-label">DESCRIPTION</div>
+  <input class="field-input" id="newAppTypeDesc" placeholder="What is this application for?" style="margin-bottom:12px" />
+  <div class="field-label" style="margin-bottom:8px">QUESTIONS <span style="font-size:10px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:999px;padding:1px 7px">one per line</span></div>
+  <textarea class="field-input field-textarea" id="newAppTypeQuestions" placeholder="Why do you want this role?&#10;How active are you?&#10;Any past experience?" style="min-height:90px;margin-bottom:14px;font-family:'DM Mono',monospace;font-size:13px"></textarea>
+  <button class="create-badge-btn" onclick="createAppType()"><i class="ti ti-plus" style="font-size:15px"></i> Create Application Type</button>
+  <span class="confirm-chip" id="appTypeCreateConfirm" style="margin-left:12px"><i class="ti ti-check"></i> Created!</span>
+  <div style="border-top:1px solid var(--border);padding-top:16px;margin-top:18px">
+    <div class="field-label" style="margin-bottom:12px">EXISTING APPLICATION TYPES</div>
+    <div id="adminAppTypesList"><div style="font-size:13px;color:var(--muted);font-family:'DM Mono',monospace">No application types yet.</div></div>
+  </div>
+</div>
+
+<div class="admin-give-card" style="border-color:rgba(245,158,11,0.2)">
+  <h4>📥 PENDING SUBMISSIONS</h4>
+  <div id="adminPendingApps"><div style="font-size:13px;color:var(--muted);font-family:'DM Mono',monospace">No pending submissions.</div></div>
+  <div style="border-top:1px solid var(--border);padding-top:16px;margin-top:16px">
+    <div class="field-label" style="margin-bottom:12px">REVIEWED HISTORY</div>
+    <div id="adminReviewedApps"><div style="font-size:13px;color:var(--muted);font-family:'DM Mono',monospace">No history yet.</div></div>
+  </div>
+</div>
+
 <div class="admin-event-card">
 <h4>EVENT MANAGER</h4>
 <div class="form-2col">
@@ -1470,10 +1499,12 @@ if(id==='games')      setTimeout(()=>collectEgg('egg_games'), 800);
 if(id==='users')      setTimeout(()=>collectEgg('egg_viper'), 800);
 if(id==='settings')   setTimeout(()=>collectEgg('egg_pro'),   800);
 if(id==='eastereggs') renderEggProgress();
+if(id==='applications') loadApplications();
+if(id==='admin'){loadAdminApplications();}
 }
 
-const labels={home:'Dashboard',chat:'Chat',dms:'Direct Messages',world:'Events',games:'Games',leaderboard:'Leaderboard',shop:'Points Shop',settings:'Settings',users:'Members',groups:'Groups',eastereggs:'Egg Hunt',admin:'Admin Panel'};
-const codes={home:'HOME',chat:'CHAT',dms:'DMS',world:'WORLD',games:'GAMES',leaderboard:'LEADERBOARD',shop:'SHOP',settings:'SETTINGS',users:'MEMBERS',groups:'GROUPS',eastereggs:'HUNT',admin:'ADMIN'};
+const labels={home:'Dashboard',chat:'Chat',dms:'Direct Messages',world:'Events',games:'Games',leaderboard:'Leaderboard',shop:'Points Shop',settings:'Settings',users:'Members',groups:'Groups',eastereggs:'Egg Hunt',applications:'Applications',admin:'Admin Panel'};
+const codes={home:'HOME',chat:'CHAT',dms:'DMS',world:'WORLD',games:'GAMES',leaderboard:'LEADERBOARD',shop:'SHOP',settings:'SETTINGS',users:'MEMBERS',groups:'GROUPS',eastereggs:'HUNT',applications:'APPS',admin:'ADMIN'};
 document.getElementById('topbarTitle').textContent = labels[id]||id;
 document.getElementById('topbarBadge').textContent = codes[id]||id.toUpperCase();
 }
@@ -2729,6 +2760,218 @@ renderGroupsView();
 setTimeout(()=>openGroupDetail(newGroup.id),300);
 }
 
+  // ── APPLICATIONS ──
+const BOT_API = 'https://your-discord-bot-host.example.com'; // TODO: replace with your bot's real backend URL
+
+let appTypes = JSON.parse(localStorage.getItem('vs_app_types') || '[]');
+let appSubmissions = JSON.parse(localStorage.getItem('vs_app_submissions') || '[]');
+let currentAppType = null;
+
+function saveAppTypes(){localStorage.setItem('vs_app_types',JSON.stringify(appTypes));}
+function saveAppSubmissions(){localStorage.setItem('vs_app_submissions',JSON.stringify(appSubmissions));}
+
+function createAppType(){
+  const name=document.getElementById('newAppTypeName').value.trim();
+  const icon=document.getElementById('newAppTypeIcon').value.trim()||'📋';
+  const desc=document.getElementById('newAppTypeDesc').value.trim();
+  const questionsRaw=document.getElementById('newAppTypeQuestions').value.trim();
+  if(!name||!questionsRaw){toast('Enter a name and at least one question','error');return;}
+  const questions=questionsRaw.split('\n').map(q=>q.trim()).filter(Boolean);
+  appTypes.unshift({id:'at_'+Date.now(),name,icon,desc,questions,createdBy:currentUsername,createdAt:Date.now(),open:true});
+  saveAppTypes();
+  document.getElementById('newAppTypeName').value='';
+  document.getElementById('newAppTypeIcon').value='';
+  document.getElementById('newAppTypeDesc').value='';
+  document.getElementById('newAppTypeQuestions').value='';
+  renderAdminAppTypes();
+  const c=document.getElementById('appTypeCreateConfirm');c.classList.add('show');setTimeout(()=>c.classList.remove('show'),2000);
+  toast(`📋 "${name}" created!`,'success');
+}
+
+function renderAdminAppTypes(){
+  const el=document.getElementById('adminAppTypesList');if(!el)return;
+  if(!appTypes.length){el.innerHTML='<div style="font-size:13px;color:var(--muted);font-family:\'DM Mono\',monospace">No application types yet.</div>';return;}
+  el.innerHTML=appTypes.map(t=>`
+    <div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)">
+      <span style="font-size:20px">${t.icon}</span>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:14px;font-weight:700;color:var(--text)">${escHtml(t.name)} ${t.open?'<span style="font-size:10px;color:var(--green);font-family:\'DM Mono\',monospace">● OPEN</span>':'<span style="font-size:10px;color:var(--red);font-family:\'DM Mono\',monospace">● CLOSED</span>'}</div>
+        <div style="font-size:11px;color:var(--muted);font-family:'DM Mono',monospace">${t.questions.length} question${t.questions.length!==1?'s':''}</div>
+      </div>
+      <button onclick="toggleAppTypeOpen('${t.id}')" style="background:none;border:1px solid var(--border2);border-radius:7px;color:var(--muted);padding:5px 10px;cursor:pointer;font-size:11px;font-family:'DM Mono',monospace">${t.open?'Close':'Reopen'}</button>
+      <button onclick="deleteAppType('${t.id}')" style="background:none;border:1px solid rgba(239,68,68,0.3);border-radius:7px;color:#f87171;padding:5px 10px;cursor:pointer;font-size:11px;font-family:'DM Mono',monospace"><i class="ti ti-trash"></i></button>
+    </div>`).join('');
+}
+
+function toggleAppTypeOpen(id){
+  const t=appTypes.find(x=>x.id===id);if(!t)return;
+  t.open=!t.open;saveAppTypes();renderAdminAppTypes();
+  toast(t.open?'Reopened':'Closed for new submissions','');
+}
+function deleteAppType(id){
+  appTypes=appTypes.filter(t=>t.id!==id);saveAppTypes();renderAdminAppTypes();
+  toast('Application type deleted','');
+}
+
+function loadApplications(){
+  renderAppTypesGrid();
+  renderMySubmissions();
+  document.getElementById('applicationsListView').style.display='';
+  document.getElementById('applicationFormView').style.display='none';
+}
+
+function renderAppTypesGrid(){
+  const grid=document.getElementById('appTypesGrid');if(!grid)return;
+  const openTypes=appTypes.filter(t=>t.open);
+  if(!openTypes.length){grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:30px;color:var(--muted);font-family:\'DM Mono\',monospace;font-size:13px;background:var(--panel);border:1px solid var(--border);border-radius:12px">No applications are open right now.</div>';return;}
+  grid.innerHTML=openTypes.map(t=>{
+    const already=appSubmissions.some(s=>s.typeId===t.id&&s.username===currentUsername&&s.status==='pending');
+    return`<div style="background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:8px">
+      <div style="font-size:28px">${t.icon}</div>
+      <div style="font-size:15px;font-weight:700;color:#fff">${escHtml(t.name)}</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.5;flex:1">${escHtml(t.desc||'No description.')}</div>
+      <button ${already?'disabled':''} onclick="openAppForm('${t.id}')" style="background:${already?'rgba(255,255,255,0.04)':'rgba(59,130,246,0.12)'};border:1px solid ${already?'var(--border2)':'rgba(59,130,246,0.3)'};border-radius:8px;color:${already?'var(--muted)':'var(--accent2)'};padding:8px;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;cursor:${already?'not-allowed':'pointer'}">${already?'Already Applied':'Apply'}</button>
+    </div>`;
+  }).join('');
+}
+
+function openAppForm(typeId){
+  const t=appTypes.find(x=>x.id===typeId);if(!t)return;
+  currentAppType=t;
+  document.getElementById('applicationsListView').style.display='none';
+  document.getElementById('applicationFormView').style.display='';
+  document.getElementById('appFormContent').innerHTML=`
+    <div style="font-size:22px;margin-bottom:4px">${t.icon}</div>
+    <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:6px">${escHtml(t.name)}</div>
+    <div style="font-size:13px;color:var(--muted);margin-bottom:24px">${escHtml(t.desc||'')}</div>
+    ${t.questions.map((q,i)=>`
+      <div class="field-label">${escHtml(q)}</div>
+      <textarea class="field-input field-textarea" id="appAns_${i}" style="min-height:70px"></textarea>
+    `).join('')}
+    <button class="save-btn" onclick="submitApplication('${t.id}')">Submit Application</button>`;
+}
+
+function closeAppForm(){
+  document.getElementById('applicationsListView').style.display='';
+  document.getElementById('applicationFormView').style.display='none';
+  currentAppType=null;
+}
+
+function submitApplication(typeId){
+  const t=appTypes.find(x=>x.id===typeId);if(!t)return;
+  const answers=t.questions.map((q,i)=>({question:q,answer:document.getElementById('appAns_'+i).value.trim()}));
+  if(answers.some(a=>!a.answer)){toast('Please answer every question','error');return;}
+  appSubmissions.unshift({
+    id:'sub_'+Date.now(),
+    typeId:t.id,typeName:t.name,typeIcon:t.icon,
+    username:currentUsername,
+    answers,
+    status:'pending',
+    submittedAt:Date.now()
+  });
+  saveAppSubmissions();
+  toast('✅ Application submitted!','success');
+  closeAppForm();
+  renderMySubmissions();
+}
+
+function renderMySubmissions(){
+  const el=document.getElementById('mySubmissionsList');if(!el)return;
+  const mine=appSubmissions.filter(s=>s.username===currentUsername);
+  if(!mine.length){el.innerHTML='<div style="font-size:13px;color:var(--muted);font-family:\'DM Mono\',monospace">You haven\'t applied to anything yet.</div>';return;}
+  el.innerHTML=mine.map(s=>{
+    const statusColor=s.status==='pending'?'var(--amber)':s.status==='accepted'?'var(--green)':'var(--red)';
+    const statusLabel=s.status==='pending'?'⏳ Pending':s.status==='accepted'?'✓ Accepted':'✗ Denied';
+    return`<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)">
+      <span style="font-size:18px">${s.typeIcon}</span>
+      <div style="flex:1"><div style="font-size:14px;font-weight:700;color:var(--text)">${escHtml(s.typeName)}</div><div style="font-size:11px;color:var(--muted);font-family:'DM Mono',monospace">${new Date(s.submittedAt).toLocaleDateString()}</div></div>
+      <span style="font-size:12px;font-family:'DM Mono',monospace;color:${statusColor};font-weight:700">${statusLabel}</span>
+    </div>`;
+  }).join('');
+}
+
+function loadAdminApplications(){
+  renderAdminAppTypes();
+  renderAdminPendingApps();
+  renderAdminReviewedApps();
+}
+
+function renderAdminPendingApps(){
+  const el=document.getElementById('adminPendingApps');if(!el)return;
+  const pending=appSubmissions.filter(s=>s.status==='pending');
+  if(!pending.length){el.innerHTML='<div style="font-size:13px;color:var(--muted);font-family:\'DM Mono\',monospace">No pending submissions.</div>';return;}
+  el.innerHTML=pending.map(s=>`
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+        <span style="font-size:18px">${s.typeIcon}</span>
+        <div style="flex:1">
+          <div style="font-size:14px;font-weight:700;color:var(--text)">${escHtml(s.username)} <span style="color:var(--muted);font-weight:400">applied for</span> ${escHtml(s.typeName)}</div>
+          <div style="font-size:11px;color:var(--muted);font-family:'DM Mono',monospace">${new Date(s.submittedAt).toLocaleString()}</div>
+        </div>
+      </div>
+      <div style="margin-bottom:12px">
+        ${s.answers.map(a=>`<div style="margin-bottom:8px"><div style="font-size:11px;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:2px">${escHtml(a.question)}</div><div style="font-size:13px;color:var(--text)">${escHtml(a.answer)}</div></div>`).join('')}
+      </div>
+      <div style="display:flex;gap:8px">
+        <button onclick="reviewApplication('${s.id}','accepted')" style="flex:1;background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.3);border-radius:8px;color:var(--green);padding:8px;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;cursor:pointer"><i class="ti ti-check"></i> Accept</button>
+        <button onclick="reviewApplication('${s.id}','denied')" style="flex:1;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:8px;color:#f87171;padding:8px;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;cursor:pointer"><i class="ti ti-x"></i> Deny</button>
+      </div>
+    </div>`).join('');
+}
+
+function renderAdminReviewedApps(){
+  const el=document.getElementById('adminReviewedApps');if(!el)return;
+  const reviewed=appSubmissions.filter(s=>s.status!=='pending').slice(0,20);
+  if(!reviewed.length){el.innerHTML='<div style="font-size:13px;color:var(--muted);font-family:\'DM Mono\',monospace">No history yet.</div>';return;}
+  el.innerHTML=reviewed.map(s=>{
+    const statusColor=s.status==='accepted'?'var(--green)':'var(--red)';
+    const statusLabel=s.status==='accepted'?'✓ Accepted':'✗ Denied';
+    return`<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)">
+      <span>${s.typeIcon}</span>
+      <div style="flex:1;font-size:13px;color:var(--text)">${escHtml(s.username)} — ${escHtml(s.typeName)}</div>
+      <span style="font-size:11px;font-family:'DM Mono',monospace;color:${statusColor}">${statusLabel}</span>
+    </div>`;
+  }).join('');
+}
+
+async function reviewApplication(subId, decision){
+  if(!isAdmin()){toast('Admins only','error');return;}
+  const sub=appSubmissions.find(s=>s.id===subId);if(!sub)return;
+  sub.status=decision;
+  sub.reviewedBy=currentUsername;
+  sub.reviewedAt=Date.now();
+  saveAppSubmissions();
+
+  if(decision==='accepted'){
+    const applicant=allMembers.find(m=>m.username===sub.username);
+    const discordId=applicant?.discordId;
+    if(discordId){
+      try{
+        await fetch(`${BOT_API}/api/applications/notify`,{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({
+            discordId,
+            applicationType:sub.typeName,
+            decision:'accepted',
+            username:sub.username
+          })
+        });
+        toast(`✅ Accepted — Discord DM sent to ${sub.username}`,'success');
+      }catch{
+        toast(`Accepted, but failed to reach bot to send DM`,'warn');
+      }
+    }else{
+      toast(`✅ Accepted — ${sub.username} has no Discord linked, no DM sent`,'warn');
+    }
+  }else{
+    toast(`Application denied for ${sub.username}`,'');
+  }
+
+  renderAdminPendingApps();
+  renderAdminReviewedApps();
+}
+  
   // ── EASTER EGGS ──
 const EGGS = [
   {id:'egg_home',  label:'Home Base',    emoji:'🏠', hint:'Check the home tab',          pts:25},
