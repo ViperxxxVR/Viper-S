@@ -2943,8 +2943,9 @@ async function reviewApplication(subId, decision){
   saveAppSubmissions();
 
   if(decision==='accepted'){
-    const applicant=allMembers.find(m=>m.username===sub.username);
-    const discordId=applicant?.discordId;
+const applicant=allMembers.find(m=>m.username===sub.username);
+const discordId=applicant?.discordId;
+console.log('applicant:', applicant); // TEMP — check browser console
     if(discordId){
       try{
         await fetch(`${BOT_API}/api/applications/notify`,{
