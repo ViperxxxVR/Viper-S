@@ -667,6 +667,7 @@ function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').
 
 // ── SECRET CODE ──
 function checkMobileSecret(val){
+  if(!val) return;
   const upper = val.toUpperCase();
   if(upper === 'PHASMOMONKEYS'){
     document.getElementById('mobileSecretInput').value = '';
