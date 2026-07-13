@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>PhasmoMonkeys — Coming Soon</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#04060a;
+  --panel:rgba(255,255,255,0.03);
+  --border:rgba(255,255,255,0.07);
+  --text:#c8cdd8;
+  --muted:#4a5260;
+  --purple:#8b5cf6;
+  --cyan:#06b6d4;
+  --green:#22c55e;
+  --red:#ef4444;
+}
+html,body{height:100%;overflow-x:hidden}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Rajdhani',sans-serif;
+  font-size:15px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
+  padding:24px;
+  position:relative;
+}
+
+/* SCANLINES */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.08) 2px,rgba(0,0,0,0.08) 4px);
+  pointer-events:none;
+  z-index:0;
+}
+
+/* AMBIENT GLOW */
+.glow-orb{
+  position:fixed;
+  border-radius:50%;
+  filter:blur(120px);
+  pointer-events:none;
+  z-index:0;
+  opacity:0.18;
+}
+.glow-1{width:500px;height:500px;background:#8b5cf6;top:-100px;left:-100px;}
+.glow-2{width:400px;height:400px;background:#06b6d4;bottom:-80px;right:-80px;}
+
+.wrap{
+  position:relative;
+  z-index:1;
+  width:100%;
+  max-width:640px;
+  text-align:center;
+}
+
+/* CORRUPTED DATABASE HEADER */
+.db-status{
+  font-family:'Share Tech Mono',monospace;
+  font-size:11px;
+  color:var(--red);
+  margin-bottom:32px;
+  padding:12px 16px;
+  border:1px solid rgba(239,68,68,0.25);
+  border-radius:8px;
+  background:rgba(239,68,68,0.05);
+  text-align:left;
+  line-height:1.8;
+  position:relative;
+  overflow:hidden;
+}
+.db-status::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(239,68,68,0.5),transparent);
+  animation:scan 3s linear infinite;
+}
+@keyframes scan{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.db-line{display:block;opacity:0;}
+.db-line.visible{opacity:1;}
+.db-line.err{color:var(--red);}
+.db-line.warn{color:#f59e0b;}
+.db-line.ok{color:var(--green);}
+.db-line.glitch{
+  animation:glitch 0.15s steps(2) infinite;
+}
+@keyframes glitch{
+  0%{transform:translateX(0);color:var(--red)}
+  25%{transform:translateX(-3px);color:#ff00ff}
+  50%{transform:translateX(3px);color:#00ffff}
+  75%{transform:translateX(-1px);color:var(--red)}
+  100%{transform:translateX(0);color:var(--red)}
+}
+
+/* LOGO */
+.logo-area{margin-bottom:24px}
+.logo-emoji{font-size:52px;display:block;margin-bottom:12px;filter:drop-shadow(0 0 20px rgba(139,92,246,0.5))}
+.logo-title{
+  font-size:48px;
+  font-weight:900;
+  color:#fff;
+  letter-spacing:3px;
+  line-height:1;
+  text-shadow:0 0 40px rgba(139,92,246,0.4);
+}
+.logo-sub{
+  font-family:'Share Tech Mono',monospace;
+  font-size:12px;
+  color:var(--muted);
+  letter-spacing:3px;
+  margin-top:8px;
+}
+
+/* COUNTDOWN */
+.countdown-wrap{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin-bottom:12px;
+  flex-wrap:wrap;
+}
+.cd-block{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:12px;
+  padding:20px 18px;
+  min-width:80px;
+  position:relative;
+  overflow:hidden;
+}
+.cd-block::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;height:1px;
+  opacity:0.4;
+}
+.cd-days::before{background:linear-gradient(90deg,transparent,var(--purple),transparent)}
+.cd-hours::before{background:linear-gradient(90deg,transparent,var(--cyan),transparent)}
+.cd-mins::before{background:linear-gradient(90deg,transparent,var(--green),transparent)}
+.cd-secs::before{background:linear-gradient(90deg,transparent,#fb923c,transparent)}
+.cd-num{
+  font-family:'Share Tech Mono',monospace;
+  font-size:40px;
+  font-weight:400;
+  line-height:1;
+  display:block;
+}
+.cd-days .cd-num{color:var(--purple);text-shadow:0 0 20px rgba(139,92,246,0.5)}
+.cd-hours .cd-num{color:var(--cyan);text-shadow:0 0 20px rgba(6,182,212,0.5)}
+.cd-mins .cd-num{color:var(--green);text-shadow:0 0 20px rgba(34,197,94,0.5)}
+.cd-secs .cd-num{color:#fb923c;text-shadow:0 0 20px rgba(251,146,60,0.5)}
+.cd-label{
+  font-family:'Share Tech Mono',monospace;
+  font-size:9px;
+  color:var(--muted);
+  letter-spacing:2px;
+  margin-top:6px;
+  display:block;
+}
+.cd-date{
+  font-family:'Share Tech Mono',monospace;
+  font-size:11px;
+  color:var(--muted);
+  margin-bottom:32px;
+}
+.launched-msg{
+  display:none;
+  font-family:'Share Tech Mono',monospace;
+  font-size:18px;
+  color:var(--green);
+  text-shadow:0 0 20px rgba(34,197,94,0.5);
+  margin-bottom:24px;
+  padding:16px;
+  border:1px solid rgba(34,197,94,0.3);
+  border-radius:10px;
+  background:rgba(34,197,94,0.05);
+}
+
+/* SECRET INPUT DISPLAY */
+.secret-input-display{
+  font-family:'Share Tech Mono',monospace;
+  font-size:12px;
+  color:rgba(255,255,255,0.08);
+  letter-spacing:4px;
+  margin-bottom:28px;
+  height:18px;
+  transition:color 0.3s;
+  min-height:18px;
+}
+.secret-input-display.typing{color:rgba(139,92,246,0.4)}
+
+/* FOOTER */
+.footer{
+  font-family:'Share Tech Mono',monospace;
+  font-size:11px;
+  color:var(--muted);
+  margin-top:32px;
+  letter-spacing:1px;
+}
+
+/* SECRET OVERLAY */
+.secret-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.92);
+  z-index:100;
+  display:none;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:32px;
+  text-align:center;
+  backdrop-filter:blur(8px);
+}
+.secret-overlay.show{display:flex}
+.secret-box{
+  max-width:520px;
+  width:100%;
+  border:1px solid rgba(139,92,246,0.4);
+  border-radius:16px;
+  padding:36px 32px;
+  background:rgba(139,92,246,0.06);
+  position:relative;
+  overflow:hidden;
+}
+.secret-box::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,#8b5cf6,#06b6d4,#8b5cf6);
+}
+.secret-glitch-title{
+  font-size:13px;
+  font-family:'Share Tech Mono',monospace;
+  color:var(--purple);
+  letter-spacing:3px;
+  margin-bottom:16px;
+  animation:glitch 0.3s steps(2) infinite;
+}
+.secret-emoji{font-size:52px;margin-bottom:16px;display:block}
+.secret-headline{
+  font-size:26px;
+  font-weight:900;
+  color:#fff;
+  margin-bottom:12px;
+  letter-spacing:1px;
+}
+.secret-body{
+  font-size:15px;
+  color:var(--text);
+  line-height:1.7;
+  margin-bottom:24px;
+}
+.secret-body strong{color:#fbbf24}
+.secret-reward{
+  background:rgba(251,191,36,0.08);
+  border:1px solid rgba(251,191,36,0.3);
+  border-radius:10px;
+  padding:14px 18px;
+  font-family:'Share Tech Mono',monospace;
+  font-size:12px;
+  color:#fbbf24;
+  line-height:1.8;
+  margin-bottom:24px;
+  text-align:left;
+}
+.secret-close{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:8px;
+  color:var(--muted);
+  padding:10px 24px;
+  font-family:'Share Tech Mono',monospace;
+  font-size:12px;
+  cursor:pointer;
+  letter-spacing:1px;
+  transition:all 0.15s;
+}
+.secret-close:hover{color:var(--text);border-color:rgba(255,255,255,0.25)}
+
+/* CORRUPTION FLASH */
+@keyframes corrupt{
+  0%{filter:none}
+  10%{filter:hue-rotate(90deg) brightness(2) saturate(3)}
+  11%{filter:none}
+  20%{filter:invert(1) hue-rotate(180deg)}
+  21%{filter:none}
+  30%{filter:hue-rotate(270deg) brightness(0.5)}
+  31%{filter:none}
+  100%{filter:none}
+}
+body.corrupting{animation:corrupt 0.6s steps(1) 1}
+</style>
+</head>
+<body>
+
+<div class="glow-orb glow-1"></div>
+<div class="glow-orb glow-2"></div>
+
+<!-- SECRET OVERLAY -->
+<div class="secret-overlay" id="secretOverlay">
+  <div class="secret-box">
+    <div class="secret-glitch-title">// SECRET UNLOCKED //</div>
+    <span class="secret-emoji">🎉</span>
+    <div class="secret-headline">You Found It.</div>
+    <div class="secret-body">
+      You cracked the code and bypassed the database corruption.<br>
+      The system didn't want you to see this — but here you are.<br><br>
+      <strong>Take a screenshot of this screen</strong> and send it to Viper on Discord for a special reward!
+    </div>
+    <div class="secret-reward">
+      📸 HOW TO CLAIM YOUR REWARD:<br>
+      1. Screenshot this exact screen<br>
+      2. DM it to <strong>@viperxxx_real</strong> on Discord<br>
+      3. Subject: "I found the PhasmoMonkeys secret"<br>
+      4. Wait for Viper to respond — reward incoming 👀
+    </div>
+    <button class="secret-close" onclick="closeSecret()">[ CLOSE ]</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- CORRUPTED DATABASE TERMINAL -->
+  <div class="db-status" id="dbStatus">
+    <span class="db-line" id="dl0">&gt; INITIALIZING PHASMOMONKEYS_DB v0.9.2...</span>
+    <span class="db-line" id="dl1">&gt; Loading game assets... <span style="color:var(--green)">OK</span></span>
+    <span class="db-line" id="dl2">&gt; Connecting to ghost entity registry... <span style="color:var(--green)">OK</span></span>
+    <span class="db-line" id="dl3">&gt; Verifying player manifest... <span style="color:#f59e0b">WARNING</span></span>
+    <span class="db-line" id="dl4">&gt; <span class="glitch">CORRUPTION DETECTED IN SECTOR 0x4F</span></span>
+    <span class="db-line" id="dl5">&gt; Attempting recovery... <span style="color:var(--red)">FAILED</span></span>
+    <span class="db-line" id="dl6">&gt; DATABASE INTEGRITY: <span style="color:var(--red)">██░░░░░░░░ 17%</span></span>
+    <span class="db-line" id="dl7" style="color:rgba(255,255,255,0.3)">&gt; [HINT: the system is watching. type the name.]</span>
+  </div>
+
+  <!-- LOGO -->
+  <div class="logo-area">
+    <span class="logo-emoji">🐒👻</span>
+    <div class="logo-title">PHASMOMONKEYS</div>
+    <div class="logo-sub">GORILLA TAG × PHASMOPHOBIA · FAN GAME</div>
+  </div>
+
+  <!-- COUNTDOWN -->
+  <div class="countdown-wrap">
+    <div class="cd-block cd-days">
+      <span class="cd-num" id="cdDays">--</span>
+      <span class="cd-label">DAYS</span>
+    </div>
+    <div class="cd-block cd-hours">
+      <span class="cd-num" id="cdHours">--</span>
+      <span class="cd-label">HOURS</span>
+    </div>
+    <div class="cd-block cd-mins">
+      <span class="cd-num" id="cdMins">--</span>
+      <span class="cd-label">MINS</span>
+    </div>
+    <div class="cd-block cd-secs">
+      <span class="cd-num" id="cdSecs">--</span>
+      <span class="cd-label">SECS</span>
+    </div>
+  </div>
+  <div class="cd-date" id="cdLabel">WEBSITE LAUNCHES · JULY 14, 2026 · 5:00 PM EST</div>
+  <div class="launched-msg" id="launchedMsg">🚀 WE ARE LIVE — CHECK THE MAIN SITE</div>
+
+  <!-- SECRET TYPING INDICATOR -->
+  <div class="secret-input-display" id="secretDisplay"></div>
+
+  <div class="footer">VIPER STUDIOS · PHASMOMONKEYS · ALL RIGHTS RESERVED</div>
+</div>
+
+<script>
+// ── COUNTDOWN ──
+const launch = new Date('2026-07-14T21:00:00Z'); // 5PM EDT = 9PM UTC
+
+function pad(n){return String(n).padStart(2,'0');}
+
+function tick(){
+  const now = new Date();
+  const diff = launch - now;
+  if(diff <= 0){
+    document.getElementById('cdDays').textContent='00';
+    document.getElementById('cdHours').textContent='00';
+    document.getElementById('cdMins').textContent='00';
+    document.getElementById('cdSecs').textContent='00';
+    document.getElementById('cdLabel').style.display='none';
+    document.getElementById('launchedMsg').style.display='block';
+    return;
+  }
+  document.getElementById('cdDays').textContent=pad(Math.floor(diff/86400000));
+  document.getElementById('cdHours').textContent=pad(Math.floor((diff%86400000)/3600000));
+  document.getElementById('cdMins').textContent=pad(Math.floor((diff%3600000)/60000));
+  document.getElementById('cdSecs').textContent=pad(Math.floor((diff%60000)/1000));
+}
+tick();
+setInterval(tick, 1000);
+
+// ── CORRUPTED DB TERMINAL ANIMATION ──
+const lines = document.querySelectorAll('.db-line');
+lines.forEach((line, i) => {
+  setTimeout(() => {
+    line.classList.add('visible');
+  }, 400 + i * 350);
+});
+
+// ── SECRET CODE: PHASMOMONKEYS ──
+const SECRET = 'PHASMOMONKEYS';
+let typed = '';
+let typingTimeout = null;
+const display = document.getElementById('secretDisplay');
+
+document.addEventListener('keydown', (e) => {
+  if(document.getElementById('secretOverlay').classList.contains('show')) return;
+  const key = e.key.toUpperCase();
+  if(key.length === 1 && /[A-Z]/.test(key)){
+    typed += key;
+    if(typed.length > SECRET.length) typed = typed.slice(-SECRET.length);
+
+    // Show typing indicator
+    display.textContent = typed.split('').map(()=>'·').join(' ');
+    display.classList.add('typing');
+
+    clearTimeout(typingTimeout);
+    typingTimeout = setTimeout(()=>{
+      typed = '';
+      display.textContent = '';
+      display.classList.remove('typing');
+    }, 2000);
+
+    if(typed === SECRET){
+      triggerSecret();
+    }
+  }
+});
+
+function triggerSecret(){
+  typed = '';
+  display.textContent = '';
+  display.classList.remove('typing');
+
+  // Corrupt the screen first
+  document.body.classList.add('corrupting');
+  setTimeout(()=>{
+    document.body.classList.remove('corrupting');
+    document.getElementById('secretOverlay').classList.add('show');
+  }, 650);
+}
+
+function closeSecret(){
+  document.getElementById('secretOverlay').classList.remove('show');
+}
+
+// Close overlay on background click
+document.getElementById('secretOverlay').addEventListener('click', function(e){
+  if(e.target === this) closeSecret();
+});
+</script>
+</body>
+</html>
