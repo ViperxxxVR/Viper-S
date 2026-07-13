@@ -8,298 +8,203 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#04060a;
-  --panel:rgba(255,255,255,0.03);
-  --border:rgba(255,255,255,0.07);
-  --text:#c8cdd8;
-  --muted:#4a5260;
-  --purple:#8b5cf6;
-  --cyan:#06b6d4;
-  --green:#22c55e;
-  --red:#ef4444;
+  --bg:#04060a;--panel:rgba(255,255,255,0.03);--border:rgba(255,255,255,0.07);
+  --text:#c8cdd8;--muted:#4a5260;--purple:#8b5cf6;--cyan:#06b6d4;
+  --green:#22c55e;--red:#ef4444;--amber:#f59e0b;
 }
 html,body{height:100%;overflow-x:hidden}
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:'Rajdhani',sans-serif;
-  font-size:15px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  min-height:100vh;
-  padding:24px;
-  position:relative;
-}
-
-/* SCANLINES */
-body::before{
-  content:'';
-  position:fixed;
-  inset:0;
-  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.08) 2px,rgba(0,0,0,0.08) 4px);
-  pointer-events:none;
-  z-index:0;
-}
-
-/* AMBIENT GLOW */
-.glow-orb{
-  position:fixed;
-  border-radius:50%;
-  filter:blur(120px);
-  pointer-events:none;
-  z-index:0;
-  opacity:0.18;
-}
+body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;font-size:15px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:24px;position:relative;}
+body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.08) 2px,rgba(0,0,0,0.08) 4px);pointer-events:none;z-index:0;}
+.glow-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0;opacity:0.18;}
 .glow-1{width:500px;height:500px;background:#8b5cf6;top:-100px;left:-100px;}
 .glow-2{width:400px;height:400px;background:#06b6d4;bottom:-80px;right:-80px;}
+.wrap{position:relative;z-index:1;width:100%;max-width:640px;text-align:center;}
 
-.wrap{
-  position:relative;
-  z-index:1;
-  width:100%;
-  max-width:640px;
-  text-align:center;
-}
-
-/* CORRUPTED DATABASE HEADER */
-.db-status{
-  font-family:'Share Tech Mono',monospace;
-  font-size:11px;
-  color:var(--red);
-  margin-bottom:32px;
-  padding:12px 16px;
-  border:1px solid rgba(239,68,68,0.25);
-  border-radius:8px;
-  background:rgba(239,68,68,0.05);
-  text-align:left;
-  line-height:1.8;
-  position:relative;
-  overflow:hidden;
-}
-.db-status::before{
-  content:'';
-  position:absolute;
-  top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(239,68,68,0.5),transparent);
-  animation:scan 3s linear infinite;
-}
+/* DB TERMINAL */
+.db-status{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--red);margin-bottom:32px;padding:12px 16px;border:1px solid rgba(239,68,68,0.25);border-radius:8px;background:rgba(239,68,68,0.05);text-align:left;line-height:1.8;position:relative;overflow:hidden;}
+.db-status::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(239,68,68,0.5),transparent);animation:scan 3s linear infinite;}
 @keyframes scan{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
-.db-line{display:block;opacity:0;}
-.db-line.visible{opacity:1;}
-.db-line.err{color:var(--red);}
-.db-line.warn{color:#f59e0b;}
-.db-line.ok{color:var(--green);}
-.db-line.glitch{
-  animation:glitch 0.15s steps(2) infinite;
-}
-@keyframes glitch{
-  0%{transform:translateX(0);color:var(--red)}
-  25%{transform:translateX(-3px);color:#ff00ff}
-  50%{transform:translateX(3px);color:#00ffff}
-  75%{transform:translateX(-1px);color:var(--red)}
-  100%{transform:translateX(0);color:var(--red)}
-}
+.db-line{display:block;opacity:0;}.db-line.visible{opacity:1;}
+.glitch{animation:glitch 0.15s steps(2) infinite;}
+@keyframes glitch{0%{transform:translateX(0);color:var(--red)}25%{transform:translateX(-3px);color:#ff00ff}50%{transform:translateX(3px);color:#00ffff}75%{transform:translateX(-1px);color:var(--red)}100%{transform:translateX(0);color:var(--red)}}
 
 /* LOGO */
 .logo-area{margin-bottom:24px}
 .logo-emoji{font-size:52px;display:block;margin-bottom:12px;filter:drop-shadow(0 0 20px rgba(139,92,246,0.5))}
-.logo-title{
-  font-size:48px;
-  font-weight:900;
-  color:#fff;
-  letter-spacing:3px;
-  line-height:1;
-  text-shadow:0 0 40px rgba(139,92,246,0.4);
-}
-.logo-sub{
-  font-family:'Share Tech Mono',monospace;
-  font-size:12px;
-  color:var(--muted);
-  letter-spacing:3px;
-  margin-top:8px;
-}
+.logo-title{font-size:48px;font-weight:900;color:#fff;letter-spacing:3px;line-height:1;text-shadow:0 0 40px rgba(139,92,246,0.4);}
+.logo-sub{font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:3px;margin-top:8px;}
 
 /* COUNTDOWN */
-.countdown-wrap{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  margin-bottom:12px;
-  flex-wrap:wrap;
-}
-.cd-block{
-  background:rgba(255,255,255,0.03);
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:12px;
-  padding:20px 18px;
-  min-width:80px;
-  position:relative;
-  overflow:hidden;
-}
-.cd-block::before{
-  content:'';
-  position:absolute;
-  top:0;left:0;right:0;height:1px;
-  opacity:0.4;
-}
+.countdown-wrap{display:flex;justify-content:center;gap:12px;margin-bottom:12px;flex-wrap:wrap;}
+.cd-block{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:20px 18px;min-width:80px;position:relative;overflow:hidden;}
+.cd-block::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;opacity:0.4;}
 .cd-days::before{background:linear-gradient(90deg,transparent,var(--purple),transparent)}
 .cd-hours::before{background:linear-gradient(90deg,transparent,var(--cyan),transparent)}
 .cd-mins::before{background:linear-gradient(90deg,transparent,var(--green),transparent)}
 .cd-secs::before{background:linear-gradient(90deg,transparent,#fb923c,transparent)}
-.cd-num{
-  font-family:'Share Tech Mono',monospace;
-  font-size:40px;
-  font-weight:400;
-  line-height:1;
-  display:block;
-}
+.cd-num{font-family:'Share Tech Mono',monospace;font-size:40px;font-weight:400;line-height:1;display:block;}
 .cd-days .cd-num{color:var(--purple);text-shadow:0 0 20px rgba(139,92,246,0.5)}
 .cd-hours .cd-num{color:var(--cyan);text-shadow:0 0 20px rgba(6,182,212,0.5)}
 .cd-mins .cd-num{color:var(--green);text-shadow:0 0 20px rgba(34,197,94,0.5)}
 .cd-secs .cd-num{color:#fb923c;text-shadow:0 0 20px rgba(251,146,60,0.5)}
-.cd-label{
-  font-family:'Share Tech Mono',monospace;
-  font-size:9px;
-  color:var(--muted);
-  letter-spacing:2px;
-  margin-top:6px;
-  display:block;
-}
-.cd-date{
-  font-family:'Share Tech Mono',monospace;
-  font-size:11px;
-  color:var(--muted);
-  margin-bottom:32px;
-}
-.launched-msg{
-  display:none;
-  font-family:'Share Tech Mono',monospace;
-  font-size:18px;
-  color:var(--green);
-  text-shadow:0 0 20px rgba(34,197,94,0.5);
-  margin-bottom:24px;
-  padding:16px;
-  border:1px solid rgba(34,197,94,0.3);
-  border-radius:10px;
-  background:rgba(34,197,94,0.05);
-}
+.cd-label{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:2px;margin-top:6px;display:block;}
+.cd-date{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--muted);margin-bottom:32px;}
 
-/* SECRET INPUT DISPLAY */
-.secret-input-display{
-  font-family:'Share Tech Mono',monospace;
-  font-size:12px;
-  color:rgba(255,255,255,0.08);
-  letter-spacing:4px;
-  margin-bottom:28px;
-  height:18px;
-  transition:color 0.3s;
-  min-height:18px;
-}
+/* SECRET */
+.secret-input-display{font-family:'Share Tech Mono',monospace;font-size:12px;color:rgba(255,255,255,0.08);letter-spacing:4px;margin-bottom:12px;height:18px;transition:color 0.3s;min-height:18px;}
 .secret-input-display.typing{color:rgba(139,92,246,0.4)}
+.footer{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--muted);margin-top:32px;letter-spacing:1px;}
 
-/* FOOTER */
-.footer{
-  font-family:'Share Tech Mono',monospace;
-  font-size:11px;
-  color:var(--muted);
-  margin-top:32px;
-  letter-spacing:1px;
+/* MOBILE SECRET INPUT */
+.mobile-secret-wrap{margin-bottom:20px;display:none;}
+.mobile-secret-input{background:rgba(255,255,255,0.03);border:1px solid rgba(139,92,246,0.2);border-radius:10px;padding:11px 16px;color:var(--text);font-family:'Share Tech Mono',monospace;font-size:14px;outline:none;width:100%;letter-spacing:2px;text-align:center;transition:border 0.15s;-webkit-appearance:none;}
+.mobile-secret-input:focus{border-color:rgba(139,92,246,0.5);}
+.mobile-secret-input::placeholder{color:rgba(255,255,255,0.15);font-size:11px;letter-spacing:2px;}
+.mobile-secret-btn{margin-top:8px;width:100%;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.25);border-radius:8px;padding:10px;color:#a78bfa;font-family:'Share Tech Mono',monospace;font-size:12px;cursor:pointer;letter-spacing:1px;transition:all 0.15s;}
+.mobile-secret-btn:hover{background:rgba(139,92,246,0.2);}
+.mobile-hint{font-family:'Share Tech Mono',monospace;font-size:10px;color:rgba(255,255,255,0.15);margin-top:6px;letter-spacing:1px;}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  body{padding:16px;}
+  .wrap{max-width:100%;}
+  .db-status{font-size:10px;margin-bottom:20px;padding:10px 12px;}
+  .logo-title{font-size:32px;letter-spacing:2px;}
+  .logo-emoji{font-size:40px;}
+  .logo-sub{font-size:10px;letter-spacing:2px;}
+  .cd-block{padding:14px 12px;min-width:64px;}
+  .cd-num{font-size:30px;}
+  .cd-label{font-size:8px;}
+  .countdown-wrap{gap:8px;}
+  .cd-date{font-size:10px;}
+  .secret-input-display{display:none;}
+  .mobile-secret-wrap{display:block;}
+  #userChip,#userChipLogin{bottom:16px;left:16px;font-size:10px;padding:6px 10px;}
+  #adminFloatBtn{bottom:16px;right:16px;font-size:10px;padding:8px 12px;}
+  .overlay-box{padding:24px 18px;}
+  .secret-headline{font-size:20px;}
+  .secret-body{font-size:13px;}
+  .secret-reward{font-size:11px;}
+  .admin-box{max-height:90vh;padding:20px 16px;}
+  .stat-input-row{grid-template-columns:1fr 1fr;gap:6px;}
+  .launch-title{font-size:36px;}
+  .launch-emoji{font-size:52px;}
+  .launch-msg{font-size:15px;}
+  .launch-btn{padding:12px 20px;font-size:14px;}
+  .login-box{padding:24px 18px;}
+  .announce-banner{font-size:13px;}
 }
 
-/* SECRET OVERLAY */
-.secret-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.92);
-  z-index:100;
-  display:none;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  padding:32px;
-  text-align:center;
-  backdrop-filter:blur(8px);
-}
-.secret-overlay.show{display:flex}
-.secret-box{
-  max-width:520px;
-  width:100%;
-  border:1px solid rgba(139,92,246,0.4);
-  border-radius:16px;
-  padding:36px 32px;
-  background:rgba(139,92,246,0.06);
-  position:relative;
-  overflow:hidden;
-}
-.secret-box::before{
-  content:'';
-  position:absolute;
-  top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,#8b5cf6,#06b6d4,#8b5cf6);
-}
-.secret-glitch-title{
-  font-size:13px;
-  font-family:'Share Tech Mono',monospace;
-  color:var(--purple);
-  letter-spacing:3px;
-  margin-bottom:16px;
-  animation:glitch 0.3s steps(2) infinite;
-}
+/* OVERLAYS */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:100;display:none;flex-direction:column;align-items:center;justify-content:center;padding:32px;text-align:center;backdrop-filter:blur(8px);}
+.overlay.show{display:flex}
+.overlay-box{max-width:520px;width:100%;border-radius:16px;padding:36px 32px;position:relative;overflow:hidden;}
+.overlay-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+
+/* SECRET BOX */
+.secret-box{border:1px solid rgba(139,92,246,0.4);background:rgba(139,92,246,0.06);}
+.secret-box::before{background:linear-gradient(90deg,#8b5cf6,#06b6d4,#8b5cf6);}
+.secret-glitch-title{font-size:13px;font-family:'Share Tech Mono',monospace;color:var(--purple);letter-spacing:3px;margin-bottom:16px;animation:glitch 0.3s steps(2) infinite;}
 .secret-emoji{font-size:52px;margin-bottom:16px;display:block}
-.secret-headline{
-  font-size:26px;
-  font-weight:900;
-  color:#fff;
-  margin-bottom:12px;
-  letter-spacing:1px;
-}
-.secret-body{
-  font-size:15px;
-  color:var(--text);
-  line-height:1.7;
-  margin-bottom:24px;
-}
+.secret-headline{font-size:26px;font-weight:900;color:#fff;margin-bottom:12px;letter-spacing:1px;}
+.secret-body{font-size:15px;color:var(--text);line-height:1.7;margin-bottom:24px;}
 .secret-body strong{color:#fbbf24}
-.secret-reward{
-  background:rgba(251,191,36,0.08);
-  border:1px solid rgba(251,191,36,0.3);
-  border-radius:10px;
-  padding:14px 18px;
-  font-family:'Share Tech Mono',monospace;
-  font-size:12px;
-  color:#fbbf24;
-  line-height:1.8;
-  margin-bottom:24px;
-  text-align:left;
-}
-.secret-close{
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.12);
-  border-radius:8px;
-  color:var(--muted);
-  padding:10px 24px;
-  font-family:'Share Tech Mono',monospace;
-  font-size:12px;
-  cursor:pointer;
-  letter-spacing:1px;
-  transition:all 0.15s;
-}
-.secret-close:hover{color:var(--text);border-color:rgba(255,255,255,0.25)}
+.secret-reward{background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.3);border-radius:10px;padding:14px 18px;font-family:'Share Tech Mono',monospace;font-size:12px;color:#fbbf24;line-height:1.8;margin-bottom:24px;text-align:left;}
+.overlay-close{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--muted);padding:10px 24px;font-family:'Share Tech Mono',monospace;font-size:12px;cursor:pointer;letter-spacing:1px;transition:all 0.15s;}
+.overlay-close:hover{color:var(--text);border-color:rgba(255,255,255,0.25)}
+
+/* LOGIN OVERLAY */
+.login-box{border:1px solid rgba(139,92,246,0.3);background:rgba(10,12,20,0.95);}
+.login-box::before{background:linear-gradient(90deg,#8b5cf6,#06b6d4);}
+.login-title{font-size:20px;font-weight:700;color:#fff;margin-bottom:4px;}
+.login-sub{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:2px;margin-bottom:24px;}
+.login-input{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:11px 14px;color:var(--text);font-family:'Rajdhani',sans-serif;font-size:15px;outline:none;margin-bottom:12px;transition:border 0.15s;}
+.login-input:focus{border-color:var(--purple);}
+.login-btn{width:100%;background:linear-gradient(135deg,#8b5cf6,#06b6d4);border:none;border-radius:8px;padding:12px;color:#fff;font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:opacity 0.15s;margin-bottom:10px;}
+.login-btn:hover{opacity:0.85}
+.login-err{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--red);min-height:16px;margin-bottom:8px;}
+
+/* ADMIN PANEL OVERLAY */
+.admin-box{border:1px solid rgba(239,68,68,0.3);background:rgba(10,12,20,0.97);max-width:680px;max-height:85vh;overflow-y:auto;text-align:left;}
+.admin-box::before{background:linear-gradient(90deg,#ef4444,#f97316);}
+.admin-box::-webkit-scrollbar{width:4px}.admin-box::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:4px}
+.admin-title{font-size:18px;font-weight:700;color:#fff;margin-bottom:4px;display:flex;align-items:center;gap:8px;}
+.admin-badge{font-size:10px;font-family:'Share Tech Mono',monospace;background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3);padding:3px 10px;border-radius:999px;letter-spacing:1px;}
+.admin-sub{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:1px;margin-bottom:24px;}
+.admin-section{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:18px;margin-bottom:16px;}
+.admin-section-title{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:2px;font-family:'Share Tech Mono',monospace;margin-bottom:14px;}
+.admin-input{width:100%;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:10px 12px;color:var(--text);font-family:'Rajdhani',sans-serif;font-size:14px;outline:none;margin-bottom:10px;transition:border 0.15s;}
+.admin-input:focus{border-color:var(--purple);}
+.admin-textarea{min-height:70px;resize:vertical;font-family:'Share Tech Mono',monospace;font-size:12px;}
+.admin-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:8px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s;border:1px solid;}
+.admin-btn-red{background:rgba(239,68,68,0.12);border-color:rgba(239,68,68,0.3);color:#f87171;}
+.admin-btn-red:hover{background:rgba(239,68,68,0.22);}
+.admin-btn-green{background:rgba(34,197,94,0.12);border-color:rgba(34,197,94,0.3);color:var(--green);}
+.admin-btn-green:hover{background:rgba(34,197,94,0.22);}
+.admin-btn-purple{background:rgba(139,92,246,0.12);border-color:rgba(139,92,246,0.3);color:#a78bfa;}
+.admin-btn-purple:hover{background:rgba(139,92,246,0.22);}
+.admin-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;}
+.admin-confirm{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--green);opacity:0;transition:opacity 0.3s;margin-left:10px;}
+.admin-confirm.show{opacity:1;}
+.admin-toggle-row{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.toggle-sw{position:relative;width:40px;height:22px;flex-shrink:0;}
+.toggle-sw input{opacity:0;width:0;height:0;position:absolute;}
+.toggle-sl{position:absolute;inset:0;background:rgba(255,255,255,0.1);border-radius:999px;cursor:pointer;transition:background 0.2s;}
+.toggle-sw input:checked+.toggle-sl{background:var(--green);}
+.toggle-sl::before{content:'';position:absolute;height:16px;width:16px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:transform 0.2s;}
+.toggle-sw input:checked+.toggle-sl::before{transform:translateX(18px);}
+.announce-list{display:flex;flex-direction:column;gap:8px;margin-top:12px;}
+.announce-item{background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px 12px;display:flex;align-items:flex-start;gap:8px;}
+.announce-item-text{flex:1;font-size:13px;color:var(--text);line-height:1.5;}
+.announce-del{background:none;border:none;color:var(--muted);cursor:pointer;font-size:14px;padding:2px 6px;border-radius:4px;transition:color 0.15s;flex-shrink:0;}
+.announce-del:hover{color:var(--red);}
+.stat-input-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px;}
+
+/* ANNOUNCEMENTS ON MAIN PAGE */
+.announcements-wrap{margin-bottom:24px;display:none;}
+.announce-banner{background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.25);border-radius:10px;padding:12px 16px;font-size:14px;color:var(--text);line-height:1.5;margin-bottom:8px;text-align:left;font-family:'Rajdhani',sans-serif;}
+.announce-banner:last-child{margin-bottom:0;}
+
+/* ADMIN FLOATING BUTTON */
+#adminFloatBtn{position:fixed;bottom:24px;right:24px;z-index:50;background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.35);border-radius:12px;color:#f87171;padding:10px 18px;font-family:'Share Tech Mono',monospace;font-size:12px;cursor:pointer;letter-spacing:1px;transition:all 0.15s;display:none;align-items:center;gap:8px;backdrop-filter:blur(8px);}
+#adminFloatBtn:hover{background:rgba(239,68,68,0.25);}
+
+/* USER CHIP */
+#userChip{position:fixed;bottom:24px;left:24px;z-index:50;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.25);border-radius:10px;padding:8px 14px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#a78bfa;display:none;align-items:center;gap:8px;letter-spacing:1px;backdrop-filter:blur(8px);}
+#userChipLogin{position:fixed;bottom:24px;left:24px;z-index:50;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:8px 14px;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:6px;letter-spacing:1px;transition:all 0.15s;backdrop-filter:blur(8px);}
+#userChipLogin:hover{color:var(--text);border-color:rgba(255,255,255,0.2);}
 
 /* CORRUPTION FLASH */
-@keyframes corrupt{
-  0%{filter:none}
-  10%{filter:hue-rotate(90deg) brightness(2) saturate(3)}
-  11%{filter:none}
-  20%{filter:invert(1) hue-rotate(180deg)}
-  21%{filter:none}
-  30%{filter:hue-rotate(270deg) brightness(0.5)}
-  31%{filter:none}
-  100%{filter:none}
-}
+@keyframes corrupt{0%{filter:none}10%{filter:hue-rotate(90deg) brightness(2) saturate(3)}11%{filter:none}20%{filter:invert(1) hue-rotate(180deg)}21%{filter:none}30%{filter:hue-rotate(270deg) brightness(0.5)}31%{filter:none}100%{filter:none}}
 body.corrupting{animation:corrupt 0.6s steps(1) 1}
+
+/* LAUNCH CELEBRATION */
+#launchCelebration{position:fixed;inset:0;z-index:200;display:none;flex-direction:column;align-items:center;justify-content:center;background:var(--bg);text-align:center;padding:32px;overflow:hidden;}
+#launchCelebration.show{display:flex}
+#confettiCanvas{position:fixed;inset:0;pointer-events:none;z-index:201;}
+.launch-content{position:relative;z-index:202;max-width:600px;width:100%;}
+.launch-badge{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:3px;color:var(--green);background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:999px;padding:6px 18px;display:inline-block;margin-bottom:24px;}
+.launch-emoji{font-size:72px;display:block;margin-bottom:20px;animation:bounce 0.6s ease infinite alternate;}
+@keyframes bounce{0%{transform:translateY(0)}100%{transform:translateY(-12px)}}
+.launch-title{font-size:56px;font-weight:900;letter-spacing:2px;line-height:1;margin-bottom:8px;background:linear-gradient(135deg,#a78bfa,#06b6d4,#4ade80);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.launch-sub{font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--muted);letter-spacing:2px;margin-bottom:32px;}
+.launch-msg{font-size:18px;color:var(--text);line-height:1.7;margin-bottom:32px;max-width:460px;margin-left:auto;margin-right:auto;}
+.launch-msg strong{color:#fff}
+.launch-links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:40px;}
+.launch-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:10px;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:700;cursor:pointer;text-decoration:none;transition:all 0.15s;letter-spacing:0.5px;}
+.launch-btn-primary{background:linear-gradient(135deg,#8b5cf6,#06b6d4);color:#fff;border:none;box-shadow:0 8px 32px rgba(139,92,246,0.35);}
+.launch-btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(139,92,246,0.5)}
+.launch-btn-secondary{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:var(--text);}
+.launch-btn-secondary:hover{background:rgba(255,255,255,0.1);color:#fff}
+.launch-stats{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;padding-top:28px;border-top:1px solid rgba(255,255,255,0.06);}
+.launch-stat{text-align:center;}
+.launch-stat-num{font-size:28px;font-weight:900;color:#fff;font-family:'Share Tech Mono',monospace;}
+.launch-stat-label{font-size:11px;color:var(--muted);letter-spacing:2px;font-family:'Share Tech Mono',monospace;margin-top:4px;}
+.launch-glow-1{position:fixed;width:600px;height:600px;border-radius:50%;background:#8b5cf6;top:-200px;left:-200px;filter:blur(150px);opacity:0.15;pointer-events:none;}
+.launch-glow-2{position:fixed;width:500px;height:500px;border-radius:50%;background:#06b6d4;bottom:-150px;right:-150px;filter:blur(150px);opacity:0.15;pointer-events:none;}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.launch-content>*{animation:fadeInUp 0.6s ease both;}
+.launch-content>*:nth-child(1){animation-delay:0.1s}.launch-content>*:nth-child(2){animation-delay:0.2s}.launch-content>*:nth-child(3){animation-delay:0.3s}.launch-content>*:nth-child(4){animation-delay:0.4s}.launch-content>*:nth-child(5){animation-delay:0.5s}.launch-content>*:nth-child(6){animation-delay:0.6s}.launch-content>*:nth-child(7){animation-delay:0.7s}
 </style>
 </head>
 <body>
@@ -307,31 +212,167 @@ body.corrupting{animation:corrupt 0.6s steps(1) 1}
 <div class="glow-orb glow-1"></div>
 <div class="glow-orb glow-2"></div>
 
-<!-- SECRET OVERLAY -->
-<div class="secret-overlay" id="secretOverlay">
-  <div class="secret-box">
-    <div class="secret-glitch-title">// SECRET UNLOCKED //</div>
-    <span class="secret-emoji">🎉</span>
-    <div class="secret-headline">You Found It.</div>
-    <div class="secret-body">
-      You cracked the code and bypassed the database corruption.<br>
-      The system didn't want you to see this — but here you are.<br><br>
-      <strong>Take a screenshot of this screen</strong> and send it to Viper on Discord for a special reward!
+<!-- CONFETTI + LAUNCH -->
+<canvas id="confettiCanvas"></canvas>
+<div id="launchCelebration">
+  <div class="launch-glow-1"></div>
+  <div class="launch-glow-2"></div>
+  <div class="launch-content">
+    <div class="launch-badge">🟢 WE ARE LIVE</div>
+    <span class="launch-emoji">🐒👻</span>
+    <div class="launch-title">PHASMOMONKEYS</div>
+    <div class="launch-sub">GORILLA TAG × PHASMOPHOBIA · FAN GAME · NOW LIVE</div>
+    <div class="launch-msg">The wait is over. <strong>PhasmoMonkeys is officially launched.</strong><br>Swing through haunted locations, hunt ghosts, or become one.</div>
+    <div class="launch-links">
+      <a href="#" id="launchPlayBtn" class="launch-btn launch-btn-primary">🚀 Play Now</a>
+      <a href="https://discord.gg/yourserver" id="launchDiscordBtn" class="launch-btn launch-btn-secondary">💬 Join Discord</a>
     </div>
-    <div class="secret-reward">
-      📸 HOW TO CLAIM YOUR REWARD:<br>
-      1. Screenshot this exact screen<br>
-      2. DM it to <strong>@viperxxx_real</strong> on Discord<br>
-      3. Subject: "I found the PhasmoMonkeys secret"<br>
-      4. Wait for Viper to respond — reward incoming 👀
+    <div class="launch-stats">
+      <div class="launch-stat"><div class="launch-stat-num" id="launchStat1">👻</div><div class="launch-stat-label" id="launchStat1Label">GHOST TYPES</div></div>
+      <div class="launch-stat"><div class="launch-stat-num" id="launchStat2">🗺️</div><div class="launch-stat-label" id="launchStat2Label">HAUNTED MAPS</div></div>
+      <div class="launch-stat"><div class="launch-stat-num" id="launchStat3">🦍</div><div class="launch-stat-label" id="launchStat3Label">GT MOVEMENT</div></div>
     </div>
-    <button class="secret-close" onclick="closeSecret()">[ CLOSE ]</button>
   </div>
 </div>
 
+<!-- SECRET OVERLAY -->
+<div class="overlay" id="secretOverlay">
+  <div class="overlay-box secret-box">
+    <div class="secret-glitch-title">// SECRET UNLOCKED //</div>
+    <span class="secret-emoji">🎉</span>
+    <div class="secret-headline">You Found It.</div>
+    <div class="secret-body">You cracked the code and bypassed the database corruption.<br>The system didn't want you to see this — but here you are.<br><br><strong>Take a screenshot of this screen</strong> and send it to Viper on Discord for a special reward!</div>
+    <div class="secret-reward">📸 HOW TO CLAIM YOUR REWARD:<br>1. Screenshot this exact screen<br>2. DM it to <strong>@viperxxx_real</strong> on Discord<br>3. Subject: "I found the PhasmoMonkeys secret"<br>4. Wait for Viper to respond — reward incoming 👀</div>
+    <button class="overlay-close" onclick="closeOverlay('secretOverlay')">[ CLOSE ]</button>
+  </div>
+</div>
+
+<!-- LOGIN OVERLAY -->
+<div class="overlay" id="loginOverlay">
+  <div class="overlay-box login-box">
+    <div class="login-title">🔐 Viper Studios Login</div>
+    <div class="login-sub">SIGN IN TO TRACK YOUR VISIT & ACCESS ADMIN</div>
+    <input class="login-input" id="loginUser" placeholder="Username" />
+    <input class="login-input" id="loginPass" placeholder="Password" type="password" onkeydown="if(event.key==='Enter')doLogin()" />
+    <div class="login-err" id="loginErr"></div>
+    <button class="login-btn" onclick="doLogin()">Sign In</button>
+    <button class="overlay-close" onclick="closeOverlay('loginOverlay')">[ CANCEL ]</button>
+  </div>
+</div>
+
+<!-- ADMIN PANEL OVERLAY -->
+<div class="overlay" id="adminOverlay">
+  <div class="overlay-box admin-box">
+    <div class="admin-title">🛡️ PhasmoMonkeys Admin <span class="admin-badge">RESTRICTED</span></div>
+    <div class="admin-sub">LOGGED IN AS: <span id="adminUser" style="color:#a78bfa"></span></div>
+
+    <!-- TOGGLE LAUNCH -->
+    <div class="admin-section">
+      <div class="admin-section-title">PAGE MODE</div>
+      <div class="admin-toggle-row">
+        <label class="toggle-sw"><input type="checkbox" id="adminLaunchToggle" onchange="toggleLaunchMode()" /><span class="toggle-sl"></span></label>
+        <span style="font-size:14px;color:var(--text)">Force Launch Celebration (override countdown)</span>
+      </div>
+      <div style="font-size:12px;color:var(--muted);font-family:'Share Tech Mono',monospace">When ON — shows the launch page immediately regardless of the timer.</div>
+    </div>
+
+    <!-- ANNOUNCEMENTS -->
+    <div class="admin-section">
+      <div class="admin-section-title">ANNOUNCEMENTS</div>
+      <textarea class="admin-input admin-textarea" id="adminAnnounceInput" placeholder="Type an announcement to show on the page..."></textarea>
+      <div class="admin-row">
+        <button class="admin-btn admin-btn-purple" onclick="addAnnouncement()">+ Post Announcement</button>
+        <span class="admin-confirm" id="announceConfirm">✓ Posted!</span>
+      </div>
+      <div class="announce-list" id="adminAnnounceList"></div>
+    </div>
+
+    <!-- LAUNCH STATS -->
+    <div class="admin-section">
+      <div class="admin-section-title">LAUNCH PAGE STATS</div>
+      <div class="stat-input-row">
+        <div>
+          <div style="font-size:11px;color:var(--muted);font-family:'Share Tech Mono',monospace;margin-bottom:4px">STAT 1 VALUE</div>
+          <input class="admin-input" id="stat1Val" placeholder="e.g. 12" style="margin-bottom:0" />
+        </div>
+        <div>
+          <div style="font-size:11px;color:var(--muted);font-family:'Share Tech Mono',monospace;margin-bottom:4px">STAT 1 LABEL</div>
+          <input class="admin-input" id="stat1Label" placeholder="e.g. GHOST TYPES" style="margin-bottom:0" />
+        </div>
+        <div style="display:flex;align-items:flex-end">
+          <button class="admin-btn admin-btn-purple" onclick="saveStat(1)" style="width:100%;justify-content:center">Save</button>
+        </div>
+      </div>
+      <div class="stat-input-row">
+        <div>
+          <div style="font-size:11px;color:var(--muted);font-family:'Share Tech Mono',monospace;margin-bottom:4px">STAT 2 VALUE</div>
+          <input class="admin-input" id="stat2Val" placeholder="e.g. 5" style="margin-bottom:0" />
+        </div>
+        <div>
+          <div style="font-size:11px;color:var(--muted);font-family:'Share Tech Mono',monospace;margin-bottom:4px">STAT 2 LABEL</div>
+          <input class="admin-input" id="stat2Label" placeholder="e.g. HAUNTED MAPS" style="margin-bottom:0" />
+        </div>
+        <div style="display:flex;align-items:flex-end">
+          <button class="admin-btn admin-btn-purple" onclick="saveStat(2)" style="width:100%;justify-content:center">Save</button>
+        </div>
+      </div>
+      <div class="stat-input-row">
+        <div>
+          <div style="font-size:11px;color:var(--muted);font-family:'Share Tech Mono',monospace;margin-bottom:4px">STAT 3 VALUE</div>
+          <input class="admin-input" id="stat3Val" placeholder="e.g. 🦍" style="margin-bottom:0" />
+        </div>
+        <div>
+          <div style="font-size:11px;color:var(--muted);font-family:'Share Tech Mono',monospace;margin-bottom:4px">STAT 3 LABEL</div>
+          <input class="admin-input" id="stat3Label" placeholder="e.g. GT MOVEMENT" style="margin-bottom:0" />
+        </div>
+        <div style="display:flex;align-items:flex-end">
+          <button class="admin-btn admin-btn-purple" onclick="saveStat(3)" style="width:100%;justify-content:center">Save</button>
+        </div>
+      </div>
+      <div style="font-size:11px;color:var(--muted);font-family:'Share Tech Mono',monospace">These appear in the launch celebration stats row.</div>
+    </div>
+
+    <!-- PLAY/DISCORD LINKS -->
+    <div class="admin-section">
+      <div class="admin-section-title">LAUNCH PAGE LINKS</div>
+      <div style="font-size:11px;color:var(--muted);font-family:'Share Tech Mono',monospace;margin-bottom:6px">PLAY NOW URL</div>
+      <input class="admin-input" id="adminPlayUrl" placeholder="https://yourgame.com" />
+      <div style="font-size:11px;color:var(--muted);font-family:'Share Tech Mono',monospace;margin-bottom:6px">DISCORD INVITE</div>
+      <input class="admin-input" id="adminDiscordUrl" placeholder="https://discord.gg/yourserver" />
+      <button class="admin-btn admin-btn-green" onclick="saveLinks()">Save Links</button>
+      <span class="admin-confirm" id="linksConfirm">✓ Saved!</span>
+    </div>
+
+    <!-- VISITOR LOG -->
+    <div class="admin-section">
+      <div class="admin-section-title">RECENT VISITORS (LOGGED IN)</div>
+      <div id="adminVisitorLog" style="font-size:12px;font-family:'Share Tech Mono',monospace;color:var(--muted)">No visitors logged yet.</div>
+    </div>
+
+    <div style="margin-top:8px">
+      <button class="overlay-close" onclick="closeOverlay('adminOverlay')">[ CLOSE PANEL ]</button>
+    </div>
+  </div>
+</div>
+
+<!-- USER CHIP (logged in) -->
+<div id="userChip">
+  <span id="userChipName"></span>
+  <button onclick="logout()" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:10px;font-family:'Share Tech Mono',monospace;padding:0">[ OUT ]</button>
+</div>
+
+<!-- LOGIN BUTTON (not logged in) -->
+<button id="userChipLogin" onclick="openOverlay('loginOverlay')">🔐 Sign In</button>
+
+<!-- ADMIN BUTTON -->
+<button id="adminFloatBtn" onclick="openAdmin()">🛡️ ADMIN</button>
+
 <div class="wrap">
 
-  <!-- CORRUPTED DATABASE TERMINAL -->
+  <!-- ANNOUNCEMENTS DISPLAY -->
+  <div class="announcements-wrap" id="announcementsWrap"></div>
+
+  <!-- DB TERMINAL -->
   <div class="db-status" id="dbStatus">
     <span class="db-line" id="dl0">&gt; INITIALIZING PHASMOMONKEYS_DB v0.9.2...</span>
     <span class="db-line" id="dl1">&gt; Loading game assets... <span style="color:var(--green)">OK</span></span>
@@ -352,117 +393,309 @@ body.corrupting{animation:corrupt 0.6s steps(1) 1}
 
   <!-- COUNTDOWN -->
   <div class="countdown-wrap">
-    <div class="cd-block cd-days">
-      <span class="cd-num" id="cdDays">--</span>
-      <span class="cd-label">DAYS</span>
-    </div>
-    <div class="cd-block cd-hours">
-      <span class="cd-num" id="cdHours">--</span>
-      <span class="cd-label">HOURS</span>
-    </div>
-    <div class="cd-block cd-mins">
-      <span class="cd-num" id="cdMins">--</span>
-      <span class="cd-label">MINS</span>
-    </div>
-    <div class="cd-block cd-secs">
-      <span class="cd-num" id="cdSecs">--</span>
-      <span class="cd-label">SECS</span>
-    </div>
+    <div class="cd-block cd-days"><span class="cd-num" id="cdDays">--</span><span class="cd-label">DAYS</span></div>
+    <div class="cd-block cd-hours"><span class="cd-num" id="cdHours">--</span><span class="cd-label">HOURS</span></div>
+    <div class="cd-block cd-mins"><span class="cd-num" id="cdMins">--</span><span class="cd-label">MINS</span></div>
+    <div class="cd-block cd-secs"><span class="cd-num" id="cdSecs">--</span><span class="cd-label">SECS</span></div>
   </div>
   <div class="cd-date" id="cdLabel">WEBSITE LAUNCHES · JULY 14, 2026 · 5:00 PM EST</div>
-  <div class="launched-msg" id="launchedMsg">🚀 WE ARE LIVE — CHECK THE MAIN SITE</div>
 
-  <!-- SECRET TYPING INDICATOR -->
   <div class="secret-input-display" id="secretDisplay"></div>
+
+  <!-- MOBILE SECRET INPUT -->
+  <div class="mobile-secret-wrap" id="mobileSecretWrap">
+    <input class="mobile-secret-input" id="mobileSecretInput" placeholder="TYPE THE SECRET CODE HERE..." autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false" oninput="checkMobileSecret(this.value)" />
+    <div class="mobile-hint">⌨ type PHASMOMONKEYS to unlock a secret</div>
+  </div>
 
   <div class="footer">VIPER STUDIOS · PHASMOMONKEYS · ALL RIGHTS RESERVED</div>
 </div>
 
 <script>
+const VS_API = 'https://viperstudios-production.up.railway.app';
+const STORAGE_KEY = 'pm_data';
+
+// ── PERSISTENCE ──
+function getData(){return JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');}
+function setData(d){localStorage.setItem(STORAGE_KEY,JSON.stringify(d));}
+
+// ── STATE ──
+let pmUser = null;
+let pmIsAdmin = false;
+let pmData = getData();
+
+// ── INIT ──
+window.addEventListener('load', ()=>{
+  loadAnnouncements();
+  loadStats();
+  loadLinks();
+  checkSavedSession();
+  startCountdown();
+  animateTerminal();
+  initSecret();
+  // Check admin forced launch
+  if(pmData.forceLaunch) triggerLaunch(true);
+});
+
+// ── SESSION ──
+async function checkSavedSession(){
+  const saved = localStorage.getItem('pm_token');
+  if(!saved) return;
+  try{
+    const res = await fetch(`${VS_API}/api/me`,{headers:{Authorization:'Bearer '+saved}});
+    if(!res.ok){localStorage.removeItem('pm_token');return;}
+    const d = await res.json();
+    onLoginSuccess(d, saved);
+  }catch{}
+}
+
+async function doLogin(){
+  const username = document.getElementById('loginUser').value.trim();
+  const password = document.getElementById('loginPass').value;
+  const err = document.getElementById('loginErr');
+  err.textContent = '';
+  if(!username||!password){err.textContent='Fill in both fields.';return;}
+  try{
+    const res = await fetch(`${VS_API}/api/login`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username,password})});
+    const d = await res.json();
+    if(!res.ok){err.textContent=d.error||'Login failed.';return;}
+    localStorage.setItem('pm_token', d.token);
+    // Fetch full user
+    const res2 = await fetch(`${VS_API}/api/me`,{headers:{Authorization:'Bearer '+d.token}});
+    const user = await res2.json();
+    onLoginSuccess(user, d.token);
+    closeOverlay('loginOverlay');
+  }catch{err.textContent='Could not reach server.';}
+}
+
+function onLoginSuccess(user, token){
+  pmUser = user;
+  const role = (user.role||user.rank||'').toLowerCase();
+  pmIsAdmin = role==='admin'||role==='owner';
+  // Show user chip
+  document.getElementById('userChip').style.display='flex';
+  document.getElementById('userChipLogin').style.display='none';
+  document.getElementById('userChipName').textContent=user.username;
+  // Show admin button if admin
+  if(pmIsAdmin){
+    document.getElementById('adminFloatBtn').style.display='flex';
+    document.getElementById('adminUser').textContent=user.username;
+  }
+  // Log visit
+  logVisit(user.username);
+}
+
+function logout(){
+  localStorage.removeItem('pm_token');
+  pmUser=null;pmIsAdmin=false;
+  document.getElementById('userChip').style.display='none';
+  document.getElementById('userChipLogin').style.display='flex';
+  document.getElementById('adminFloatBtn').style.display='none';
+}
+
+function logVisit(username){
+  const d = getData();
+  if(!d.visitors) d.visitors=[];
+  // Remove existing entry for this user and re-add at top
+  d.visitors = d.visitors.filter(v=>v.username!==username);
+  d.visitors.unshift({username, visitedAt: Date.now()});
+  d.visitors = d.visitors.slice(0,50); // keep last 50
+  setData(d);
+}
+
 // ── COUNTDOWN ──
-const launch = new Date('2026-07-14T21:00:00Z'); // 5PM EDT = 9PM UTC
+const launch = new Date('2026-07-14T21:00:00Z');
+let launched = false;
 
 function pad(n){return String(n).padStart(2,'0');}
 
+function startCountdown(){
+  // Check if already forced launched
+  if(getData().forceLaunch){triggerLaunch(true);return;}
+  tick();
+  setInterval(()=>{
+    if(!getData().forceLaunch) tick();
+    else if(!launched){triggerLaunch(true);}
+  },1000);
+}
+
 function tick(){
-  const now = new Date();
-  const diff = launch - now;
-  if(diff <= 0){
-    document.getElementById('cdDays').textContent='00';
-    document.getElementById('cdHours').textContent='00';
-    document.getElementById('cdMins').textContent='00';
-    document.getElementById('cdSecs').textContent='00';
-    document.getElementById('cdLabel').style.display='none';
-    document.getElementById('launchedMsg').style.display='block';
-    return;
-  }
+  const diff = launch - new Date();
+  if(diff<=0){if(!launched){launched=true;triggerLaunch();}return;}
   document.getElementById('cdDays').textContent=pad(Math.floor(diff/86400000));
   document.getElementById('cdHours').textContent=pad(Math.floor((diff%86400000)/3600000));
   document.getElementById('cdMins').textContent=pad(Math.floor((diff%3600000)/60000));
   document.getElementById('cdSecs').textContent=pad(Math.floor((diff%60000)/1000));
 }
-tick();
-setInterval(tick, 1000);
 
-// ── CORRUPTED DB TERMINAL ANIMATION ──
-const lines = document.querySelectorAll('.db-line');
-lines.forEach((line, i) => {
-  setTimeout(() => {
-    line.classList.add('visible');
-  }, 400 + i * 350);
-});
-
-// ── SECRET CODE: PHASMOMONKEYS ──
-const SECRET = 'PHASMOMONKEYS';
-let typed = '';
-let typingTimeout = null;
-const display = document.getElementById('secretDisplay');
-
-document.addEventListener('keydown', (e) => {
-  if(document.getElementById('secretOverlay').classList.contains('show')) return;
-  const key = e.key.toUpperCase();
-  if(key.length === 1 && /[A-Z]/.test(key)){
-    typed += key;
-    if(typed.length > SECRET.length) typed = typed.slice(-SECRET.length);
-
-    // Show typing indicator
-    display.textContent = typed.split('').map(()=>'·').join(' ');
-    display.classList.add('typing');
-
-    clearTimeout(typingTimeout);
-    typingTimeout = setTimeout(()=>{
-      typed = '';
-      display.textContent = '';
-      display.classList.remove('typing');
-    }, 2000);
-
-    if(typed === SECRET){
-      triggerSecret();
-    }
+// ── LAUNCH ──
+function triggerLaunch(instant){
+  launched=true;
+  if(instant){
+    document.getElementById('launchCelebration').classList.add('show');
+    startConfetti();return;
   }
-});
-
-function triggerSecret(){
-  typed = '';
-  display.textContent = '';
-  display.classList.remove('typing');
-
-  // Corrupt the screen first
   document.body.classList.add('corrupting');
   setTimeout(()=>{
     document.body.classList.remove('corrupting');
-    document.getElementById('secretOverlay').classList.add('show');
-  }, 650);
+    document.getElementById('launchCelebration').classList.add('show');
+    startConfetti();
+  },700);
 }
 
-function closeSecret(){
-  document.getElementById('secretOverlay').classList.remove('show');
+// ── CONFETTI ──
+function startConfetti(){
+  const canvas=document.getElementById('confettiCanvas');
+  const ctx=canvas.getContext('2d');
+  canvas.width=window.innerWidth;canvas.height=window.innerHeight;
+  window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
+  const colors=['#8b5cf6','#06b6d4','#22c55e','#f59e0b','#f472b6','#fbbf24','#60a5fa','#a78bfa'];
+  const pieces=Array.from({length:180},()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height-canvas.height,r:Math.random()*6+3,color:colors[Math.floor(Math.random()*colors.length)],speed:Math.random()*3+1.5,drift:Math.random()*2-1,spin:Math.random()*0.2-0.1,angle:Math.random()*Math.PI*2,shape:Math.random()>0.5?'rect':'circle',w:Math.random()*10+4,h:Math.random()*5+3}));
+  let frame=0;
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    pieces.forEach(p=>{ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.angle);ctx.fillStyle=p.color;ctx.globalAlpha=0.85;if(p.shape==='circle'){ctx.beginPath();ctx.arc(0,0,p.r,0,Math.PI*2);ctx.fill();}else{ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);}ctx.restore();p.y+=p.speed;p.x+=p.drift;p.angle+=p.spin;if(p.y>canvas.height+20){p.y=-20;p.x=Math.random()*canvas.width;}});
+    frame++;if(frame<480)requestAnimationFrame(draw);else ctx.clearRect(0,0,canvas.width,canvas.height);
+  }
+  draw();
 }
 
-// Close overlay on background click
-document.getElementById('secretOverlay').addEventListener('click', function(e){
-  if(e.target === this) closeSecret();
-});
+// ── DB TERMINAL ──
+function animateTerminal(){
+  document.querySelectorAll('.db-line').forEach((l,i)=>setTimeout(()=>l.classList.add('visible'),400+i*350));
+}
+
+// ── OVERLAYS ──
+function openOverlay(id){document.getElementById(id).classList.add('show');}
+function closeOverlay(id){document.getElementById(id).classList.remove('show');}
+document.querySelectorAll('.overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('show');}));
+
+// ── ADMIN ──
+function openAdmin(){
+  if(!pmIsAdmin){return;}
+  // Populate fields
+  const d=getData();
+  document.getElementById('adminLaunchToggle').checked=!!d.forceLaunch;
+  document.getElementById('stat1Val').value=d.stat1Val||'';
+  document.getElementById('stat1Label').value=d.stat1Label||'';
+  document.getElementById('stat2Val').value=d.stat2Val||'';
+  document.getElementById('stat2Label').value=d.stat2Label||'';
+  document.getElementById('stat3Val').value=d.stat3Val||'';
+  document.getElementById('stat3Label').value=d.stat3Label||'';
+  document.getElementById('adminPlayUrl').value=d.playUrl||'';
+  document.getElementById('adminDiscordUrl').value=d.discordUrl||'';
+  // Visitor log
+  const visitors=d.visitors||[];
+  document.getElementById('adminVisitorLog').innerHTML=visitors.length
+    ?visitors.slice(0,20).map(v=>`<div style="padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.05)">${v.username} <span style="color:var(--muted)">· ${new Date(v.visitedAt).toLocaleString()}</span></div>`).join('')
+    :'No visitors logged yet.';
+  renderAdminAnnouncements();
+  openOverlay('adminOverlay');
+}
+
+function toggleLaunchMode(){
+  const on=document.getElementById('adminLaunchToggle').checked;
+  const d=getData();d.forceLaunch=on;setData(d);
+  if(on&&!launched) triggerLaunch(true);
+  else if(!on){launched=false;document.getElementById('launchCelebration').classList.remove('show');}
+}
+
+function addAnnouncement(){
+  const txt=document.getElementById('adminAnnounceInput').value.trim();
+  if(!txt)return;
+  const d=getData();
+  if(!d.announcements)d.announcements=[];
+  d.announcements.unshift({id:'a_'+Date.now(),text:txt,postedAt:Date.now(),postedBy:pmUser?.username||'Admin'});
+  setData(d);
+  document.getElementById('adminAnnounceInput').value='';
+  renderAdminAnnouncements();
+  loadAnnouncements();
+  const c=document.getElementById('announceConfirm');c.classList.add('show');setTimeout(()=>c.classList.remove('show'),2000);
+}
+
+function deleteAnnouncement(id){
+  const d=getData();
+  d.announcements=(d.announcements||[]).filter(a=>a.id!==id);
+  setData(d);renderAdminAnnouncements();loadAnnouncements();
+}
+
+function renderAdminAnnouncements(){
+  const d=getData();const list=document.getElementById('adminAnnounceList');
+  if(!d.announcements||!d.announcements.length){list.innerHTML='<div style="font-size:12px;color:var(--muted);font-family:\'Share Tech Mono\',monospace">No announcements yet.</div>';return;}
+  list.innerHTML=d.announcements.map(a=>`<div class="announce-item"><div class="announce-item-text">${escHtml(a.text)}<div style="font-size:10px;color:var(--muted);margin-top:4px;font-family:\'Share Tech Mono\',monospace">${new Date(a.postedAt).toLocaleString()}</div></div><button class="announce-del" onclick="deleteAnnouncement('${a.id}')">✕</button></div>`).join('');
+}
+
+function loadAnnouncements(){
+  const d=getData();const wrap=document.getElementById('announcementsWrap');
+  if(!d.announcements||!d.announcements.length){wrap.style.display='none';return;}
+  wrap.style.display='block';
+  wrap.innerHTML=d.announcements.map(a=>`<div class="announce-banner">📢 ${escHtml(a.text)}</div>`).join('');
+}
+
+function saveStat(n){
+  const d=getData();
+  d[`stat${n}Val`]=document.getElementById(`stat${n}Val`).value.trim();
+  d[`stat${n}Label`]=document.getElementById(`stat${n}Label`).value.trim();
+  setData(d);loadStats();
+}
+
+function loadStats(){
+  const d=getData();
+  if(d.stat1Val)document.getElementById('launchStat1').textContent=d.stat1Val;
+  if(d.stat1Label)document.getElementById('launchStat1Label').textContent=d.stat1Label;
+  if(d.stat2Val)document.getElementById('launchStat2').textContent=d.stat2Val;
+  if(d.stat2Label)document.getElementById('launchStat2Label').textContent=d.stat2Label;
+  if(d.stat3Val)document.getElementById('launchStat3').textContent=d.stat3Val;
+  if(d.stat3Label)document.getElementById('launchStat3Label').textContent=d.stat3Label;
+}
+
+function saveLinks(){
+  const d=getData();
+  d.playUrl=document.getElementById('adminPlayUrl').value.trim();
+  d.discordUrl=document.getElementById('adminDiscordUrl').value.trim();
+  setData(d);loadLinks();
+  const c=document.getElementById('linksConfirm');c.classList.add('show');setTimeout(()=>c.classList.remove('show'),2000);
+}
+
+function loadLinks(){
+  const d=getData();
+  if(d.playUrl)document.getElementById('launchPlayBtn').href=d.playUrl;
+  if(d.discordUrl)document.getElementById('launchDiscordBtn').href=d.discordUrl;
+}
+
+function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+// ── SECRET CODE ──
+function checkMobileSecret(val){
+  const upper = val.toUpperCase();
+  if(upper === 'PHASMOMONKEYS'){
+    document.getElementById('mobileSecretInput').value = '';
+    document.body.classList.add('corrupting');
+    setTimeout(()=>{
+      document.body.classList.remove('corrupting');
+      openOverlay('secretOverlay');
+    }, 650);
+  }
+}
+
+function initSecret(){
+  const SECRET='PHASMOMONKEYS';let typed='';let typingTimeout=null;
+  const display=document.getElementById('secretDisplay');
+  document.addEventListener('keydown',(e)=>{
+    if(document.getElementById('secretOverlay').classList.contains('show'))return;
+    const key=e.key.toUpperCase();
+    if(key.length===1&&/[A-Z]/.test(key)){
+      typed+=key;if(typed.length>SECRET.length)typed=typed.slice(-SECRET.length);
+      display.textContent=typed.split('').map(()=>'·').join(' ');display.classList.add('typing');
+      clearTimeout(typingTimeout);typingTimeout=setTimeout(()=>{typed='';display.textContent='';display.classList.remove('typing');},2000);
+      if(typed===SECRET){
+        typed='';display.textContent='';display.classList.remove('typing');
+        document.body.classList.add('corrupting');
+        setTimeout(()=>{document.body.classList.remove('corrupting');openOverlay('secretOverlay');},650);
+      }
+    }
+  });
+}
 </script>
 </body>
 </html>
