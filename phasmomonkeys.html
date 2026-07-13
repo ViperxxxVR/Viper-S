@@ -456,7 +456,7 @@ async function doLogin(){
   err.textContent = '';
   if(!username||!password){err.textContent='Fill in both fields.';return;}
   try{
-    const res = await fetch(`${VS_API}/api/login`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username,password})});
+    const res = await fetch(`${VS_API}/login`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username,password})});
     const d = await res.json();
     if(!res.ok){err.textContent=d.error||'Login failed.';return;}
     localStorage.setItem('pm_token', d.token);
